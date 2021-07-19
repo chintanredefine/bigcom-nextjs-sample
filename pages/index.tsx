@@ -41,7 +41,7 @@ export default function Home({
   return (
     <>
       <Grid variant="filled">
-        {products.slice(0, 4).map((product: any, i: number) => (
+        {products.slice(0, 3).map((product: any, i: number) => (
           <ProductCard
             key={product.id}
             product={product}
@@ -53,16 +53,16 @@ export default function Home({
         ))}
       </Grid>
       <Marquee variant="secondary">
-        {products.slice(0, 2).map((product: any, i: number) => (
+        {products.slice(0, 3).map((product: any, i: number) => (
           <ProductCard key={product.id} product={product} variant="slim" />
         ))}
       </Marquee>
       <Hero
-        headline="Headline Here"
+        headline="Main Headline here"
         description="This is the details section under main headline section. You can add the text over here. Soufflé bonbon caramels jelly beans."
       />
       <Grid layout="B" variant="filled">
-        {products.slice(0, 4).map((product: any, i: number) => (
+        {products.slice(0, 3).map((product: any, i: number) => (
           <ProductCard
             key={product.id}
             product={product}
@@ -74,7 +74,7 @@ export default function Home({
         ))}
       </Grid>
       <Marquee>
-        {products.slice(4).map((product: any, i: number) => (
+        {products.slice(3).map((product: any, i: number) => (
           <ProductCard key={product.id} product={product} variant="slim" />
         ))}
       </Marquee>
