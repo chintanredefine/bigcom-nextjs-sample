@@ -69,7 +69,7 @@ const Footer: FC<Props> = ({ className, pages }) => {
           <div>
             <span>&copy; 2021 SleekShop, Inc. All rights reserved.</span>
           </div>
-          <div className="flex items-center text-primary text-sm" style="display:none;">
+          <div className="flex items-center text-primary text-sm">
             <span className="text-primary">Created by</span>
             <a
               rel="noopener"
