@@ -58,7 +58,7 @@ export default function Home({
         ))}
       </Marquee>
       <Hero
-        headline="Main Headline Code here"
+        headline="Headline Here"
         description="This is the details section under main headline section. You can add the text over here. Soufflé bonbon caramels jelly beans."
       />
       <Grid layout="B" variant="filled">
