@@ -1,5 +1,5 @@
 const Logo = ({ className = '', ...props }) => (
-  <Image src='https://cdn11.bigcommerce.com/s-hmhnh4h9/images/stencil/original/sleekshop_logo_250x34px_1565895760__32121.original.png' alt="SleekShop.com" />
+  <Image src='https://cdn11.bigcommerce.com/s-hmhnh4h9/images/stencil/original/sleekshop_logo_250x34px_1565895760__32121.original.png' alt='SleekShop.com' />
   
   // <svg
   //   width="32"
