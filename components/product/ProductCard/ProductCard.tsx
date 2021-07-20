@@ -87,6 +87,7 @@ const ProductCard: FC<Props> = ({
                   height={540}
                   width={540}
                   quality="85"
+                  id="img-id-cls"
                   layout="responsive"
                   {...imgProps}
                 />
