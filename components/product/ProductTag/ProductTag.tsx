@@ -16,7 +16,7 @@ const ProductTag: React.FC<ProductTagProps> = ({
   fontSize = 32,
 }) => {
   return (
-    <div className={cn(s.root, className)}>
+    <div className={cn(s.rootmain, className)}>
       <h3 className={s.name}>
         <span
           className={cn({ [s.fontsizing]: fontSize < 32 })}
