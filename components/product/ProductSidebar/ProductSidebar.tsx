@@ -2,6 +2,7 @@ import s from './ProductSidebar.module.css'
 import { useAddItem } from '@framework/cart'
 import { FC, useEffect, useState } from 'react'
 import { ProductOptions } from '@components/product'
+import ProductTag from '../ProductTag'
 import type { Product } from '@commerce/types/product'
 import { Button, Text, Rating, Collapse, useUI } from '@components/ui'
 import {
@@ -39,9 +40,19 @@ const ProductSidebar: FC<ProductSidebarProps> = ({ product, className }) => {
       setLoading(false)
     }
   }
+  const { price } = usePrice({
+    amount: product.price.value,
+    baseAmount: product.price.retailPrice,
+    currencyCode: product.price.currencyCode!,
+  })
 
   return (
     <div className={className}>
+      <ProductTag
+              name={product.name}
+              price={`${price} ${product.price?.currencyCode}`}
+              fontSize={32}
+            />
       <ProductOptions
         options={product.options}
         selectedOptions={selectedOptions}
