@@ -32,7 +32,7 @@ const ProductView: FC<ProductViewProps> = ({ product, relatedProducts }) => {
               price={`${price} ${product.price?.currencyCode}`}
               fontSize={32}
             />
-            <div className={s.sliderContainer}>
+            <div id='chintan' className={s.sliderContainer}>
               <ProductSlider key={product.id}>
                 {product.images.map((image, i) => (
                   <div key={image.url} className={s.imageContainer}>
