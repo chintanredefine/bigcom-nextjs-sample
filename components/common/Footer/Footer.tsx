@@ -20,6 +20,53 @@ const links = [
     name: 'Home',
     url: '/',
   },
+  {
+    name: 'WHO WE ARE',
+    url: '/',
+  },
+  {
+    name: 'CONTACT US',
+    url: '/',
+  },
+  {
+    name: 'PARTNERSHIPS',
+    url: '/',
+  },
+  {
+    name: 'VIEW ALL BRANDS',
+    url: '/',
+  },
+  {
+    name: 'NEW ARRIVALS',
+    url: '/',
+  },
+  {
+    name: 'WEBSITE ACCESSIBILITY',
+    url: '/',
+  },
+]
+
+const links2 = [
+  {
+    name: 'MY ACCOUNT',
+    url: '/',
+  },
+  {
+    name: 'CUSTOMER SERVICE',
+    url: '/',
+  },
+  {
+    name: 'RETURN POLICY',
+    url: '/',
+  },
+  {
+    name: 'SHIPPING POLICY',
+    url: '/',
+  },
+  {
+    name: 'CURBSIDE PICK UP',
+    url: '/',
+  },
 ]
 
 const Footer: FC<Props> = ({ className, pages }) => {
@@ -33,16 +80,24 @@ const Footer: FC<Props> = ({ className, pages }) => {
           <div className="col-span-1 lg:col-span-2">
             <Link href="/">
               <a className="flex flex-initial items-center font-bold md:mr-24">
-                <span className="rounded-full border border-accent-6 mr-2">
+                <span className="rounded-full  border-accent-6 mr-2">
                   <Logo />
                 </span>
-                <span>ACME</span>
               </a>
             </Link>
           </div>
           <div className="col-span-1 lg:col-span-8">
             <div className="grid md:grid-rows-4 md:grid-cols-3 md:grid-flow-col">
               {[...links, ...sitePages].map((page) => (
+                <span key={page.url} className="py-3 md:py-0 md:pb-4">
+                  <Link href={page.url!}>
+                    <a className="text-accent-9 hover:text-accent-6 transition ease-in-out duration-150">
+                      {page.name}
+                    </a>
+                  </Link>
+                </span>
+              ))}
+              {[...links2, ...sitePages].map((page) => (
                 <span key={page.url} className="py-3 md:py-0 md:pb-4">
                   <Link href={page.url!}>
                     <a className="text-accent-9 hover:text-accent-6 transition ease-in-out duration-150">
@@ -68,7 +123,7 @@ const Footer: FC<Props> = ({ className, pages }) => {
         </div>
         <div className="pt-6 pb-10 flex flex-col md:flex-row justify-between items-center space-y-4 text-accent-6 text-sm">
           <div>
-            <span>&copy; 2020 ACME, Inc. All rights reserved.</span>
+            <span>&copy; 2021 SleekShop, Inc. All rights reserved.</span>
           </div>
           <div className="flex items-center text-primary text-sm">
             <span className="text-primary">Created by</span>

@@ -19,7 +19,6 @@ export const swatchOptionFragment = /* GraphQL */ `
   fragment swatchOption on SwatchOptionValue {
     isDefault
     hexColors
-    imageUrl(width:60, height:60)
   }
 `
 
