@@ -33,3 +33,13 @@
     transform: scale(1.05);
   }
 }
+
+/* Custom CSS Starts here */
+.logo-custom {
+  @apply cursor-pointer transform duration-100 ease-in-out;
+
+  &:hover {
+    @apply shadow-md;
+    transform: scale(1.05);
+  }
+}
