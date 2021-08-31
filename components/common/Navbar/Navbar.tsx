@@ -16,11 +16,11 @@ interface NavbarProps {
 const Navbar: FC<NavbarProps> = ({ links }) => (
   <NavbarRoot>
     <Container>
-      <div className="topbarmsg">
+      <div className={s.topbarmsg}>
         <div className="topbarmsgleft">
           337 Roncesvalles Ave, Toronto
         </div>  
-        <div className="topbarmsgright">
+        <div className={s.topbarmsgright}>
           USD
         </div>
       </div>  
@@ -45,11 +45,11 @@ const Navbar: FC<NavbarProps> = ({ links }) => (
         <Searchbar id="mobile-search" />
       </div>
 
-      <div className="mainmenudiv">
+      <div className={s.mainmenudiv}>
         <nav className={s.navMenu}>
-            {/*<Link href="/search">
+            <Link href="/search" style="display:none;">
               <a className={s.link}>All</a>
-            </Link>*/}
+            </Link>
             {links?.map((l) => (
               <Link href={l.href} key={l.href}>
                 <a className={s.link}>{l.label}</a>
@@ -57,7 +57,7 @@ const Navbar: FC<NavbarProps> = ({ links }) => (
             ))}
           </nav>
       </div>
-      <div className="staticmsgbelowmenu">
+      <div className={s.staticmsgbelowmenu}>
         COVID 19 UPDATE: WORLDWIDE FREESHIP
       </div>  
     </Container>
