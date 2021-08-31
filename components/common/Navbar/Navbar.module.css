@@ -1,6 +1,7 @@
 .root {
-  @apply sticky top-30 bg-primary z-40 transition-all duration-150;
+  @apply sticky bg-primary z-40 transition-all duration-150;
   min-height: 74px;
+  top: 30px;
 }
 
 .nav {
