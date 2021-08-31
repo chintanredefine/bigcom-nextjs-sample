@@ -17,12 +17,8 @@ const Navbar: FC<NavbarProps> = ({ links }) => (
   <NavbarRoot>
     <Container>
       <div className={s.topbarmsg}>
-        <div className="topbarmsgleft">
-          337 Roncesvalles Ave, Toronto
-        </div>  
-        <div className={s.topbarmsgright}>
-          USD
-        </div>
+        <div className={s.topbarmsgleft}>337 Roncesvalles Ave, Toronto</div>  
+        <div className={s.topbarmsgright}>USD</div>
       </div>  
       <div className={s.nav}>
         <div className="flex items-center flex-1">
@@ -47,7 +43,7 @@ const Navbar: FC<NavbarProps> = ({ links }) => (
 
       <div className={s.mainmenudiv}>
         <nav className={s.navMenu}>
-            <Link href="/search" style="display:none;">
+            <Link href="/search">
               <a className={s.link}>All</a>
             </Link>
             {links?.map((l) => (
