@@ -54,6 +54,6 @@
 .topbarmsgleft{float: left; text-align: left; background: #f6f6f8; color: #5A6268; width: 50%;}
 .topbarmsgright{float: right; text-align: right; background: #f6f6f8; color: #5A6268; width: 50%;}
 
-.Navbar_topbarmsg__1cfgD {}
 .nav{float: left;width:100%;}
 .rootcustom .inputcustom {padding: 0.5rem 0.75rem 0.5rem 2.75rem; width: 100%;} 
+#search{padding: 0.5rem 0.75rem 0.5rem 2.75rem; width: 100%;}
