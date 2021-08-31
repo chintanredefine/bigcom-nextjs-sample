@@ -43,3 +43,7 @@
     transform: scale(1.05);
   }
 }
+
+.mainmenudiv {
+  @apply hidden ml-6 space-x-4 lg:block;
+}
