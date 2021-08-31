@@ -39,7 +39,7 @@ const ProductCard: FC<Props> = ({
 
   return (
     <Link href={`/product/${product.slug}`} {...props}>
-      <a className={rootClassName}>
+      <a className={rootClassName}><span>{product.name}</span>
         {variant === 'slim' && (
           <>
             <div className={s.header}>
