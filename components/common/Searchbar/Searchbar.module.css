@@ -1,9 +1,10 @@
 .root {
-  @apply relative text-sm bg-accent-0 text-base w-full transition-colors duration-150 border-bottom border-accent-2;
+    @apply relative text-sm bg-accent-0 text-base w-full transition-colors duration-150 border border-accent-2;
 }
 
 .root-custom {
-  @apply relative text-sm bg-accent-0 text-base w-full transition-colors duration-150;
+    @apply relative text-sm bg-accent-0 text-base w-full transition-colors duration-150 border-accent-2;
+    border-bottom: 1px solid;
 }
 
 .input {
