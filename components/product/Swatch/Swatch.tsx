@@ -3,13 +3,14 @@ import React from 'react'
 import s from './Swatch.module.css'
 import { Check } from '@components/icons'
 import Button, { ButtonProps } from '@components/ui/Button'
-import { isDark } from '@lib/colors'
+import { isDark } from '@lib/colors' 
 interface SwatchProps {
   active?: boolean
   children?: any
   className?: string
   variant?: 'size' | 'color' | string
   color?: string
+  image?: string
   label?: string | null
 }
 
@@ -18,12 +19,12 @@ const Swatch: React.FC<Omit<ButtonProps, 'variant'> & SwatchProps> = React.memo(
     active,
     className,
     color = '',
+    image = '',
     label = null,
-    variant = 'size',
+    variant = 'size', 
     ...props
   }) => {
-    variant = variant?.toLowerCase()
-
+    variant = variant?.toLowerCase() 
     if (label) {
       label = label?.toLowerCase()
     }
@@ -41,11 +42,11 @@ const Swatch: React.FC<Omit<ButtonProps, 'variant'> & SwatchProps> = React.memo(
     )
 
     return (
-      <Button
+      <Button 
         aria-label="Variant Swatch"
         className={swatchClassName}
         {...(label && color && { title: label })}
-        style={color ? { backgroundColor: color } : {}}
+        style={image ? { backgroundImage: `url(${image})` } : {}  }
         {...props}
       >
         {color && active && (
@@ -53,8 +54,11 @@ const Swatch: React.FC<Omit<ButtonProps, 'variant'> & SwatchProps> = React.memo(
             <Check />
           </span>
         )}
-        {!color ? label : null}
+        <div className="">{!color ? label : null}</div> 
+         
+          
       </Button>
+      
     )
   }
 )

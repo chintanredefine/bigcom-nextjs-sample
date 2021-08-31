@@ -32,9 +32,6 @@ export interface BigcommerceConfig extends CommerceAPIConfig {
   storeApiToken: string
   storeApiClientId: string
   storeChannelId?: string
-  storeUrl?: string
-  storeApiClientSecret?: string
-  storeHash?:string
   storeApiFetch<T>(endpoint: string, options?: RequestInit): Promise<T>
 }
 
@@ -44,9 +41,6 @@ const STORE_API_URL = process.env.BIGCOMMERCE_STORE_API_URL
 const STORE_API_TOKEN = process.env.BIGCOMMERCE_STORE_API_TOKEN
 const STORE_API_CLIENT_ID = process.env.BIGCOMMERCE_STORE_API_CLIENT_ID
 const STORE_CHANNEL_ID = process.env.BIGCOMMERCE_CHANNEL_ID
-const STORE_URL = process.env.BIGCOMMERCE_STORE_URL
-const CLIENT_SECRET = process.env.BIGCOMMERCE_STORE_API_CLIENT_SECRET
-const STOREFRONT_HASH = process.env.BIGCOMMERCE_STORE_API_STORE_HASH
 
 if (!API_URL) {
   throw new Error(
@@ -81,9 +75,6 @@ const config: BigcommerceConfig = {
   storeApiToken: STORE_API_TOKEN,
   storeApiClientId: STORE_API_CLIENT_ID,
   storeChannelId: STORE_CHANNEL_ID,
-  storeUrl:STORE_URL,
-  storeApiClientSecret:CLIENT_SECRET,
-  storeHash: STOREFRONT_HASH,
   storeApiFetch: createFetchStoreApi(() => getCommerceApi().getConfig()),
 }
 

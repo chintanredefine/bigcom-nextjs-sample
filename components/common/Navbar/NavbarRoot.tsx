@@ -24,7 +24,7 @@ const NavbarRoot: FC = ({ children }) => {
   }, [hasScrolled])
 
   return (
-    <div id="1" className={cn(s.root, { 'shadow-magical': hasScrolled })}>
+    <div className={cn(s.root, { 'shadow-magical': hasScrolled })}>
       {children}
     </div>
   )

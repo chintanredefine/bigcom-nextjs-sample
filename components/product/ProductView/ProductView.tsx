@@ -13,32 +13,28 @@ import ProductTag from '../ProductTag'
 interface ProductViewProps {
   product: Product
   relatedProducts: Product[]
+  variants: any
+  currentVariant: any
+  skuChange: any
 }
 
-const ProductView: FC<ProductViewProps> = ({ product, relatedProducts }) => {
-  const { price } = usePrice({
-    amount: product.price.value,
-    baseAmount: product.price.retailPrice,
-    currencyCode: product.price.currencyCode!,
-  })
+const ProductView: FC<ProductViewProps> = ({ product, relatedProducts, variants, currentVariant, skuChange }) => {
 
   return (
     <>
-      <Container className="max-w-none w-full" clean>
+      <Container className="max-w_none w_full container_page" clean>
+        
+        {currentVariant && variants  ? (
+
         <div className={cn(s.root, 'fit')}>
-          <div className={cn(s.main, 'fit')}>
-            {/* <ProductTag
-              name={product.name}
-              price={`${price} ${product.price?.currencyCode}`}
-              fontSize={32}
-            /> */}
-            <div id='chintan' className={s.sliderContainer}>
+          <div className={cn(s.main, 'fit productIMG')}>
+            <div className={cn(s.sliderContainer,'bgColor')}>
               <ProductSlider key={product.id}>
                 {product.images.map((image, i) => (
-                  <div key={image.url} className={s.imageContainer}>
+                  <div key={currentVariant.data[0].image_url} className={s.imageContainer}>
                     <Image
                       className={s.img}
-                      src={image.url!}
+                      src={currentVariant.data[0].image_url!}
                       alt={image.alt || 'Product Image'}
                       width={600}
                       height={600}
@@ -51,15 +47,17 @@ const ProductView: FC<ProductViewProps> = ({ product, relatedProducts }) => {
             </div>
             {process.env.COMMERCE_WISHLIST_ENABLED && (
               <WishlistButton
-                className={s.wishlistButton}
+                className={cn(s.wishlistButton,'wishBtn')}
                 productId={product.id}
                 variant={product.variants[0]}
               />
             )}
           </div>
-
-          <ProductSidebar product={product} className={s.sidebar} />
+          <ProductSidebar product={product} className={cn(s.sidebar,'productInfo fit')} variants={variants} currentVariant={currentVariant.data[0]} skuChange={skuChange} />
         </div>
+
+        ) : "" }
+
         <hr className="mt-7 border-accent-2" />
         <section className="py-12 px-6 mb-10">
           <Text variant="sectionHeading">Related Products</Text>

@@ -10,7 +10,7 @@ interface ProductSliderControl {
 
 const ProductSliderControl: React.FC<ProductSliderControl> = React.memo(
   ({ onPrev, onNext }) => (
-    <div className={s.control}>
+    <div className={cn(s.control,'buttonBG')}>
       <button
         className={cn(s.leftControl)}
         onClick={onPrev}

@@ -12,6 +12,10 @@ const isSwell = provider === 'swell'
 const isVendure = provider === 'vendure'
 
 module.exports = withCommerceConfig({
+  publicRuntimeConfig: {
+      BASE_URL: process.env.BASE_URL,
+      COLOR_SWATCH_URL: process.env.COLOR_SWATCH_URL
+  },
   commerce,
   i18n: {
     locales: ['en-US', 'es'],
