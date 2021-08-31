@@ -35,7 +35,7 @@
 }
 
 /* Custom CSS Starts here */
-.logo-custom {
+.logocustom {
   @apply cursor-pointer transform duration-100 ease-in-out;
 
   &:hover {

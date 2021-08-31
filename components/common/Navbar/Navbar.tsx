@@ -19,7 +19,7 @@ const Navbar: FC<NavbarProps> = ({ links }) => (
       <div className={s.nav}>
         <div className="flex items-center flex-1">
           <Link href="/">
-            <a className={s.logo-custom} aria-label="Logo">
+            <a className={s.logocustom} aria-label="Logo">
               <Logo />
             </a>
           </Link>
@@ -36,17 +36,18 @@ const Navbar: FC<NavbarProps> = ({ links }) => (
       <div className="flex pb-4 lg:px-6 lg:hidden">
         <Searchbar id="mobile-search" />
       </div>
-      <div className={s.mainmenudiv}>
-      <nav className={s.navMenu}>
-          <Link href="/search">
-            <a className={s.link}>All</a>
-          </Link>
-          {links?.map((l) => (
-            <Link href={l.href} key={l.href}>
-              <a className={s.link}>{l.label}</a>
+
+      <div className="mainmenudiv">
+        <nav className={s.navMenu}>
+            <Link href="/search">
+              <a className={s.link}>All</a>
             </Link>
-          ))}
-        </nav>
+            {links?.map((l) => (
+              <Link href={l.href} key={l.href}>
+                <a className={s.link}>{l.label}</a>
+              </Link>
+            ))}
+          </nav>
       </div>
     </Container>
   </NavbarRoot>
