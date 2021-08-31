@@ -104,7 +104,14 @@ const Layout: FC<Props> = ({
   return (
     <CommerceProvider locale={locale}>
       <div className={cn(s.root)} id="mydiv1">
+        <div className="topbarmsg">
+          <div className="topbarmsgleft">337 Roncesvalles Ave, Toronto</div>  
+          <div className="topbarmsgright">USD</div>
+        </div>
         <Navbar links={navBarlinks} />
+        <div className="staticmsgbelowmenu">
+          COVID 19 UPDATE: WORLDWIDE FREESHIP
+        </div>
         <main className="fit">{children}</main>
         <Footer pages={pageProps.pages} />
         <ModalUI />

@@ -16,10 +16,6 @@ interface NavbarProps {
 const Navbar: FC<NavbarProps> = ({ links }) => (
   <NavbarRoot>
     <Container>
-      <div className={s.topbarmsg}>
-        <div className={s.topbarmsgleft}>337 Roncesvalles Ave, Toronto</div>  
-        <div className={s.topbarmsgright}>USD</div>
-      </div>  
       <div className={s.nav}>
         <div className="flex items-center flex-1">
           <Link href="/">
@@ -40,7 +36,6 @@ const Navbar: FC<NavbarProps> = ({ links }) => (
       <div className="flex pb-4 lg:px-6 lg:hidden">
         <Searchbar id="mobile-search" />
       </div>
-
       <div className={s.mainmenudiv}>
         <nav className={s.navMenu}>
             <Link href="/search">
@@ -53,9 +48,6 @@ const Navbar: FC<NavbarProps> = ({ links }) => (
             ))}
           </nav>
       </div>
-      <div className={s.staticmsgbelowmenu}>
-        COVID 19 UPDATE: WORLDWIDE FREESHIP
-      </div>  
     </Container>
   </NavbarRoot>
 
