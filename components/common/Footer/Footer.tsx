@@ -17,54 +17,69 @@ interface Props {
 
 const links = [
   {
-    name: 'Home',
+    name: 'Help',
     url: '/',
   },
   {
-    name: 'WHO WE ARE',
+    name: 'Shipping & Returns',
     url: '/',
   },
   {
-    name: 'CONTACT US',
+    name: 'Track Your Orders',
     url: '/',
   },
   {
-    name: 'PARTNERSHIPS',
+    name: 'Store Finder',
     url: '/',
   },
   {
-    name: 'VIEW ALL BRANDS',
-    url: '/',
-  },
-  {
-    name: 'NEW ARRIVALS',
-    url: '/',
-  },
-  {
-    name: 'WEBSITE ACCESSIBILITY',
+    name: 'FAQs',
     url: '/',
   },
 ]
 
 const links2 = [
   {
-    name: 'MY ACCOUNT',
+    name: 'About',
     url: '/',
   },
   {
-    name: 'CUSTOMER SERVICE',
+    name: 'About Us',
     url: '/',
   },
   {
-    name: 'RETURN POLICY',
+    name: 'Contact Us',
     url: '/',
   },
   {
-    name: 'SHIPPING POLICY',
+    name: 'Careers',
     url: '/',
   },
   {
-    name: 'CURBSIDE PICK UP',
+    name: 'Become an Affiliate',
+    url: '/',
+  },
+]
+
+const links3 = [
+  {
+    name: 'Categories',
+    url: '/',
+  },
+  {
+    name: 'Hair Care',
+    url: '/',
+  },
+  {
+    name: 'Hair Color',
+    url: '/',
+  },
+  {
+    name: 'Makeup',
+    url: '/',
+  },
+  {
+    name: 'Skin Care',
     url: '/',
   },
 ]
@@ -77,7 +92,7 @@ const Footer: FC<Props> = ({ className, pages }) => {
     <footer className={rootClassName}>
       <Container>
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 border-b border-accent-2 py-12 text-primary bg-primary transition-colors duration-150">
-          <div className="col-span-1 lg:col-span-2">
+          {/*<div className="col-span-1 lg:col-span-2">
             <Link href="/">
               <a className="flex flex-initial items-center font-bold md:mr-24">
                 <span className="rounded-full  border-accent-6 mr-2">
@@ -85,7 +100,7 @@ const Footer: FC<Props> = ({ className, pages }) => {
                 </span>
               </a>
             </Link>
-          </div>
+          </div>*/}
           <div className="col-span-1 lg:col-span-8">
             <div className="grid md:grid-rows-4 md:grid-cols-3 md:grid-flow-col">
               {[...links, ...sitePages].map((page) => (
@@ -98,6 +113,15 @@ const Footer: FC<Props> = ({ className, pages }) => {
                 </span>
               ))}
               {[...links2, ...sitePages].map((page) => (
+                <span key={page.url} className="py-3 md:py-0 md:pb-4">
+                  <Link href={page.url!}>
+                    <a className="text-accent-9 hover:text-accent-6 transition ease-in-out duration-150">
+                      {page.name}
+                    </a>
+                  </Link>
+                </span>
+              ))}
+              {[...links3, ...sitePages].map((page) => (
                 <span key={page.url} className="py-3 md:py-0 md:pb-4">
                   <Link href={page.url!}>
                     <a className="text-accent-9 hover:text-accent-6 transition ease-in-out duration-150">
