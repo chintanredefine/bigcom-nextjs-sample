@@ -45,5 +45,8 @@
 }
 
 .mainmenudiv {
-  @apply hidden ml-6 space-x-4 lg:block; text-align: center;
+  @apply hidden ml-6 space-x-4 lg:block; 
+  text-align: center !important;
+  padding: 0.5rem 0 1.5rem 0 !important;
 }
+.staticmsgbelowmenu{width: 100%; text-align: center; font-weight: bold; background: #50585E; color: #ffffff;}

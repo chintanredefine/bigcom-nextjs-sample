@@ -39,9 +39,9 @@ const Navbar: FC<NavbarProps> = ({ links }) => (
 
       <div className="mainmenudiv">
         <nav className={s.navMenu}>
-            <Link href="/search">
+            {/*<Link href="/search">
               <a className={s.link}>All</a>
-            </Link>
+            </Link>*/}
             {links?.map((l) => (
               <Link href={l.href} key={l.href}>
                 <a className={s.link}>{l.label}</a>
@@ -51,6 +51,11 @@ const Navbar: FC<NavbarProps> = ({ links }) => (
       </div>
     </Container>
   </NavbarRoot>
+  <div className="staticmsgbelowmenu">
+    COVID 19 UPDATE: WORLDWIDE FREESHIP
+  </div>
+
+  
 )
 
 export default Navbar
