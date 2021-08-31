@@ -50,10 +50,11 @@ const Navbar: FC<NavbarProps> = ({ links }) => (
           </nav>
       </div>
     </Container>
-  </NavbarRoot>
-  <div className="staticmsgbelowmenu">
+    <div className="staticmsgbelowmenu">
     COVID 19 UPDATE: WORLDWIDE FREESHIP
   </div>
+  </NavbarRoot>
+
 
   
 )
