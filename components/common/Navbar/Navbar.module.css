@@ -45,5 +45,5 @@
 }
 
 .mainmenudiv {
-  @apply hidden ml-6 space-x-4 lg:block;
+  @apply hidden ml-6 space-x-4 lg:block; text-align: center;
 }

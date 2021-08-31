@@ -34,14 +34,14 @@ const Searchbar: FC<Props> = ({ className, id = 'search' }) => {
 
   return useMemo(
     () => (
-      <div className={cn(s.root, className)}>
+      <div className={cn(s.rootcustom, className)}>
         <label className="hidden" htmlFor={id}>
           Search
         </label>
         <input
           id={id}
           className={s.input1}
-          placeholder="Search for products..."
+          placeholder="Search..."
           defaultValue={router.query.q}
           onKeyUp={handleKeyUp}
         />
