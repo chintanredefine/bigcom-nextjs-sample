@@ -13,8 +13,9 @@
   text-align: center;
   padding: 0.5rem 0 1.5rem 0;
 }
+
 .staticmsgbelowmenu{width: 100%; text-align: center; font-weight: bold; background: #50585E; color: #ffffff;padding:15px 15px;}
-.topbarmsg{width: 100%; font-weight: bold; background: #f6f6f8; color: #5A6268;float: left;}
+.topbarmsg{width: 100%; font-weight: bold; background: #f6f6f8; color: #5A6268;float: left; padding: 5px 15px 3px 15px}
 .topbarmsgleft{float: left; text-align: left; background: #f6f6f8; color: #5A6268; width: 50%;}
 .topbarmsgright{float: right; text-align: right; background: #f6f6f8; color: #5A6268; width: 50%;}
 
