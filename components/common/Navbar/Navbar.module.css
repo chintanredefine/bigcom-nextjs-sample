@@ -45,14 +45,14 @@
 }
 
 .mainmenudiv {
-  @apply hidden ml-6 space-x-4 lg:block; 
-  text-align: center;
-  padding: 0.5rem 0 1.5rem 0;
+  @apply hidden space-x-4 lg:block; padding: 0.5rem 0 1.5rem 0;
+  /*@apply hidden ml-6 space-x-4 lg:block;   text-align: center;*/
 }
-.staticmsgbelowmenu{width: 100%; text-align: center; font-weight: bold; background: #50585E; color: #ffffff;}
+
+/*.staticmsgbelowmenu{width: 100%; text-align: center; font-weight: bold; background: #50585E; color: #ffffff;}
 .topbarmsg{width: 100%; font-weight: bold; background: #f6f6f8; color: #5A6268;float: left;}
 .topbarmsgleft{float: left; text-align: left; background: #f6f6f8; color: #5A6268; width: 50%;}
-.topbarmsgright{float: right; text-align: right; background: #f6f6f8; color: #5A6268; width: 50%;}
+.topbarmsgright{float: right; text-align: right; background: #f6f6f8; color: #5A6268; width: 50%;}*/
 
 .nav{float: left;width:100%;}
 .rootcustom input {padding: 0.5rem 0.75rem 0.5rem 2.75rem; width: 100%;}
