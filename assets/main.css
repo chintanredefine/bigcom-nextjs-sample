@@ -10,7 +10,7 @@
 
 .mainmenudiv {
   @apply hidden ml-6 space-x-4 lg:block; 
-  text-align: center;
+  /*text-align: center;*/
   padding: 0.5rem 0 1.5rem 0;
 }
 
