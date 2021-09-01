@@ -17,74 +17,72 @@ interface Props {
 
 const links = [
   {
-    name: 'WHO WE ARE',
-    url: 'https://sleekshop.com/pages/about-us.html',
+    name: 'Help',
+    url: '/',
   },
   {
-    name: 'CONTACT US',
-    url: 'https://sleekshop.com/pages/contact-us.html',
+    name: 'Shipping & Returns',
+    url: '/',
   },
   {
-    name: 'PARTNERSHIPS',
-    url: 'https://sleekshop.com/pages/partnership.html',
+    name: 'Track Your Orders',
+    url: '/',
   },
   {
-    name: 'VIEW ALL BRANDS',
-    url: 'https://www.sleekshop.com/brands',
+    name: 'Store Finder',
+    url: '/',
   },
   {
-    name: 'NEW ARRIVALS',
-    url: 'https://www.sleekshop.com/search.php?search_query_adv=new%20arrivals&section=content',
-  },
-  {
-    name: 'WEBSITE ACCESSIBILITY',
-    url: 'https://sleekshop.com/pages/website-accessibility.html',
+    name: 'FAQs',
+    url: '/',
   },
 ]
 
 const links2 = [
   {
-    name: 'MY ACCOUNT',
-    url: 'https://www.sleekshop.com/account.php',
+    name: 'About',
+    url: '/',
   },
   {
-    name: 'LIVE CHAT',
-    url: 'https://sleekshop.com/pages/contact-us.html',
+    name: 'About Us',
+    url: '/',
   },
   {
-    name: 'CUSTOMER SERVICE',
-    url: 'https://sleekshop.com/pages/customer-service.html',
+    name: 'Contact Us',
+    url: '/',
   },
   {
-    name: 'RETURN POLICY',
-    url: 'https://sleekshop.com/pages/return-policy.html',
+    name: 'Careers',
+    url: '/',
   },
   {
-    name: 'SHIPPING POLICY',
-    url: 'https://sleekshop.com/pages/shipping-policy.html',
-  },
-  {
-    name: 'CURBSIDE PICK UP',
-    url: 'https://www.sleekshop.com/pages/curbside-pickup.html',
-  },
-  {
-    name: 'HOME',
+    name: 'Become an Affiliate',
     url: '/',
   },
 ]
 
-const termlinks = [
+const links3 = [
   {
-    name: 'TERMS OF USE',
-    url: '/pages/policies-terms-of-use.html',
+    name: 'Categories',
+    url: '/',
   },
   {
-    name: 'PRIVACY POLICY',
-    url: '/pages/policies-terms-of-use.html',
+    name: 'Hair Care',
+    url: '/',
+  },
+  {
+    name: 'Hair Color',
+    url: '/',
+  },
+  {
+    name: 'Makeup',
+    url: '/',
+  },
+  {
+    name: 'Skin Care',
+    url: '/',
   },
 ]
-
-
 
 const Footer: FC<Props> = ({ className, pages }) => {
   const { sitePages } = usePages(pages)
@@ -94,6 +92,15 @@ const Footer: FC<Props> = ({ className, pages }) => {
     <footer className={rootClassName}>
       <Container>
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 border-b border-accent-2 py-12 text-primary bg-primary transition-colors duration-150">
+          <div className="col-span-1 lg:col-span-2">
+            <Link href="/">
+              <a className="flex flex-initial items-center font-bold md:mr-24">
+                <span className="rounded-full  border-accent-6 mr-2">
+                  <Logo />
+                </span>
+              </a>
+            </Link>
+          </div>
           <div className="col-span-1 lg:col-span-8">
             <div className="grid md:grid-rows-4 md:grid-cols-3 md:grid-flow-col">
               {[...links, ...sitePages].map((page) => (
@@ -114,19 +121,7 @@ const Footer: FC<Props> = ({ className, pages }) => {
                   </Link>
                 </span>
               ))}
-            </div>
-          </div>
-          <div className="col-span-1 lg:col-span-2 flex items-start lg:justify-end text-primary">
-            <div className="flex space-x-6 items-center h-10">
-              
-              
-            </div>
-          </div>
-        </div>
-        
-        <div className="pt-6 pb-6 flex flex-col md:flex-row justify-between items-center space-y-4 text-accent-6 text-sm">
-          <div className="footertermslink">
-            {[...termlinks, ...sitePages].map((page) => (
+              {[...links3, ...sitePages].map((page) => (
                 <span key={page.url} className="py-3 md:py-0 md:pb-4">
                   <Link href={page.url!}>
                     <a className="text-accent-9 hover:text-accent-6 transition ease-in-out duration-150">
@@ -134,10 +129,20 @@ const Footer: FC<Props> = ({ className, pages }) => {
                     </a>
                   </Link>
                 </span>
-            ))}
+              ))}
+            </div>
           </div>
-          <div className="flex items-center text-primary text-sm">
-              SleekShop includes a comprehensive listing of both professional-use and professional quality products that are found in salons and spas. We strongly advise that professional-use products are solely used by professional stylists.
+          <div className="col-span-1 lg:col-span-2 flex items-start lg:justify-end text-primary">
+            <div className="flex space-x-6 items-center h-10">
+              <a
+                className={s.link}
+                aria-label="Github Repository"
+                href="https://github.com/vercel/commerce"
+              >
+                <Github />
+              </a>
+              <I18nWidget />
+            </div>
           </div>
         </div>
         <div className="pt-6 pb-6 flex flex-col md:flex-row justify-between items-center space-y-4 text-accent-6 text-sm">
@@ -145,13 +150,9 @@ const Footer: FC<Props> = ({ className, pages }) => {
             <span>&copy; 2021 SleekShop, Inc. All rights reserved.</span>
           </div>
           <div className="flex items-center text-primary text-sm">
-            <span className="text-primary">
-            <Image src="https://cdn6.bigcommerce.com/s-hmhnh4h9/product_images/uploaded_images/credit-cards.png" alt="Credit Cards" />
-            <Image src="https://cdn6.bigcommerce.com/s-hmhnh4h9/product_images/uploaded_images/secure-shopping.jpg" alt="Secured Shopping" />
-            </span>
+            <span className="text-primary">Created by Redefinesolutions.com</span>
           </div>
         </div>
-
       </Container>
     </footer>
   )
