@@ -17,7 +17,7 @@ const Navbar: FC<NavbarProps> = ({ links }) => (
   <NavbarRoot>
     <div className="topbarmsg">
       <div className="topbarmsgleft"></div>  
-      <div className="topbarmsgright"><I18nWidget /></div>
+      <div className="topbarmsgright">USD</div>
     </div>
     <Container>
       <div className={s.nav}>
