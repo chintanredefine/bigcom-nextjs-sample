@@ -100,9 +100,9 @@ const Footer: FC<Props> = ({ className, pages }) => {
                   <h5 className="footer-info-heading">Connect With Us</h5>
                   <h5 className="mobile-soc footer-info-heading">let's connect!</h5>
                   <Link href="https://www.instagram.com/sleekshop_com/" className="icon--instagram">
-                    <a className="text-accent-9 hover:text-accent-6 transition ease-in-out duration-150">
+                    
                       Instagram
-                    </a>
+                    
                   </Link>
               </div>
             </div>
