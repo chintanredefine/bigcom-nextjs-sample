@@ -96,9 +96,9 @@ const Footer: FC<Props> = ({ className, pages }) => {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 border-b border-accent-2 py-12 text-primary bg-primary transition-colors duration-150">
           <div className="col-span-1 lg:col-span-8">
             <div className="grid md:grid-rows-4 md:grid-cols-3 md:grid-flow-col">
-              <div classname="social-footer">
-                  <h5 classname="footer-info-heading">Connect With Us</h5>
-                  <h5 classname="mobile-soc footer-info-heading">let's connect!</h5>
+              <div className="social-footer">
+                  <h5 className="footer-info-heading">Connect With Us</h5>
+                  <h5 className="mobile-soc footer-info-heading">let's connect!</h5>
                   <Link href="https://www.instagram.com/sleekshop_com/" className="icon icon--instagram">
                     <a className="text-accent-9 hover:text-accent-6 transition ease-in-out duration-150">
                       Instagram
