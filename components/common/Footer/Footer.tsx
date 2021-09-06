@@ -100,9 +100,9 @@ const Footer: FC<Props> = ({ className, pages }) => {
   return (
     <footer className='{rootClassName} mycustfooter'>
       <Container>
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 border-b border-accent-2 text-primary bg-primary transition-colors duration-150">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 border-b border-accent-2 text-primary bg-primary transition-colors duration-150 py-12">
           <div className="col-span-1 lg:col-span-8">
-            <div className="grid md:grid-rows-4 md:grid-cols-3 md:grid-flow-col main-footer-social-connect">
+            <div className="grid main-footer-social-connect">
               <div className="social-footer">
                   <div className="klaviyo-form-W2TX3f"></div>
                   <h5 className="footer-info-heading">Connect With Us</h5>
@@ -113,7 +113,7 @@ const Footer: FC<Props> = ({ className, pages }) => {
                   <a className="socialicona" href="https://twitter.com/SleekShopCom"><Image src={twittericon} alt="twitter" /></a>
               </div>
             </div>
-            <div className="grid md:grid-rows-7 md:grid-flow-col main-footer-links-section1">
+            <div className="grid main-footer-links-section1">
               {[...links, ...sitePages].map((page) => (
                 <span key={page.url} className="py-3 md:py-0 md:pb-4">
                   <Link href={page.url!}>
@@ -124,7 +124,8 @@ const Footer: FC<Props> = ({ className, pages }) => {
                 </span>
               ))}
               </div>
-              <div className="grid md:grid-rows-7 md:grid-flow-col main-footer-links-section2 ">
+
+              <div className="grid main-footer-links-section2">
               {[...links2, ...sitePages].map((page) => (
                 <span key={page.url} className="py-3 md:py-0 md:pb-4">
                   <Link href={page.url!}>
@@ -136,7 +137,7 @@ const Footer: FC<Props> = ({ className, pages }) => {
               ))}
             </div>
           </div>
-          <div className="col-span-1 lg:col-span-2 flex items-start lg:justify-end text-primary">
+          <div className="col-span-1 lg:col-span-2 flex items-start lg:justify-end text-primary hideme">
             <div className="flex space-x-6 items-center h-10">
              
 
@@ -144,7 +145,7 @@ const Footer: FC<Props> = ({ className, pages }) => {
           </div>
         </div>
         
-        <div className="pt-6 pb-6 flex flex-col justify-between items-center space-y-4 text-accent-6 text-sm">
+        <div className="pb-6 flex flex-col justify-between items-center space-y-4 text-accent-6 text-sm">
           <div className="footertermslink">
             {[...termlinks, ...sitePages].map((page) => (
                 <span key={page.url} className="py-3 md:py-0 md:pb-4">
@@ -160,7 +161,7 @@ const Footer: FC<Props> = ({ className, pages }) => {
               SleekShop includes a comprehensive listing of both professional-use and professional quality products that are found in salons and spas. We strongly advise that professional-use products are solely used by professional stylists.
           </div>
         </div>
-        <div className="pt-6 pb-6 flex flex-col md:flex-row justify-between items-center space-y-4 text-accent-6 text-sm">
+        <div className="pb-6 flex flex-col md:flex-row justify-between items-center space-y-4 text-accent-6 text-sm">
           <div>
             <span>&copy; {new Date().getFullYear()} SleekShop, Inc. All rights reserved.</span>
           </div>
