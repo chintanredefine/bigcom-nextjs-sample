@@ -103,7 +103,7 @@ const Footer: FC<Props> = ({ className, pages }) => {
                   <Link href="https://www.instagram.com/sleekshop_com/">Instagram</Link>
               </div>
             </div>
-            <div className="grid md:grid-rows-7 md:grid-flow-col main-footer-links-section">
+            <div className="grid md:grid-rows-7 md:grid-flow-col main-footer-links-section1">
               {[...links, ...sitePages].map((page) => (
                 <span key={page.url} className="py-3 md:py-0 md:pb-4">
                   <Link href={page.url!}>
@@ -114,7 +114,7 @@ const Footer: FC<Props> = ({ className, pages }) => {
                 </span>
               ))}
               </div>
-              <div className="grid md:grid-rows-7 md:grid-flow-col main-footer-links-section">
+              <div className="grid md:grid-rows-7 md:grid-flow-col main-footer-links-section2">
               {[...links2, ...sitePages].map((page) => (
                 <span key={page.url} className="py-3 md:py-0 md:pb-4">
                   <Link href={page.url!}>
