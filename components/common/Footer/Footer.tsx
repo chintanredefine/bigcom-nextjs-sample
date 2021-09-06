@@ -155,7 +155,7 @@ const Footer: FC<Props> = ({ className, pages }) => {
           </div>
           <div className="flex items-center text-primary text-sm">
             <span className="text-primary">
-           <img src={ require('images/credit-cards.png') } />
+           <img src={ require('./images/credit-cards.png') } />
             </span>
           </div>
         </div>
