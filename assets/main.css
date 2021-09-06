@@ -24,6 +24,7 @@ footer{background: #f6f6f8; color: #5A6268;}
 .footer-info-heading{}
 .icon--instagram{}
 
-.main-footer-links-section{}
-.main-footer-social-connect{}
+.main-footer-links-section1{ width: 33.33334%; border-right: 1px solid #e4e4e4; padding: 2.2137rem 0;}
+.main-footer-links-section2{ width: 33.33334%; padding: 2.2137rem 0;}
+.main-footer-social-connect{ width: 33.33334%; border-right: 1px solid #e4e4e4; padding: 2.2137rem 0;}
 .klaviyo-form-W2TX3f{}
