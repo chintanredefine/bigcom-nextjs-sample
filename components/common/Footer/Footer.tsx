@@ -82,11 +82,11 @@ const links2 = [
 
 const termlinks = [
   {
-    name: 'TERMS OF USE',
+    name: 'TERMS OF USE |',
     url: '/pages/policies-terms-of-use.html',
   },
   {
-    name: 'PRIVACY POLICY',
+    name: ' PRIVACY POLICY',
     url: '/pages/policies-terms-of-use.html',
   },
 ]
@@ -100,7 +100,7 @@ const Footer: FC<Props> = ({ className, pages }) => {
   return (
     <footer className='{rootClassName} mycustfooter'>
       <Container>
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 border-b border-accent-2 py-12 text-primary bg-primary transition-colors duration-150">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 border-b border-accent-2 text-primary bg-primary transition-colors duration-150">
           <div className="col-span-1 lg:col-span-8">
             <div className="grid md:grid-rows-4 md:grid-cols-3 md:grid-flow-col main-footer-social-connect">
               <div className="social-footer">
@@ -136,15 +136,8 @@ const Footer: FC<Props> = ({ className, pages }) => {
               ))}
             </div>
           </div>
-          <div className="col-span-1 lg:col-span-2 flex items-start lg:justify-end text-primary">
-            <div className="flex space-x-6 items-center h-10">
-             
-
-            </div>
-          </div>
-        </div>
         
-        <div className="pt-6 pb-6 flex flex-col justify-between items-center space-y-4 text-accent-6 text-sm">
+        <div className="pb-6 flex flex-col justify-between items-center space-y-4 text-accent-6 text-sm">
           <div className="footertermslink">
             {[...termlinks, ...sitePages].map((page) => (
                 <span key={page.url} className="py-3 md:py-0 md:pb-4">
