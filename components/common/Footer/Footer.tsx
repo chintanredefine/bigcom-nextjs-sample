@@ -19,54 +19,54 @@ interface Props {
 const links = [
   {
     name: 'WHO WE ARE',
-    url: 'https://sleekshop.com/pages/about-us.html',
+    url: '/pages/about-us.html',
   },
   {
     name: 'CONTACT US',
-    url: 'https://sleekshop.com/pages/contact-us.html',
+    url: '/pages/contact-us.html',
   },
   {
     name: 'PARTNERSHIPS',
-    url: 'https://sleekshop.com/pages/partnership.html',
+    url: '/pages/partnership.html',
   },
   {
     name: 'VIEW ALL BRANDS',
-    url: 'https://www.sleekshop.com/brands',
+    url: '/brands',
   },
   {
     name: 'NEW ARRIVALS',
-    url: 'https://www.sleekshop.com/search.php?search_query_adv=new%20arrivals&section=content',
+    url: '/search.php?search_query_adv=new%20arrivals&section=content',
   },
   {
     name: 'WEBSITE ACCESSIBILITY',
-    url: 'https://sleekshop.com/pages/website-accessibility.html',
+    url: '/pages/website-accessibility.html',
   },
 ]
 
 const links2 = [
   {
     name: 'MY ACCOUNT',
-    url: 'https://www.sleekshop.com/account.php',
+    url: '/account.php',
   },
   {
     name: 'LIVE CHAT',
-    url: 'https://sleekshop.com/pages/contact-us.html',
+    url: '/pages/contact-us.html',
   },
   {
     name: 'CUSTOMER SERVICE',
-    url: 'https://sleekshop.com/pages/customer-service.html',
+    url: '/pages/customer-service.html',
   },
   {
     name: 'RETURN POLICY',
-    url: 'https://sleekshop.com/pages/return-policy.html',
+    url: '/pages/return-policy.html',
   },
   {
     name: 'SHIPPING POLICY',
-    url: 'https://sleekshop.com/pages/shipping-policy.html',
+    url: '/pages/shipping-policy.html',
   },
   {
     name: 'CURBSIDE PICK UP',
-    url: 'https://www.sleekshop.com/pages/curbside-pickup.html',
+    url: '/pages/curbside-pickup.html',
   },
   {
     name: 'HOME',
@@ -156,7 +156,7 @@ const Footer: FC<Props> = ({ className, pages }) => {
           </div>
           <div className="flex items-center text-primary text-sm">
             <span className="text-primary">
-           <Image src="/card.png" alt="Credit Cards"/>
+           <Image src="/credit-cards.png" alt="Credit Cards"/>
             </span>
           </div>
         </div>
