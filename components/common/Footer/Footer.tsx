@@ -137,7 +137,7 @@ const Footer: FC<Props> = ({ className, pages }) => {
           </div>
         </div>
         
-        <div className="pt-6 pb-6 flex flex-col md:flex-row justify-between items-center space-y-4 text-accent-6 text-sm">
+        <div className="pt-6 pb-6 flex flex-col justify-between items-center space-y-4 text-accent-6 text-sm">
           <div className="footertermslink">
             {[...termlinks, ...sitePages].map((page) => (
                 <span key={page.url} className="py-3 md:py-0 md:pb-4">
