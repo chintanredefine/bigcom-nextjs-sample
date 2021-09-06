@@ -8,6 +8,9 @@ import { Github, Vercel } from '@components/icons'
 import { Logo, Container } from '@components/ui'
 import { I18nWidget } from '@components/common'
 import s from './Footer.module.css'
+import Image from 'next/image'
+import creditcard from '../public/credit-cards.png'
+import secureshoppingimg from '../public/secure-shopping.jpg'
 
 interface Props {
   className?: string
@@ -156,6 +159,9 @@ const Footer: FC<Props> = ({ className, pages }) => {
           </div>
           <div className="flex items-center text-primary text-sm">
             <span className="text-primary">
+            <Image src={creditcard} alt="Credit Cards" />
+            <Image src={secureshoppingimg} alt="Secure Shopping" />
+
            {/*<img src={ require('./images/credit-cards.png') } />*/}
             </span>
           </div>
