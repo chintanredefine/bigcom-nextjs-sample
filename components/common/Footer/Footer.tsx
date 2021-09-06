@@ -82,11 +82,11 @@ const links2 = [
 
 const termlinks = [
   {
-    name: 'TERMS OF USE |',
+    name: 'TERMS OF USE',
     url: '/pages/policies-terms-of-use.html',
   },
   {
-    name: ' PRIVACY POLICY',
+    name: 'PRIVACY POLICY',
     url: '/pages/policies-terms-of-use.html',
   },
 ]
