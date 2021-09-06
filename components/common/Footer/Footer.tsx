@@ -99,11 +99,7 @@ const Footer: FC<Props> = ({ className, pages }) => {
               <div className="social-footer">
                   <h5 className="footer-info-heading">Connect With Us</h5>
                   <h5 className="mobile-soc footer-info-heading">let's connect!</h5>
-                  <Link href="https://www.instagram.com/sleekshop_com/" className="icon--instagram">
-                    
-                      Instagram
-                    
-                  </Link>
+                  <Link href="https://www.instagram.com/sleekshop_com/">Instagram</Link>
               </div>
             </div>
             <div className="grid md:grid-rows-7 md:grid-cols-7 md:grid-flow-col">
