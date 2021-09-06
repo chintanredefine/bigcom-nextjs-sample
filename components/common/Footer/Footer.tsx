@@ -1,7 +1,6 @@
 import { FC } from 'react'
 import cn from 'classnames'
 import Link from 'next/link'
-import Image from 'next/image'
 import { useRouter } from 'next/router'
 import type { Page } from '@commerce/types/page'
 import getSlug from '@lib/get-slug'
@@ -9,6 +8,7 @@ import { Github, Vercel } from '@components/icons'
 import { Logo, Container } from '@components/ui'
 import { I18nWidget } from '@components/common'
 import s from './Footer.module.css'
+var imageNamecc = require('/credit-cards.png')
 
 interface Props {
   className?: string
@@ -156,7 +156,7 @@ const Footer: FC<Props> = ({ className, pages }) => {
           </div>
           <div className="flex items-center text-primary text-sm">
             <span className="text-primary">
-           <Image src="/credit-cards.png" alt="Credit Cards"/>
+           <img src={imageNamecc} />
             </span>
           </div>
         </div>
