@@ -9,8 +9,8 @@ import { Logo, Container } from '@components/ui'
 import { I18nWidget } from '@components/common'
 import s from './Footer.module.css'
 import Image from 'next/image'
-import creditcard from '../images/credit-cards.png'
-import secureshoppingimg from '../images/secure-shopping.jpg'
+import creditcard from './images/credit-cards.png'
+import secureshoppingimg from './images/secure-shopping.jpg'
 
 interface Props {
   className?: string
