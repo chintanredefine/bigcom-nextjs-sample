@@ -123,6 +123,7 @@ const Layout: FC<Props> = ({
           }
         />
       </div>
+      <script async type="text/javascript" src="//static.klaviyo.com/onsite/js/klaviyo.js?company_id=MpJPGK"></script>
     </CommerceProvider>
   )
 }

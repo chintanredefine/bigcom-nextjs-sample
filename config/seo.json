@@ -11,7 +11,7 @@
     "site_name": "Sleekshop - Next.js Commerce",
     "images": [
       {
-        "url": "/card.png",
+        "url": "/card.png?1",
         "width": 800,
         "height": 600,
         "alt": "Sleekshop - Next.js Commerce"
