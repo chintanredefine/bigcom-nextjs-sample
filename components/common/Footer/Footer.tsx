@@ -155,8 +155,7 @@ const Footer: FC<Props> = ({ className, pages }) => {
           </div>
           <div className="flex items-center text-primary text-sm">
             <span className="text-primary">
-            <Image src="/card.png" alt="Credit Cards" />
-        {/*    <Image src="https://cdn6.bigcommerce.com/s-hmhnh4h9/product_images/uploaded_images/secure-shopping.jpg" alt="Secured Shopping" />*/}
+           <Image src="/card.png" alt="Credit Cards"/>
             </span>
           </div>
         </div>
