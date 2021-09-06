@@ -114,7 +114,7 @@ const Footer: FC<Props> = ({ className, pages }) => {
                 </span>
               ))}
               </div>
-              <div className="grid md:grid-rows-7 md:grid-flow-col main-footer-links-section2">
+              <div className="grid md:grid-rows-7 md:grid-flow-col main-footer-links-section2 ">
               {[...links2, ...sitePages].map((page) => (
                 <span key={page.url} className="py-3 md:py-0 md:pb-4">
                   <Link href={page.url!}>
