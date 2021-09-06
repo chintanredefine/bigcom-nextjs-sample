@@ -97,7 +97,7 @@ const Footer: FC<Props> = ({ className, pages }) => {
           <div className="col-span-1 lg:col-span-8">
             <div className="grid md:grid-rows-4 md:grid-cols-3 md:grid-flow-col main-footer-social-connect">
               <div className="social-footer">
-                  <div class="klaviyo-form-W2TX3f"></div>
+                  <div className="klaviyo-form-W2TX3f"></div>
                   <h5 className="footer-info-heading">Connect With Us</h5>
                   <h5 className="mobile-soc footer-info-heading">let's connect!</h5>
                   <Link href="https://www.instagram.com/sleekshop_com/">Instagram</Link>
