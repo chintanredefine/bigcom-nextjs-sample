@@ -8,7 +8,7 @@ import { Github, Vercel } from '@components/icons'
 import { Logo, Container } from '@components/ui'
 import { I18nWidget } from '@components/common'
 import s from './Footer.module.css'
-var imageNamecc = require('./credit-cards.png')
+var imageNamecc = require('/credit-cards.png')
 
 interface Props {
   className?: string
