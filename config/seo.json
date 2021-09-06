@@ -1,13 +1,13 @@
 {
-  "title": "Sleekshop Storefront | Powered by Next.js Commerce - Redefinesolutions.com",
+  "title": "Sleekshop Storefront | Redefinesolutions.com",
   "titleTemplate": "%s - Sleekshop Storefront",
-  "description": "Sleekshop - Next.js Commerce - https://www.nextjs.org/commerce",
+  "description": "Sleekshop - Next.js Commerce",
   "openGraph": {
     "title": "Sleekshop Storefront",
-    "description": "Sleekshop Storefron with Next.js Commerce",
+    "description": "Sleekshop Storefront with Next.js Commerce",
     "type": "website",
     "locale": "en_IE",
-    "url": "https://sleekshopdemo-fava3r8ph-chintanredefine.vercel.app/",
+    "url": "https://commerce-seven-bice-94.vercel.app/",
     "site_name": "Sleekshop - Next.js Commerce",
     "images": [
       {
