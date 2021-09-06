@@ -107,10 +107,10 @@ const Footer: FC<Props> = ({ className, pages }) => {
                   <div className="klaviyo-form-W2TX3f"></div>
                   <h5 className="footer-info-heading">Connect With Us</h5>
                   <h5 className="mobile-soc footer-info-heading">let's connect!</h5>
-                  <Link href="https://www.instagram.com/sleekshop_com/"><Image src={instagramicon} alt="Instagram" /></Link>
-                  <Link href="https://www.facebook.com/sleekshopcom/?business_id=887407754647488"><Image src={fbicon} alt="facebook" /></Link>
-                  <Link href="https://www.pinterest.com/sleekshop/"><Image src={pinteresticon} alt="pinterest" /></Link>
-                  <Link href="https://twitter.com/SleekShopCom"><Image src={twittericon} alt="twitter" /></Link>
+                  <a className="socialicona" href="https://www.instagram.com/sleekshop_com/"><Image src={instagramicon} alt="Instagram" /></a>
+                  <a className="socialicona" href="https://www.facebook.com/sleekshopcom/?business_id=887407754647488"><Image src={fbicon} alt="facebook" /></a>
+                  <a className="socialicona" href="https://www.pinterest.com/sleekshop/"><Image src={pinteresticon} alt="pinterest" /></a>
+                  <a className="socialicona" href="https://twitter.com/SleekShopCom"><Image src={twittericon} alt="twitter" /></a>
               </div>
             </div>
             <div className="grid md:grid-rows-7 md:grid-flow-col main-footer-links-section1">

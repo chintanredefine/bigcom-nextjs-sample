@@ -42,9 +42,6 @@ footer {}
 .main-footer-links-section1, .main-footer-links-section2, .main-footer-social-connect{float: left; }
 .main-footer-links-section1, .main-footer-links-section2{text-align: center; font-weight: 600;}
 
-
-
-
 .mycustfooter .mx-auto .duration-150{border-bottom: none;}
 .mycustfooter .mx-auto .duration-150 a{color:#010101; text-decoration: none;}
 .mycustfooter .mx-auto .duration-150 a:hover{color:#4f4f4f; text-decoration: none;}
@@ -52,3 +49,9 @@ footer {}
 .footertermslink{background: #f6f6f6; padding: 15px; text-align: center; float: left; width: 100%;}
 .footertermslink span>a { color: #000100; ont-size: 14px; font-family: nowmedium; text-transform: uppercase; text-decoration: none; margin: 0 5px; font-weight: 600;}
 .mycustfooter .mx-auto .text-sm{margin: 20px 0 0 0; text-align: center; line-height: 1.5rem;}
+
+@media (max-width: 768px) {
+  .main-footer-links-section1, .main-footer-links-section2, .main-footer-social-connect { width: 100%;}
+  .main-footer-links-section1{border-right: none}
+  .social-footer{border-right: none; text-align: center;}
+}
