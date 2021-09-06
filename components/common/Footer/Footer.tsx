@@ -95,14 +95,15 @@ const Footer: FC<Props> = ({ className, pages }) => {
       <Container>
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 border-b border-accent-2 py-12 text-primary bg-primary transition-colors duration-150">
           <div className="col-span-1 lg:col-span-8">
-            <div className="grid md:grid-rows-4 md:grid-cols-3 md:grid-flow-col">
+            <div className="grid md:grid-rows-4 md:grid-cols-3 md:grid-flow-col main-footer-social-connect">
               <div className="social-footer">
+                  <div class="klaviyo-form-W2TX3f"></div>
                   <h5 className="footer-info-heading">Connect With Us</h5>
                   <h5 className="mobile-soc footer-info-heading">let's connect!</h5>
                   <Link href="https://www.instagram.com/sleekshop_com/">Instagram</Link>
               </div>
             </div>
-            <div className="grid md:grid-rows-7 md:grid-cols-7 md:grid-flow-col">
+            <div className="grid md:grid-rows-7 md:grid-flow-col main-footer-links-section">
               {[...links, ...sitePages].map((page) => (
                 <span key={page.url} className="py-3 md:py-0 md:pb-4">
                   <Link href={page.url!}>
@@ -113,7 +114,7 @@ const Footer: FC<Props> = ({ className, pages }) => {
                 </span>
               ))}
               </div>
-              <div className="grid md:grid-rows-7 md:grid-cols-7 md:grid-flow-col">
+              <div className="grid md:grid-rows-7 md:grid-flow-col main-footer-links-section">
               {[...links2, ...sitePages].map((page) => (
                 <span key={page.url} className="py-3 md:py-0 md:pb-4">
                   <Link href={page.url!}>
@@ -155,7 +156,7 @@ const Footer: FC<Props> = ({ className, pages }) => {
           </div>
           <div className="flex items-center text-primary text-sm">
             <span className="text-primary">
-           <img src={ require('./images/credit-cards.png') } />
+           {/*<img src={ require('./images/credit-cards.png') } />*/}
             </span>
           </div>
         </div>
