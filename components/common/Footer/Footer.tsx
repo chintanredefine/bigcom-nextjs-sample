@@ -100,7 +100,7 @@ const Footer: FC<Props> = ({ className, pages }) => {
   return (
     <footer className='{rootClassName} mycustfooter'>
       <Container>
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 border-b border-accent-2 py-12 text-primary bg-primary transition-colors duration-150">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 border-b border-accent-2 text-primary bg-primary transition-colors duration-150">
           <div className="col-span-1 lg:col-span-8">
             <div className="grid md:grid-rows-4 md:grid-cols-3 md:grid-flow-col main-footer-social-connect">
               <div className="social-footer">
