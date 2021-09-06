@@ -109,7 +109,7 @@ const Layout: FC<Props> = ({
         <div className="staticmsgbelowmenu">
           COVID 19 UPDATE: WORLDWIDE FREESHIP
         </div>
-        <main className="fit">{children}</main>
+        <main className="fit" id="mainpagecontent">PLEASE INSERT DYNAMIC DATA HERE - CATEGORY/SUB-CATEGORY/PRODUCT/SEARCH</main>
         <Footer pages={pageProps.pages} />
         <ModalUI />
         <SidebarUI />
