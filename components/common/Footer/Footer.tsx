@@ -11,6 +11,10 @@ import s from './Footer.module.css'
 import Image from 'next/image'
 import creditcard from './images/credit-cards.png'
 import secureshoppingimg from './images/secure-shopping.jpg'
+import instagramicon from './images/insta-icon.png'
+import fbicon from './images/fb-icon.png'
+import pinteresticon from './images/pintrest-icon.png'
+import twittericon from './images/twiter-icon.png'
 
 interface Props {
   className?: string
@@ -103,7 +107,10 @@ const Footer: FC<Props> = ({ className, pages }) => {
                   <div className="klaviyo-form-W2TX3f"></div>
                   <h5 className="footer-info-heading">Connect With Us</h5>
                   <h5 className="mobile-soc footer-info-heading">let's connect!</h5>
-                  <Link href="https://www.instagram.com/sleekshop_com/">Instagram</Link>
+                  <Link href="https://www.instagram.com/sleekshop_com/"><Image src={instagramicon} alt="Instagram" /></Link>
+                  <Link href="https://www.facebook.com/sleekshopcom/?business_id=887407754647488"><Image src={fbicon} alt="facebook" /></Link>
+                  <Link href="https://www.pinterest.com/sleekshop/"><Image src={pinteresticon} alt="pinterest" /></Link>
+                  <Link href="https://twitter.com/SleekShopCom"><Image src={twittericon} alt="twitter" /></Link>
               </div>
             </div>
             <div className="grid md:grid-rows-7 md:grid-flow-col main-footer-links-section1">
