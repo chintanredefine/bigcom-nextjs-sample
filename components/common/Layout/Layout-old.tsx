@@ -109,7 +109,7 @@ const Layout: FC<Props> = ({
         <div className="staticmsgbelowmenu">
           COVID 19 UPDATE: WORLDWIDE FREESHIP
         </div>
-        <main className="fit"></main>
+        <main className="fit">{children}</main>
         <Footer pages={pageProps.pages} />
         <ModalUI />
         <SidebarUI />
