@@ -1,20 +1,10 @@
 import commerce from '@lib/api/commerce'
-import s from './index.module.css'
-import Link from 'next/link'
-import loadable from "@loadable/component"
 import { Layout } from '@components/common'
+import s from './index.module.css'
 import { ProductCard } from '@components/product'
 import { Grid, Marquee, Hero } from '@components/ui'
 // import HomeAllProductsGrid from '@components/common/HomeAllProductsGrid'
 import type { GetStaticPropsContext, InferGetStaticPropsType } from 'next'
-
-interface Link {
-  href: string
-  label: string
-  target: string
-  rel: string
-  title: string
-}
 
 export async function getStaticProps({
   preview,
@@ -34,10 +24,6 @@ export async function getStaticProps({
   const { products } = await productsPromise
   const { pages } = await pagesPromise
   const { categories, brands } = await siteInfoPromise
-
-const MyFrame = loadable(() => import("./MyFrame"), {
-  fallback: <div>Loading...</div>
-});
 
   return {
     props: {
@@ -94,12 +80,6 @@ export default function Home({
           <ProductCard key={product.id} product={product} variant="slim" />
         ))}
       </Marquee>
-      <div className={s.HomeInstagramWidgetSection}>
-        <h2 className={s.pageheading}>
-          <a href="https://www.instagram.com/sleekshop_com/" target="_blank" rel="nofollow" title="Sleekshop on Instagram">@sleekshop_com</a>
-        </h2>
-        <MyFrame src="//lightwidget.com/widgets/5a82391a068b5b14b401c0f2994b3973.html" width="" height="" style="width: 100%; border: 0; overflow: hidden;" myid="lightwidget-widget" allowtransparency="allowtransparency" />
-      </div>
       {/* <HomeAllProductsGrid
         newestProducts={products}
         categories={categories}
