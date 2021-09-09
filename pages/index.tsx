@@ -41,7 +41,7 @@ export default function Home({
   return (
     <>
       <Grid variant="filled">
-        {products.slice(0, 3).map((product: any, i: number) => (
+        {products.slice(0, 10).map((product: any, i: number) => (
           <ProductCard
             key={product.id}
             product={product}
@@ -53,7 +53,7 @@ export default function Home({
         ))}
       </Grid>
       <Marquee variant="secondary">
-        {products.slice(0, 3).map((product: any, i: number) => (
+        {products.slice(0, 10).map((product: any, i: number) => (
           <ProductCard key={product.id} product={product} variant="slim" />
         ))}
       </Marquee>
@@ -61,6 +61,7 @@ export default function Home({
         headline="Headline Here"
         description="This is the details section under main headline section. You can add the text over here. Soufflé bonbon caramels jelly beans."
       />
+
       <Grid layout="B" variant="filled">
         {products.slice(0, 3).map((product: any, i: number) => (
           <ProductCard
@@ -78,6 +79,12 @@ export default function Home({
           <ProductCard key={product.id} product={product} variant="slim" />
         ))}
       </Marquee>
+      <div className="HomeInstagramWidget-Section">
+        <h2 className="page-heading"><a href="https://www.instagram.com/sleekshop_com/" target="_blank" rel="nofollow" title="Sleekshop on Instagram">@sleekshop_com</a></h2>
+            <!-- LightWidget WIDGET -->
+        <script src="https://cdn.lightwidget.com/widgets/lightwidget.js"></script>
+        <iframe src="//lightwidget.com/widgets/5a82391a068b5b14b401c0f2994b3973.html" scrolling="no" allowtransparency="true" class="lightwidget-widget" style="width: 100%; border: 0; overflow: hidden;"></iframe>
+      </div>
       {/* <HomeAllProductsGrid
         newestProducts={products}
         categories={categories}
