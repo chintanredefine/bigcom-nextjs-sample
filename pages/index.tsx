@@ -80,8 +80,8 @@ export default function Home({
           <ProductCard key={product.id} product={product} variant="slim" />
         ))}
       </Marquee>
-      <div className={css.HomeInstagramWidget-Section}>
-        <h2 className={css.page-heading}><a href="https://www.instagram.com/sleekshop_com/" target="_blank" rel="nofollow" title="Sleekshop on Instagram">@sleekshop_com</a></h2>
+      <div className={css.HomeInstagramWidgetSection}>
+        <h2 className={css.pageheading}><a href="https://www.instagram.com/sleekshop_com/" target="_blank" rel="nofollow" title="Sleekshop on Instagram">@sleekshop_com</a></h2>
         <script src="https://cdn.lightwidget.com/widgets/lightwidget.js"></script>
         <iframe src="//lightwidget.com/widgets/5a82391a068b5b14b401c0f2994b3973.html" scrolling="no" allowtransparency="true" class="lightwidget-widget" style="width: 100%; border: 0; overflow: hidden;"></iframe>
       </div>
