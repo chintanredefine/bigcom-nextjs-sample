@@ -52,6 +52,8 @@ footer {}
 .mycustfooter .mx-auto .text-sm{margin: 20px 0 0 0; text-align: center; line-height: 1.5rem;}
 .socialicona{margin: 0 5px;}
 
+.ql-editor p strong{color: #4f4f4f;font-weight: 600;font-family: system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji;}
+
 @media (max-width: 768px) {
   .main-footer-links-section1, .main-footer-links-section2, .main-footer-social-connect { width: 100%;}
   .main-footer-links-section1{border-right: none}
