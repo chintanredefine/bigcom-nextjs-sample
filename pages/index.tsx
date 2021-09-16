@@ -2,9 +2,20 @@ import commerce from '@lib/api/commerce'
 import { Layout } from '@components/common'
 import s from './index.module.css'
 import { ProductCard } from '@components/product'
+import { ProductSlider } from '@components/product'
+import type { Product } from '@commerce/types/product'
+import Img, {ImageProps } from 'next/image'
+import Image from 'next/image'
 import { Grid, Marquee, Hero } from '@components/ui'
 // import HomeAllProductsGrid from '@components/common/HomeAllProductsGrid'
 import type { GetStaticPropsContext, InferGetStaticPropsType } from 'next'
+
+interface HomeProps {
+  products1: Product[],
+  products2: Product[],
+  data: []
+}
+
 
 export async function getStaticProps({
   preview,
@@ -13,21 +24,34 @@ export async function getStaticProps({
 }: GetStaticPropsContext) {
   const config = { locale, locales }
   const productsPromise = commerce.getAllProducts({
-    variables: { first: 20 },
+    variables: { bestSellingProducts: true},
+    config,
+    preview,
+    // Saleor provider only
+    ...({ featured: false } as any),
+  })
+
+  const featuredProducts = commerce.getAllProducts({
+    variables: { featuredProducts: true},
     config,
     preview,
     // Saleor provider only
     ...({ featured: true } as any),
   })
+  const res = await fetch('https://www.redefinesolutions.com/sleekshop/get_banner.php')
+  const data = await res.json()
   const pagesPromise = commerce.getAllPages({ config, preview })
   const siteInfoPromise = commerce.getSiteInfo({ config, preview })
-  const { products } = await productsPromise
+  const { products: products1 } = await productsPromise
+  const { products: products2 } = await featuredProducts
   const { pages } = await pagesPromise
   const { categories, brands } = await siteInfoPromise
 
   return {
     props: {
-      products,
+      products1,
+      products2,
+      data,
       categories,
       brands,
       pages,
@@ -37,54 +61,69 @@ export async function getStaticProps({
 }
 
 export default function Home({
-  products,
+  products1, products2, data
 }: InferGetStaticPropsType<typeof getStaticProps>) {
   return (
     <>
-      <Grid variant="filled">
-        {products.slice(0, 10).map((product: any, i: number) => (
-          <ProductCard
-            key={product.id}
-            product={product}
-            imgProps={{
-              width: i === 0 ? 1080 : 540,
-              height: i === 0 ? 1080 : 540,
-            }}
-          />
-        ))}
-      </Grid>
-      <Marquee variant="secondary">
-        {products.slice(11, 20).map((product: any, i: number) => (
-          <ProductCard key={product.id} product={product} variant="slim" />
-        ))}
-      </Marquee>
-      <Hero
-        headline="Headline Here"
-        description="This is the details section under main headline section. You can add the text over here. Soufflé bonbon caramels jelly beans."
-      />
+        
+        <ProductSlider viewCount={1}>
 
-      <Grid layout="B" variant="filled">
-        {products.slice(0, 3).map((product: any, i: number) => (
-          <ProductCard
-            key={product.id}
-            product={product}
-            imgProps={{
-              width: i === 0 ? 1080 : 540,
-              height: i === 0 ? 1080 : 540,
-            }}
-          />
-        ))}
-      </Grid>
-      <Marquee>
-        {products.slice(5).map((product: any, i: number) => (
-          <ProductCard key={product.id} product={product} variant="slim" />
-        ))}
-      </Marquee>
-      {/* <HomeAllProductsGrid
-        newestProducts={products}
-        categories={categories}
-        brands={brands}
-      /> */}
+
+        {data.slice(0,5).map((photo: any, index: number) => (
+            <div key={photo.id} className="banner-display">
+              <Img
+    alt="The guitarist in the concert."
+    src={photo.image}
+/>
+            </div>
+          ))}
+        
+
+     </ProductSlider>
+     <div className="container">
+
+     <div className="pt-50">
+  
+  <Image src="https://cdn8.bigcommerce.com/s-hmhnh4h9/product_images/uploaded_images/topsellhdline.png" width="1143" height="23"></Image>
+  <div className="unbxd-view-all-button"><a href="https://www.sleekshop.com/top-selling-products" className="btn btn-info" role="button">View All</a> </div>
+  
+  
+          <ProductSlider  viewCount={4}>
+          {products1.slice(0, 10).map((product: any, i: number) => (
+            <div key={product.id} className="ken_slide">
+          <ProductCard product={product} variant="slim" />
+          </div>
+           ))}
+          </ProductSlider>
+          </div>
+          <div className="pt-50">
+  
+          <Image src="https://cdn8.bigcommerce.com/s-hmhnh4h9/product_images/uploaded_images/recomendhdline.png" width="1143" height="23"></Image>
+  <div className="unbxd-view-all-button"><a href="https://www.sleekshop.com/top-selling-products" className="btn btn-info" role="button">View All</a> </div>
+  
+
+            <ProductSlider  viewCount={4}>
+          {products2.slice(0, 10).map((product: any, i: number) => (
+            <div key={product.id} className="ken_slide">
+          <ProductCard product={product} variant="slim" />
+          </div>
+           ))}
+          </ProductSlider>
+          </div>
+
+
+          </div>
+           <div className="container">
+          <div className="pt-50 HomeInstagramWidget-Section">
+            <h2 className="page-heading"><a href="https://www.instagram.com/sleekshop_com/" title="Sleekshop on Instagram">@sleekshop_com</a></h2>
+          
+            <iframe src="//lightwidget.com/widgets/5a82391a068b5b14b401c0f2994b3973.html"  width="100%" height="500"></iframe>
+          </div>
+          </div>
+     
+
+     
+     
     </>
   )
 }

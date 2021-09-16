@@ -1,5 +1,4 @@
 import { FC } from 'react'
-import React, { useState } from "react";
 import Link from 'next/link'
 import s from './Navbar.module.css'
 import NavbarRoot from './NavbarRoot'
@@ -12,20 +11,9 @@ interface Link {
 }
 interface NavbarProps {
   links?: Link[]
-  isActive?: boolean
 }
 
- 
-
-const Navbar: FC<NavbarProps> = ({ links }) => {
-  const [isActive, setActive] = useState(false);
-
-  const handleToggle = () => {
-
-      setActive(!isActive);
-  };
-
-  return (
+const Navbar: FC<NavbarProps> = ({ links }) => (
   <NavbarRoot>
     <div className="topbarmsg">
       <div className="topbarmsgleft"></div>  
@@ -52,14 +40,7 @@ const Navbar: FC<NavbarProps> = ({ links }) => {
       <div className="flex pb-4 lg:px-6 lg:hidden">
         <Searchbar id="mobile-search" />
       </div>
-      <a href="javascript:void(0)"  onClick={handleToggle} className={isActive ? "mobileMenu-toggle is-open" : "mobileMenu-toggle"} data-mobile-menu-toggle="menu" title="Menu" aria-controls="menu" aria-expanded="false"  id="show">
-        <span className="mobileMenu-toggleIcon">&nbsp;</span>
-    </a>
-
-    
-
-
-      <div className={s.mainmenudiv + (isActive ? " menu menu-block " : " menu")}>
+      <div className={s.mainmenudiv}>
         <nav className={s.navMenu}>
             <Link href="/search">
               <a className={s.link}>All</a>
@@ -73,8 +54,9 @@ const Navbar: FC<NavbarProps> = ({ links }) => {
       </div>
     </Container>
   </NavbarRoot>
+
+
   
 )
-}
 
 export default Navbar
