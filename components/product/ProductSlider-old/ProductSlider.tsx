@@ -13,15 +13,13 @@ import s from './ProductSlider.module.css'
 import ProductSliderControl from '../ProductSliderControl'
 
 interface ProductSliderProps {
-  viewCount: number
   children: React.ReactNode[]
   className?: string
 }
 
 const ProductSlider: React.FC<ProductSliderProps> = ({
-  viewCount = 1,
   children,
-  className = ''
+  className = '',
 }) => {
   const [currentSlide, setCurrentSlide] = useState(0)
   const [isMounted, setIsMounted] = useState(false)
@@ -30,7 +28,7 @@ const ProductSlider: React.FC<ProductSliderProps> = ({
 
   const [ref, slider] = useKeenSlider<HTMLDivElement>({
     loop: true,
-    slidesPerView: viewCount,
+    slidesPerView: 1,
     mounted: () => setIsMounted(true),
     slideChanged(s) {
       const slideNumber = s.details().relativeSlide
@@ -68,13 +66,17 @@ const ProductSlider: React.FC<ProductSliderProps> = ({
         event.preventDefault()
     }
 
-    const slider = sliderContainerRef.current!
-
-    slider.addEventListener('touchstart', preventNavigation)
+    sliderContainerRef.current!.addEventListener(
+      'touchstart',
+      preventNavigation
+    )
 
     return () => {
-      if (slider) {
-        slider.removeEventListener('touchstart', preventNavigation)
+      if (sliderContainerRef.current) {
+        sliderContainerRef.current!.removeEventListener(
+          'touchstart',
+          preventNavigation
+        )
       }
     }
   }, [])
@@ -106,7 +108,27 @@ const ProductSlider: React.FC<ProductSliderProps> = ({
         })}
       </div>
 
-     
+      <a.div className={s.album} ref={thumbsContainerRef}>
+        {slider &&
+          Children.map(children, (child, idx) => {
+            if (isValidElement(child)) {
+              return {
+                ...child,
+                props: {
+                  ...child.props,
+                  className: cn(child.props.className, s.thumb, {
+                    [s.selected]: currentSlide === idx,
+                  }),
+                  id: `thumb-${idx}`,
+                  onClick: () => {
+                    slider.moveToSlideRelative(idx)
+                  },
+                },
+              }
+            }
+            return child
+          })}
+      </a.div>
     </div>
   )
 }

@@ -7,7 +7,6 @@ import Image, { ImageProps } from 'next/image'
 import WishlistButton from '@components/wishlist/WishlistButton'
 import usePrice from '@framework/product/use-price'
 import ProductTag from '../ProductTag'
-
 interface Props {
   className?: string
   product: Product
@@ -24,6 +23,7 @@ const ProductCard: FC<Props> = ({
   className,
   noNameTag = false,
   variant = 'default',
+  ...props
 }) => {
   const { price } = usePrice({
     amount: product.price.value,
@@ -38,11 +38,13 @@ const ProductCard: FC<Props> = ({
   )
 
   return (
-    <Link href={`/product/${product.slug}`}>
-      <a className="a-ProductCard">
+    <Link href={`/product/${product.slug}`} {...props}>
+      <a className={rootClassName}>
         {variant === 'slim' && (
           <>
-          <div className="product-main-image">
+            <div className={s.header}>
+              <span>{product.name}</span>
+            </div>
             {product?.images && (
               <Image
                 quality="85"
@@ -54,11 +56,6 @@ const ProductCard: FC<Props> = ({
                 {...imgProps}
               />
             )}
-            </div>
-            <div className="name_header">
-              <span>{product.name}</span>
-            </div>
-            
           </>
         )}
 
@@ -71,9 +68,17 @@ const ProductCard: FC<Props> = ({
                 variant={product.variants[0]}
               />
             )}
+            {!noNameTag && (
+              <div className={s.header}>
+                <h3 className={s.name}>
+                  <span>{product.name}</span>
+                </h3>
+                <div className={s.price}>
+                  {`${price} ${product.price?.currencyCode}`}
+                </div>
+              </div>
+            )}
             <div className={s.imageContainer}>
-            <div className="product-main-image">
-
               {product?.images && (
                 <Image
                   alt={product.name || 'Product Image'}
@@ -86,19 +91,7 @@ const ProductCard: FC<Props> = ({
                   {...imgProps}
                 />
               )}
-              </div>
             </div>
-            {!noNameTag && (
-              <div className="name_header">
-                <h3 className={s.name}>
-                  <span>{product.name}</span>
-                </h3>
-                <div className={s.price}>
-                  {`${price} ${product.price?.currencyCode}`}
-                </div>
-              </div>
-            )}
-            
           </>
         )}
 

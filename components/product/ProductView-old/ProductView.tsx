@@ -27,13 +27,13 @@ const ProductView: FC<ProductViewProps> = ({ product, relatedProducts }) => {
       <Container className="max-w-none w-full" clean>
         <div className={cn(s.root, 'fit')}>
           <div className={cn(s.main, 'fit')}>
-            <ProductTag
+            {/* <ProductTag
               name={product.name}
               price={`${price} ${product.price?.currencyCode}`}
               fontSize={32}
-            />
-            <div className={s.sliderContainer}>
-              <ProductSlider viewCount={1}>
+            /> */}
+            <div id='chintan' className={s.sliderContainer}>
+              <ProductSlider key={product.id}>
                 {product.images.map((image, i) => (
                   <div key={image.url} className={s.imageContainer}>
                     <Image
