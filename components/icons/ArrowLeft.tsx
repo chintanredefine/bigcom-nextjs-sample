@@ -1,26 +1,7 @@
+import Image, {ImageProps} from 'next/image'
 const ArrowLeft = ({ ...props }) => {
   return (
-    <svg
-      width="24"
-      height="24"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      {...props}
-    >
-      <path
-        d="M19 12H5"
-        strokeWidth="1.5"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-      <path
-        d="M12 19L5 12L12 5"
-        strokeWidth="1.5"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-    </svg>
+    <Image src="https://cdn6.bigcommerce.com/s-hmhnh4h9/product_images/uploaded_images/arrow-l.png" width="27" height="47"></Image>
   )
 }
 
