@@ -24,7 +24,7 @@ export default function Profile() {
   const { data } = useCustomer()
   return (
     <Container>
-      <div id="mainpagecontent">PLEASE INSERT DYNAMIC DATA HERE - CATEGORY/SUB-CATEGORY/PRODUCT/SEARCH</div>
+      <div id="mainpagecontent">PLEASE INSERT DYNAMIC DATA HERE - CATEGORY/SUB-CATEGORY/PRODUCT/SEARCH </div>
     </Container>
     
   )
