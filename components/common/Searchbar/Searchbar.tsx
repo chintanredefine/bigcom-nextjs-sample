@@ -16,7 +16,7 @@ const Searchbar: FC<Props> = ({ className, id = 'search' }) => {
   }, [])
 
   const handleKeyUp = (e: React.KeyboardEvent<HTMLInputElement>) => {
-    e.preventDefault()
+    /*e.preventDefault()
 
     if (e.key === 'Enter') {
       const q = e.currentTarget.value
@@ -29,7 +29,7 @@ const Searchbar: FC<Props> = ({ className, id = 'search' }) => {
         undefined,
         { shallow: true }
       )
-    }
+    }*/
   }
 
   return useMemo(
