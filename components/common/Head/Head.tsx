@@ -5,6 +5,7 @@ import config from '@config/seo.json'
 import { useRouter } from 'next/router'
 
 const Head: FC = () => {
+  const router = useRouter()
   return (
     <>
       <DefaultSeo {...config} />
