@@ -2,6 +2,7 @@ import { FC } from 'react'
 import NextHead from 'next/head'
 import { DefaultSeo } from 'next-seo'
 import config from '@config/seo.json'
+import { useRouter } from 'next/router'
 
 const Head: FC = () => {
   return (
