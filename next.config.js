@@ -14,7 +14,7 @@ const isVendure = provider === 'vendure'
 module.exports = withCommerceConfig({
   commerce,
    images: {
-        domains: ['www.redefinesolutions.com','cdn8.bigcommerce.com','cdn6.bigcommerce.com'],
+        domains: ['www.redefinesolutions.com','cdn8.bigcommerce.com','cdn6.bigcommerce.com','cdn11.bigcommerce.com'],
     },    
   i18n: {
     locales: ['en-US', 'es'],
