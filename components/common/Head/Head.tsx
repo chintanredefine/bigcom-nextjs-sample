@@ -23,9 +23,7 @@ const Head: FC = () => {
       <script src="//sandbox.unbxd.io/sleekhair_mybigcommerce_stage_autosuggest.css"></script>
       <script src="//sandbox.unbxd.io/sleekhair_mybigcommerce_stage_autosuggest.js"></script>
       <script src="//sandbox.unbxd.io/sleekhair_mybigcommerce_stage_search.css"></script>
-      <script src="//sandbox.unbxd.io/sleekhair_mybigcommerce_stage_search.js"></script>
-      </>
-            
+      <script src="//sandbox.unbxd.io/sleekhair_mybigcommerce_stage_search.js"></script>            
       </NextHead>
     </>
   )
