@@ -7,10 +7,7 @@ import { useRouter } from 'next/router'
 import commerce from '@lib/api/commerce'
 import { Layout } from '@components/common'
 import { ProductView } from '@components/product'
-import getConfig from "next/config";
-import React, {useState, useEffect} from "react"
 
-const {publicRuntimeConfig} = getConfig()
 export async function getStaticProps({
   params,
   locale,
@@ -21,12 +18,13 @@ export async function getStaticProps({
   const pagesPromise = commerce.getAllPages({ config, preview })
   const siteInfoPromise = commerce.getSiteInfo({ config, preview })
   let slg = 'products/' + params!.slug + '.html'
+
   const productPromise = commerce.getProduct({
     variables: { slug: slg },
     config,
     preview,
   })
-  
+
   const allProductsPromise = commerce.getAllProducts({
     variables: { first: 4 },
     config,
@@ -40,7 +38,6 @@ export async function getStaticProps({
   if (!product) {
     throw new Error(`Product with slug '${params!.slug}' not found`)
   }
-  // console.log(product.variants);
 
   return {
     props: {
@@ -76,56 +73,11 @@ export default function Slug({
   relatedProducts,
 }: InferGetStaticPropsType<typeof getStaticProps>) {
   const router = useRouter()
-  const [sku,setSku] = useState<string>('')
-  const [result, setResult] = useState<string>('')
-  const [variants, setVariants] = useState<string>('')
-
-  console.log(product)
-
-  useEffect(()=>{
-
-      if(!sku){
-        let skusearch = window.location.search
-        let psku = skusearch.replace("?sku=", "")
-        setSku(psku)
-      }
-
-      let pid = product ? product.id : ''
-      if(pid){
-
-        fetch(`${publicRuntimeConfig.BASE_URL}/api/catalog/variants?id=${pid}`)
-          .then(response => response.json())
-          .then(response => setVariants(response))
-          .catch(error => setVariants(error));
-
-        if(sku){
-          fetch(`${publicRuntimeConfig.BASE_URL}/api/catalog/variant?id=${pid}&sku=${sku}`)
-          .then(response => response.json())
-          .then(response => setResult(response))
-          .catch(error => setResult(error));
-        }else{
-          fetch(`${publicRuntimeConfig.BASE_URL}/api/catalog/variants?id=${pid}`)
-          .then(response => response.json())
-          .then(response => setResult(response))
-          .catch(error => setResult(error));
-        }
-
-        let pUrl = product ? product.path : ''
-        if(pUrl && sku){
-          pUrl = pUrl.replace('.html', '')
-          router.push(`${pUrl}?sku=${sku}`)
-        }
-      }
-    },[sku])
-
-    const skuChange = (testSku: string)=> {
-     setSku(testSku)
-    }
 
   return router.isFallback ? (
     <h1>Loading...</h1>
   ) : (
-    <ProductView product={product} relatedProducts={relatedProducts} variants={variants} currentVariant={result} skuChange={skuChange} />
+    <ProductView product={product} relatedProducts={relatedProducts} />
   )
 }
 
