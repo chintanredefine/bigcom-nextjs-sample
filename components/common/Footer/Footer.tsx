@@ -114,7 +114,7 @@ const Footer: FC<Props> = ({ className, pages }) => {
               </div>
             </div>
             <div className="grid main-footer-links-section1">
-              {[...links, ...sitePages].map((page) => (
+              {links.map((page) => (
                 <span key={page.url} className="py-3 md:py-0 md:pb-4">
                   <Link href={page.url!}>
                     <a className="text-accent-9 hover:text-accent-6 transition ease-in-out duration-150">
@@ -126,7 +126,7 @@ const Footer: FC<Props> = ({ className, pages }) => {
               </div>
 
               <div className="grid main-footer-links-section2">
-              {[...links2, ...sitePages].map((page) => (
+              {links2.map((page) => (
                 <span key={page.url} className="py-3 md:py-0 md:pb-4">
                   <Link href={page.url!}>
                     <a className="text-accent-9 hover:text-accent-6 transition ease-in-out duration-150">
@@ -176,6 +176,15 @@ const Footer: FC<Props> = ({ className, pages }) => {
         </div>
 
       </Container>
+
+
+ <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/3.0.3/handlebars.js"></script>
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+   <script src="//libraries.unbxdapi.com/search-sdk/v2.0.1/vanillaSearch.min.js"></script>
+   <script type="text/javascript" src="https://libraries.unbxdapi.com/unbxdAutosuggest_v1.js"></script>
+   <script src="//sandbox.unbxd.io/sleekhair_mybigcommerce_stage_autosuggest.js"></script>
+   <script src="//sandbox.unbxd.io/sleekhair_mybigcommerce_stage_search.js"></script>
+    
     </footer>
   )
 }

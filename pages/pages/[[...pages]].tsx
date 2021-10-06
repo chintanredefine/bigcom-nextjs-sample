@@ -23,7 +23,7 @@ export async function getStaticProps({
   const { pages } = await pagesPromise
   const { categories } = await siteInfoPromise
   const path = params?.pages.join('/')
-  const slug = locale ? `${locale}/pages/${path}` : path
+  const slug = locale ? `${locale}/${path}` : path
   const pageItem = pages.find((p: Page) =>
     p.url ? getSlug(p.url) === slug : false
   )
@@ -69,26 +69,18 @@ export async function getStaticPaths({ locales }: GetStaticPathsContext) {
   }
 }
 
-function Pages(){
+export default function Pages({
+  page,
+}: InferGetStaticPropsType<typeof getStaticProps>) {
   const router = useRouter()
-const pageid = router.query.pages
-return <h1>Details of page - {pageid}</h1>
+
+  return router.isFallback ? (
+    <h1>Loading...</h1> // TODO (BC) Add Skeleton Views
+  ) : (
+    <div className="max-w-2xl mx-8 sm:mx-auto py-20">
+      {page?.body && <Text html={page.body} />}
+    </div>
+  )
 }
-
-export default Pages
-// export default function Pages({
-//   page,
-// }: InferGetStaticPropsType<typeof getStaticProps>) {
-//   const router = useRouter()
-
-//   return router.isFallback ? (
-//     <h1>Loading...</h1> // TODO (BC) Add Skeleton Views
-//   ) : (
-
-//     <div className="max-w-2xl mx-8 sm:mx-auto py-20">
-//       {page?.body && <Text html={page.body} />}
-//     </div>
-//   )
-// }
 
 Pages.Layout = Layout
