@@ -17,7 +17,7 @@ export async function getStaticProps({
   const config = { locale, locales }
   const pagesPromise = commerce.getAllPages({ config, preview })
   const siteInfoPromise = commerce.getSiteInfo({ config, preview })
-  let slg = 'pages/' + params!.slug + '.html'
+  let slg = 'products/' + params!.slug + '.html'
 
   const productPromise = commerce.getProduct({
     variables: { slug: slg },
@@ -77,9 +77,7 @@ export default function Slug({
   return router.isFallback ? (
     <h1>Loading...</h1>
   ) : (
-    <div className="max-w-2xl mx-8 sm:mx-auto py-20">
-      {page?.body && <Text html={page.body} />}
-    </div>
+    <ProductView product={product} relatedProducts={relatedProducts} />
   )
 }
 
