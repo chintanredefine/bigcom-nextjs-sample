@@ -15,13 +15,9 @@ const Head: FC = () => {
       <link rel="manifest" href="/site.webmanifest" key="site-manifest" />
       <script dangerouslySetInnerHTML={{ __html: `var UnbxdSiteName="sleekhair_mybigcommerce_com-u1474746314480";
           var UnbxdApiKey="a32a56fd1a3bd51b04a38278db19e452";` }} />
-      
       <link href="//libraries.unbxdapi.com/search-sdk/v2.0.1/vanillaSearch.min.css" rel="stylesheet"/>
-      
-      <script src="//sandbox.unbxd.io/sleekhair_mybigcommerce_stage_autosuggest.css"></script>
-      
-      <script src="//sandbox.unbxd.io/sleekhair_mybigcommerce_stage_search.css"></script>
-      
+      <link href="//sandbox.unbxd.io/sleekhair_mybigcommerce_stage_autosuggest.css" rel="stylesheet"/>
+      <link href="//sandbox.unbxd.io/sleekhair_mybigcommerce_stage_search.css" rel="stylesheet"/>      
       </NextHead>
     </>
   )
