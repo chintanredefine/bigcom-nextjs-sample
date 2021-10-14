@@ -17,16 +17,25 @@ export async function getStaticProps({
   locale,
   locales,
 }: GetStaticPropsContext<{ pages: string[] }>) {
+ 
   const config = { locale, locales }
   const pagesPromise = commerce.getAllPages({ config, preview })
   const siteInfoPromise = commerce.getSiteInfo({ config, preview })
   const { pages } = await pagesPromise
   const { categories } = await siteInfoPromise
   const path = params?.pages.join('/')
-  const slug = locale ? `${locale}/${path}` : path
-  const pageItem = pages.find((p: Page) =>
-    p.url ? getSlug(p.url) === slug : false
+  let s1 = `${path}`
+  let p1 = s1.split("/")
+  let p2 = p1[p1.length-1].replace(".html", "")
+  const slug = `${p2}`
+  const slug1 = `pages/${path}`
+
+  const pageItem = pages.find((p: Page) => 
+    p.url ? changePath(p.url) === slug : false
+  
   )
+  
+ 
   const data =
     pageItem &&
     (await commerce.getPage({
@@ -48,12 +57,13 @@ export async function getStaticProps({
   }
 }
 
+
 export async function getStaticPaths({ locales }: GetStaticPathsContext) {
   const config = { locales }
   const { pages }: { pages: Page[] } = await commerce.getAllPages({ config })
   const [invalidPaths, log] = missingLocaleInPages()
   const paths = pages
-    .map((page) => page.url)
+    .map((page: any) => page.url.replace(".html", ""))
     .filter((url) => {
       if (!url || !locales) return url
       // If there are locales, only include the pages that include one of the available locales
@@ -73,14 +83,21 @@ export default function Pages({
   page,
 }: InferGetStaticPropsType<typeof getStaticProps>) {
   const router = useRouter()
-
-  return router.isFallback ? (
+    return router.isFallback ? (
     <h1>Loading...</h1> // TODO (BC) Add Skeleton Views
   ) : (
-    <div className="max-w-2xl mx-8 sm:mx-auto py-20">
+    <div className="max-w-2xl mx-8 sm:mx-auto py-20">   
       {page?.body && <Text html={page.body} />}
     </div>
   )
+}
+
+function changePath(path: string) {
+  let s1 = path
+  let s2 = s1.split("/")
+  let s3 = s2[s2.length-1].replace(".html", "")
+  console.log(s3 + " - " + path)
+  return s3
 }
 
 Pages.Layout = Layout
