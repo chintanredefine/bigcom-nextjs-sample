@@ -164,28 +164,12 @@
 
 
 .mobileMenu-toggle {display: none;}
-.Navbar_nav__2tz61 {float: inherit !important;}
-
-@media only screen and (min-width:1024px) and (max-width:1280px) {
-    .unbxd-view-all-button {
-        display: block;
-        position: relative;
-    }
-    .unbxd-view-all-button a {
-        position: absolute;
-        right: 0;
-        top: -30px;
-    }
-
-}
 
 @media only screen and (min-width: 769px) and (max-width: 1024px) {
 .unbxd-view-all-button {display: block; position: relative;}
 .unbxd-view-all-button a {position: absolute; right: 0; top: -30px;}   
 .ken_slide.keen-slider__slide{ min-width: calc(33% + 0px) !important; max-width: calc(33% + 0px) !important; transform: translate3d(0px, 0px, 0px);}   
 }
-
-
 
 @media screen and (max-width: 1023px) {
   .mobileMenu-toggle {display: inline-block; margin-top: 0 !important;}
@@ -209,7 +193,7 @@
 
 
 @media only screen and (min-width: 481px) and (max-width: 768px) {
-.banner-display {height: 250px !important; width: auto !important }
+.banner-display{height: auto !important; width: auto !important; }
 .banner-display >div img{position:inherit !important; top: inherit !important; left:inherit !important; bottom: inherit !important; right: inherit !important; box-sizing: inherit !important; padding: inherit !important; border: inherit !important; margin: inherit !important; display: inherit !important; width: 100% !important; height: inherit !important; min-width: inherit !important; max-width: inherit !important; min-height: inherit !important; max-height: inherit !important;}
 .unbxd-view-all-button{position: relative; display: block; margin-top: 0;}   
 .unbxd-view-all-button a{position: absolute; right: 0; top: -25px;}
@@ -218,15 +202,13 @@
 }
 
 @media only screen and (min-width: 320px) and (max-width: 480px) {
-.Navbar_nav__2tz61{ display: block !important; float: inherit  !important;}
+.Navbar_nav__2tz61{ display: block; float: inherit;}
 .Navbar_root__2kbI9{min-height: 100px;}
 .mobileMenu-toggle{right: 10px; top: 0;}
   
-.banner-display {
-height: 150px !important;
-width: 100% !important
-}
-.banner-display > div img{width: 100% !important;position:inherit !important; top: inherit !important; left:inherit !important; bottom: inherit !important; right: inherit !important; box-sizing: inherit !important; padding: inherit !important; border: inherit !important; margin: inherit !important; display: inherit !important; width: inherit !important; height: inherit !important; min-width: inherit !important; max-width: inherit !important; min-height: inherit !important; max-height: inherit !important;}
+
+.banner-display{height: auto !important; width: auto !important; }
+.banner-display >div img{position:inherit !important; top: inherit !important; left:inherit !important; bottom: inherit !important; right: inherit !important; box-sizing: inherit !important; padding: inherit !important; border: inherit !important; margin: inherit !important; display: inherit !important; width: inherit !important; height: inherit !important; min-width: inherit !important; max-width: inherit !important; min-height: inherit !important; max-height: inherit !important;}
 .unbxd-view-all-button{position: relative; display: block; margin-top: 0;}   
 .unbxd-view-all-button a{position: absolute; right: 0; top: -30px;}   
 .ken_slide.keen-slider__slide{ min-width: calc(100% + 0px) !important; max-width: calc(100% + 0px) !important; transform: translate3d(0px, 0px, 0px);}  
@@ -600,7 +582,7 @@ li.pagination-item.SearchIcon {
 }
 @media (max-width: 800px) {
 body, body.pace-done {
-    /*padding-top: 57px;*/
+    padding-top: 57px;
 }   
 .filter_list.sticky {
     float: right;
@@ -637,7 +619,7 @@ body, body.pace-done {
 }
 @media (max-width: 560px) {
 body, body.pace-done {
-    /*padding-top: 110px;*/ 
+    padding-top: 110px;
 }
 .filter_list.sticky {
     top: 66px;
