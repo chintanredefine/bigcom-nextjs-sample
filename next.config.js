@@ -17,8 +17,8 @@ module.exports = withCommerceConfig({
         domains: ['www.redefinesolutions.com','cdn8.bigcommerce.com','cdn6.bigcommerce.com','cdn11.bigcommerce.com'],
     },    
   i18n: {
-    locales: ['en-US', 'es'],
-    defaultLocale: 'en-US',
+    locales: ['pages', 'es'],
+    defaultLocale: 'pages',
   },
   rewrites() {
     return [
