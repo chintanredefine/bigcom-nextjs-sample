@@ -14,6 +14,8 @@ import { Sidebar, Button, Modal, LoadingDots } from '@components/ui'
 import PaymentMethodView from '@components/checkout/PaymentMethodView'
 import CheckoutSidebarView from '@components/checkout/CheckoutSidebarView'
 
+import Script from 'next/script'
+
 import LoginView from '@components/auth/LoginView'
 import s from './Layout.module.css'
 
@@ -24,7 +26,7 @@ const Loading = () => (
 )
 
 const dynamicProps = {
-  loading: () => <Loading />,
+  loading: Loading,
 }
 
 const SignUpView = dynamic(
@@ -96,19 +98,19 @@ const Layout: FC<Props> = ({
 }) => {
   const { acceptedCookies, onAcceptCookies } = useAcceptCookies()
   const { locale = 'en-US' } = useRouter()
-  const navBarlinks = categories.slice(0, 9).map((c) => ({
+  const navBarlinks = categories.map((c) => ({
     label: c.name,
     href: `/search/${c.slug}`,
   }))
 
   return (
     <CommerceProvider locale={locale}>
-      <div className={cn(s.root)} id="mydiv1">
-        
+    <Script
+        src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"
+        strategy="beforeInteractive"
+      />
+      <div className={cn(s.root)}>
         <Navbar links={navBarlinks} />
-        <div className="staticmsgbelowmenu">
-          COVID 19 UPDATE: WORLDWIDE FREESHIP
-        </div>
         <main className="fit">{children}</main>
         <Footer pages={pageProps.pages} />
         <ModalUI />
@@ -123,7 +125,7 @@ const Layout: FC<Props> = ({
           }
         />
       </div>
-      <script async type="text/javascript" src="//static.klaviyo.com/onsite/js/klaviyo.js?company_id=MpJPGK"></script>
+      
     </CommerceProvider>
   )
 }

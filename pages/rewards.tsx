@@ -25,15 +25,15 @@ export default function Orders() {
     <Container>
      <div className="container">
     <div className="account account--fixed">
-      <h2 className="page-heading">My Orders</h2>
+      <h2 className="page-heading">Rewards</h2>
        <nav className="navBar navBar--sub navBar--account">
     <ul className="navBar-section">
      <li className="navBar-item">
                 <a className="navBar-action" href="/profile">Account Settings</a>
             </li>
-                <li className="navBar-item is-active"><a href="javascript:void(0)" className="navBar-action">Orders</a></li>
-            <li className="navBar-item">
-                <a className="navBar-action" href="/rewards ">REWARDS</a>
+                <li className="navBar-item"><a href="/orders" className="navBar-action">Orders</a></li>
+            <li className="navBar-item is-active">
+                <a className="navBar-action" href="javascript:void(0) ">REWARDS</a>
             </li>
         <li className="navBar-item">
             <a className="navBar-action" href="/messages">Messages</a>

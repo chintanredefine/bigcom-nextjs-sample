@@ -166,6 +166,60 @@
 .mobileMenu-toggle {display: none;}
 .Navbar_nav__2tz61 {float: inherit !important;}
 
+.account--fixed {
+    margin: 0 auto;
+    width: 66.66667%;
+}
+.account {
+    margin-bottom: 1.5rem;
+}
+.account h3, .form-label, .navBar--sub .navBar-item, .page-heading, .panel-title {
+    text-transform: uppercase;
+}
+.page-heading {
+    margin-top: 25px;
+}
+.page-heading {
+    margin: 0 0 3rem;
+        margin-top: 0px;
+    text-align: center;
+}
+h2 {
+    font-size: 25px;
+}
+.form-label {
+    color: #666;
+    cursor: pointer;
+    display: block;
+    font-size: 1rem;
+    line-height: 1.5;
+    margin-bottom: .5rem;
+}
+
+.navBar--account {
+    display: block;
+}
+.navBar--sub {
+    margin-bottom: 4.5rem;
+    text-align: center;
+}
+
+.Button_root__24MxS:hover {
+    border-color: var(--accent-9);
+    background-color: var(--accent-6);
+}
+
+.navBar-section:after{clear: both;}
+.navBar-section:after, .navBar-section:before { content: " "; display: table;}
+.navBar--sub .navBar-section{float: none;}
+.navBar--sub .navBar-item{ float: none; display: inline-block; margin: 0 .78571rem;}
+.navBar--sub .navBar-item.is-active{border-bottom: 1px solid #4f4f4f;}
+.navBar--sub .navBar-item.is-active{border-bottom: 1px solid #4f4f4f; color: #4f4f4f;}
+.navBar--sub .navBar-action:hover{color: #4f4f4f;}
+.navBar--sub .navBar-item{ margin: 0 .61rem; font-size: 14px;}
+.margin-0{ margin:  0 auto !important; }
+.width100{width: 100% !important; min-width: 500px !important}
+
 @media only screen and (min-width:1024px) and (max-width:1280px) {
     .unbxd-view-all-button {
         display: block;

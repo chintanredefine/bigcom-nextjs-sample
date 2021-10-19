@@ -61,7 +61,7 @@ export function normalizeProduct(productNode: any): Product {
       $apply: (brand: any) => (brand?.entityId ? brand?.entityId : null),
     },
     slug: {
-      $set: path?.replace(/^\/+|\/+$/g, ''),
+      $set: path?.replace(/^\/+|\/+$/g, '').replace('.html', ''),
     },
     price: {
       $set: {

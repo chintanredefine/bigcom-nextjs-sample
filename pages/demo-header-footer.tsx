@@ -25,6 +25,7 @@ export default function Profile() {
   return (
     <Container>
       <div id="mainpagecontent">PLEASE INSERT DYNAMIC DATA HERE - CATEGORY/SUB-CATEGORY/PRODUCT/SEARCH </div>
+      
     </Container>
     
   )

@@ -25,15 +25,15 @@ export default function Orders() {
     <Container>
      <div className="container">
     <div className="account account--fixed">
-      <h2 className="page-heading">My Orders</h2>
+      <h2 className="page-heading">Rewards</h2>
        <nav className="navBar navBar--sub navBar--account">
     <ul className="navBar-section">
      <li className="navBar-item">
                 <a className="navBar-action" href="/profile">Account Settings</a>
             </li>
-                <li className="navBar-item is-active"><a href="javascript:void(0)" className="navBar-action">Orders</a></li>
+                <li className="navBar-item"><a href="/orders" className="navBar-action">Orders</a></li>
             <li className="navBar-item">
-                <a className="navBar-action" href="/rewards ">REWARDS</a>
+                <a className="navBar-action" href="/rewards">REWARDS</a>
             </li>
         <li className="navBar-item">
             <a className="navBar-action" href="/messages">Messages</a>
@@ -41,8 +41,8 @@ export default function Orders() {
             <li className="navBar-item">
                 <a className="navBar-action" href="/addresses">Addresses</a>
             </li>
-                <li className="navBar-item">
-                    <a className="navBar-action" href="/payments">Payment Methods</a>
+                <li className="navBar-item is-active">
+                    <a className="navBar-action" href="javascript:void(0)">Payment Methods</a>
                 </li>
                 <li className="navBar-item">
                     <a className="navBar-action" href="/wishlist">Wish Lists</a>
@@ -59,11 +59,8 @@ export default function Orders() {
           <Bag className="absolute" />
         </span>
         <h2 className="pt-6 text-2xl font-bold tracking-wide text-center">
-          No orders found
+          No Payment method(s) found
         </h2>
-        <p className="text-accent-6 px-10 text-center pt-2">
-          Biscuit oat cake wafer icing ice cream tiramisu pudding cupcake.
-        </p>
       </div>
       </div>
       </div>

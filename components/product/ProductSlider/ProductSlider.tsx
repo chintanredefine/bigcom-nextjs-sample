@@ -37,10 +37,12 @@ const ProductSlider: React.FC<ProductSliderProps> = ({
       setCurrentSlide(slideNumber)
 
       if (thumbsContainerRef.current) {
+
         const $el = document.getElementById(
           `thumb-${s.details().relativeSlide}`
         )
-        if (slideNumber >= 3) {
+        if (slideNumber >= 1) {
+
           thumbsContainerRef.current.scrollLeft = $el!.offsetLeft
         } else {
           thumbsContainerRef.current.scrollLeft = 0

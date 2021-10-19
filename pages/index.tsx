@@ -61,10 +61,25 @@ export async function getStaticProps({
 }
 
 export default function Home({
-  products1, products2, data
+  products1, products2, data, pages
 }: InferGetStaticPropsType<typeof getStaticProps>) {
-  return (
+
+    return (
     <>
+     <ul id="customUL" className="SearchBrandList">
+                              {pages.map(({ node }: any) => (
+                                <>
+                                {node?.id && <>
+                                    <li key={node.id} className="SearchBrandItem">
+                                    
+                                      <a className="SearchBrandLinks" href="">{node.url + " - " + node.name} </a><br />
+                                    
+                                    </li>
+                                    </>}
+                                  
+                              </>
+                                ))}
+                          </ul>
         
         <ProductSlider viewCount={1}>
 
@@ -117,7 +132,7 @@ export default function Home({
           <div className="pt-50 HomeInstagramWidget-Section">
             <h2 className="page-heading"><a href="https://www.instagram.com/sleekshop_com/" title="Sleekshop on Instagram">@sleekshop_com</a></h2>
           
-            <iframe src="//lightwidget.com/widgets/5a82391a068b5b14b401c0f2994b3973.html"  width="100%" height="500"></iframe>
+            <iframe src="//lightwidget.com/widgets/5a82391a068b5b14b401c0f2994b3973.html"  width="100%"></iframe>
           </div>
           </div>
      

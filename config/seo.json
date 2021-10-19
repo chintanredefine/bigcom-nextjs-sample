@@ -1,20 +1,20 @@
 {
-  "title": "Sleekshop Storefront | Redefinesolutions.com",
-  "titleTemplate": "%s - Sleekshop Storefront",
-  "description": "Sleekshop - Next.js Commerce",
+  "title": "ACME Storefront | Powered by Next.js Commerce",
+  "titleTemplate": "%s - ACME Storefront",
+  "description": "Next.js Commerce - https://www.nextjs.org/commerce",
   "openGraph": {
-    "title": "Sleekshop Storefront",
-    "description": "Sleekshop Storefront with Next.js Commerce",
+    "title": "ACME Storefront | Powered by Next.js Commerce",
+    "description": "Next.js Commerce - https://www.nextjs.org/commerce",
     "type": "website",
     "locale": "en_IE",
-    "url": "https://commerce-seven-bice-94.vercel.app/",
-    "site_name": "Sleekshop - Next.js Commerce",
+    "url": "https://nextjs.org/commerce",
+    "site_name": "Next.js Commerce",
     "images": [
       {
-        "url": "/card.png?1",
+        "url": "/card.png",
         "width": 800,
         "height": 600,
-        "alt": "Sleekshop - Next.js Commerce"
+        "alt": "Next.js Commerce"
       }
     ]
   },
