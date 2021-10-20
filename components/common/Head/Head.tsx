@@ -19,8 +19,9 @@ const Head: FC = () => {
 
              
       <link href="//libraries.unbxdapi.com/search-sdk/v2.0.1/vanillaSearch.min.css" rel="stylesheet"/>
-
-        <link  rel="stylesheet" type="text/css" href="https://unbxd.s3.amazonaws.com/unbxd_autosuggest_sleekhair.css" /> 
+      <link href="//sandbox.unbxd.io/sleekhair_mybigcommerce_stage_autosuggest.css" rel="stylesheet"/>
+      <link href="//sandbox.unbxd.io/sleekhair_mybigcommerce_stage_search.css" rel="stylesheet"/>      
+      <link  rel="stylesheet" type="text/css" href="https://unbxd.s3.amazonaws.com/unbxd_autosuggest_sleekhair.css" /> 
       </NextHead>
     </>
   )
