@@ -32,12 +32,13 @@ export default function Orders({
 
 const [adata, setVariants] = useState<string>('')
 const { data: customer } =  useCustomer()
-  let cid = customer?.entityId
+const { cdata } = await customer
+  //let cid = customer?.entityId
 
   useEffect(()=>{
 
-      if(!cid){
-        fetch('https://www.redefinesolutions.com/sleekshop/getAddresses.php?customer_id='+cid)
+      if(cdata){
+        fetch('https://www.redefinesolutions.com/sleekshop/getAddresses.php?customer_id='+cdata?.entityId)
           .then(response => response.json())
           .then(response => setVariants(response))
           .catch(error => setVariants(error));
