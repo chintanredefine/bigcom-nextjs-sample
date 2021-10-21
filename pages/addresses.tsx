@@ -14,8 +14,13 @@ export async function getStaticProps({
   locales,
 }: GetStaticPropsContext) {
  
-  
+  const config = { locale, locales }
  
+ return {
+    props: {
+    },
+    revalidate: 60,
+  }
     
  
 }
