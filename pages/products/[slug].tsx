@@ -80,7 +80,7 @@ export default function Slug({
   const [result, setResult] = useState<string>('')
   const [variants, setVariants] = useState<string>('')
 
-  console.log(product)
+  //console.log(product)
 
   useEffect(()=>{
 
