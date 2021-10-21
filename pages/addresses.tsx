@@ -77,7 +77,9 @@ const { data: customer } =  useCustomer()
       <div className="flex-1 p-24 flex flex-col justify-center items-center ">
         <div className="account-body">
             <ul className="addressList">
-                {adata ? ( {adata.map((item: any) => {
+                {adata ? ( 
+                    <>
+                    {adata.map((item: any) => {
                           return (
                                     <li key={item.id}  className="address">
                                     <div className="panel panel--address">
@@ -103,7 +105,9 @@ const { data: customer } =  useCustomer()
                                     </div>
                                 </li>
                           );
-                        })}) : ""}
+                        })}
+                    </>
+                    ) : ""}
             </ul>
         </div>
         
