@@ -77,7 +77,7 @@ const { data: customer } =  useCustomer()
       <div className="flex-1 p-24 flex flex-col justify-center items-center ">
         <div className="account-body">
             <ul className="addressList">
-                {adata ? ( 
+                {Array.isArray(adata) ? ( 
                     <>
                     {adata.map((item: any) => {
                           return (
