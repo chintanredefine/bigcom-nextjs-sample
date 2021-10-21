@@ -1,7 +1,6 @@
 import type { CheckoutEndpoint } from '.'
 import getCustomerId from '../../utils/get-customer-id'
 import jwt from 'jsonwebtoken'
-import { uuid } from 'uuidv4'
 
 const fullCheckout = true
 
