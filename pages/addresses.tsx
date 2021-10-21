@@ -1,7 +1,9 @@
-import type { GetStaticPropsContext } from 'next'
+import type { GetStaticPropsContext, InferGetStaticPropsType } from 'next'
+
 import commerce from '@lib/api/commerce'
 import useCustomer from '@framework/customer/use-customer'
-
+import { useEffect, useState } from "react"
+import { useRouter } from "next/router";
 import { Bag } from '@components/icons'
 import { Layout } from '@components/common'
 import { Container, Text } from '@components/ui'
@@ -11,31 +13,50 @@ export async function getStaticProps({
   locale,
   locales,
 }: GetStaticPropsContext) {
-  const config = { locale, locales }
-  const pagesPromise = commerce.getAllPages({ config, preview })
-  const siteInfoPromise = commerce.getSiteInfo({ config, preview })
-  const { pages } = await pagesPromise
-  const { categories } = await siteInfoPromise
-
-  return {
-    props: { pages, categories },
-  }
+ 
+  
+ 
+    
+ 
 }
 
 
-export default function Orders() {
-    const { data } = useCustomer()
-    const custaddr = fetch(
-      'https://api.bigcommerce.com/stores/hmhnh4h9/v2/customers/317418/addresses',
-      {
-        headers: {
-          'Content-Type': 'application/json',
-          'X-Auth-Token': 'qfhjgach3ewzkvhx47be9yy4m5tvbtw'
-        },
-        method: 'GET'
+export default function Orders({
+  data
+}: InferGetStaticPropsType<typeof getStaticProps>) {
+
+const [adata, setVariants] = useState<string>('')
+const { data: customer } =  useCustomer()
+  let cid = customer?.entityId
+
+  useEffect(()=>{
+
+      if(!cid){
+        fetch('https://www.redefinesolutions.com/sleekshop/getAddresses.php?customer_id='+cid)
+          .then(response => response.json())
+          .then(response => setVariants(response))
+          .catch(error => setVariants(error));
+
+       
       }
+
+      
+     
+
+        
+      
+    },[cid])
+
+  //console.log(data)
+
+   /* const res = fetch(
+      'https://www.redefinesolutions.com/sleekshop/getAddresses.php?customer_id='+customer?.entityId
+      
     )
-        console.log(custaddr)
+    const adata = res.json()
+    */
+
+      
   return (
     <Container>
      <div className="container">
@@ -54,12 +75,40 @@ export default function Orders() {
             </ul>
         </nav>
       <div className="flex-1 p-24 flex flex-col justify-center items-center ">
-        <span className="border border-dashed border-secondary rounded-full flex items-center justify-center w-16 h-16 p-12 bg-primary text-primary">
-          <Bag className="absolute" />
-        </span>
-        <h2 className="pt-6 text-2xl font-bold tracking-wide text-center">
-          No Addresses found
-        </h2>
+        <div className="account-body">
+            <ul className="addressList">
+                {adata ? ( {adata.map((item: any) => {
+                          return (
+                                    <li key={item.id}  className="address">
+                                    <div className="panel panel--address">
+                                        <div className="panel-body">
+                                            <h5 className="address-title">{item?.first_name} {item?.last_name}</h5>
+                                            <ul className="address-details address-details--postal">
+                                                <li>{item?.company}</li>
+                                                <li>{item?.street_1}</li>
+                                                <li>{item?.street_2}</li>
+                                                <li>{item?.city}, {item?.state} {item?.zip}</li>
+                                                <li>United States</li>
+                                            </ul>
+                                                <dl className="address-details">
+                                                    <dt className="address-label">Phone:</dt>
+                                                    <dd className="address-description">{item?.phone}</dd>
+                                                </dl>
+                                           <div className="form-actions">
+                                                    <a className="button button--primary button--small" href="/account.php?action=edit_shipping_address&amp;address_id=60367&amp;from=account.php%3Faction%3Daddress_book">Edit</a>
+                                                    <button type="submit" className="button secondary button--small">Delete</button>
+                                                </div>
+                                            
+                                        </div>
+                                    </div>
+                                </li>
+                          );
+                        })}) : ""}
+            </ul>
+        </div>
+        
+        
+       
         
       </div>
       </div>
