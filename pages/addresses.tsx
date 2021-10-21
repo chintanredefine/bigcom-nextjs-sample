@@ -27,7 +27,7 @@ export async function getStaticProps({
 
 
 export default function Orders({
-  data
+  
 }: InferGetStaticPropsType<typeof getStaticProps>) {
 
 const [adata, setVariants] = useState<string>('')
