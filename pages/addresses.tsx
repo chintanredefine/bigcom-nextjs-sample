@@ -52,7 +52,7 @@ const [adata, setVariants] = useState<string>('')
 
         
       
-    },[cid])
+    },[])
 
   //console.log(data)
 
