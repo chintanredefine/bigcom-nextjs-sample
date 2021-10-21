@@ -13,6 +13,11 @@ const isVendure = provider === 'vendure'
 
 module.exports = withCommerceConfig({
   commerce,
+   eslint: {
+    // Warning: This allows production builds to successfully complete even if
+    // your project has ESLint errors.
+    ignoreDuringBuilds: true,
+  },
    images: {
         domains: ['www.redefinesolutions.com','cdn8.bigcommerce.com','cdn6.bigcommerce.com','cdn11.bigcommerce.com'],
     },    
