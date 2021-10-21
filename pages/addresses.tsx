@@ -15,9 +15,12 @@ export async function getStaticProps({
 }: GetStaticPropsContext) {
  
   const config = { locale, locales }
+const { data: customer } =  useCustomer()
+const { cdata } = await customer
  
  return {
     props: {
+        cdata
     },
     revalidate: 60,
   }
@@ -27,12 +30,10 @@ export async function getStaticProps({
 
 
 export default function Orders({
-  
+  cdata
 }: InferGetStaticPropsType<typeof getStaticProps>) {
 
 const [adata, setVariants] = useState<string>('')
-const { data: customer } =  useCustomer()
-const { cdata } = await customer
   //let cid = customer?.entityId
 
   useEffect(()=>{
