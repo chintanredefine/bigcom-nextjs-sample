@@ -52,6 +52,8 @@ const [adata, setVariants] = useState<[]>([])
             const res = await fetch('https://www.redefinesolutions.com/sleekshop/getAddresses.php?customer_id='+cid)
             const {mdata} = await res.json()
             setVariants(mdata)
+
+
        }
           
     }
@@ -98,6 +100,8 @@ const [adata, setVariants] = useState<[]>([])
         </nav>
       <div className="flex-1 p-24 flex flex-col justify-center items-center ">
         <div className="account-body">
+
+        {console.log("adata", adata)}
             <ul className="addressList">
             {Array.isArray(adata) && (adata.length > 0) ? ( 
                     <>
