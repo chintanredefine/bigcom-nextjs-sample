@@ -1,5 +1,7 @@
 import { useMemo } from 'react'
 import useAddresses, { UseAddresses } from '@commerce/customer/address/use-addresses'
+import { useCustomer } from '@framework/customer'
+
 import { SWRHook } from '@commerce/utils/types'
 import type { GetAddressesHook } from '@commerce/types/customer/address'
 
