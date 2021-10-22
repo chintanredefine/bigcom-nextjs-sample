@@ -42,7 +42,7 @@ const [adata, setVariants] = useState<string>('')
         
   useEffect(()=>{
 
-    const fetchData = async (cid: string) => {
+    const fetchData = async () => {
         //console.log(data)
        // let cid = customer?.entityId
         
