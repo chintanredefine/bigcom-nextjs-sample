@@ -4,13 +4,13 @@ import { useCustomer } from '@framework/customer'
 
 import { SWRHook, HookFetcherFn } from '@commerce/utils/types'
 
-import type { GetAddressesHook } from '@commerce/types/customer/address'
+import type { GetAddressesHook } from '../../types/customer'
 
 
 import { MutationHook } from '@commerce/utils/types'
 
 export default useAddresses as UseAddresses<typeof handler>
-
+  
 export const handler: SWRHook<GetAddressesHook> = {
   fetchOptions: {
      url: '/api/customer/address',
