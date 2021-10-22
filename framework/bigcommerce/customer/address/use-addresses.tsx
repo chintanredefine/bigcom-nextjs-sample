@@ -4,7 +4,7 @@ import { useCustomer } from '@framework/customer'
 
 import { SWRHook, HookFetcherFn } from '@commerce/utils/types'
 
-import type { GetAddressesHook } from '../../types/customer'
+import type { GetAddressesHook } from '@commerce/types/customer/address'
 
 
 import { MutationHook } from '@commerce/utils/types'
@@ -15,15 +15,6 @@ export const handler: SWRHook<GetAddressesHook> = {
   fetchOptions: {
      url: '/api/customer/address',
     method: 'GET',
-  },
-  async fetcher({ input: { cartId }, options, fetch }) {
-
-    if (!cartId) return null
-       const url = new URL(options.url!, 'http://a')
-    return fetch({
-      url: url.pathname + url.search,
-      method: options.method,
-    })
   },
    useHook: ({ useData }) => (input) => {
     const { data: customer } = useCustomer()
