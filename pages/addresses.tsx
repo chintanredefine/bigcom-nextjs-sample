@@ -38,7 +38,7 @@ const [adata, setVariants] = useState<string>('')
 
 // const { data, isLoading, isEmpty } = useAddresses({ })
   
-  const { data: customer } =   await useCustomer()
+  const { data: customer } =   useCustomer()
         
   useEffect(()=>{
 
