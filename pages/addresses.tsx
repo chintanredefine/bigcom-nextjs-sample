@@ -22,7 +22,7 @@ export async function getStaticProps({
   locales,
 }: GetStaticPropsContext) {
  const  {data: customer } =  useCustomer()
- const cdata = await data
+ const {cdata} = await data
 
   
  return {
