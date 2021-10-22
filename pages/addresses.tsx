@@ -68,7 +68,7 @@ const [adata, setVariants] = useState<string>('')
 
         
       
-    },[])
+    },[customer])
 
    
 
