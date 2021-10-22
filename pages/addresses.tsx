@@ -52,6 +52,7 @@ const [adata, setVariants] = useState<[]>([])
             const res = await fetch('https://www.redefinesolutions.com/sleekshop/getAddresses.php?customer_id='+cid)
             const {mdata} = await res.json()
             setVariants(mdata)
+            console.log(mdata, res)
 
 
        }
@@ -60,7 +61,7 @@ const [adata, setVariants] = useState<[]>([])
     
     if(customer && customer?.entityId)
     {
-        console.log(customer + " - " + customer?.entityId)
+       // console.log(customer + " - " + customer?.entityId)
         fetchData()
 
     }
