@@ -57,7 +57,7 @@ const [adata, setVariants] = useState<string>('')
     if(customer && customer?.entityId)
     {
         console.log(customer + " - " + customer?.entityId)
-        fetchData(customer?.entityId)
+        fetchData()
 
     }
 
