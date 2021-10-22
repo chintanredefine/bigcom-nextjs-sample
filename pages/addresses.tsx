@@ -53,7 +53,13 @@ const [adata, setVariants] = useState<string>('')
        
           
     }
-    fetchData(customer?.entityId)
+    
+    if(customer && customer?.entityId)
+    {
+        console.log(customer + " - " + customer?.entityId)
+        fetchData(customer?.entityId)
+
+    }
 
      
 
@@ -64,7 +70,7 @@ const [adata, setVariants] = useState<string>('')
       
     },[])
 
-   console.log(customer + " - " + customer?.entityId)
+   
 
 
   //console.log(adata)
