@@ -129,7 +129,7 @@ const [adata, setVariants] = useState<[]>([])
                           );
                         })}
                     </>
-                    ) : {adata}}
+                    ) : ''}
                 
             </ul>
         </div>
