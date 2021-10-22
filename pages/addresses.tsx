@@ -103,6 +103,37 @@ const [adata, setVariants] = useState<string>('')
       <div className="flex-1 p-24 flex flex-col justify-center items-center ">
         <div className="account-body">
             <ul className="addressList">
+            {Array.isArray(adata) ? ( 
+                    <>
+                    {adata.map((item: any) => {
+                          return (
+                                    <li key={item.id}  className="address">
+                                    <div className="panel panel--address">
+                                        <div className="panel-body">
+                                            <h5 className="address-title">{item?.first_name} {item?.last_name}</h5>
+                                            <ul className="address-details address-details--postal">
+                                                <li>{item?.company}</li>
+                                                <li>{item?.street_1}</li>
+                                                <li>{item?.street_2}</li>
+                                                <li>{item?.city}, {item?.state} {item?.zip}</li>
+                                                <li>United States</li>
+                                            </ul>
+                                                <dl className="address-details">
+                                                    <dt className="address-label">Phone:</dt>
+                                                    <dd className="address-description">{item?.phone}</dd>
+                                                </dl>
+                                           <div className="form-actions">
+                                                    <a className="button button--primary button--small" href="/account.php?action=edit_shipping_address&amp;address_id=60367&amp;from=account.php%3Faction%3Daddress_book">Edit</a>
+                                                    <button type="submit" className="button secondary button--small">Delete</button>
+                                                </div>
+                                            
+                                        </div>
+                                    </div>
+                                </li>
+                          );
+                        })}
+                    </>
+                    ) : {adata}}
                 
             </ul>
         </div>
