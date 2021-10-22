@@ -8,12 +8,13 @@ const merge = require('deepmerge')
 const prettier = require('prettier')
 
 const PROVIDERS = [
+  'local',
   'bigcommerce',
   'saleor',
   'shopify',
   'swell',
   'vendure',
-  'local',
+  'ordercloud',
 ]
 
 function getProviderName() {

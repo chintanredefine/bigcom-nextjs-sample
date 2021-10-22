@@ -637,8 +637,6 @@ export type MultipleChoiceOptionValue = CatalogProductOptionValue & {
   label: Scalars['String']
   /** Indicates whether this value is the chosen default selected value. */
   isDefault: Scalars['Boolean']
-
-  
 }
 
 /** An object with an ID */

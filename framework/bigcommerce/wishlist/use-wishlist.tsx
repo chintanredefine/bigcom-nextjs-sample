@@ -26,7 +26,6 @@ export const handler: SWRHook<GetWishlistHook> = {
   },
   useHook: ({ useData }) => (input) => {
     const { data: customer } = useCustomer()
-    //console.log("ID "+customer.entityId)
     const response = useData({
       input: [
         ['customerId', customer?.entityId],
@@ -37,8 +36,6 @@ export const handler: SWRHook<GetWishlistHook> = {
         ...input?.swrOptions,
       },
     })
-//console.log("RES" + response)
-//console.log("ID" + customer?.entityId)
 
     return useMemo(
       () =>
