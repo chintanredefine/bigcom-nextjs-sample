@@ -40,7 +40,7 @@ const [adata, setVariants] = useState<string>('')
   
     const { cartCookie } = useCommerce()
     const customerId = Cookies.get(cartCookie)
-    console.log(customerId)
+    console.log("CU" + customerId)
   useEffect(()=>{
 
     const fetchData = async () => {
@@ -53,9 +53,7 @@ const [adata, setVariants] = useState<string>('')
         const {mdata} = await res.json()
         setVariants(mdata)
        
-      
-     
-      
+          
     }
     fetchData()
 
