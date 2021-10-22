@@ -1,7 +1,7 @@
 import { useMemo } from 'react'
 import useAddresses, { UseAddresses } from '@commerce/customer/address/use-addresses'
 import { SWRHook } from '@commerce/utils/types'
-import type { GetAddressesHook } from '../../types/customer/address'
+import type { GetAddressesHook } from '@commerce/types/customer/address'
 
 
 import { MutationHook } from '@commerce/utils/types'
