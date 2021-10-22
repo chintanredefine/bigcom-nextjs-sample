@@ -19,7 +19,7 @@ export async function getStaticProps({
   
  return {
     props: {
-        adata: []
+        //adata: []
     },
     revalidate: 60,
   }
@@ -29,7 +29,7 @@ export async function getStaticProps({
 
 
 export default function Orders({
-  adata
+  
 }: InferGetStaticPropsType<typeof getStaticProps>) {
 
 const [adata, setVariants] = useState<string>('')
