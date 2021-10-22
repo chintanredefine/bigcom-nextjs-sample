@@ -2,11 +2,13 @@ import type { GetStaticPropsContext, InferGetStaticPropsType } from 'next'
 
 import commerce from '@lib/api/commerce'
 import useCustomer from '@framework/customer/use-customer'
+import {useCommerce } from '@commerce'
 import { useEffect, useState } from "react"
 import { useRouter } from "next/router";
 import { Bag } from '@components/icons'
 import { Layout } from '@components/common'
 import { Container, Text } from '@components/ui'
+import Cookies from 'js-cookie'
 //import useAddresses from '@framework/customer/address/use-addresses'
 
 
@@ -36,12 +38,13 @@ const [adata, setVariants] = useState<string>('')
 
 // const { data, isLoading, isEmpty } = useAddresses({ })
   
-
+  const { cartCookie } = useCommerce()
+ context.input.customerId = Cookies.get(cartCookie)
   useEffect(()=>{
 
     const fetchData = async () => {
         const { data: customer } =   await useCustomer()
-        console.log(customer)
+        console.log(data)
         let cid = customer?.entityId
         console.log(cid)
         if(cid){
