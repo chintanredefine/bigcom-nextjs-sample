@@ -10,24 +10,16 @@ import { Container, Text } from '@components/ui'
 //import useAddresses from '@framework/customer/address/use-addresses'
 
 
-interface OrdersProps {
-  data: customer
-}
-
-
-
 export async function getStaticProps({
   preview,
   locale,
   locales,
 }: GetStaticPropsContext) {
- const  {data: customer } =  useCustomer()
-
-
+ 
   
  return {
     props: {
-        cdata
+        //adata: []
     },
     revalidate: 60,
   }
@@ -37,34 +29,40 @@ export async function getStaticProps({
 
 
 export default function Orders({
-  cdata
+  
 }: InferGetStaticPropsType<typeof getStaticProps>) {
-console.log(cdata)
 
-/*const [adata, setVariants] = useState<string>('')
+const [adata, setVariants] = useState<string>('')
 
 // const { data, isLoading, isEmpty } = useAddresses({ })
-  let cid = customer?.entityId
+  
 
   useEffect(()=>{
 
-      if(cid){
-        fetch('https://www.redefinesolutions.com/sleekshop/getAddresses.php?customer_id='+cid)
-          .then(response => response.json())
-          .then(response => setVariants(response))
-          .catch(error => setVariants(error));
-
+    const fetchData = async () => {
+        const { data: customer } =  await useCustomer()
+        let cid = customer?.entityId
+        if(cid){
+        const res = await fetch('https://www.redefinesolutions.com/sleekshop/getAddresses.php?customer_id='+cid)
+        const {mdata} = await res.json()
+        setVariants(mdata)
        
       }
+     
+      
+    }
+    fetchData()
+
+      
 
       
      
 
         
       
-    },[cid])
+    },[])
 
-  console.log(adata)*/
+  console.log(adata)
 
    /* const res = fetch(
       'https://www.redefinesolutions.com/sleekshop/getAddresses.php?customer_id='+customer?.entityId
