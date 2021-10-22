@@ -41,7 +41,7 @@ const [adata, setVariants] = useState<string>('')
 
     const fetchData = async () => {
         const { data: customer } =   await useCustomer()
-        console.log(data)
+        console.log(customer)
         let cid = customer?.entityId
         console.log(cid)
         if(cid){
