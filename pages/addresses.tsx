@@ -47,12 +47,12 @@ const [adata, setVariants] = useState<string>('')
         //console.log(data)
         //let cid = customer?.entityId
         console.log(customerId)
-        if(cid){
+        
         const res = await fetch('https://www.redefinesolutions.com/sleekshop/getAddresses.php?customer_id='+customerId)
         const {mdata} = await res.json()
         setVariants(mdata)
        
-      }
+      
      
       
     }
