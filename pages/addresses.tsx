@@ -55,7 +55,7 @@ const [adata, setVariants] = useState<string>('')
     }
     fetchData(customer?.entityId)
 
-      console.log(customer)
+     
 
       
      
@@ -63,6 +63,9 @@ const [adata, setVariants] = useState<string>('')
         
       
     },[])
+
+   console.log(customer + " - " + customer?.entityId)
+
 
   //console.log(adata)
 
