@@ -11,7 +11,7 @@ import { Container, Text } from '@components/ui'
 
 
 interface OrdersProps {
-  cdata: []
+  data: customer
 }
 
 
@@ -21,7 +21,7 @@ export async function getStaticProps({
   locale,
   locales,
 }: GetStaticPropsContext) {
- const  {cdata: customer } =  useCustomer()
+ const  {data: customer } =  useCustomer()
 
 
   
