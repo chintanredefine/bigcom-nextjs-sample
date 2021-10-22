@@ -38,17 +38,17 @@ const [adata, setVariants] = useState<string>('')
 
 // const { data, isLoading, isEmpty } = useAddresses({ })
   
-  const { cartCookie } = useCommerce()
- context.input.customerId = Cookies.get(cartCookie)
+    const { cartCookie } = useCommerce()
+    const customerId = Cookies.get(cartCookie)
   useEffect(()=>{
 
     const fetchData = async () => {
-        const { data: customer } =   await useCustomer()
-        console.log(data)
-        let cid = customer?.entityId
-        console.log(cid)
+        //const { data: customer } =   await useCustomer()
+        //console.log(data)
+        //let cid = customer?.entityId
+        console.log(customerId)
         if(cid){
-        const res = await fetch('https://www.redefinesolutions.com/sleekshop/getAddresses.php?customer_id='+cid)
+        const res = await fetch('https://www.redefinesolutions.com/sleekshop/getAddresses.php?customer_id='+customerId)
         const {mdata} = await res.json()
         setVariants(mdata)
        
