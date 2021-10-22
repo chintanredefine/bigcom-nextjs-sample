@@ -10,8 +10,6 @@ import { ProductSlider, ProductCard } from '@components/product'
 import { Container, Collapse, Text, Rating } from '@components/ui'
 import ProductSidebar from '../ProductSidebar'
 import ProductTag from '../ProductTag'
-import Carousel from "react-multi-carousel";
-import "react-multi-carousel/lib/styles.css";
 
 interface ProductViewProps {
   product: Product
@@ -100,25 +98,7 @@ const ProductView: FC<ProductViewProps> = ({ product, relatedProducts, variants,
           
         </div>
 
-        <section className="py-12 px-6 mb-10 BoughtSection">
-          <Text variant="sectionHeading">Bought also Bought</Text>
-            <Carousel 
-              responsive={responsive} 
-              arrows={true}
-              showDots={true}
-              infinite={true}
-            >
-              {relatedProducts.map((p) => (
-                <div key={p.path} className="animated fadeIn ItemPro">
-                  <img src={p.images[0]?.url!} />
-                  <div className="produtDetails">
-                    <h5>{p.name}</h5>
-                    <p>{getPrice(p)}</p>
-                  </div>
-                </div>
-              ))}
-            </Carousel>          
-        </section>
+       
       </Container>
       <NextSeo
         title={product.name}
