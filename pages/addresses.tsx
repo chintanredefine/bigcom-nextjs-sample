@@ -29,7 +29,6 @@ export async function getStaticProps({
  
 }
 
-
 export default function Orders({
   
 }: InferGetStaticPropsType<typeof getStaticProps>) {
