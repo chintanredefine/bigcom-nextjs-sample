@@ -13,7 +13,7 @@ export const handler: SWRHook<GetAddressesHook> = {
      url: '/api/customer/address',
     method: 'GET',
   },
-  async fetcher({ input: { customerId }, options, fetch }) {
+  async fetcher({ input: { cartId }, options, fetch }) {
 
     if (!customerId) return null
        const url = new URL(options.url!, 'http://a')
@@ -26,7 +26,7 @@ export const handler: SWRHook<GetAddressesHook> = {
     const { data: customer } = useCustomer()
     const response = useData({
       input: [
-        ['customerId', customer?.entityId],
+        ['cartId', customer?.entityId],
       ],
       swrOptions: {
         revalidateOnFocus: false,
