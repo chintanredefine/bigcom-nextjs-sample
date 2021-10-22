@@ -15,7 +15,7 @@ export const handler: SWRHook<GetAddressesHook> = {
   },
   async fetcher({ input: { cartId }, options, fetch }) {
 
-    if (!customerId) return null
+    if (!cartId) return null
        const url = new URL(options.url!, 'http://a')
     return fetch({
       url: url.pathname + url.search,
