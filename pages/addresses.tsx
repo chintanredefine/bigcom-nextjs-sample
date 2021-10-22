@@ -60,12 +60,6 @@ const [adata, setVariants] = useState<string>('')
         fetchData()
 
     }
-
-     
-
-      
-     
-
         
       
     },[customer])
