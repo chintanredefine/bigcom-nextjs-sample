@@ -99,7 +99,7 @@ const [adata, setVariants] = useState<[]>([])
       <div className="flex-1 p-24 flex flex-col justify-center items-center ">
         <div className="account-body">
             <ul className="addressList">
-            {Array.isArray(adata) && adata.length > 0 ? ( 
+            {Array.isArray(adata) && (adata.length > 0) ? ( 
                     <>
                     {adata.map((item: any) => {
                           return (
