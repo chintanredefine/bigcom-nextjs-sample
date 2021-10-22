@@ -1,13 +1,15 @@
 import { useMemo } from 'react'
 import useAddresses, { UseAddresses } from '@commerce/customer/address/use-addresses'
-//import type { GetWishlistHook } from '../types/wishlist'
+import type { GetWishlistHook } from '../types/wishlist'
+import { SWRHook } from '@commerce/utils/types'
+import type { GetAddressesHook } from '../../types/customer/address'
 
 
 import { MutationHook } from '@commerce/utils/types'
 
 export default useAddresses as UseAddresses<typeof handler>
 
-export const handler: MutationHook<any> = {
+export const handler: SWRHook<GetAddressesHook> = {
   fetchOptions: {
      url: '/api/customer/address',
     method: 'GET',
