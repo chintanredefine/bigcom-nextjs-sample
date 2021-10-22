@@ -10,16 +10,24 @@ import { Container, Text } from '@components/ui'
 //import useAddresses from '@framework/customer/address/use-addresses'
 
 
+interface OrdersProps {
+  cdata: []
+}
+
+
+
 export async function getStaticProps({
   preview,
   locale,
   locales,
 }: GetStaticPropsContext) {
- 
+ const  data =  useCustomer()
+ const {cdata: customer } = await data
+
   
  return {
     props: {
-        //adata: []
+        cdata
     },
     revalidate: 60,
   }
@@ -29,17 +37,18 @@ export async function getStaticProps({
 
 
 export default function Orders({
-  
+  cdata
 }: InferGetStaticPropsType<typeof getStaticProps>) {
+console.log(cdata)
 
-const [adata, setVariants] = useState<string>('')
-const { data: customer } =  useCustomer()
+/*const [adata, setVariants] = useState<string>('')
+
 // const { data, isLoading, isEmpty } = useAddresses({ })
   let cid = customer?.entityId
 
   useEffect(()=>{
 
-      if(!cid){
+      if(cid){
         fetch('https://www.redefinesolutions.com/sleekshop/getAddresses.php?customer_id='+cid)
           .then(response => response.json())
           .then(response => setVariants(response))
@@ -55,7 +64,7 @@ const { data: customer } =  useCustomer()
       
     },[cid])
 
-  console.log(adata)
+  console.log(adata)*/
 
    /* const res = fetch(
       'https://www.redefinesolutions.com/sleekshop/getAddresses.php?customer_id='+customer?.entityId
