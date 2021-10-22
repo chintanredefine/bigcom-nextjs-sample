@@ -34,7 +34,7 @@ export default function Orders({
 
 const [adata, setVariants] = useState<string>('')
 const { data: customer } =  useCustomer()
- const { data, isLoading, isEmpty } = useAddresses({ includeProducts: true })
+ const { data, isLoading, isEmpty } = useAddresses({ })
   let cid = customer?.entityId
 
   useEffect(()=>{
