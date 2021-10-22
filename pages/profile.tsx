@@ -29,16 +29,16 @@ export default function Profile() {
   const [lastName, setLastName] = useState('')
 
   console.log(data)
-  const handleSignup = async (event: React.SyntheticEvent<EventTarget>) => {
+  /*const handleSignup = async (event: React.SyntheticEvent<EventTarget>) => {
     event.preventDefault() // don't redirect the page
     const res = await fetch(
       'https://www.redefinesolutions.com/sleekshop/updatecustomer.php?first_name='+firstName+'&last_name='+lastName+'&customerId='+data.entityId,
       
     )
     // where we'll add our form logic
-  }
+  }*/
 
-   /* const handleSignup = async (event: React.SyntheticEvent<EventTarget>) => {
+    const handleSignup = async (event: React.SyntheticEvent<EventTarget>) => {
     event.preventDefault() // don't redirect the page
     const res = await fetch(
       'https://www.redefinesolutions.com/sleekshop/updatecustomer.php',
@@ -60,7 +60,7 @@ export default function Profile() {
       }
     )
     // where we'll add our form logic
-  }*/
+  }
   return (
     <Container>
     <div className="container">

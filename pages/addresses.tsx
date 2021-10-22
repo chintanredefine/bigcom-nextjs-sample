@@ -55,7 +55,7 @@ const { data: customer } =  useCustomer()
       
     },[cid])
 
-  //console.log(data)
+  console.log(data)
 
    /* const res = fetch(
       'https://www.redefinesolutions.com/sleekshop/getAddresses.php?customer_id='+customer?.entityId
