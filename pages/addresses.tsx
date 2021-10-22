@@ -41,7 +41,7 @@ const [adata, setVariants] = useState<string>('')
 
     const fetchData = async () => {
         const { data: customer } =   useCustomer()
-        let cid = customer?.entityId
+        let cid = data?.entityId
         if(cid){
         const res = await fetch('https://www.redefinesolutions.com/sleekshop/getAddresses.php?customer_id='+cid)
         const {mdata} = await res.json()
