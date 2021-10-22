@@ -55,7 +55,7 @@ const [adata, setVariants] = useState<string>('')
     }
     fetchData(customer?.entityId)
 
-      
+      console.log(customer)
 
       
      
