@@ -40,8 +40,8 @@ const [adata, setVariants] = useState<string>('')
   useEffect(()=>{
 
     const fetchData = async () => {
-        const { data: customer } =  await useCustomer()
-        const cid = customer?.entityId
+        const { data: customer } =   useCustomer()
+        let cid = customer?.entityId
         if(cid){
         const res = await fetch('https://www.redefinesolutions.com/sleekshop/getAddresses.php?customer_id='+cid)
         const {mdata} = await res.json()
