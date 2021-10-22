@@ -1,6 +1,6 @@
 import { useMemo } from 'react'
 import useAddresses, { UseAddresses } from '@commerce/customer/address/use-addresses'
-import type { GetWishlistHook } from '../types/wishlist'
+//import type { GetWishlistHook } from '../types/wishlist'
 
 
 import { MutationHook } from '@commerce/utils/types'
