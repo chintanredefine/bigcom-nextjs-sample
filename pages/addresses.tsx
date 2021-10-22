@@ -21,8 +21,8 @@ export async function getStaticProps({
   locale,
   locales,
 }: GetStaticPropsContext) {
- const  {data: customer } =  useCustomer()
- const {cdata} = await data
+ const  {cdata: customer } =  useCustomer()
+
 
   
  return {
