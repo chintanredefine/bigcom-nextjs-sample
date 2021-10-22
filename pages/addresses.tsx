@@ -7,7 +7,7 @@ import { useRouter } from "next/router";
 import { Bag } from '@components/icons'
 import { Layout } from '@components/common'
 import { Container, Text } from '@components/ui'
-import useAddresses from '@framework/customer/address/use-addresses'
+//import useAddresses from '@framework/customer/address/use-addresses'
 
 
 export async function getStaticProps({
@@ -34,7 +34,7 @@ export default function Orders({
 
 const [adata, setVariants] = useState<string>('')
 const { data: customer } =  useCustomer()
- const { data, isLoading, isEmpty } = useAddresses({ })
+// const { data, isLoading, isEmpty } = useAddresses({ })
   let cid = customer?.entityId
 
   useEffect(()=>{
