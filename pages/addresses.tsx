@@ -51,7 +51,9 @@ const [adata, setVariants] = useState<[]>([])
         {
             const res = fetch('https://www.redefinesolutions.com/sleekshop/getAddresses.php?customer_id='+cid)
                         .then((response) => response.json())
-                        .then((rs1) => {console.log(rs1)})
+                        .then((rs1) => {
+                            setVariants(rs1[0])
+                        })
             /*const {mdata} = await res.json()
             setVariants(mdata)
             console.log(mdata, res)
