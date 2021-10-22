@@ -19,7 +19,7 @@ export async function getStaticProps({
   
  return {
     props: {
-       // cdata
+        adata
     },
     revalidate: 60,
   }
@@ -29,7 +29,7 @@ export async function getStaticProps({
 
 
 export default function Orders({
-  
+  adata
 }: InferGetStaticPropsType<typeof getStaticProps>) {
 
 const [adata, setVariants] = useState<string>('')
@@ -55,7 +55,7 @@ const { data: customer } =  useCustomer()
       
     },[cid])
 
-  //console.log(data)
+  console.log(adata)
 
    /* const res = fetch(
       'https://www.redefinesolutions.com/sleekshop/getAddresses.php?customer_id='+customer?.entityId
