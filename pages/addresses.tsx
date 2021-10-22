@@ -47,7 +47,7 @@ const [adata, setVariants] = useState<string>('')
         let cid = customer?.entityId
         
         
-        const res = await fetch('https://www.redefinesolutions.com/sleekshop/getAddresses.php?customer_id='+customerId)
+        const res = await fetch('https://www.redefinesolutions.com/sleekshop/getAddresses.php?customer_id='+cid)
         const {mdata} = await res.json()
         setVariants(mdata)
        
