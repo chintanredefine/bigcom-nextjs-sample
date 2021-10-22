@@ -34,7 +34,7 @@ export default function Orders({
   
 }: InferGetStaticPropsType<typeof getStaticProps>) {
 
-const [adata, setVariants] = useState<string>('')
+const [adata, setVariants] = useState<[]>('')
 
 // const { data, isLoading, isEmpty } = useAddresses({ })
   
