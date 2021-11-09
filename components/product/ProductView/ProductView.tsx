@@ -10,10 +10,6 @@ import { ProductSlider, ProductCard } from '@components/product'
 import { Container, Collapse, Text, Rating } from '@components/ui'
 import ProductSidebar from '../ProductSidebar'
 import ProductTag from '../ProductTag'
-import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
-import 'react-tabs/style/react-tabs.css';
-import Carousel from "react-multi-carousel";
-import "react-multi-carousel/lib/styles.css";
 
 interface ProductViewProps {
   product: Product
@@ -99,47 +95,10 @@ const ProductView: FC<ProductViewProps> = ({ product, relatedProducts, variants,
 
         <div className="mt-2 TabsSection">
 
-          <Tabs>
-            <TabList>
-              <Tab>Description</Tab>
-              <Tab>Feature & Details</Tab>
-              <Tab>Shipping & Returns</Tab>
-            </TabList>
-
-            <TabPanel>
-              <Text
-                className="pb-4 break-words w-full max-w-xl"
-                html={product.descriptionHtml || product.description}
-              />
-            </TabPanel>
-            <TabPanel>
-              <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
-            </TabPanel>
-            <TabPanel>
-              <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
-            </TabPanel>
-          </Tabs>
+          
         </div>
 
-        <section className="py-12 px-6 mb-10 BoughtSection">
-          <Text variant="sectionHeading">Bought also Bought</Text>
-            <Carousel 
-              responsive={responsive} 
-              arrows={true}
-              showDots={true}
-              infinite={true}
-            >
-              {relatedProducts.map((p) => (
-                <div key={p.path} className="animated fadeIn ItemPro">
-                  <img src={p.images[0]?.url!} />
-                  <div className="produtDetails">
-                    <h5>{p.name}</h5>
-                    <p>{getPrice(p)}</p>
-                  </div>
-                </div>
-              ))}
-            </Carousel>          
-        </section>
+       
       </Container>
       <NextSeo
         title={product.name}

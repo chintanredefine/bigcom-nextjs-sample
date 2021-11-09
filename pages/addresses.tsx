@@ -2,11 +2,15 @@ import type { GetStaticPropsContext, InferGetStaticPropsType } from 'next'
 
 import commerce from '@lib/api/commerce'
 import useCustomer from '@framework/customer/use-customer'
+import {useCommerce } from '@commerce'
 import { useEffect, useState } from "react"
 import { useRouter } from "next/router";
 import { Bag } from '@components/icons'
 import { Layout } from '@components/common'
 import { Container, Text } from '@components/ui'
+import Cookies from 'js-cookie'
+//import useAddresses from '@framework/customer/address/use-addresses'
+
 
 export async function getStaticProps({
   preview,
@@ -14,13 +18,10 @@ export async function getStaticProps({
   locales,
 }: GetStaticPropsContext) {
  
-  const config = { locale, locales }
-const { data: customer } =  useCustomer()
-const { cdata } = await customer
- 
+  
  return {
     props: {
-        cdata
+        //adata: []
     },
     revalidate: 60,
   }
@@ -28,33 +29,53 @@ const { cdata } = await customer
  
 }
 
-
 export default function Orders({
-  cdata
+  
 }: InferGetStaticPropsType<typeof getStaticProps>) {
 
-const [adata, setVariants] = useState<string>('')
-  //let cid = customer?.entityId
+const [adata, setVariants] = useState<string[]>([])
 
+// const { data, isLoading, isEmpty } = useAddresses({ })
+  
+  const { data: customer } =   useCustomer()
+        
   useEffect(()=>{
 
-      if(cdata){
-        fetch('https://www.redefinesolutions.com/sleekshop/getAddresses.php?customer_id='+cdata?.entityId)
-          .then(response => response.json())
-          .then(response => setVariants(response))
-          .catch(error => setVariants(error));
+    const fetchData = async () => {
+        //console.log(data)
+        let cid = customer?.entityId
+        
+        
+        if(customer && customer?.entityId)
+        {
+            const res = fetch('https://www.redefinesolutions.com/sleekshop/getAddresses.php?customer_id='+cid)
+                        .then((response) => response.json())
+                        .then((rs1) => {
+                            setVariants(rs1)
+                        })
+            /*const {mdata} = await res.json()
+            setVariants(mdata)
+            console.log(mdata, res)
+*/
 
-       
-      }
+       }
+          
+    }
+    
+    if(customer && customer?.entityId)
+    {
+       // console.log(customer + " - " + customer?.entityId)
+        fetchData()
 
-      
-     
-
+    }
         
       
-    },[])
+    },[customer])
 
-  //console.log(data)
+   
+
+
+  //console.log(adata)
 
    /* const res = fetch(
       'https://www.redefinesolutions.com/sleekshop/getAddresses.php?customer_id='+customer?.entityId
@@ -83,8 +104,10 @@ const [adata, setVariants] = useState<string>('')
         </nav>
       <div className="flex-1 p-24 flex flex-col justify-center items-center ">
         <div className="account-body">
+
+        {console.log("adata", adata)}
             <ul className="addressList">
-                {Array.isArray(adata) ? ( 
+            {Array.isArray(adata) && (adata.length > 0) ? ( 
                     <>
                     {adata.map((item: any) => {
                           return (
@@ -114,7 +137,8 @@ const [adata, setVariants] = useState<string>('')
                           );
                         })}
                     </>
-                    ) : {adata}}
+                    ) : ''}
+                
             </ul>
         </div>
         
@@ -129,4 +153,3 @@ const [adata, setVariants] = useState<string>('')
 }
 
 Orders.Layout = Layout
- 

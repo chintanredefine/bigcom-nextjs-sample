@@ -35,7 +35,6 @@ export async function getStaticProps({
   const { pages } = await pagesPromise
   const { categories } = await siteInfoPromise
   const { product } = await productPromise
-  const { products: relatedProducts } = await allProductsPromise
 
   if (!product) {
     throw new Error(`Product with slug '${params!.slug}' not found`)
@@ -46,7 +45,6 @@ export async function getStaticProps({
     props: {
       pages,
       product,
-      relatedProducts,
       categories,
     },
     revalidate: 200,
@@ -72,8 +70,7 @@ export async function getStaticPaths({ locales }: GetStaticPathsContext) {
 }
 
 export default function Slug({
-  product,
-  relatedProducts,
+  product
 }: InferGetStaticPropsType<typeof getStaticProps>) {
   const router = useRouter()
   const [sku,setSku] = useState<string>('')
@@ -125,7 +122,7 @@ export default function Slug({
   return router.isFallback ? (
     <h1>Loading...</h1>
   ) : (
-    <ProductView product={product} relatedProducts={relatedProducts} variants={variants} currentVariant={result} skuChange={skuChange} />
+    <><div>Hello</div></>
   )
 }
 
