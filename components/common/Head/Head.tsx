@@ -18,7 +18,7 @@ const Head: FC = () => {
           var UnbxdApiKey="a32a56fd1a3bd51b04a38278db19e452";` }} />
 
              
-      <link href="//libraries.unbxdapi.com/search-sdk/v2.0.1/vanillaSearch.min.css" rel="stylesheet"/>
+      <link href="//libraries.unbxdapi.com/search-sdk/v2.0.3/vanillaSearch.min.css" rel="stylesheet"/>
       <link href="//sandbox.unbxd.io/sleekhair_mybigcommerce_stage_autosuggest.css" rel="stylesheet"/>
       <link href="//sandbox.unbxd.io/sleekhair_mybigcommerce_stage_search.css" rel="stylesheet"/>      
       
