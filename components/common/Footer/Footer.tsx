@@ -207,7 +207,7 @@ function usePages(pages?: Page[]) {
   }
 }
 
-// Sort pages by the sort order assigned in the BC dashboard
+// Sort pages by the sort order assigned in the BC dashboard 
 function bySortOrder(a: Page, b: Page) {
   return (a.sort_order ?? 0) - (b.sort_order ?? 0)
 }
