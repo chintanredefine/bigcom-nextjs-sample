@@ -185,7 +185,7 @@ const Footer: FC<Props> = ({ className, pages }) => {
    <script src="//sandbox.unbxd.io/sleekhair_mybigcommerce_stage_autosuggest.js"></script>
    <script src="//sandbox.unbxd.io/sleekhair_mybigcommerce_stage_search.js"></script>
     
-    </footer>
+    </footer>  
   )
 }
 
