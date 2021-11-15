@@ -180,8 +180,8 @@ const Footer: FC<Props> = ({ className, pages }) => {
 
  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/3.0.3/handlebars.js"></script>
    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-   <script src="//libraries.unbxdapi.com/search-sdk/v2.0.1/vanillaSearch.min.js"></script>
-   <script type="text/javascript" src="https://libraries.unbxdapi.com/unbxdAutosuggest_v1.js"></script>
+   <script src="//libraries.unbxdapi.com/search-sdk/v2.0.3/vanillaSearch.min.js"></script>
+   
    <script src="//sandbox.unbxd.io/sleekhair_mybigcommerce_stage_autosuggest.js"></script>
    <script src="//sandbox.unbxd.io/sleekhair_mybigcommerce_stage_search.js"></script>
     

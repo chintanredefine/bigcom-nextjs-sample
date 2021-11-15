@@ -20,10 +20,7 @@ const Head: FC = () => {
           }}
         />
 
-        <link
-          href="//libraries.unbxdapi.com/search-sdk/v2.0.1/vanillaSearch.min.css"
-          rel="stylesheet"
-        />
+        <link href="//libraries.unbxdapi.com/search-sdk/v2.0.3/vanillaSearch.min.css" rel="stylesheet">
 
         <link
           rel="stylesheet"
