@@ -7,6 +7,10 @@ import { handler as useWishlist } from './wishlist/use-wishlist'
 import { handler as useWishlistAddItem } from './wishlist/use-add-item'
 import { handler as useWishlistRemoveItem } from './wishlist/use-remove-item'
 
+import { handler as getPaymentMethod } from './paymentmethod/get-paymentmethod'
+import { handler as addPaymentMethod } from './paymentmethod/add-paymentmethod'
+import { handler as removePaymentMethod } from './paymentmethod/remove-paymentmethod'
+
 import { handler as useCustomer } from './customer/use-customer'
 import { handler as useSearch } from './product/use-search'
 
@@ -25,6 +29,11 @@ export const bigcommerceProvider = {
     useWishlist,
     useAddItem: useWishlistAddItem,
     useRemoveItem: useWishlistRemoveItem,
+  },
+  paymentmethod: {
+    getPaymentMethod,
+    addPaymentMethod,
+    removePaymentMethod,
   },
   customer: { useCustomer },
   products: { useSearch },

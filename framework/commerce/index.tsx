@@ -10,6 +10,7 @@ import {
 import type {
   Customer,
   Wishlist,
+  PaymentMethod,
   Cart,
   Product,
   Signup,
@@ -38,6 +39,11 @@ export type Provider = CommerceConfig & {
     useWishlist?: SWRHook<Wishlist.GetWishlistHook>
     useAddItem?: MutationHook<Wishlist.AddItemHook>
     useRemoveItem?: MutationHook<Wishlist.RemoveItemHook>
+  }
+  paymentmethod?: {
+    usePaymentMethod?: SWRHook<PaymentMethod.GetPaymentMethodHook>
+    useAddPaymentMethod?: MutationHook<PaymentMethod.AddPaymentMethodHook>
+    useRemovePaymentMethod?: MutationHook<PaymentMethod.RemovePaymentMethodHook>
   }
   customer?: {
     useCustomer?: SWRHook<Customer.CustomerHook>

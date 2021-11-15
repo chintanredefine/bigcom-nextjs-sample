@@ -8,6 +8,7 @@ import type { LogoutSchema } from '../types/logout'
 import type { SignupSchema } from '../types/signup'
 import type { ProductsSchema } from '../types/product'
 import type { WishlistSchema } from '../types/wishlist'
+import type { PaymentMethodSchema } from '../types/paymentmethod'
 import type { CheckoutSchema } from '../types/checkout'
 import type { CustomerCardSchema } from '../types/customer/card'
 import type { CustomerAddressSchema } from '../types/customer/address'
@@ -26,6 +27,7 @@ export type APISchemas =
   | SignupSchema
   | ProductsSchema
   | WishlistSchema
+  | PaymentMethodSchema
   | CheckoutSchema
   | CustomerCardSchema
   | CustomerAddressSchema

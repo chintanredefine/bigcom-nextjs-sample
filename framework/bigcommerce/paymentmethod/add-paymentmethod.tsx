@@ -1,27 +1,29 @@
 import { useCallback } from 'react'
 import type { MutationHook } from '@commerce/utils/types'
 import { CommerceError } from '@commerce/utils/errors'
-import useAddItem, { UseAddItem } from '@commerce/wishlist/use-add-item'
-import type { AddItemHook } from '../types/wishlist'
+import addPaymentMethod, {
+  AddPaymentMethod,
+} from '@commerce/paymentmethod/add-paymentmethod'
+import type { AddPaymentMethodHook } from '../types/paymentmethod'
 import useCustomer from '../customer/use-customer'
-import useWishlist from './use-wishlist'
+import getPaymentMethod from './get-paymentmethod'
 
-export default useAddItem as UseAddItem<typeof handler>
+export default addPaymentMethod as AddPaymentMethod<typeof handler>
 
-export const handler: MutationHook<AddItemHook> = {
+export const handler: MutationHook<AddPaymentMethodHook> = {
   fetchOptions: {
-    url: '/api/wishlist',
+    url: '/api/addpaymentmethod',
     method: 'POST',
   },
   useHook:
     ({ fetch }) =>
     () => {
       const { data: customer } = useCustomer()
-      const { revalidate } = useWishlist()
+      const { revalidate } = getPaymentMethod()
 
       return useCallback(
         async function addItem(item) {
-          console.log('wishlist addition process is going on ')
+          console.log('payment Method addition process is going on ')
 
           if (!customer) {
             // A signed customer is required in order to have a wishlist

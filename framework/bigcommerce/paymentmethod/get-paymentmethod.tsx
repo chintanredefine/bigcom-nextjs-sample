@@ -1,18 +1,17 @@
 import { useMemo } from 'react'
 import { SWRHook } from '@commerce/utils/types'
-import useWishlist, { UseWishlist } from '@commerce/wishlist/use-wishlist'
-import type { GetWishlistHook } from '../types/wishlist'
+import getPaymentMethod, { GetPaymentMethod } from '@commerce/paymentmethod/get-paymentmethod'
+import type { GetPaymentMethodHook } from '../types/paymentmethod'
 import useCustomer from '../customer/use-customer'
 
-export default useWishlist as UseWishlist<typeof handler>
+export default getPaymentMethod as GetPaymentMethod<typeof handler>
 
-export const handler: SWRHook<GetWishlistHook> = {
+export const handler: SWRHook<GetPaymentMethodHook> = {
   fetchOptions: {
-    url: '/api/wishlist',
+    url: '/api/paymentmethod',
     method: 'GET',
   },
   async fetcher({ input: { customerId, includeProducts }, options, fetch }) {
-    // console.log("inside wishlist page use-wishlist.tsx fetcher");
     if (!customerId) return null
 
     // Use a dummy base as we only care about the relative path
@@ -28,8 +27,6 @@ export const handler: SWRHook<GetWishlistHook> = {
   useHook:
     ({ useData }) =>
     (input) => {
-      // console.log("inside wishlist page use-wishlist.tsx hooks");
-
       const { data: customer } = useCustomer()
       const response = useData({
         input: [
@@ -47,8 +44,6 @@ export const handler: SWRHook<GetWishlistHook> = {
           Object.create(response, {
             isEmpty: {
               get() {
-                // console.log("inside wishlist page use-wishlist.tsx usememo");
-
                 return (response.data?.items?.length || 0) <= 0
               },
               enumerable: true,
