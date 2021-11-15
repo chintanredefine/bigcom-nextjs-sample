@@ -2,7 +2,7 @@ import '@assets/main.css'
 import '@assets/chrome-bug.css'
 import 'keen-slider/keen-slider.min.css'
 import '@assets/common.css'
-
+import "../assets/orders.css"
 
 import { FC, useEffect } from 'react'
 import type { AppProps } from 'next/app'

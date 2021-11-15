@@ -1,0 +1,29 @@
+.formComtainer {
+  width: 100vw;
+  background: #ffffff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.form {
+  max-width: 80vw;
+  min-width: 40vw;
+}
+
+.inputFieldAd {
+  width: 100%;
+  background: #f0f0f0;
+  height: 3.5rem;
+}
+
+.submitBtn {
+  background: #e99da1;
+  padding: 10px 20px;
+  border-radius: 3px;
+  text-decoration: none;
+  border: none;
+  color: white;
+  font-weight: bold;
+}

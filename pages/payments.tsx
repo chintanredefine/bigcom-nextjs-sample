@@ -3,6 +3,11 @@ import commerce from '@lib/api/commerce'
 import { Bag } from '@components/icons'
 import { Layout } from '@components/common'
 import { Container, Text } from '@components/ui'
+import { useState } from 'react'
+
+import ProfileHead from '@components/common/ProfileNavlink/profile_head'
+import AddPayment from '@components/checkout/PaymentWidget/PaymentWidget'
+import AddPaymentForm from '@components/checkout/PaymentMethodView/PaymentMethodView'
 
 export async function getStaticProps({
   preview,
@@ -21,39 +26,15 @@ export async function getStaticProps({
 }
 
 export default function Orders() {
+  const [isValid, setisValid] = useState(false)
+
   return (
-    <Container>
-     <div className="container">
+    // <Container>
+    //   <div className="container">
     <div className="account account--fixed">
       <h2 className="page-heading">Rewards</h2>
-       <nav className="navBar navBar--sub navBar--account">
-    <ul className="navBar-section">
-     <li className="navBar-item">
-                <a className="navBar-action" href="/profile">Account Settings</a>
-            </li>
-                <li className="navBar-item"><a href="/orders" className="navBar-action">Orders</a></li>
-            <li className="navBar-item">
-                <a className="navBar-action" href="/rewards">REWARDS</a>
-            </li>
-        <li className="navBar-item">
-            <a className="navBar-action" href="/messages">Messages</a>
-        </li>
-            <li className="navBar-item">
-                <a className="navBar-action" href="/addresses">Addresses</a>
-            </li>
-                <li className="navBar-item is-active">
-                    <a className="navBar-action" href="javascript:void(0)">Payment Methods</a>
-                </li>
-                <li className="navBar-item">
-                    <a className="navBar-action" href="/wishlist">Wish Lists</a>
-                </li>
+      <ProfileHead />
 
-            <li className="navBar-item">
-                <a className="navBar-action" href="/account.php?action=recent_items">Recently Viewed</a>
-            </li>
-           
-    </ul>
-</nav>
       <div className="flex-1 p-24 flex flex-col justify-center items-center ">
         <span className="border border-dashed border-secondary rounded-full flex items-center justify-center w-16 h-16 p-12 bg-primary text-primary">
           <Bag className="absolute" />
@@ -62,9 +43,13 @@ export default function Orders() {
           No Payment method(s) found
         </h2>
       </div>
+
+      <div onClick={() => setisValid(true)}>
+        {isValid ? <AddPaymentForm /> : <AddPayment isValid={isValid} />}
       </div>
-      </div>
-    </Container>
+    </div>
+    //   </div>
+    // </Container>
   )
 }
 

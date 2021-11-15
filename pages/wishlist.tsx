@@ -6,6 +6,7 @@ import { Text, Container } from '@components/ui'
 import { useCustomer } from '@framework/customer'
 import { WishlistCard } from '@components/wishlist'
 import useWishlist from '@framework/wishlist/use-wishlist'
+import ProfileHead from '@components/common/ProfileNavlink/profile_head'
 
 export async function getStaticProps({
   preview,
@@ -36,43 +37,16 @@ export async function getStaticProps({
 export default function Wishlist() {
   const { data: customer } = useCustomer()
 
-  
   // @ts-ignore Shopify - Fix this types
   const { data, isLoading, isEmpty } = useWishlist({ includeProducts: true })
 
   return (
-    <Container>
-    <div className="container">
+    // <Container>
+    //   <div className="container">
     <div className="account account--fixed">
-    <h2 className="page-heading">My Wishlist</h2>
-       <nav className="navBar navBar--sub navBar--account">
-    <ul className="navBar-section">
-     <li className="navBar-item">
-                <a className="navBar-action" href="/profile">Account Settings</a>
-            </li>
-                <li className="navBar-item"><a href="/orders" className="navBar-action">Orders</a></li>
-            <li className="navBar-item is-active">
-                <a className="navBar-action" href="/rewards">REWARDS</a>
-            </li>
-        <li className="navBar-item">
-            <a className="navBar-action" href="/messages">Messages</a>
-        </li>
-            <li className="navBar-item">
-                <a className="navBar-action" href="/addresses">Addresses</a>
-            </li>
-                <li className="navBar-item">
-                    <a className="navBar-action" href="/payments">Payment Methods</a>
-                </li>
-                <li className="navBar-item is-active">
-                    <a className="navBar-action" href="javascript:void(0)">Wish Lists</a>
-                </li>
+      <h2 className="page-heading">My Wishlist</h2>
+      <ProfileHead />
 
-            <li className="navBar-item">
-                <a className="navBar-action" href="/account.php?action=recent_items">Recently Viewed</a>
-            </li>
-           
-    </ul>
-</nav>
       <div className="mt-3 mb-20">
         <div className="group flex flex-col">
           {isLoading || isEmpty ? (
@@ -96,11 +70,9 @@ export default function Wishlist() {
           )}
         </div>
       </div>
-
-      </div>
-</div>
-
-    </Container>
+    </div>
+    //   </div>
+    // </Container>
   )
 }
 

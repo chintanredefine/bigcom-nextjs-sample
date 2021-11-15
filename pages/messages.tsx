@@ -1,8 +1,14 @@
 import type { GetStaticPropsContext } from 'next'
+import useCustomer from '@framework/customer/use-customer'
+import { useEffect, useState } from 'react'
+import Image, { ImageProps } from 'next/image'
+
 import commerce from '@lib/api/commerce'
 import { Bag } from '@components/icons'
 import { Layout } from '@components/common'
 import { Container, Text } from '@components/ui'
+
+import ProfileHead from '@components/common/ProfileNavlink/profile_head'
 
 export async function getStaticProps({
   preview,
@@ -21,53 +27,106 @@ export async function getStaticProps({
 }
 
 export default function Orders() {
-  return (
-    <Container>
-     <div className="container">
-    <div className="account account--fixed">
-      <h2 className="page-heading">Messages</h2>
-       <nav className="navBar navBar--sub navBar--account">
-    <ul className="navBar-section">
-     <li className="navBar-item">
-                <a className="navBar-action" href="/profile">Account Settings</a>
-            </li>
-                <li className="navBar-item"><a href="/orders" className="navBar-action">Orders</a></li>
-            <li className="navBar-item">
-                <a className="navBar-action" href="/rewards ">REWARDS</a>
-            </li>
-        <li className="navBar-item is-active">
-            <a className="navBar-action" href="javascript:void(0)">Messages</a>
-        </li>
-            <li className="navBar-item">
-                <a className="navBar-action" href="/addresses">Addresses</a>
-            </li>
-                <li className="navBar-item">
-                    <a className="navBar-action" href="/payments">Payment Methods</a>
-                </li>
-                <li className="navBar-item">
-                    <a className="navBar-action" href="/wishlist">Wish Lists (1)</a>
-                </li>
+  //    const [adata, setVariants] = useState<string[]>([])
+  const [adata, setVariants] = useState<string[]>([])
+  const { data: customer } = useCustomer()
 
-            <li className="navBar-item">
-                <a className="navBar-action" href="/account.php?action=recent_items">Recently Viewed</a>
-            </li>
-           
-    </ul>
-</nav>
-      <div className="flex-1 p-24 flex flex-col justify-center items-center ">
-        <span className="border border-dashed border-secondary rounded-full flex items-center justify-center w-16 h-16 p-12 bg-primary text-primary">
-          <Bag className="absolute" />
-        </span>
-        <h2 className="pt-6 text-2xl font-bold tracking-wide text-center">
-          No orders found
-        </h2>
-        <p className="text-accent-6 px-10 text-center pt-2">
-          Biscuit oat cake wafer icing ice cream tiramisu pudding cupcake.
-        </p>
+  useEffect(() => {
+    const fetchData = async () => {
+      //console.log(data)
+      let cid = customer?.entityId
+
+      if (customer && customer?.entityId) {
+        const res = fetch(
+          'https://www.ystore.us/sleekshop/getOrders.php?customer_id=' + cid
+        )
+          .then((response) => response.json())
+          .then((rs1) => {
+            setVariants(rs1)
+          })
+        /*const {mdata} = await res.json()
+            setVariants(mdata)
+            console.log(mdata, res)
+*/
+      }
+    }
+
+    if (customer && customer?.entityId) {
+      // console.log(customer + " - " + customer?.entityId)
+      fetchData()
+    }
+  }, [customer])
+
+  return (
+    // <Container>
+    //   <div className="container">
+    <div className="account account--fixed">
+      <h2 className="page-heading">Message</h2>
+      <ProfileHead />
+      <div className="flex-1 p-24 flex flex-col justify-center items-center">
+        {console.log('adata', adata)}
+        <div className="account-body">
+          <section className="account-content">
+            <h3>Send a Message</h3>
+            <div className="form-field form-field--select">
+              <label className="form-label">
+                Order:
+                <small>Required</small>
+              </label>
+              <select
+                className="form-select"
+                name="message_order_id"
+                id="message_order_id"
+              >
+                {Array.isArray(adata) && adata.length > 0 ? (
+                  <>
+                    {adata.map((order: any) => {
+                      return (
+                        <option value={order.orderId}>
+                          Order #{order.orderId} - Placed on {order.dateCreated}{' '}
+                          for ${order.orderTotal}
+                        </option>
+                      )
+                    })}
+                  </>
+                ) : (
+                  ''
+                )}
+              </select>
+            </div>
+
+            <div className="form-field form-field--input form-field--inputText">
+              <label className="form-label">
+                Subject
+                <small>Required</small>
+              </label>
+              <input
+                type="text"
+                className="form-input"
+                name="message_subject"
+                id="message_subject"
+              />
+            </div>
+
+            <div className="form-field form-field--textarea">
+              <label className="form-label">
+                Message
+                <small>Required</small>
+              </label>
+
+              <textarea
+                className="form-input"
+                name="message_content"
+                id="message_content"
+                rows={7}
+              ></textarea>
+            </div>
+          </section>
+        </div>
       </div>
-      </div>
-      </div>
-    </Container>
+    </div>
+    //   </div>
+    // </Container>
   )
 }
 

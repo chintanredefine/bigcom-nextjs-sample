@@ -1,0 +1,93 @@
+.account-content {
+  padding-left: 0.75 rem;
+  padding-right: 0.75 rem;
+  width: 100%;
+  float: left;
+}
+.account-content .form-field--select .form-select {
+  width: 100%;
+}
+.account-content .tabs {
+  border-bottom: 1px solid #cacee0 !important;
+  margin: 0;
+}
+.account-content .tabs .tab {
+  border-bottom: #fff;
+  display: block;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  position: relative;
+}
+.account-content .tabs .tab {
+  border-top-color: #fff;
+  float: left;
+}
+.account-content .tabs .tab.is-active {
+  border: 1px solid #e4e4e4;
+  border-top-color: rgb(228, 228, 228);
+  border-bottom: 1px solid #fff;
+  border-bottom-color: rgb(255, 255, 255);
+  margin-bottom: -1.5px;
+  background: white;
+}
+.account-content .tabs .tab.is-active {
+  border-color: #cacee0 #cacee0 #fff !important;
+}
+.account-content .tabs .tab .tab-title {
+  color: #000;
+  font-size: 16px;
+  text-transform: uppercase;
+  font-family: nowregular;
+  text-decoration: none;
+  padding: 0.78571rem 1.28571rem;
+}
+.account-content .tabs .tab.is-active .tab-title {
+  color: #000;
+  font-size: 16px;
+  text-transform: uppercase;
+  font-family: nowbold;
+  font-weight: 700;
+}
+.tabs {
+  border-bottom: 1px solid #e4e4e4;
+  margin: 0;
+}
+.tab.is-active {
+  border: 1px solid #e4e4e4;
+  border-top-color: rgb(228, 228, 228);
+  border-right-color: rgb(228, 228, 228);
+  border-bottom-color: rgb(228, 228, 228);
+  border-bottom-style: solid;
+  border-bottom-width: 1px;
+  border-left-color: rgb(228, 228, 228);
+  border-bottom: 1px solid #fff;
+  border-bottom-color: rgb(255, 255, 255);
+}
+.tab.is-active {
+  margin-bottom: -1px;
+}
+.account-content .tabs .tab .tab-title {
+  display: block;
+}
+.tabs-contents:after,
+.tabs-contents:before {
+  content: ' ';
+  display: table;
+}
+.tabs-contents:after {
+  clear: both;
+}
+.tab-content {
+  padding: 2rem 0;
+}
+.tabs {
+  border-bottom: 1px solid #e4e4e4;
+  margin: 0;
+  float: left;
+  width: 100%;
+}
+.tab.is-active {
+  margin-bottom: -1px;
+  border-bottom: 1px solid #fff;
+}

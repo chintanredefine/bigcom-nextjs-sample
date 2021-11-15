@@ -4,6 +4,8 @@ import { Bag } from '@components/icons'
 import { Layout } from '@components/common'
 import { Container, Text } from '@components/ui'
 
+import ProfileHead from '@components/common/ProfileNavlink/profile_head'
+
 export async function getStaticProps({
   preview,
   locale,
@@ -22,38 +24,13 @@ export async function getStaticProps({
 
 export default function Orders() {
   return (
-    <Container>
-     <div className="container">
+    // <Container>
+    //   <div className="container">
     <div className="account account--fixed">
       <h2 className="page-heading">Rewards</h2>
-       <nav className="navBar navBar--sub navBar--account">
-    <ul className="navBar-section">
-     <li className="navBar-item">
-                <a className="navBar-action" href="/profile">Account Settings</a>
-            </li>
-                <li className="navBar-item"><a href="/orders" className="navBar-action">Orders</a></li>
-            <li className="navBar-item is-active">
-                <a className="navBar-action" href="javascript:void(0) ">REWARDS</a>
-            </li>
-        <li className="navBar-item">
-            <a className="navBar-action" href="/messages">Messages</a>
-        </li>
-            <li className="navBar-item">
-                <a className="navBar-action" href="/addresses">Addresses</a>
-            </li>
-                <li className="navBar-item">
-                    <a className="navBar-action" href="/payments">Payment Methods</a>
-                </li>
-                <li className="navBar-item">
-                    <a className="navBar-action" href="/wishlist">Wish Lists</a>
-                </li>
 
-            <li className="navBar-item">
-                <a className="navBar-action" href="/account.php?action=recent_items">Recently Viewed</a>
-            </li>
-           
-    </ul>
-</nav>
+      <ProfileHead />
+
       <div className="flex-1 p-24 flex flex-col justify-center items-center ">
         <span className="border border-dashed border-secondary rounded-full flex items-center justify-center w-16 h-16 p-12 bg-primary text-primary">
           <Bag className="absolute" />
@@ -65,9 +42,9 @@ export default function Orders() {
           Biscuit oat cake wafer icing ice cream tiramisu pudding cupcake.
         </p>
       </div>
-      </div>
-      </div>
-    </Container>
+    </div>
+    //   </div>
+    // </Container>
   )
 }
 

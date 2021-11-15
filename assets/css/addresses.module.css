@@ -1,0 +1,27 @@
+.panelbodyCo {
+  padding: 10px;
+}
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: 1200px) {
+  .ulParen {
+    box-sizing: border-box;
+    display: block;
+  }
+
+  .panelbody {
+    width: auto;
+  }
+
+  .panelbodyCo {
+    width: 33.3333%;
+    display: inline-block;
+  }
+}
+
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {
+  .ulParen {
+    flex-direction: column;
+  }
+}
