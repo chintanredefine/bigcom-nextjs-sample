@@ -20,16 +20,12 @@ const Head: FC = () => {
           }}
         />
 
-        <link
-          href="//libraries.unbxdapi.com/search-sdk/v2.0.3/vanillaSearch.min.css"
-          rel="stylesheet"
-        />
+        <link href="//libraries.unbxdapi.com/search-sdk/v2.0.3/vanillaSearch.min.css" rel="stylesheet" />
 
-        <link
-          rel="stylesheet"
-          type="text/css"
-          href="https://unbxd.s3.amazonaws.com/unbxd_autosuggest_sleekhair.css"
-        />
+
+        <link rel="stylesheet" href="//sandbox.unbxd.io/sleekhair_mybigcommerce_com-u1474746314480_autosuggest.css"> 
+        <link  rel="stylesheet" href="//sandbox.unbxd.io/sleekhair_mybigcommerce_com-u1474746314480_search.css">
+
       </NextHead>
       <link
         href="https://www.ystore.us/sleekshop/common.css"
