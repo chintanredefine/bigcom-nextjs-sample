@@ -147,11 +147,13 @@ export default function Orders() {
                           <li className="account-listItem">
                             <div className="account-product">
                               <div className="account-product-figure">
-                                <Image
-                                  width="100"
-                                  height="100"
-                                  src="https://cdn11.bigcommerce.com/s-hmhnh4h9/images/stencil/100x100/products/182318/168075/sleekhair_2272_1411586095__01434.1472573838.jpg?c=2"
-                                ></Image>
+                              <Image
+                                    width="100"
+                                    height="100"
+                                    src={order?.productImage}
+                                    alt="image not found"
+                                  ></Image>
+                                
                               </div>
                               <div className="account-product-body">
                                 <div className="account-orderStatus">

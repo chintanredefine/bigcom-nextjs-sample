@@ -40,6 +40,7 @@ export default function Orders({}: InferGetStaticPropsType<
   const [FormData, setFormData] = useState<string[]>([])
   const [showEditAddressCompo, setshowEditAddressCompo] = useState(false)
   const [showAddAddressCompo, setshowAddAddressCompo] = useState(false)
+  const [refresh, setrefresh] = useState(false)
 
   // const [fetchAgain, setfetchAgain] = useState(null)
 
@@ -55,8 +56,7 @@ export default function Orders({}: InferGetStaticPropsType<
       ;(() => {
         // console.log('fresh started fetching.... >>>> ', fetchAgain)
         fetch(
-          'https://www.redefinesolutions.com/sleekshop/getAddresses.php?customer_id=' +
-            cid
+          'https://www.ystore.us/sleekshop/getAddresses.php?customer_id=' + cid
         )
           .then((response) => response.json())
           .then((rs1) => {
@@ -64,7 +64,25 @@ export default function Orders({}: InferGetStaticPropsType<
           })
       })()
     }
-  }, [customer, showEditAddressCompo, showAddAddressCompo])
+  }, [customer, showEditAddressCompo, showAddAddressCompo, refresh])
+
+  const handleDeleteAddress = (address_id: any) => {
+    fetch('https://www.ystore.us/sleekshop/deleteAddress.php', {
+      // Adding method type
+      method: 'POST',
+
+      // Adding body or contents to send
+      body: JSON.stringify({
+        address_id,
+      }),
+    })
+      .then((res) => res.json())
+      .then((res) => {
+        if (res.success) {
+          setrefresh(!refresh)
+        }
+      })
+  }
 
   return (
     <>
@@ -116,6 +134,7 @@ export default function Orders({}: InferGetStaticPropsType<
                             <button
                               type="submit"
                               className="button secondary button--small"
+                              onClick={() => handleDeleteAddress(item.id)}
                             >
                               Delete
                             </button>
