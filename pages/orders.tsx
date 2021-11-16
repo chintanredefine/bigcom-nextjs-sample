@@ -68,8 +68,6 @@ export default function Orders() {
   }, [customer])
 
   return (
-    // <Container>
-    //   <div className="container">
     <div className="account account--fixed">
       <h2 className="page-heading">My Orders</h2>
       <ProfileHead />
@@ -193,14 +191,14 @@ export default function Orders() {
                     </>
                   ) : (
                     <>
-                      <li className="account-listItem">
+                      <div className="flex-1 p-24 flex flex-col justify-center items-center ">
                         <span className="border border-dashed border-secondary rounded-full flex items-center justify-center w-16 h-16 p-12 bg-primary text-primary">
                           <Bag className="absolute" />
                         </span>
                         <h2 className="pt-6 text-2xl font-bold tracking-wide text-center">
-                          No orders found
+                          No Orders found
                         </h2>
-                      </li>
+                      </div>
                     </>
                   )}
                 </ul>
@@ -212,8 +210,6 @@ export default function Orders() {
         </section>
       </div>
     </div>
-    //   </div>
-    // </Container>
   )
 }
 

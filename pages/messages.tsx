@@ -27,13 +27,11 @@ export async function getStaticProps({
 }
 
 export default function Orders() {
-  //    const [adata, setVariants] = useState<string[]>([])
   const [adata, setVariants] = useState<string[]>([])
   const { data: customer } = useCustomer()
 
   useEffect(() => {
     const fetchData = async () => {
-      //console.log(data)
       let cid = customer?.entityId
 
       if (customer && customer?.entityId) {
@@ -44,27 +42,19 @@ export default function Orders() {
           .then((rs1) => {
             setVariants(rs1)
           })
-        /*const {mdata} = await res.json()
-            setVariants(mdata)
-            console.log(mdata, res)
-*/
       }
     }
 
     if (customer && customer?.entityId) {
-      // console.log(customer + " - " + customer?.entityId)
       fetchData()
     }
   }, [customer])
 
   return (
-    // <Container>
-    //   <div className="container">
     <div className="account account--fixed">
       <h2 className="page-heading">Message</h2>
       <ProfileHead />
       <div className="flex-1 p-24 flex flex-col justify-center items-center">
-        {console.log('adata', adata)}
         <div className="account-body">
           <section className="account-content">
             <h3>Send a Message</h3>
@@ -125,8 +115,6 @@ export default function Orders() {
         </div>
       </div>
     </div>
-    //   </div>
-    // </Container>
   )
 }
 

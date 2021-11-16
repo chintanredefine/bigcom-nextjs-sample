@@ -22,11 +22,14 @@ export async function getStaticProps({
   locale,
   locales,
 }: GetStaticPropsContext) {
+  const config = { locale, locales }
+  const pagesPromise = commerce.getAllPages({ config, preview })
+  const siteInfoPromise = commerce.getSiteInfo({ config, preview })
+  const { pages } = await pagesPromise
+  const { categories } = await siteInfoPromise
+
   return {
-    props: {
-      //addressData: []
-    },
-    revalidate: 60,
+    props: { pages, categories },
   }
 }
 
@@ -49,18 +52,17 @@ export default function Orders({}: InferGetStaticPropsType<
     let cid = customer?.entityId
 
     if (cid) {
-    (() => {
-      // console.log('fresh started fetching.... >>>> ', fetchAgain)
-       fetch(
+      ;(() => {
+        // console.log('fresh started fetching.... >>>> ', fetchAgain)
+        fetch(
           'https://www.redefinesolutions.com/sleekshop/getAddresses.php?customer_id=' +
             cid
         )
           .then((response) => response.json())
-          .then((rs1) => { 
+          .then((rs1) => {
             setaddressData(rs1)
-            console.log("fresh rs1 address.tsx line 61 ", rs1);
           })
-    })()
+      })()
     }
   }, [customer, showEditAddressCompo, showAddAddressCompo])
 
@@ -125,7 +127,9 @@ export default function Orders({}: InferGetStaticPropsType<
                 })}
               </>
             ) : (
-              <h1 className={`p-20`}>LOADING ...</h1>
+              <div className="flex-1 flex flex-col justify-center items-center">
+                <h1 className={`p-20`}>LOADING ...</h1>
+              </div>
             )}
 
             <li className="address">
@@ -152,16 +156,10 @@ export default function Orders({}: InferGetStaticPropsType<
         <EditAddressCompo
           setshowEditAddressCompo={setshowEditAddressCompo}
           FormData={FormData}
-          // setfetchAgain={setfetchAgain}
-          // fetchAgain={fetchAgain}
         />
       ) : (
         showAddAddressCompo && (
-          <AddAddressCompo
-            setshowAddAddressCompo={setshowAddAddressCompo}
-            // setfetchAgain={setfetchAgain}
-            // fetchAgain={fetchAgain}
-          />
+          <AddAddressCompo setshowAddAddressCompo={setshowAddAddressCompo} />
         )
       )}
     </>
