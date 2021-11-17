@@ -1,13 +1,18 @@
 import type { GetStaticPropsContext } from 'next'
 import useCustomer from '@framework/customer/use-customer'
 import { useEffect, useState } from 'react'
-import Image from 'next/image'
+import Image, { ImageProps } from 'next/image'
 
 import commerce from '@lib/api/commerce'
 import { Bag } from '@components/icons'
 import { Layout } from '@components/common'
+import { Container, Text } from '@components/ui'
+import productsApi from '@framework/api/endpoints/catalog/products'
+import style from '@assets/css/orders.module.css'
 
 import ProfileHead from '@components/common/ProfileNavlink/profile_head'
+
+// orderProducts.tsx
 
 import OrderProducts from '@components/order/orderProducts'
 
@@ -28,6 +33,7 @@ export async function getStaticProps({
 }
 
 export default function Orders() {
+  //    const [adata, setVariants] = useState<string[]>([])
   const [adata, setVariants] = useState<string[]>([])
 
   const [isActive, setisActive] = useState<boolean>(false)
@@ -37,20 +43,26 @@ export default function Orders() {
 
   useEffect(() => {
     const fetchData = async () => {
+      //console.log(data)
       let cid = customer?.entityId
 
       if (customer && customer?.entityId) {
-        fetch(
+        const res = fetch(
           'https://www.ystore.us/sleekshop/getOrders.php?customer_id=' + cid
         )
           .then((response) => response.json())
           .then((rs1) => {
             setVariants(rs1)
           })
+        /*const {mdata} = await res.json()
+            setVariants(mdata)
+            console.log(mdata, res)
+*/
       }
     }
 
     if (customer && customer?.entityId) {
+      // console.log(customer + " - " + customer?.entityId)
       fetchData()
     }
   }, [customer])
@@ -131,26 +143,17 @@ export default function Orders() {
                   {Array.isArray(adata) && adata.length > 0 ? (
                     <>
                       {adata.map((order: any) => {
-                        console.log('order', order)
-
                         return (
                           <li className="account-listItem">
                             <div className="account-product">
                               <div className="account-product-figure">
-                                <div
-                                  style={{
-                                    width: '100%',
-                                    height: '100px',
-                                    color: 'black',
-                                  }}
-                                >
-                                  <Image
+                              <Image
                                     width="100"
                                     height="100"
                                     src={order?.productImage}
                                     alt="image not found"
                                   ></Image>
-                                </div>
+                                
                               </div>
                               <div className="account-product-body">
                                 <div className="account-orderStatus">

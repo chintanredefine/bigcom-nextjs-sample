@@ -2,12 +2,18 @@ import type { GetStaticPropsContext, InferGetStaticPropsType } from 'next'
 
 import commerce from '@lib/api/commerce'
 import useCustomer from '@framework/customer/use-customer'
+import { useCommerce } from '@commerce'
 import { useEffect, useState } from 'react'
+import { useRouter } from 'next/router'
+import { Bag } from '@components/icons'
 import { Layout } from '@components/common'
+import { Container, Text } from '@components/ui'
 import ProfileHead from '@components/common/ProfileNavlink/profile_head'
 
 import EditAddressCompo from '@components/ShippingAddress/edit_shipping_address'
 import AddAddressCompo from '@components/ShippingAddress/add_address'
+
+import Cookies from 'js-cookie'
 
 import style from '@assets/css/addresses.module.css'
 
@@ -36,6 +42,10 @@ export default function Orders({}: InferGetStaticPropsType<
   const [showAddAddressCompo, setshowAddAddressCompo] = useState(false)
   const [refresh, setrefresh] = useState(false)
 
+  // const [fetchAgain, setfetchAgain] = useState(null)
+
+  // const { data, isLoading, isEmpty } = useAddresses({ })
+
   const { data: customer } = useCustomer()
 
   // listing of all admin or users inside address tab
@@ -44,6 +54,7 @@ export default function Orders({}: InferGetStaticPropsType<
 
     if (cid) {
       ;(() => {
+        // console.log('fresh started fetching.... >>>> ', fetchAgain)
         fetch(
           'https://www.ystore.us/sleekshop/getAddresses.php?customer_id=' + cid
         )

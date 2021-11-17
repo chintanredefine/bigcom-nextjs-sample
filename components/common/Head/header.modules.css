@@ -1,5 +1,5 @@
-.searchBarMostCkContainer .Searchbar_iconContainer_close {
-  position: absolute !important;
-  right: 5px !important;
-  top: 7px !important;
+.open-extend-search .Searchbar_iconContainer_close {
+  position: absolute;
+  right: 5px;
+  top: 7px;
 }

@@ -34,7 +34,7 @@ const Searchbar: FC<Props> = ({ className, id = 'search' }) => {
 
   return useMemo(
     () => (
-      <div className={`${cn(s.rootcustom, className)} searchBarMostCkContainer`}>
+      <div className={cn(s.rootcustom, className)}>
         <label className="hidden" htmlFor={id}>
           Search
         </label>
