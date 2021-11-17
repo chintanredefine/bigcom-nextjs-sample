@@ -1,14 +1,12 @@
 import type { GetStaticPropsContext } from 'next'
 import useCustomer from '@framework/customer/use-customer'
 import { useEffect, useState } from 'react'
-import Image, { ImageProps } from 'next/image'
+import Image from 'next/image'
 
 import commerce from '@lib/api/commerce'
 import { Bag } from '@components/icons'
 import { Layout } from '@components/common'
-import { Container, Text } from '@components/ui'
-import productsApi from '@framework/api/endpoints/catalog/products'
-import style from '@assets/css/orders.module.css'
+// import style from '@assets/css/orders.module.css'
 
 import ProfileHead from '@components/common/ProfileNavlink/profile_head'
 
@@ -33,7 +31,6 @@ export async function getStaticProps({
 }
 
 export default function Orders() {
-  //    const [adata, setVariants] = useState<string[]>([])
   const [adata, setVariants] = useState<string[]>([])
 
   const [isActive, setisActive] = useState<boolean>(false)
@@ -43,7 +40,6 @@ export default function Orders() {
 
   useEffect(() => {
     const fetchData = async () => {
-      //console.log(data)
       let cid = customer?.entityId
 
       if (customer && customer?.entityId) {
@@ -152,7 +148,8 @@ export default function Orders() {
                                 <Image
                                   width="100"
                                   height="100"
-                                  src="https://cdn11.bigcommerce.com/s-hmhnh4h9/images/stencil/100x100/products/182318/168075/sleekhair_2272_1411586095__01434.1472573838.jpg?c=2"
+                                  src={order?.productImage}
+                                  alt="image not found"
                                 ></Image>
                               </div>
                               <div className="account-product-body">
@@ -193,14 +190,14 @@ export default function Orders() {
                     </>
                   ) : (
                     <>
-                      <li className="account-listItem">
+                      <div className="flex-1 p-24 flex flex-col justify-center items-center ">
                         <span className="border border-dashed border-secondary rounded-full flex items-center justify-center w-16 h-16 p-12 bg-primary text-primary">
                           <Bag className="absolute" />
                         </span>
                         <h2 className="pt-6 text-2xl font-bold tracking-wide text-center">
-                          No orders found
+                          No Orders found
                         </h2>
-                      </li>
+                      </div>
                     </>
                   )}
                 </ul>
@@ -212,8 +209,6 @@ export default function Orders() {
         </section>
       </div>
     </div>
-    //   </div>
-    // </Container>
   )
 }
 

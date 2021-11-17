@@ -1,12 +1,9 @@
 import type { GetStaticPropsContext } from 'next'
 import useCustomer from '@framework/customer/use-customer'
 import { useEffect, useState } from 'react'
-import Image, { ImageProps } from 'next/image'
 
 import commerce from '@lib/api/commerce'
-import { Bag } from '@components/icons'
 import { Layout } from '@components/common'
-import { Container, Text } from '@components/ui'
 
 import ProfileHead from '@components/common/ProfileNavlink/profile_head'
 
@@ -31,6 +28,12 @@ export default function Orders() {
   const [adata, setVariants] = useState<string[]>([])
   const { data: customer } = useCustomer()
 
+  let [formData, setformData] = useState({
+    message_order_id: '',
+    message_subject: '',
+    message_content: '',
+  })
+
   useEffect(() => {
     const fetchData = async () => {
       //console.log(data)
@@ -44,27 +47,39 @@ export default function Orders() {
           .then((rs1) => {
             setVariants(rs1)
           })
-        /*const {mdata} = await res.json()
-            setVariants(mdata)
-            console.log(mdata, res)
-*/
       }
     }
 
     if (customer && customer?.entityId) {
-      // console.log(customer + " - " + customer?.entityId)
       fetchData()
     }
   }, [customer])
 
+  const handleSendMessage = (newMessage: any) => {
+    console.log('formdata', newMessage)
+
+    fetch('https://www.ystore.us/sleekshop/sendMessage.php', {
+      // Adding method type
+      method: 'POST',
+
+      // Adding body or contents to send
+      body: JSON.stringify({
+        newMessage,
+      }),
+    })
+      .then((res) => res.json())
+      .then((res) => {
+        if (res.success) {
+          console.log('message send successfully ', res)
+        }
+      })
+  }
+
   return (
-    // <Container>
-    //   <div className="container">
     <div className="account account--fixed">
       <h2 className="page-heading">Message</h2>
       <ProfileHead />
       <div className="flex-1 p-24 flex flex-col justify-center items-center">
-        {console.log('adata', adata)}
         <div className="account-body">
           <section className="account-content">
             <h3>Send a Message</h3>
@@ -77,20 +92,31 @@ export default function Orders() {
                 className="form-select"
                 name="message_order_id"
                 id="message_order_id"
+                onChange={(e) => {
+                  setformData({ ...formData, message_order_id: e.target.value })
+                }}
               >
-                {Array.isArray(adata) && adata.length > 0 ? (
+                {Array.isArray(adata) && adata.length > 0 && (
                   <>
-                    {adata.map((order: any) => {
+                    {adata.map((order: any, idx: any) => {
+                      // if (idx == 0) {
+                      //   console.log('re loaded again', order)
+
+                      //   setformData({
+                      //     ...formData,
+                      //     message_order_id: order.orderId,
+                      //   })
+                      // }
+                      console.log('idx', idx)
+
                       return (
                         <option value={order.orderId}>
-                          Order #{order.orderId} - Placed on {order.dateCreated}{' '}
-                          for ${order.orderTotal}
+                          Order #{order.orderId} - Placed on {order.dateCreated}
+                          for $ {order.orderTotal}
                         </option>
                       )
                     })}
                   </>
-                ) : (
-                  ''
                 )}
               </select>
             </div>
@@ -105,6 +131,9 @@ export default function Orders() {
                 className="form-input"
                 name="message_subject"
                 id="message_subject"
+                onChange={(e) => {
+                  setformData({ ...formData, message_subject: e.target.value })
+                }}
               />
             </div>
 
@@ -119,14 +148,23 @@ export default function Orders() {
                 name="message_content"
                 id="message_content"
                 rows={7}
+                onChange={(e) => {
+                  setformData({ ...formData, message_content: e.target.value })
+                }}
               ></textarea>
             </div>
+
+            <button
+              type="submit"
+              className="button secondary button--small"
+              onClick={() => handleSendMessage(formData)}
+            >
+              Send Message
+            </button>
           </section>
         </div>
       </div>
     </div>
-    //   </div>
-    // </Container>
   )
 }
 

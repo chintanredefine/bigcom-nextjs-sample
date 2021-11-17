@@ -1,5 +1,4 @@
-import { FC, useEffect, useState } from 'react'
-import { useRouter } from 'next/router'
+import { useEffect, useState } from 'react'
 import useCustomer from '@framework/customer/use-customer'
 import Image from 'next/image'
 import { Bag } from '@components/icons'
@@ -7,8 +6,6 @@ import { Bag } from '@components/icons'
 import useAddItem from '@framework/cart/use-add-item'
 
 const OrderProductCompo = () => {
-  const router = useRouter()
-
   const [products, setProducts] = useState([])
 
   const { data: customer } = useCustomer()
@@ -17,11 +14,9 @@ const OrderProductCompo = () => {
 
   useEffect(() => {
     let cid = customer?.entityId
-    // console.log('router ', router, '\n', customer, '\n', customer?.entityId)
     if (customer && customer?.entityId) {
       fetch(
         'https://www.ystore.us/sleekshop/getOrderProducts.php?customer_id=' +
-          // 'http://10.0.10.59/webProjects/sleekshop/api/getOrderProducts.php?customer_id=' +
           cid
       )
         .then((res) => res.json())
@@ -37,8 +32,6 @@ const OrderProductCompo = () => {
         {Array.isArray(products) && products.length > 0 ? (
           <>
             {products.map((product: any) => {
-              console.log('product console', product)
-
               return (
                 <li className="account-listItem">
                   <div className="account-product">
@@ -101,14 +94,14 @@ const OrderProductCompo = () => {
           </>
         ) : (
           <>
-            <li className="account-listItem">
+            <div className="flex-1 p-24 flex flex-col justify-center items-center ">
               <span className="border border-dashed border-secondary rounded-full flex items-center justify-center w-16 h-16 p-12 bg-primary text-primary">
                 <Bag className="absolute" />
               </span>
               <h2 className="pt-6 text-2xl font-bold tracking-wide text-center">
                 No Products found
               </h2>
-            </li>
+            </div>
           </>
         )}
       </ul>

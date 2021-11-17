@@ -1,11 +1,26 @@
-import { Container } from '@components/ui'
 import ProfileHead from '@components/common/ProfileNavlink/profile_head'
 import { Layout } from '@components/common'
+import type { GetStaticPropsContext } from 'next'
+import commerce from '@lib/api/commerce'
+
+export async function getStaticProps({
+  preview,
+  locale,
+  locales,
+}: GetStaticPropsContext) {
+  const config = { locale, locales }
+  const pagesPromise = commerce.getAllPages({ config, preview })
+  const siteInfoPromise = commerce.getSiteInfo({ config, preview })
+  const { pages } = await pagesPromise
+  const { categories } = await siteInfoPromise
+
+  return {
+    props: { pages, categories },
+  }
+}
 
 export default function RecentItems() {
   return (
-    // <Container>
-    //   <div className="container">
     <div className="account account--fixed">
       <h2 className="page-heading">Recent Items</h2>
       <ProfileHead />
@@ -14,8 +29,6 @@ export default function RecentItems() {
         later on
       </div>
     </div>
-    //   </div>
-    // </Container>
   )
 }
 
