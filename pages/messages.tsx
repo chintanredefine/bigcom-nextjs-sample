@@ -66,6 +66,9 @@ export default function Orders() {
       body: JSON.stringify({
         newMessage,
       }),
+      // headers: {
+      //   'Content-Type': 'application/json',
+      // },
     })
       .then((res) => res.json())
       .then((res) => {
