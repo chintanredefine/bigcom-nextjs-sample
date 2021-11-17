@@ -10,24 +10,52 @@ const isShopify = provider === 'shopify'
 const isSaleor = provider === 'saleor'
 const isSwell = provider === 'swell'
 const isVendure = provider === 'vendure'
+const securityHeaders = [
+  { key: 'Access-Control-Allow-Credentials', value: 'true' },
+  { key: 'Access-Control-Allow-Origin', value: '*' }, // Change this to specific domain for better security
+  {
+    key: 'Access-Control-Allow-Methods',
+    value: 'GET,OPTIONS,PATCH,DELETE,POST,PUT',
+  },
+  {
+    key: 'Access-Control-Allow-Headers',
+    value:
+      'X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version',
+  },
+]
 
 module.exports = withCommerceConfig({
-  commerce,
-   eslint: {
+  eslint: {
     // Warning: This allows production builds to successfully complete even if
     // your project has ESLint errors.
     ignoreDuringBuilds: true,
   },
-   images: {
-        domains: ['www.redefinesolutions.com','cdn8.bigcommerce.com','cdn6.bigcommerce.com','cdn11.bigcommerce.com'],
-    },    
+  commerce,
+  images: {
+    domains: [
+      'www.redefinesolutions.com',
+      'cdn8.bigcommerce.com',
+      'cdn6.bigcommerce.com',
+      'cdn11.bigcommerce.com',
+      'www.ystore.us',
+    ],
+  },
   i18n: {
     locales: ['en-US', 'es'],
     defaultLocale: 'en-US',
   },
+  async headers() {
+    return [
+      {
+        // Apply these headers to all routes in your application.
+        source: '/(.*)',
+        headers: securityHeaders,
+      },
+    ]
+  },
   rewrites() {
     return [
-      (isBC || isShopify || isSwell || isVendure) && {
+      (isBC || isShopify || isSwell || isVendure || isSaleor) && {
         source: '/checkout',
         destination: '/api/checkout',
       },
