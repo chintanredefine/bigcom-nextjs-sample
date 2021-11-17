@@ -101,17 +101,7 @@ export default function Orders() {
               >
                 {Array.isArray(adata) && adata.length > 0 && (
                   <>
-                    {adata.map((order: any, idx: any) => {
-                      // if (idx == 0) {
-                      //   console.log('re loaded again', order)
-
-                      //   setformData({
-                      //     ...formData,
-                      //     message_order_id: order.orderId,
-                      //   })
-                      // }
-                      console.log('idx', idx)
-
+                    {adata.map((order: any) => {
                       return (
                         <option value={order.orderId}>
                           Order #{order.orderId} - Placed on {order.dateCreated}
