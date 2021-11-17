@@ -1,12 +1,9 @@
 import type { GetStaticPropsContext } from 'next'
 import useCustomer from '@framework/customer/use-customer'
 import { useEffect, useState } from 'react'
-import Image, { ImageProps } from 'next/image'
 
 import commerce from '@lib/api/commerce'
-import { Bag } from '@components/icons'
 import { Layout } from '@components/common'
-import { Container, Text } from '@components/ui'
 
 import ProfileHead from '@components/common/ProfileNavlink/profile_head'
 
@@ -73,7 +70,7 @@ export default function Orders() {
                     {adata.map((order: any) => {
                       return (
                         <option value={order.orderId}>
-                          Order #{order.orderId} - Placed on {order.dateCreated}{' '}
+                          Order #{order.orderId} - Placed on {order.dateCreated}
                           for ${order.orderTotal}
                         </option>
                       )
