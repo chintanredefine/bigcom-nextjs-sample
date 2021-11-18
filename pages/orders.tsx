@@ -8,6 +8,7 @@ import { Bag } from '@components/icons'
 import { Layout } from '@components/common'
 
 import ProfileHead from '@components/common/ProfileNavlink/profile_head'
+import { useUI } from '@components/ui'
 
 // orderProducts.tsx
 import OrderProducts from '@components/order/orderProducts'
@@ -36,6 +37,8 @@ export default function Orders() {
   const [showProductOrdered, setshowProductOrdered] = useState<boolean>(false)
   const { data: customer } = useCustomer()
 
+  const { openModal, setModalView } = useUI()
+
   useEffect(() => {
     let cid = customer?.entityId
     if (customer && customer?.entityId) {
@@ -44,6 +47,9 @@ export default function Orders() {
         .then((rs1) => {
           setVariants(rs1)
         })
+    } else {
+      setModalView('LOGIN_VIEW')
+      return openModal()
     }
   }, [customer])
 

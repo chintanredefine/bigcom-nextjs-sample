@@ -8,7 +8,6 @@ const AddAddressCompo = (props: {
   // setfetchAgain: any
   // fetchAgain: any
 }) => {
-  // //    const [adata, setVariants] = useState<string[]>([])
   const { data: customer } = useCustomer()
   const [countries, setcountries] = useState([])
   const [States, setStates] = useState([])
@@ -35,11 +34,10 @@ const AddAddressCompo = (props: {
 
     const data = { ...formData }
 
-    const res = await fetch(
+    await fetch(
       'https://www.ystore.us/sleekshop/add-customer-address.php',
       // 'http://10.0.10.59/webProjects/sleekshop/api/add-customer-address.php',
       {
-        // mode: 'cors',
         body: JSON.stringify(data),
         headers: {
           'Content-Type': 'application/json',
@@ -54,14 +52,12 @@ const AddAddressCompo = (props: {
   }
 
   useEffect(() => {
-    if (FetchCountries) {
-      fetch('https://www.ystore.us/sleekshop/getCountries.php')
-        .then((res) => res.json())
-        .then((AllCountry) => {
-          setcountries(AllCountry)
-        })
-    }
-  }, [FetchCountries])
+    fetch('https://www.ystore.us/sleekshop/getCountries.php')
+      .then((res) => res.json())
+      .then((AllCountry) => {
+        setcountries(AllCountry)
+      })
+  }, [])
 
   const fetchAllStates = (countryId: any) => {
     // console.log('started fetching all states data ... |')
