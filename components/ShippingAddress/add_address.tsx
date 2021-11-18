@@ -1,29 +1,5 @@
-import type { GetStaticPropsContext } from 'next'
 import useCustomer from '@framework/customer/use-customer'
 import { useEffect, useState } from 'react'
-import Image, { ImageProps } from 'next/image'
-
-import commerce from '@lib/api/commerce'
-import { Bag } from '@components/icons'
-import { Layout } from '@components/common'
-import { Container, Text } from '@components/ui'
-import { Logo, Button, Input } from '@components/ui'
-
-// export async function getStaticProps({
-//   preview,
-//   locale,
-//   locales,
-// }: GetStaticPropsContext) {
-//   const config = { locale, locales }
-//   const pagesPromise = commerce.getAllPages({ config, preview })
-//   const siteInfoPromise = commerce.getSiteInfo({ config, preview })
-//   const { pages } = await pagesPromise
-//   const { categories } = await siteInfoPromise
-
-//   return {
-//     props: { pages, categories },
-//   }
-// }
 
 import style from '@assets/css/edit_shipping_address.module.css'
 
@@ -34,18 +10,6 @@ const AddAddressCompo = (props: {
 }) => {
   // //    const [adata, setVariants] = useState<string[]>([])
   const { data: customer } = useCustomer()
-
-  // const [firstName, setFirstName] = useState('')
-  // const [lastName, setLastName] = useState('')
-  // //  const [country, setSelectedOptions] = useState<SelectedOptions>({})
-
-  // const [country, setCountryName] = useState('')
-  // const [address1, setAddress1] = useState('')
-  // const [address2, setAddress2] = useState('')
-  // const [state, setState] = useState('')
-  // const [phoneNumber, setPhoneNumber] = useState('')
-  // const [zipCode, setZipCode] = useState('')
-
   const [countries, setcountries] = useState([])
   const [States, setStates] = useState([])
   const [FetchCountries, setFetchCountries] = useState(false)
@@ -84,14 +48,9 @@ const AddAddressCompo = (props: {
       }
     )
 
-    // console.log('handleAddAddress res ', res)
-    // props.setfetchAgain(!props.fetchAgain)
-
     setTimeout(() => {
       props.setshowAddAddressCompo(false)
     }, 2000)
-
-    // where we'll add our form logic
   }
 
   useEffect(() => {
@@ -120,8 +79,10 @@ const AddAddressCompo = (props: {
 
   return (
     <div className={`${style.formComtainer}`} id="addAddressForm">
-      <h2 className="page-heading mt-10">Add New Address</h2>
       <div className="flex-1 flex flex-col justify-center items-center">
+        <h2 className="page-heading mt-10" style={{ width: 'auto' }}>
+          Add New Address
+        </h2>
         <div className="account-body">
           {customer && (
             <form className={`${style.form}`} onSubmit={handleAddAddress}>
@@ -190,93 +151,6 @@ const AddAddressCompo = (props: {
                     </select>
                   </div>
                 </div>
-                {/* 
-                <div className="form-field form-field--input form-field--inputText">
-                  <label className="form-label">
-                    First Name
-                    <small>Required</small>
-                  </label>
-                  <Input
-                    className="form-input"
-                    name="first_name"
-                    id="first_name"
-                    onChange={setFirstName}
-                  />
-                </div>
-
-                <div className="form-field form-field--input form-field--inputText">
-                  <label className="form-label">
-                    Last Name
-                    <small>Required</small>
-                  </label>
-                  <Input
-                    className="form-input"
-                    name="last_name"
-                    id="last_name"
-                    onChange={setLastName}
-                  />
-                </div>
-
-                <div className="form-field form-field--input form-field--inputText">
-                  <label className="form-label">
-                    Address Line 1<small>Required</small>
-                  </label>
-                  <Input
-                    className="form-input"
-                    name="address1"
-                    id="address1"
-                    onChange={setAddress1}
-                  />
-                </div>
-
-                <div className="form-field form-field--input form-field--inputText">
-                  <label className="form-label">Address Line 2</label>
-                  <Input
-                    className="form-input"
-                    name="address2"
-                    id="address2"
-                    onChange={setAddress2}
-                  />
-                </div>
-
-                <div className="form-field form-field--input form-field--inputText">
-                  <label className="form-label">
-                    State
-                    <small>Required</small>
-                  </label>
-                  <Input
-                    className="form-input"
-                    name="state"
-                    id="state"
-                    onChange={setState}
-                  />
-                </div>
-
-                <div className="form-field form-field--input form-field--inputText">
-                  <label className="form-label">
-                    Phone Number
-                    <small>Required</small>
-                  </label>
-                  <Input
-                    className="form-input"
-                    name="phone_number"
-                    id="phone_number"
-                    onChange={setPhoneNumber}
-                  />
-                </div>
-
-                <div className="form-field form-field--input form-field--inputText">
-                  <label className="form-label">
-                    ZIP Code
-                    <small>Required</small>
-                  </label>
-                  <Input
-                    className="form-input"
-                    name="zipcode"
-                    id="zipcode"
-                    onChange={setZipCode}
-                  />
-                </div> */}
 
                 <div
                   className="form-field form-field--input form-field--inputText"
@@ -461,7 +335,6 @@ const AddAddressCompo = (props: {
                     {States &&
                       States.length > 0 &&
                       States.map((state) => {
-                        // console.log('countries => ', countries, state)
                         let stateName = state['state'] || ''
                         return (
                           <>
@@ -525,7 +398,7 @@ const AddAddressCompo = (props: {
                   <span style={{ display: 'none' }}></span>
                 </div>
 
-                <div className="pt-2 w-full flex flex-col">
+                {/* <div className="pt-2 w-full flex flex-col">
                   <Button
                     className="Button_root__24MxS Button_slim__2caxo"
                     variant="slim"
@@ -540,6 +413,39 @@ const AddAddressCompo = (props: {
                   >
                     Cancel
                   </a>
+                </div> */}
+
+                <div className="form-field form-field--textarea d-flex">
+                  <button
+                    type="submit"
+                    className="btn "
+                    style={{
+                      background: '#e99da1',
+                      border: 'none',
+                      textTransform: 'capitalize',
+                      color: 'white',
+                      padding: '10px 20px ',
+                      borderRadius: '4px',
+                    }}
+                  >
+                    ADD Address
+                  </button>
+
+                  <button
+                    className="btn "
+                    style={{
+                      background: 'white',
+                      border: '1px solid #B0B0B0	',
+                      textTransform: 'capitalize',
+                      color: 'black',
+                      padding: '10px 20px',
+                      borderRadius: '4px',
+                      marginLeft: '20px',
+                    }}
+                    onClick={() => props.setshowAddAddressCompo(false)}
+                  >
+                    Cancel
+                  </button>
                 </div>
               </fieldset>
             </form>
