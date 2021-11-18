@@ -6,12 +6,10 @@ import Image from 'next/image'
 import commerce from '@lib/api/commerce'
 import { Bag } from '@components/icons'
 import { Layout } from '@components/common'
-// import style from '@assets/css/orders.module.css'
 
 import ProfileHead from '@components/common/ProfileNavlink/profile_head'
 
 // orderProducts.tsx
-
 import OrderProducts from '@components/order/orderProducts'
 
 export async function getStaticProps({
@@ -39,33 +37,17 @@ export default function Orders() {
   const { data: customer } = useCustomer()
 
   useEffect(() => {
-    const fetchData = async () => {
-      let cid = customer?.entityId
-
-      if (customer && customer?.entityId) {
-        const res = fetch(
-          'https://www.ystore.us/sleekshop/getOrders.php?customer_id=' + cid
-        )
-          .then((response) => response.json())
-          .then((rs1) => {
-            setVariants(rs1)
-          })
-        /*const {mdata} = await res.json()
-            setVariants(mdata)
-            console.log(mdata, res)
-*/
-      }
-    }
-
+    let cid = customer?.entityId
     if (customer && customer?.entityId) {
-      // console.log(customer + " - " + customer?.entityId)
-      fetchData()
+      fetch('https://www.ystore.us/sleekshop/getOrders.php?customer_id=' + cid)
+        .then((response) => response.json())
+        .then((rs1) => {
+          setVariants(rs1)
+        })
     }
   }, [customer])
 
   return (
-    // <Container>
-    //   <div className="container">
     <div className="account account--fixed">
       <h2 className="page-heading">My Orders</h2>
       <ProfileHead />
@@ -75,7 +57,6 @@ export default function Orders() {
             <li className={`tab ${isActive && 'is-active'} `}>
               <a
                 className="tab-title"
-                // href="/productordered"
                 href="#"
                 title="Reorder Products"
                 onClick={() => {

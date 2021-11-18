@@ -1,10 +1,10 @@
 .root {
-    @apply relative text-sm bg-accent-0 text-base w-full transition-colors duration-150 border border-accent-2;
+  @apply relative text-sm bg-accent-0 text-base w-full transition-colors duration-150 border border-accent-2;
 }
 
 .rootcustom {
-    @apply relative text-sm bg-accent-0 text-base w-full transition-colors duration-150 border-accent-2;
-    border-bottom: 1px solid #eaeaea;
+  @apply relative text-sm bg-accent-0 text-base w-full transition-colors duration-150 border-accent-2;
+  border-bottom: 1px solid #eaeaea;
 }
 
 .input {
@@ -17,14 +17,16 @@
 
 .inputcustom {
   @apply bg-transparent px-2 py-3 appearance-none w-full transition duration-150 ease-in-out pr-10;
-  padding: 0.75rem 0.5rem .75rem 2.5rem;
+  padding: 0.75rem 0.5rem 0.75rem 2.5rem;
 }
 
-.input::placeholder, .inputcustom::placeholder {
+.input::placeholder,
+.inputcustom::placeholder {
   @apply text-accent-3;
 }
 
-.input:focus,.inputcustom:focus {
+.input:focus,
+.inputcustom:focus {
   @apply outline-none shadow-outline-normal;
 }
 
@@ -37,8 +39,8 @@
   @apply h-5 w-5;
 }
 
-.searchdiv{
- @apply absolute 
+.searchdiv {
+  @apply absolute;
 }
 
 @screen sm {

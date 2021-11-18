@@ -21,7 +21,7 @@ const Head: FC = () => {
         />
 
         <link
-          href="//libraries.unbxdapi.com/search-sdk/v2.0.3/vanillaSearch.min.css"
+          href="//libraries.unbxdapi.com/search-sdk/v2.0.4/vanillaSearch.min.css"
           rel="stylesheet"
         />
 

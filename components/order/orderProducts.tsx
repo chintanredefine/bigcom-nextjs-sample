@@ -24,7 +24,7 @@ const OrderProductCompo = () => {
           setProducts(orderProducts)
         })
     }
-  }, [])
+  }, [customer])
 
   return (
     <>
@@ -41,8 +41,16 @@ const OrderProductCompo = () => {
                         height="100"
                         src={product?.prod_image[0]?.data[0]?.url_standard}
                       ></Image>
-                      <span className="purchased-title">Last Purchased</span>
-                      <span className="purchased-date">
+                      <span
+                        className="purchased-title"
+                        style={{ color: 'white' }}
+                      >
+                        Last Purchased
+                      </span>
+                      <span
+                        className="purchased-date"
+                        style={{ color: 'white' }}
+                      >
                         {product?.last_purchased}
                       </span>
                     </figure>

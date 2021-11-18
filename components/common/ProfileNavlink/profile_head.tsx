@@ -1,10 +1,24 @@
-import { FC } from 'react'
+import { FC, useEffect } from 'react'
 import { useRouter } from 'next/router'
 import Link from 'next/link'
+import { useUI } from '@components/ui'
+
+import useCustomer from '@framework/customer/use-customer'
 
 const ProfileHead: FC = () => {
   const router = useRouter()
   const currentRoute = router.route
+  const { data: customer } = useCustomer()
+  const { openModal, setModalView } = useUI()
+
+  useEffect(() => {
+    setTimeout(() => {
+      if (!customer) {
+        setModalView('LOGIN_VIEW')
+        return openModal()
+      }
+    }, 5000)
+  }, [])
 
   return (
     <>
