@@ -1,11 +1,13 @@
 import type { GetStaticPropsContext } from 'next'
-import { FC, useEffect, useState, useCallback } from 'react'
+import { useEffect, useState } from 'react'
 import useCustomer from '@framework/customer/use-customer'
 import commerce from '@lib/api/commerce'
 import { Layout } from '@components/common'
-import { Container, Text, Input, Button } from '@components/ui'
+import { Button } from '@components/ui'
 
 import ProfileHead from '@components/common/ProfileNavlink/profile_head'
+
+import style from '@assets/css/profileAccount.module.css'
 
 export async function getStaticProps({
   preview,
@@ -25,130 +27,231 @@ export async function getStaticProps({
 
 export default function Profile() {
   const { data } = useCustomer()
-  const [firstName, setFirstName] = useState('')
-  const [lastName, setLastName] = useState('')
 
-  /* const handleSignup = async (event: React.SyntheticEvent<EventTarget>) => {
-    event.preventDefault() // don't redirect the page
-    const res = await fetch(
-      'https://www.ystore.us/sleekshop/updatecustomer.php?first_name='+firstName+'&last_name='+lastName+'&customerId='+data.entityId,
-      
-    )
-    // where we'll add our form logic
-  }*/
+  let [formData, setformData] = useState({
+    first_name: '',
+    last_name: '',
+    customerId: '',
+    email: '',
+    phone: '',
+    company: '',
+    password: '',
+    confirmPassword: '',
+  })
 
-  /* const handleSignup = async (event: React.SyntheticEvent<EventTarget>) => {
-    event.preventDefault() // don't redirect the page
-    const res = await fetch(
-      'https://staging.leanstreamrp.com/stripe/process',
-      {
-        method: 'POST'
-      }
-      
-    )
-    // where we'll add our form logic
-  }*/
-
-  const handleSignup = async (event: React.SyntheticEvent<EventTarget>) => {
-    event.preventDefault() // don't redirect the page
-    const res = await fetch(
-      'https://www.ystore.us/sleekshop/updatecustomer.php',
-      {
-        mode: 'cors',
-        body: JSON.stringify({
-          first_name: firstName,
-          last_name: lastName,
-          customerId: data.entityId,
-        }),
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        method: 'POST',
-      }
-    )
-    // where we'll add our form logic
-  }
-
-  /*
-  const handleSignup = async (event: React.SyntheticEvent<EventTarget>) => {
-    event.preventDefault() // don't redirect the page
-    const res = await fetch(
-      'https://api.bigcommerce.com/stores/hmhnh4h9/v2/customers',
-      {
-        mode: 'cors',
-        body: JSON.stringify({
-          first_name: firstName,
-          last_name: lastName
-
-        }),
-        headers: {
-          'Content-Type': 'application/json',
-          'X-Auth-Token': 'qfhjgach3ewzkvhx47be9yy4m5tvbtw',
-          'X-Request-Id': '505c99d89ea0296cce18636bfdce20bss',
-          'X-Auth-Client': '84pi0h710a3n38xnpfjz2pbyyj2ezdn',
-          'Access-Control-Allow-Origin': "*",
-          "Access-Control-Allow-Headers": "Origin, X-Requested-With, Content-Type, Accept, Authorization"
-        },
-        method: 'POST'
-      }
-    )
-    // where we'll add our form logic
-  }
-  */
+  const [Toggle, setToggle] = useState(false)
 
   useEffect(() => {
-    console.log('current user ==>> ', data)
+    setformData({
+      ...formData,
+      first_name: data?.firstName,
+      last_name: data?.lastName,
+      customerId: data?.entityId,
+      email: data?.email,
+      phone: data?.phone,
+      company: data?.company,
+    })
   }, [data])
 
+  const handleUpdateProfile = async (
+    event: React.SyntheticEvent<EventTarget>
+  ) => {
+    event.preventDefault() // don't redirect the page
+    await fetch('https://www.ystore.us/sleekshop/updatecustomer.php', {
+      mode: 'cors',
+      body: JSON.stringify({ ...formData }),
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      method: 'POST',
+    })
+  }
+
   return (
-    // <Container>
-    //   <div className="container">
     <div className="account account--fixed">
       <h2 className="page-heading">My Profile</h2>
       <ProfileHead />
 
       {data && (
         <form
-          onSubmit={handleSignup}
+          onSubmit={handleUpdateProfile}
           className="w-100 flex flex-col justify-between"
         >
           <div className="margin-0">
-            <div className="width100">
+            <div className="width100 mb-6">
+              {/* First Name */}
               <div className="mb-6">
                 <label className="form-label">First Name</label>
                 <label>
-                  <Input
+                  <input
                     type="text"
                     placeholder="First Name"
-                    onChange={setFirstName}
-                    defaultValue={data.firstName}
+                    onChange={(e) =>
+                      setformData({
+                        ...formData,
+                        first_name: e.target.value,
+                      })
+                    }
+                    value={formData.first_name}
                     className="Input_root__2vmVG"
                   />
                 </label>
               </div>
-              <div>
+
+              {/* Last Name */}
+              <div className="mb-6">
                 <label className="form-label">Last Name</label>
                 <label>
-                  <Input
+                  <input
                     type="text"
                     placeholder="Last Name"
-                    onChange={setLastName}
-                    defaultValue={data.lastName}
+                    onChange={(e) =>
+                      setformData({
+                        ...formData,
+                        last_name: e.target.value,
+                      })
+                    }
+                    value={formData.last_name}
                     className="Input_root__2vmVG"
                   />
                 </label>
               </div>
-              <div className="mt-5">
-                <label className="form-label">Email</label>
-                <label>{data.email}</label>
+
+              {/* company */}
+              <div className="mb-6">
+                <label className="form-label">Company</label>
+                <label>
+                  <input
+                    type="text"
+                    placeholder="Company"
+                    onChange={(e) =>
+                      setformData({
+                        ...formData,
+                        company: e.target.value,
+                      })
+                    }
+                    value={formData.company}
+                    className="Input_root__2vmVG"
+                  />
+                </label>
               </div>
-              <div className="pt-2 w-full flex flex-col">
+
+              {/* phone */}
+              <div className="mb-6">
+                <label className="form-label">Phone Number</label>
+                <label>
+                  <input
+                    type="text"
+                    placeholder="Phone Number"
+                    onChange={(e) =>
+                      setformData({
+                        ...formData,
+                        phone: e.target.value,
+                      })
+                    }
+                    value={formData.phone}
+                    className="Input_root__2vmVG"
+                  />
+                </label>
+              </div>
+
+              {/* email */}
+              <div className="mb-6">
+                <label className="form-label">Email</label>
+                <label>
+                  <input
+                    type="text"
+                    placeholder="Email"
+                    onChange={(e) =>
+                      setformData({
+                        ...formData,
+                        email: e.target.value,
+                      })
+                    }
+                    value={formData.email}
+                    className="Input_root__2vmVG"
+                  />
+                </label>
+              </div>
+
+              {/* Change Password toggler  */}
+              <div className="mb-6">
+                <label className="form-label">Change Password</label>
+
+                <label className={`${style.switch}`}>
+                  <input
+                    type="checkbox"
+                    onChange={(e) => {
+                      setToggle(e.target.checked)
+                      console.log(
+                        'e.target.checked ',
+                        e.target.checked,
+                        'Toggle',
+                        Toggle
+                      )
+                    }}
+                  />
+                  <span className={`${style.slider} ${style.round} `}></span>
+                </label>
+              </div>
+              {Toggle && (
+                <>
+                  {/* New Password */}
+                  <div className="mb-6">
+                    <label className="form-label">New Password</label>
+                    <label>
+                      <input
+                        type="text"
+                        placeholder="Password"
+                        onChange={(e) =>
+                          setformData({
+                            ...formData,
+                            password: e.target.value,
+                          })
+                        }
+                        value={formData.password}
+                        className="Input_root__2vmVG"
+                      />
+                    </label>
+                  </div>
+
+                  {/* Confirm New Password */}
+                  <div className="mb-6">
+                    <label className="form-label">Confirm New Password</label>
+                    <label>
+                      <input
+                        type="text"
+                        placeholder="Confirm Password"
+                        onChange={(e) =>
+                          setformData({
+                            ...formData,
+                            confirmPassword: e.target.value,
+                          })
+                        }
+                        value={formData.confirmPassword}
+                        className="Input_root__2vmVG"
+                      />
+                    </label>
+                  </div>
+                </>
+              )}
+
+              {/* Update Button */}
+              <div className="pt-2 w-full flex flex-col mb-6">
                 <Button
                   className="Button_root__24MxS Button_slim__2caxo"
+                  style={{
+                    background: '#e99da1',
+                    border: 'none',
+                    textTransform: 'capitalize',
+                    color: 'white',
+                    padding: '10px 20px ',
+                    borderRadius: '4px',
+                  }}
                   variant="slim"
                   type="submit"
                 >
-                  Update
+                  Update Profile
                 </Button>
               </div>
             </div>
@@ -156,8 +259,6 @@ export default function Profile() {
         </form>
       )}
     </div>
-    //   </div>
-    // </Container>
   )
 }
 

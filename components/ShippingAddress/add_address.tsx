@@ -394,23 +394,6 @@ const AddAddressCompo = (props: {
                   <span style={{ display: 'none' }}></span>
                 </div>
 
-                {/* <div className="pt-2 w-full flex flex-col">
-                  <Button
-                    className="Button_root__24MxS Button_slim__2caxo"
-                    variant="slim"
-                    type="submit"
-                  >
-                    ADD
-                  </Button>
-                  <a
-                    href="#"
-                    onClick={() => props.setshowAddAddressCompo(false)}
-                    className="button"
-                  >
-                    Cancel
-                  </a>
-                </div> */}
-
                 <div className="form-field form-field--textarea d-flex">
                   <button
                     type="submit"
