@@ -76,7 +76,11 @@ export default function Profile() {
 
     function validate() {
       let letters = /^[A-Za-z]+$/
-      let inPass = password.match(/\d+/g)
+      let number = /\d+/g
+
+      console.log('password.match(letters) ', password, password.match(letters))
+      console.log('password.match(number) ', password, password.match(number))
+      console.log('password.length ', password, password.length)
 
       if (first_name && last_name && customerId && email && phone && company) {
         if (Toggle) {
@@ -84,7 +88,7 @@ export default function Profile() {
             if (
               password.length < 7 ||
               !password.match(letters) ||
-              inPass === null
+              !password.match(number)
             ) {
               setresMessage({
                 type: 'warn',
