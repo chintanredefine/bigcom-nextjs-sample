@@ -39,6 +39,11 @@ export default function Profile() {
     confirmPassword: '',
   })
 
+  let [resMessage, setresMessage] = useState({
+    type: '',
+    msg: '',
+  })
+
   const [Toggle, setToggle] = useState(false)
 
   useEffect(() => {
@@ -57,14 +62,111 @@ export default function Profile() {
     event: React.SyntheticEvent<EventTarget>
   ) => {
     event.preventDefault() // don't redirect the page
-    await fetch('https://www.ystore.us/sleekshop/updatecustomer.php', {
-      mode: 'cors',
-      body: JSON.stringify({ ...formData }),
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      method: 'POST',
-    })
+
+    const {
+      first_name,
+      last_name,
+      customerId,
+      email,
+      phone,
+      company,
+      password,
+      confirmPassword,
+    } = formData
+
+    function validate() {
+      if (first_name && last_name && customerId && email && phone && company) {
+        if (Toggle) {
+          if (password && confirmPassword && password === confirmPassword) {
+            if (password.length < 7) {
+              setresMessage({
+                type: 'warn',
+                msg: 'Minimun 7 charactor password is needed ',
+              })
+              setTimeout(() => {
+                setresMessage({
+                  type: '',
+                  msg: '',
+                })
+              }, 4000)
+            }
+            return false
+          } else {
+            setresMessage({
+              type: 'warn',
+              msg: 'Password and confirm password should be equal and filled',
+            })
+            setTimeout(() => {
+              setresMessage({
+                type: '',
+                msg: '',
+              })
+            }, 4000)
+            return false
+          }
+        }
+        return true
+      } else {
+        setresMessage({
+          type: 'warn',
+          msg: 'All Fields Are Required',
+        })
+
+        setTimeout(() => {
+          setresMessage({
+            type: '',
+            msg: '',
+          })
+        }, 4000)
+        return false
+      }
+    }
+
+    if (validate()) {
+      fetch('https://www.ystore.us/sleekshop/updatecustomer.php', {
+        mode: 'cors',
+        body: JSON.stringify({ ...formData }),
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        method: 'POST',
+      })
+        .then((res) => {
+          console.log('res', res)
+          return res.json()
+        })
+        .then((resObj) => {
+          console.log('resObj', resObj)
+
+          if (resObj.success) {
+            setresMessage({
+              type: 'success',
+              msg: resObj.message,
+            })
+
+            setTimeout(() => {
+              setresMessage({
+                type: '',
+                msg: '',
+              })
+            }, 4000)
+          } else {
+            setresMessage({
+              type: 'danger',
+              msg:
+                resObj.message ||
+                'Cant Update Now , Please Talk To Administrator',
+            })
+
+            setTimeout(() => {
+              setresMessage({
+                type: '',
+                msg: '',
+              })
+            }, 4000)
+          }
+        })
+    }
   }
 
   return (
@@ -183,12 +285,6 @@ export default function Profile() {
                     type="checkbox"
                     onChange={(e) => {
                       setToggle(e.target.checked)
-                      console.log(
-                        'e.target.checked ',
-                        e.target.checked,
-                        'Toggle',
-                        Toggle
-                      )
                     }}
                   />
                   <span className={`${style.slider} ${style.round} `}></span>
@@ -201,7 +297,7 @@ export default function Profile() {
                     <label className="form-label">New Password</label>
                     <label>
                       <input
-                        type="text"
+                        type="password"
                         placeholder="Password"
                         onChange={(e) =>
                           setformData({
@@ -220,7 +316,7 @@ export default function Profile() {
                     <label className="form-label">Confirm New Password</label>
                     <label>
                       <input
-                        type="text"
+                        type="password"
                         placeholder="Confirm Password"
                         onChange={(e) =>
                           setformData({
@@ -234,6 +330,20 @@ export default function Profile() {
                     </label>
                   </div>
                 </>
+              )}
+
+              {resMessage.msg && (
+                <div
+                  className={
+                    resMessage.type === 'danger'
+                      ? 'bg-danger'
+                      : resMessage.type === 'warn'
+                      ? 'bg-warn'
+                      : 'bg-success'
+                  }
+                >
+                  * {resMessage.msg}
+                </div>
               )}
 
               {/* Update Button */}
