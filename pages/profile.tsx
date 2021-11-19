@@ -75,13 +75,20 @@ export default function Profile() {
     } = formData
 
     function validate() {
+      let letters = /^[A-Za-z]+$/
+      let inPass = password.match(/\d+/g)
+
       if (first_name && last_name && customerId && email && phone && company) {
         if (Toggle) {
           if (password && confirmPassword && password === confirmPassword) {
-            if (password.length < 7) {
+            if (
+              password.length < 7 ||
+              !password.match(letters) ||
+              inPass === null
+            ) {
               setresMessage({
                 type: 'warn',
-                msg: 'Minimun 7 charactor password is needed ',
+                msg: 'Passwords must be "at least 7 characters" and contain both "alphabetic" and "numeric" characters.',
               })
               setTimeout(() => {
                 setresMessage({
@@ -89,6 +96,8 @@ export default function Profile() {
                   msg: '',
                 })
               }, 4000)
+            } else {
+              return true
             }
             return false
           } else {
