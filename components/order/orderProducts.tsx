@@ -4,11 +4,13 @@ import Image from 'next/image'
 import { Bag } from '@components/icons'
 
 import useAddItem from '@framework/cart/use-add-item'
+import { useUI } from '@components/ui'
 
 const OrderProductCompo = () => {
   const [products, setProducts] = useState([])
 
   const { data: customer } = useCustomer()
+  const { openModal, setModalView } = useUI()
 
   const addItem = useAddItem()
 
@@ -23,6 +25,9 @@ const OrderProductCompo = () => {
         .then((orderProducts) => {
           setProducts(orderProducts)
         })
+    } else {
+      setModalView('LOGIN_VIEW')
+      return openModal()
     }
   }, [customer])
 

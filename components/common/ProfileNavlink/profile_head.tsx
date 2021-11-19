@@ -1,29 +1,28 @@
-import { FC, useEffect } from 'react'
+import { FC } from 'react'
 import { useRouter } from 'next/router'
 import Link from 'next/link'
-import { useUI } from '@components/ui'
+// import { useUI } from '@components/ui'
 
-import useCustomer from '@framework/customer/use-customer'
+// import useCustomer from '@framework/customer/use-customer'
 
 const ProfileHead: FC = () => {
   const router = useRouter()
   const currentRoute = router.route
-  const { data: customer } = useCustomer()
-  const { openModal, setModalView } = useUI()
+  // const { data: customer } = useCustomer()
+  // const { openModal, setModalView } = useUI()
 
-  useEffect(() => {
-    setTimeout(() => {
-      if (!customer) {
-        setModalView('LOGIN_VIEW')
-        return openModal()
-      }
-    }, 5000)
-  }, [])
+  // useEffect(() => {
+  //   setTimeout(() => {
+  //     if (!customer) {
+  //       setModalView('LOGIN_VIEW')
+  //       return openModal()
+  //     }
+  //   }, 5000)
+  // }, [])
 
   return (
     <>
       <nav className="navBar navBar--sub navBar--account bg-primary">
-        {/* {console.log('router profile_head file ', router)} */}
         <ul className="navBar-section">
           <li
             className={`navBar-item ${

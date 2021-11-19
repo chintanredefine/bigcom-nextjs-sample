@@ -33,3 +33,21 @@ yarn-error.log*
 
 # vercel
 .vercel
+
+#.editorconfig
+.editorconfig
+
+#.env - idevapp.local
+.env - idevapp.local
+
+#.env-sleekshop.template
+.env-sleekshop.template
+
+#.env.local
+.env.local
+
+#.env.local
+.env.local
+
+#.env.template
+.env.template
