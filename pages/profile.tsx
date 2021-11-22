@@ -75,7 +75,7 @@ export default function Profile() {
     } = formData
 
     function validate() {
-      let letters = /^[A-Za-z]+$/
+      let letters = /[a-zA-Z]/
       let number = /\d+/g
 
       console.log('password.match(letters) ', password, password.match(letters))
