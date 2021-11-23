@@ -10,6 +10,13 @@ import style from './orderProduct.module.css'
 const OrderProductCompo = () => {
   const [products, setProducts] = useState([])
 
+  const [State, setState] = useState([
+    {
+      id: 0,
+      Qty: 1,
+    },
+  ])
+
   const { data: customer } = useCustomer()
   const { openModal, setModalView } = useUI()
 
@@ -37,12 +44,9 @@ const OrderProductCompo = () => {
       <ul className="account-list">
         {Array.isArray(products) && products.length > 0 ? (
           <>
-            {products.map((product: any) => {
+            {products.map((product: any, index) => {
               let productQuantity = product?.quantity || 0
-              let Qty = 0
-              let setQty = (qty: any) => {
-                return (Qty += qty)
-              }
+
               return (
                 <li className="account-listItem">
                   <div className="account-product">
@@ -87,7 +91,19 @@ const OrderProductCompo = () => {
                           <button
                             className={`${style.decrementBtn}`}
                             onClick={() => {
-                              Qty >= 1 && setQty(Qty - 1)
+                              State[index].Qty >= 1 &&
+                                console.log(
+                                  'State ==>> decrement ',
+                                  State,
+                                  State[index].Qty
+                                )
+                              setState((oldArray) => [
+                                ...oldArray,
+                                (oldArray[index] = {
+                                  id: index,
+                                  Qty: oldArray[index].Qty - 1,
+                                }),
+                              ])
                             }}
                           >
                             -
@@ -95,12 +111,24 @@ const OrderProductCompo = () => {
                           <input
                             disabled
                             className={`${style.inputEDCartVal}`}
-                            value={Qty}
+                            value={
+                              State[index]?.id === index ? State[index]?.Qty : 1
+                            }
                           />
                           <button
                             className={` ${style.incrementBtn} `}
                             onClick={() => {
-                              productQuantity >= Qty && setQty(Qty + 1)
+                              productQuantity >= State[index].Qty &&
+                                console.log('State 2 increment ==>> ', State)
+                              productQuantity
+                              State[index].Qty
+                              setState((oldArray) => [
+                                ...oldArray,
+                                (oldArray[index] = {
+                                  id: index,
+                                  Qty: oldArray[index].Qty + 1,
+                                }),
+                              ])
                             }}
                           >
                             +
@@ -132,11 +160,13 @@ const OrderProductCompo = () => {
                                 onClick={async () => {
                                   let productId = product.product_id
                                   let variantId = product.variant_id
-                                  await addItem({
-                                    productId,
-                                    variantId,
-                                    quantity: Qty,
-                                  })
+                                  if (State[index]['id'] === index) {
+                                    await addItem({
+                                      productId,
+                                      variantId,
+                                      quantity: State[index].Qty,
+                                    })
+                                  }
                                 }}
                               >
                                 Add to Cart
