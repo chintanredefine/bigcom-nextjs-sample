@@ -47,8 +47,11 @@ export default function Profile() {
   const [Toggle, setToggle] = useState(false)
 
   useEffect(() => {
+<<<<<<< HEAD
     console.log('..formData ==> ', { ...formData })
 
+=======
+>>>>>>> 76d88b4b0af696e1e79f3807db0358c2f0db26ba
     setformData({
       ...formData,
       first_name: data?.firstName,
@@ -80,9 +83,15 @@ export default function Profile() {
       let letters = /[a-zA-Z]/
       let number = /\d+/g
 
+<<<<<<< HEAD
       // console.log('password.match(letters) ', password, password.match(letters))
       // console.log('password.match(number) ', password, password.match(number))
       // console.log('password.length ', password, password.length)
+=======
+      console.log('password.match(letters) ', password, password.match(letters))
+      console.log('password.match(number) ', password, password.match(number))
+      console.log('password.length ', password, password.length)
+>>>>>>> 76d88b4b0af696e1e79f3807db0358c2f0db26ba
 
       if (first_name && last_name && customerId && email && phone && company) {
         if (Toggle) {
