@@ -125,8 +125,6 @@ export default function Orders() {
   }
 
   const handleClearForm = () => {
-    console.log('cleared the form')
-
     setformData({
       message_order_id: 'Select Your Order',
       message_subject: '',
@@ -231,8 +229,8 @@ export default function Orders() {
                 style={{
                   background: '#e99da1',
                   border: 'none',
-                  textTransform: 'uppercase',
                   color: 'white',
+                  textTransform: 'capitalize',
                   padding: '10px 20px ',
                   borderRadius: '4px',
                 }}
@@ -256,8 +254,6 @@ export default function Orders() {
               >
                 Clear
               </button>
-
-              {console.log('resMessage.msg  ', resMessage)}
             </div>
           </section>
         </div>

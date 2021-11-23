@@ -1,0 +1,44 @@
+.AddToCartParent {
+  display: flex;
+  flex-direction: column;
+  height: 80px;
+}
+
+.crtChildOne {
+  margin-bottom: 90px;
+  margin-top: -25px;
+}
+
+.add_to_cart_but {
+  margin-right: 0px;
+}
+
+.account_orderStatus_label {
+  float: none;
+  text-align: center;
+}
+
+.incrementParent {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.decrementBtn {
+  width: 30px;
+  background: #cacaca;
+  margin-right: 5px;
+}
+
+.incrementBtn {
+  width: 30px;
+  background: #e99da1;
+  margin-left: 5px;
+}
+
+.inputEDCartVal {
+  border: 2px solid #c7c7c7;
+  width: 50px;
+  border-radius: 5px;
+  text-align: center;
+}

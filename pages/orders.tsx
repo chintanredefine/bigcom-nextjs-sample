@@ -8,6 +8,7 @@ import { Bag } from '@components/icons'
 import { Layout } from '@components/common'
 
 import ProfileHead from '@components/common/ProfileNavlink/profile_head'
+import { useUI } from '@components/ui'
 
 // orderProducts.tsx
 import OrderProducts from '@components/order/orderProducts'
@@ -31,10 +32,12 @@ export async function getStaticProps({
 export default function Orders() {
   const [adata, setVariants] = useState<string[]>([])
 
-  const [isActive, setisActive] = useState<boolean>(false)
+  const [isActive, setisActive] = useState<boolean>(true)
 
-  const [showProductOrdered, setshowProductOrdered] = useState<boolean>(false)
+  const [showProductOrdered, setshowProductOrdered] = useState<boolean>(true)
   const { data: customer } = useCustomer()
+
+  const { openModal, setModalView } = useUI()
 
   useEffect(() => {
     let cid = customer?.entityId
@@ -44,6 +47,9 @@ export default function Orders() {
         .then((rs1) => {
           setVariants(rs1)
         })
+    } else {
+      setModalView('LOGIN_VIEW')
+      return openModal()
     }
   }, [customer])
 
@@ -145,6 +151,12 @@ export default function Orders() {
                                     Order #{order.orderId}
                                   </a>
                                 </h5>
+                                <h6 className="account-product-title">
+                                  <a href="javascript:void(0)">
+                                    Order #{order.orderId}
+                                  </a>
+                                </h6>
+
                                 <p className="account-product-description">
                                   {order.productCnt} product totaling $
                                   {order.orderTotal}

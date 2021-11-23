@@ -4,11 +4,15 @@ import Image from 'next/image'
 import { Bag } from '@components/icons'
 
 import useAddItem from '@framework/cart/use-add-item'
+import { useUI } from '@components/ui'
+import style from './orderProduct.module.css'
 
 const OrderProductCompo = () => {
   const [products, setProducts] = useState([])
+  const [Qty, setQty] = useState(1)
 
   const { data: customer } = useCustomer()
+  const { openModal, setModalView } = useUI()
 
   const addItem = useAddItem()
 
@@ -23,6 +27,9 @@ const OrderProductCompo = () => {
         .then((orderProducts) => {
           setProducts(orderProducts)
         })
+    } else {
+      setModalView('LOGIN_VIEW')
+      return openModal()
     }
   }, [customer])
 
@@ -32,6 +39,8 @@ const OrderProductCompo = () => {
         {Array.isArray(products) && products.length > 0 ? (
           <>
             {products.map((product: any) => {
+              let productQuantity = product?.quantity || 0
+
               return (
                 <li className="account-listItem">
                   <div className="account-product">
@@ -71,27 +80,71 @@ const OrderProductCompo = () => {
                         </a>
                       </div>
 
-                      <div className="account-product-body-part">
-                        <span className="account-product-price">
-                          $ {product?.prod_price}
-                        </span>
-                      </div>
-
-                      <div className="add-to-cart-but">
-                        <div className="form-action">
-                          <h6
-                            className="account-orderStatus-label cursor-pointer"
-                            onClick={async () => {
-                              let productId = product.product_id
-                              let variantId = product.variant_id
-                              await addItem({
-                                productId,
-                                variantId,
-                              })
+                      <div className={`account-product-body-part `}>
+                        <div className={`${style.incrementParent}`}>
+                          <button
+                            className={`${style.decrementBtn}`}
+                            onClick={() => {
+                              Qty >= 1 && setQty(Qty - 1)
                             }}
                           >
-                            Add to Cart
-                          </h6>
+                            -
+                          </button>
+                          <input
+                            disabled
+                            className={`${style.inputEDCartVal}`}
+                            value={Qty}
+                          />
+                          <button
+                            className={` ${style.incrementBtn} `}
+                            onClick={() => {
+                              productQuantity >= Qty && setQty(Qty + 1)
+                            }}
+                          >
+                            +
+                          </button>
+                        </div>
+                      </div>
+
+                      <div className={`${style.AddToCartParent}`}>
+                        <div
+                          className={`account-product-body-part ${style.crtChildOne}`}
+                        >
+                          {/* {console.log('Product all data ==> ', product)} */}
+
+                          <div
+                            className="account-product-price"
+                            style={{ width: '105px' }}
+                          >
+                            $ {product?.prod_price}
+                          </div>
+                        </div>
+
+                        <div
+                          className={`${style.add_to_cart_but} add-to-cart-but`}
+                        >
+                          <div className="form-action">
+                            {productQuantity > 0 ? (
+                              <h6
+                                className={`account-orderStatus-label cursor-pointer ${style.account_orderStatus_label}`}
+                                onClick={async () => {
+                                  let productId = product.product_id
+                                  let variantId = product.variant_id
+                                  await addItem({
+                                    productId,
+                                    variantId,
+                                    quantity: Qty,
+                                  })
+                                }}
+                              >
+                                Add to Cart
+                              </h6>
+                            ) : (
+                              <h6 className="account-orderStatus-label cursor-pointer">
+                                Out Of Stock
+                              </h6>
+                            )}
+                          </div>
                         </div>
                       </div>
                     </div>
