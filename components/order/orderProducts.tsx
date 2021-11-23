@@ -9,7 +9,6 @@ import style from './orderProduct.module.css'
 
 const OrderProductCompo = () => {
   const [products, setProducts] = useState([])
-  const [Qty, setQty] = useState(1)
 
   const { data: customer } = useCustomer()
   const { openModal, setModalView } = useUI()
@@ -40,7 +39,10 @@ const OrderProductCompo = () => {
           <>
             {products.map((product: any) => {
               let productQuantity = product?.quantity || 0
-
+              let Qty = 0
+              let setQty = (qty: any) => {
+                return (Qty += qty)
+              }
               return (
                 <li className="account-listItem">
                   <div className="account-product">
