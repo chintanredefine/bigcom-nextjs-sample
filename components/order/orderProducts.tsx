@@ -10,12 +10,13 @@ import style from './orderProduct.module.css'
 const OrderProductCompo = () => {
   const [products, setProducts] = useState([])
 
-  const [State, setState] = useState([
+  let initialItemCount = [
     {
       id: 0,
-      Qty: 1,
+      val: 1,
     },
-  ])
+  ]
+  const [itemCountState, setitemCountState] = useState(initialItemCount)
 
   const { data: customer } = useCustomer()
   const { openModal, setModalView } = useUI()
@@ -38,6 +39,81 @@ const OrderProductCompo = () => {
       return openModal()
     }
   }, [customer])
+
+  const handleIncrement = (
+    index: any,
+    productQuantity: any,
+    incrementData: any
+  ) => {
+    console.log(
+      'increment \n itemCountState => ',
+      itemCountState,
+      ' incrementData => ',
+      incrementData,
+      'index',
+      index,
+      'initialItemCount',
+      initialItemCount
+    )
+
+    if (itemCountState[index] && itemCountState[index].id === index) {
+      initialItemCount[index].val += 1
+      let newArr = [...itemCountState] // copying the old datas array
+      newArr[index] = incrementData[index]
+
+      setitemCountState(newArr)
+    } else {
+      initialItemCount.push({
+        id: index,
+        val: 2,
+      })
+
+      let newArr = [...itemCountState] // copying the old datas array
+      newArr[index] = incrementData[index]
+
+      setitemCountState(newArr)
+    }
+  }
+
+  const handleDecrement = (
+    index: any,
+    productQuantity: any,
+    incrementData: any
+  ) => {
+    console.log(
+      'increment \n itemCountState => ',
+      itemCountState,
+      ' incrementData => ',
+      incrementData,
+      'index',
+      index,
+      'initialItemCount',
+      initialItemCount
+    )
+
+    if (
+      itemCountState[index] &&
+      itemCountState[index].id == index &&
+      productQuantity[index].val > 1
+    ) {
+      initialItemCount[index].val -= 1
+
+      let newArr = [...itemCountState] // copying the old datas array
+      newArr[index] = incrementData[index]
+
+      setitemCountState(newArr)
+    }
+    // } else {
+    //   incrementData.push({
+    //     id: index,
+    //     val: incrementData[index].val + 1,
+    //   })
+    //   let newArr = [...itemCountState] // copying the old datas array
+    //   newArr[index] = incrementData[index]
+
+    //   setitemCountState(newArr)
+    // }
+  }
 
   return (
     <>
@@ -88,47 +164,44 @@ const OrderProductCompo = () => {
 
                       <div className={`account-product-body-part `}>
                         <div className={`${style.incrementParent}`}>
+                          {/* ===================decreent button=================== */}
                           <button
                             className={`${style.decrementBtn}`}
-                            onClick={() => {
-                              State[index].Qty >= 1 &&
-                                console.log(
-                                  'State ==>> decrement ',
-                                  State,
-                                  State[index].Qty
-                                )
-                              setState((oldArray) => [
-                                ...oldArray,
-                                (oldArray[index] = {
-                                  id: index,
-                                  Qty: oldArray[index].Qty - 1,
-                                }),
-                              ])
-                            }}
+                            onClick={() =>
+                              handleDecrement(
+                                index,
+                                productQuantity,
+                                initialItemCount
+                              )
+                            }
                           >
                             -
                           </button>
+
+                          {/* current value of product quantity //  #input field for all subcomponents */}
                           <input
                             disabled
                             className={`${style.inputEDCartVal}`}
                             value={
-                              State[index]?.id === index ? State[index]?.Qty : 1
+                              itemCountState[index]
+                                ? itemCountState[index].val
+                                : 1
                             }
                           />
+
+                          {/* ===================increment button=================== */}
                           <button
                             className={` ${style.incrementBtn} `}
                             onClick={() => {
-                              productQuantity >= State[index].Qty &&
-                                console.log('State 2 increment ==>> ', State)
-                              productQuantity
-                              State[index].Qty
-                              setState((oldArray) => [
-                                ...oldArray,
-                                (oldArray[index] = {
-                                  id: index,
-                                  Qty: oldArray[index].Qty + 1,
-                                }),
-                              ])
+                              if (
+                                productQuantity >= itemCountState[index]?.val
+                              ) {
+                                handleIncrement(
+                                  index,
+                                  productQuantity,
+                                  initialItemCount
+                                )
+                              }
                             }}
                           >
                             +
@@ -144,7 +217,7 @@ const OrderProductCompo = () => {
 
                           <div
                             className="account-product-price"
-                            style={{ width: '105px' }}
+                            style={{ width: 'auto' }}
                           >
                             $ {product?.prod_price}
                           </div>
@@ -160,13 +233,11 @@ const OrderProductCompo = () => {
                                 onClick={async () => {
                                   let productId = product.product_id
                                   let variantId = product.variant_id
-                                  if (State[index]['id'] === index) {
-                                    await addItem({
-                                      productId,
-                                      variantId,
-                                      quantity: State[index].Qty,
-                                    })
-                                  }
+                                  await addItem({
+                                    productId,
+                                    variantId,
+                                    quantity: itemCountState[index].val,
+                                  })
                                 }}
                               >
                                 Add to Cart

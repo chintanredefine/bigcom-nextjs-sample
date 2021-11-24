@@ -229,3 +229,15 @@ footer {
   padding: 10px 20px;
   margin-bottom: 20px;
 }
+
+.max-w-8xl {
+  max-width: 1172px;
+}
+.Navbar_navMenu__2ZaDY > :not([hidden]) ~ :not([hidden]) {
+  --tw-space-x-reverse: 0;
+  margin-right: calc(1rem * var(--tw-space-x-reverse));
+  margin-left: calc(1rem * calc(1.7 - var(--tw-space-x-reverse)));
+}
+.Navbar_mainmenudiv__CB_eL {
+  text-align: center;
+}

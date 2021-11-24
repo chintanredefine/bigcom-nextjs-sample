@@ -13,14 +13,19 @@ const isVendure = provider === 'vendure'
 
 module.exports = withCommerceConfig({
   commerce,
-   eslint: {
+  eslint: {
     // Warning: This allows production builds to successfully complete even if
     // your project has ESLint errors.
     ignoreDuringBuilds: true,
   },
-   images: {
-        domains: ['www.redefinesolutions.com','cdn8.bigcommerce.com','cdn6.bigcommerce.com','cdn11.bigcommerce.com'],
-    },    
+  images: {
+    domains: [
+      'www.redefinesolutions.com',
+      'cdn8.bigcommerce.com',
+      'cdn6.bigcommerce.com',
+      'cdn11.bigcommerce.com',
+    ],
+  },
   i18n: {
     locales: ['en-US', 'es'],
     defaultLocale: 'en-US',
@@ -45,6 +50,14 @@ module.exports = withCommerceConfig({
           destination: `${process.env.NEXT_PUBLIC_VENDURE_SHOP_API_URL}/:path*`,
         },
     ].filter(Boolean)
+  },
+  webpack(config) {
+    config.module.rules.push({
+      test: /\.svg$/,
+      use: ['@svgr/webpack'],
+    })
+
+    return config
   },
 })
 
