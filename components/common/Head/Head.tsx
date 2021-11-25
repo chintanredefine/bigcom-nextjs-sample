@@ -46,6 +46,11 @@ const Head: FC = () => {
           rel="stylesheet"
           href="//sandbox.unbxd.io/sleekhair_mybigcommerce_com-u1474746314480_autosuggest.css"
         />
+
+        <link
+          href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;600;700&display=swap"
+          rel="stylesheet"
+        ></link>
       </NextHead>
       <link
         href="https://www.ystore.us/sleekshop/common.css"
