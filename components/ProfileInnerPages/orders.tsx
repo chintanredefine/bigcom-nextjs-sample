@@ -29,7 +29,7 @@ export default function Orders() {
         </div>
 
         {/* <!-- product list  --> */}
-        <div className="d-flex justify-content-between row">
+        <div className="d-flex row">
           {orderedItem.map((order: any) => {
             console.log('order ', order)
 
