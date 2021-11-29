@@ -41,26 +41,23 @@ export default function Orders() {
                 <div className="productCardImgParent">
                   <img
                     className="ProductImg"
-                    src={order?.productImage}
+                    src={order?.prod_image[0]?.data[0]?.url_standard}
                     alt="image not found"
                   />
                 </div>
                 <div className="Product-Model-Parent">
-                  <p className="Product-Model">
-                    {/* SKU: 16025 */}
-                    {order.orderId}
+                  <p className="Product-Model">SKU: {order.sku}</p>
+                </div>
+                <div>
+                  <p className="Product-Name">{order?.name}</p>
+                </div>
+                <div>
+                  <p className="Product-brand">
+                    {order?.product_options[0]?.display_value}
                   </p>
                 </div>
                 <div>
-                  <p className="Product-Name">
-                    American Crew Defining Paste - medium hold with low shine
-                  </p>
-                </div>
-                <div>
-                  <p className="Product-brand">Expresso</p>
-                </div>
-                <div>
-                  <p className="Product-price">$ {order.orderTotal}</p>
+                  <p className="Product-price">$ {order?.prod_price}</p>
                 </div>
               </div>
             )
