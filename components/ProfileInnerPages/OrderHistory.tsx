@@ -113,7 +113,7 @@ export default function Reward() {
                     <Bag className="absolute" />
                   </span>
                   <h2 className="pt-6 text-2xl font-bold tracking-wide text-center">
-                    No Products found
+                    No Orders found
                   </h2>
                 </div>
               </div>

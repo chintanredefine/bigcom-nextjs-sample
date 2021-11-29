@@ -9,7 +9,6 @@ import LeftMenu from '@components/common/ProfileNavlink/profile_head'
 
 // inner components
 import Order from '@components/ProfileInnerPages/orders'
-// import OrderHistory from '@components/ProfileInnerPages/ordershistory'
 import Payment from '@components/ProfileInnerPages/payments'
 import Recentitems from '@components/ProfileInnerPages/recentitems'
 import OrderHistory from '@components/ProfileInnerPages/OrderHistory'
@@ -49,6 +48,9 @@ export default function Profile() {
     if (data) {
       const newUserName = data.firstName + ' ' + data.lastName
       setuserName(newUserName)
+    } else {
+      setModalView('LOGIN_VIEW')
+      return openModal()
     }
   }, [data])
 
