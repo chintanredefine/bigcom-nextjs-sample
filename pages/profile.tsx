@@ -9,9 +9,10 @@ import LeftMenu from '@components/common/ProfileNavlink/profile_head'
 
 // inner components
 import Order from '@components/ProfileInnerPages/orders'
+// import OrderHistory from '@components/ProfileInnerPages/ordershistory'
 import Payment from '@components/ProfileInnerPages/payments'
 import Recentitems from '@components/ProfileInnerPages/recentitems'
-import Rewards from '@components/ProfileInnerPages/rewards'
+import OrderHistory from '@components/ProfileInnerPages/OrderHistory'
 import Wishlist from '@components/ProfileInnerPages/wishlist'
 import Addresses from '@components/ProfileInnerPages/addresses'
 import EditProfile from '@components/ProfileInnerPages/editProfile'
@@ -68,9 +69,8 @@ export default function Profile() {
             <>
               {ShowPage === 1 ? (
                 <Order />
-              ) : // <Addresses />
-              ShowPage === 2 ? (
-                <Rewards />
+              ) : ShowPage === 2 ? (
+                <OrderHistory />
               ) : ShowPage === 3 ? (
                 <>Sleek vault</>
               ) : ShowPage === 4 ? (
