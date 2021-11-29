@@ -10,7 +10,10 @@ export default function Orders() {
   useEffect(() => {
     let cid = customer?.entityId
     if (customer && customer?.entityId) {
-      fetch('https://www.ystore.us/sleekshop/getOrders.php?customer_id=' + cid)
+      fetch(
+        'https://www.ystore.us/sleekshop/getOrderProducts.php?customer_id=' +
+          cid
+      )
         .then((response) => response.json())
         .then((rs1) => {
           setorderedItem(rs1)
