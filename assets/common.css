@@ -1,1 +1,274 @@
-body{}
+.MainContentInnerdiv {
+  width: 100%;
+  border: 1px solid #dee3e9;
+  padding: 0.7rem !important;
+  font-family: Jost, sans-serif !important;
+}
+
+.orderHistory {
+  padding: 15px 10px !important;
+}
+
+.orderHistory div p {
+  padding: 10px 0px;
+}
+
+.BillingShipping {
+  border: none;
+  padding: 0px !important;
+}
+
+.Billing,
+.Shipping {
+  border: 1px solid #dee3e9;
+  width: 49%;
+  padding: 15px 10px !important;
+}
+
+.shipement-p {
+  font-size: 24px !important;
+}
+
+.Heading {
+  font-size: 20px;
+  font-weight: 700;
+  color: #50585e;
+}
+
+.Heading-grandTotal {
+  font-size: 18px;
+  font-weight: 700;
+  color: #637381;
+}
+
+.subHeading,
+.productCard p {
+  font-size: 16px;
+  font-weight: 600;
+  color: #637381;
+}
+
+.ButtonTrackOrder {
+  border: 2px solid rgba(0, 128, 68, 0.767);
+  padding: 10px 30px;
+}
+
+.ButtonTrackOrder:hover {
+  background-color: rgba(140, 196, 170, 0.26);
+  color: rgb(0, 0, 0);
+}
+.ButtonTrackOrder:active {
+  background-color: rgba(7, 182, 100, 0.767);
+}
+
+.mainContentChild {
+  padding: 20px 3px;
+}
+
+.MainContentParent .p {
+  font-family: Jost, sans-serif !important;
+}
+
+.MainContentParent .Product-Model {
+  font-size: 16px;
+  color: rgb(73, 72, 70);
+}
+
+.cardImg {
+  width: 25px;
+  height: 25px;
+}
+
+.MainContentParent .Product-Model-Parent {
+  margin-top: 15px;
+}
+
+.MainContentParent .Product-Name {
+  font-size: 18px;
+  font-weight: 500;
+  color: rgb(31, 27, 23);
+}
+
+.MainContentParent .Product-brand {
+  font-size: 18px;
+  font-weight: 400;
+  color: rgb(43, 40, 38);
+}
+
+.MainContentParent .Product-price {
+  font-size: 18px;
+  font-weight: 400;
+  color: rgb(43, 40, 38);
+}
+
+.row {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+}
+
+.d-flex {
+  display: -ms-flexbox !important;
+  display: flex !important;
+}
+
+.flex-column {
+  -ms-flex-direction: column !important;
+  flex-direction: column !important;
+}
+
+.flex-wrap {
+  -ms-flex-wrap: wrap !important;
+  flex-wrap: wrap !important;
+}
+
+.flex-nowrap {
+  -ms-flex-wrap: nowrap !important;
+  flex-wrap: nowrap !important;
+}
+
+.justify-content-between {
+  -ms-flex-pack: justify !important;
+  justify-content: space-between !important;
+}
+.justify-content-around {
+  -ms-flex-pack: distribute !important;
+  justify-content: space-around !important;
+}
+
+.align-items-center {
+  -ms-flex-align: center !important;
+  align-items: center !important;
+}
+
+.mb-2 {
+  margin-bottom: 10px !important;
+}
+
+.mb-4 {
+  margin-bottom: 30px !important;
+}
+
+.mt-2 {
+  margin-top: 10px !important;
+}
+
+.mt-3 {
+  margin-top: 20px !important;
+}
+
+.ml-2 {
+  margin-left: 10px;
+}
+
+.w-50 {
+  width: 50% !important;
+}
+
+.p-2 {
+  padding: 0.5rem !important;
+}
+
+.p-3 {
+  padding: 0.7rem !important;
+}
+
+.productCard {
+  border: 1px solid #dee3e9;
+  height: 55vh;
+  margin-top: 2px;
+  width: 33.3%;
+  padding: 10px;
+}
+
+.productCardImgParent {
+  height: 60%;
+}
+
+.ProductImg {
+  height: 100%;
+  width: 100%;
+}
+
+.ViewOrderGparent {
+  overflow-x: hidden;
+}
+
+.OrderHistoryImagesContainer {
+  overflow-x: hidden;
+  width: min-content;
+  z-index: 1;
+}
+.OHIGPC {
+  overflow-x: scroll;
+  cursor: grab;
+}
+
+.HistoryImagesCo {
+  border: 1px solid #dee3e9;
+  margin-left: 1px;
+  width: 140px;
+  height: 160px;
+}
+
+.imgOrderHistory {
+  width: 140px;
+}
+
+.View-Order-Button {
+  border: 2px solid rgba(0, 128, 68, 0.767);
+  padding: 10px 140px;
+}
+
+.View-Order-Button:hover {
+  background-color: rgba(140, 196, 170, 0.26);
+  color: rgba(0, 0, 0, 0.692);
+}
+.View-Order-Button:active {
+  background-color: rgba(7, 182, 100, 0.767);
+}
+
+.covidAndRocket {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@media (min-width: 768px) {
+  .d-md-flex {
+    display: -ms-flexbox !important;
+    display: flex !important;
+  }
+  .d-md-inline-flex {
+    display: -ms-inline-flexbox !important;
+    display: inline-flex !important;
+  }
+}
+
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {
+  .Asidebar-left-bar {
+    display: none;
+  }
+  .MainContentParent {
+    width: 98%;
+  }
+  .productCard {
+    height: 50vh;
+    width: 49%;
+    padding: 10px;
+  }
+}
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px) {
+}
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {
+}
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {
+}

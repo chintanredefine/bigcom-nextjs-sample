@@ -5,6 +5,10 @@ import s from './Navbar.module.css'
 import NavbarRoot from './NavbarRoot'
 import { Logo, Container } from '@components/ui'
 import { Searchbar, UserNav } from '@components/common'
+import FlagImg from '@assets/images/flag-icon.png'
+import Image from 'next/image'
+
+import RocketSvg from '@assets/sleekshop-new-svg/rocket-icon.svg'
 
 interface Link {
   href: string
@@ -25,9 +29,17 @@ const Navbar: FC<NavbarProps> = ({ links }) => {
   return (
     <NavbarRoot>
       <div className="topbarmsg">
-        <div className="topbarmsgleft"></div>
-        <div className="topbarmsgright">USD</div>
+        <Container>
+          <div className="topbarmsgleft"> 337 Roncesvalles Ave, Toronto</div>
+          <div className="topbarmsgright">
+            <div className="currency-right">
+              <Image src={FlagImg} alt="" title="" />
+              &nbsp; USD
+            </div>
+          </div>
+        </Container>
       </div>
+
       <Container>
         <div className={s.nav}>
           <div className="flex items-center flex-1">
@@ -79,6 +91,15 @@ const Navbar: FC<NavbarProps> = ({ links }) => {
           </nav>
         </div>
       </Container>
+
+      <div className="staticmsgbelowmenu">
+        <Container>
+          <div className="covidAndRocket">
+            <span>COVID 19 UPDATE: WORLDWIDE FREESHIP</span> &nbsp;
+            <RocketSvg />
+          </div>
+        </Container>
+      </div>
     </NavbarRoot>
   )
 }

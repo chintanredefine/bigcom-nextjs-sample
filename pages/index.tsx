@@ -4,11 +4,10 @@ import s from './index.module.css'
 import { ProductCard } from '@components/product'
 import { ProductSlider } from '@components/product'
 import type { Product } from '@commerce/types/product'
-import Img, { ImageProps } from 'next/image'
+import Img from 'next/image'
 import Image from 'next/image'
-import { Grid, Marquee, Hero } from '@components/ui'
-// import HomeAllProductsGrid from '@components/common/HomeAllProductsGrid'
 import type { GetStaticPropsContext, InferGetStaticPropsType } from 'next'
+import { Container } from '@components/ui'
 
 interface HomeProps {
   products1: Product[]
@@ -74,7 +73,7 @@ export default function Home({
               <>
                 <li key={node.id} className="SearchBrandItem">
                   <a className="SearchBrandLinks" href="">
-                    {node.url + ' - ' + node.name}{' '}
+                    {node.url + ' - ' + node.name}
                   </a>
                   <br />
                 </li>
@@ -91,7 +90,8 @@ export default function Home({
           </div>
         ))}
       </ProductSlider>
-      <div className="container">
+
+      <Container>
         <div className="pt-50">
           <Image
             src="https://cdn8.bigcommerce.com/s-hmhnh4h9/product_images/uploaded_images/topsellhdline.png"
@@ -105,7 +105,7 @@ export default function Home({
               role="button"
             >
               View All
-            </a>{' '}
+            </a>
           </div>
 
           <ProductSlider viewCount={4}>
@@ -129,7 +129,7 @@ export default function Home({
               role="button"
             >
               View All
-            </a>{' '}
+            </a>
           </div>
 
           <ProductSlider viewCount={4}>
@@ -140,8 +140,8 @@ export default function Home({
             ))}
           </ProductSlider>
         </div>
-      </div>
-      <div className="container">
+      </Container>
+      <Container>
         <div className="pt-50 HomeInstagramWidget-Section">
           <h2 className="page-heading">
             <a
@@ -157,7 +157,7 @@ export default function Home({
             width="100%"
           ></iframe>
         </div>
-      </div>
+      </Container>
     </>
   )
 }

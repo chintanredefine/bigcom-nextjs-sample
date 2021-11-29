@@ -46,9 +46,15 @@
 }
 
 .mainmenudiv {
-  @apply hidden space-x-4 lg:block; padding: 0.5rem 0 1.5rem 0;
+  @apply hidden space-x-4 lg:block;
+  padding: 0.5rem 0 1.5rem 0;
 }
 
-
-.nav{float: left;width:100%;}
-.rootcustom input {padding: 0.5rem 0.75rem 0.5rem 2.75rem; width: 100%;}
+.nav {
+  float: left;
+  width: 100%;
+}
+.rootcustom input {
+  padding: 0.5rem 0.75rem 0.5rem 2.75rem;
+  width: 100%;
+}

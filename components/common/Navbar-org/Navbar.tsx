@@ -15,11 +15,18 @@ interface NavbarProps {
 
 const Navbar: FC<NavbarProps> = ({ links }) => (
   <NavbarRoot>
-    <div className="topbarmsg">
-      <div className="topbarmsgleft"></div>  
-      <div className="topbarmsgright">USD</div>
-    </div>
     <Container>
+      <div className="topbarmsg-1">
+        <div className="container-1">
+          <div className="topbarmsgleft"> 337 Roncesvalles Ave, Toronto</div>
+          <div className="topbarmsgright">
+            <div className="currency-right">
+              <img src="images/flag-icon.png" alt="" title="" /> USD
+            </div>
+          </div>
+        </div>
+      </div>
+
       <div className={s.nav}>
         <div className="flex items-center flex-1">
           <Link href="/">
@@ -42,21 +49,18 @@ const Navbar: FC<NavbarProps> = ({ links }) => (
       </div>
       <div className={s.mainmenudiv}>
         <nav className={s.navMenu}>
-            <Link href="/search">
-              <a className={s.link}>All</a>
+          <Link href="/search">
+            <a className={s.link}>All</a>
+          </Link>
+          {links?.map((l) => (
+            <Link href={l.href} key={l.href}>
+              <a className={s.link}>{l.label}</a>
             </Link>
-            {links?.map((l) => (
-              <Link href={l.href} key={l.href}>
-                <a className={s.link}>{l.label}</a>
-              </Link>
-            ))}
-          </nav>
+          ))}
+        </nav>
       </div>
     </Container>
   </NavbarRoot>
-
-
-  
 )
 
 export default Navbar

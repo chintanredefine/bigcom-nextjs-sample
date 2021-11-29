@@ -40,7 +40,7 @@
   --font-sans: -apple-system, system-ui, BlinkMacSystemFont, 'Helvetica Neue',
     'Helvetica', sans-serif;
 }
-
+/* 
 [data-theme='dark'] {
   --primary: #000000;
   --primary-2: #111;
@@ -65,7 +65,7 @@
   --accent-2: #333333;
   --accent-1: #111111;
   --accent-0: #000;
-}
+} */
 
 *,
 *:before,
@@ -135,7 +135,5 @@ a {
     opacity: 1;
   }
 }
-
-
 
 /*Custom CSS*/
