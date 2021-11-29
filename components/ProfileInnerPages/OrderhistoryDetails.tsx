@@ -105,35 +105,45 @@ export default function Reward(propData: any) {
         {/* <!-- title of the Buy It Again Page  --> */}
         <div className="mainContentChild d-flex justify-content-between">
           <div className="Heading">Buy It Again</div>
-          <div className="Heading">6 Items</div>
+          <div className="Heading">
+            {orderedItem.order_products.length} Items
+          </div>
         </div>
 
         {/* <!-- product list  --> */}
         <div className="d-flex justify-content-between row">
           {/* product card */}
-          <div className="productCard">
-            <div className="productCardImgParent">
-              <img
-                className="ProductImg"
-                src="./images/image_033.webp"
-                alt=""
-              />
-            </div>
-            <div className="Product-Model-Parent">
-              <p className="Product-Model">SKU: 16025</p>
-            </div>
-            <div>
-              <p className="Product-Name">
-                American Crew Defining Paste - medium hold with low shine
-              </p>
-            </div>
-            <div>
-              <p className="Product-brand">Expresso</p>
-            </div>
-            <div>
-              <p className="Product-price">$ 15.99</p>
-            </div>
-          </div>
+          {orderedItem?.order_products.map((ordPro) => {
+            return (
+              <>
+                <div className="productCard">
+                  <div className="productCardImgParent">
+                    <img
+                      className="ProductImg"
+                      src={ordPro && ordPro['product_image']}
+                      alt=""
+                    />
+                  </div>
+                  <div className="Product-Model-Parent">
+                    <p className="Product-Model">
+                      SKU: {ordPro && ordPro['sku']}
+                    </p>
+                  </div>
+                  <div>
+                    <p className="Product-Name">{ordPro && ordPro['name']}</p>
+                  </div>
+                  <div>
+                    <p className="Product-brand">{ordPro && ordPro['name']}</p>
+                  </div>
+                  <div>
+                    <p className="Product-price">
+                      $ {ordPro && ordPro['base_total']}
+                    </p>
+                  </div>
+                </div>
+              </>
+            )
+          })}
         </div>
       </div>
       {/* <!-- ---------------------------- component buy it again ---------------------------- --> */}
