@@ -175,6 +175,10 @@ export default function Reward(propData: any) {
                     align-items-center
                   "
         >
+          {console.log(
+            'orderedItem.shipping_addresses[0].status ',
+            orderedItem.shipping_addresses[0].status
+          )}
           {orderedItem.shipping_addresses[0].status !== 'Cancelled' ? (
             <button className="ButtonTrackOrder">TRACK ORDER</button>
           ) : (
