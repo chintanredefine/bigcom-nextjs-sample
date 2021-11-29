@@ -9,6 +9,11 @@ export default function Reward(propData: any) {
     order_products: [],
     date_created: '',
     date_shipped: '',
+    shipping_cost_inc_tax: '',
+    base_shipping_cost: '',
+    coupon_discount: '',
+    subtotal_tax: '',
+    total_inc_tax: '',
     billing_address: {
       first_name: '',
       last_name: '',
@@ -205,27 +210,27 @@ export default function Reward(propData: any) {
         <p className="Heading mb-4">Order Total</p>
         <div className="d-flex justify-content-between mb-2">
           <div>Subtotal :</div>
-          <div>$ 150.00</div>
+          <div>$ {orderedItem.base_shipping_cost}</div>
         </div>
         <hr />
         <div className="d-flex justify-content-between mb-2">
           <div>Coupon :</div>
-          <div>$ 150.00</div>
+          <div>$ {orderedItem.coupon_discount}</div>
         </div>
         <hr />
         <div className="d-flex justify-content-between mb-2">
           <div>Shipping :</div>
-          <div>$ 150.00</div>
+          <div>$ {orderedItem.shipping_cost_inc_tax}</div>
         </div>
         <hr />
         <div className="d-flex justify-content-between mb-2">
           <div>Sales Tax :</div>
-          <div>$ 150.00</div>
+          <div>$ {orderedItem.subtotal_tax}</div>
         </div>
         <hr />
         <div className="Heading-grandTotal d-flex justify-content-between mb-2 mt-3">
           <div>Grand Total :</div>
-          <div>$ 150.00</div>
+          <div>$ {orderedItem.total_inc_tax}</div>
         </div>
       </div>
       {/* <!-- ---------------------------- component order total ---------------------------- --> */}
