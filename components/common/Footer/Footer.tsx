@@ -96,108 +96,291 @@ const Footer: FC<Props> = ({ className, pages }) => {
   const rootClassName = cn(s.root, className)
 
   return (
-    <footer className="{rootClassName} mycustfooter">
-      <Container>
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 border-b border-accent-2 text-primary bg-primary transition-colors duration-150 py-12">
-          <div className="col-span-1 lg:col-span-8">
-            <div className="grid main-footer-social-connect">
-              <div className="social-footer">
-                <div className="klaviyo-form-W2TX3f"></div>
-                <h5 className="footer-info-heading">Connect With Us</h5>
-                <h5 className="mobile-soc footer-info-heading">
-                  let's connect!
-                </h5>
-                <a
-                  className="socialicona"
-                  href="https://www.instagram.com/sleekshop_com/"
-                >
-                  <Image src={instagramicon} alt="Instagram" />
-                </a>
-                <a
-                  className="socialicona"
-                  href="https://www.facebook.com/sleekshopcom/?business_id=887407754647488"
-                >
-                  <Image src={fbicon} alt="facebook" />
-                </a>
-                <a
-                  className="socialicona"
-                  href="https://www.pinterest.com/sleekshop/"
-                >
-                  <Image src={pinteresticon} alt="pinterest" />
-                </a>
-                <a
-                  className="socialicona"
-                  href="https://twitter.com/SleekShopCom"
-                >
-                  <Image src={twittericon} alt="twitter" />
-                </a>
-              </div>
-            </div>
-            <div className="grid main-footer-links-section1">
-              {links.map((page) => (
-                <span key={page.url} className="py-3 md:py-0 md:pb-4">
-                  <Link href={page.url!}>
-                    <a className="text-accent-9 hover:text-accent-6 transition ease-in-out duration-150">
-                      {page.name}
-                    </a>
-                  </Link>
-                </span>
-              ))}
-            </div>
+    // <footer className="{rootClassName} mycustfooter">
+    //   <Container>
+    //     <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 border-b border-accent-2 text-primary bg-primary transition-colors duration-150 py-12">
+    //       <div className="col-span-1 lg:col-span-8">
+    //         <div className="grid main-footer-social-connect">
+    //           <div className="social-footer">
+    //             <div className="klaviyo-form-W2TX3f"></div>
+    //             <h5 className="footer-info-heading">Connect With Us</h5>
+    //             <h5 className="mobile-soc footer-info-heading">
+    //               let's connect!
+    //             </h5>
+    //             <a
+    //               className="socialicona"
+    //               href="https://www.instagram.com/sleekshop_com/"
+    //             >
+    //               <Image src={instagramicon} alt="Instagram" />
+    //             </a>
+    //             <a
+    //               className="socialicona"
+    //               href="https://www.facebook.com/sleekshopcom/?business_id=887407754647488"
+    //             >
+    //               <Image src={fbicon} alt="facebook" />
+    //             </a>
+    //             <a
+    //               className="socialicona"
+    //               href="https://www.pinterest.com/sleekshop/"
+    //             >
+    //               <Image src={pinteresticon} alt="pinterest" />
+    //             </a>
+    //             <a
+    //               className="socialicona"
+    //               href="https://twitter.com/SleekShopCom"
+    //             >
+    //               <Image src={twittericon} alt="twitter" />
+    //             </a>
+    //           </div>
+    //         </div>
+    //         <div className="grid main-footer-links-section1">
+    //           {links.map((page) => (
+    //             <span key={page.url} className="py-3 md:py-0 md:pb-4">
+    //               <Link href={page.url!}>
+    //                 <a className="text-accent-9 hover:text-accent-6 transition ease-in-out duration-150">
+    //                   {page.name}
+    //                 </a>
+    //               </Link>
+    //             </span>
+    //           ))}
+    //         </div>
 
-            <div className="grid main-footer-links-section2">
-              {links2.map((page) => (
-                <span key={page.url} className="py-3 md:py-0 md:pb-4">
-                  <Link href={page.url!}>
-                    <a className="text-accent-9 hover:text-accent-6 transition ease-in-out duration-150">
-                      {page.name}
-                    </a>
-                  </Link>
-                </span>
-              ))}
-            </div>
-          </div>
-          <div className="col-span-1 lg:col-span-2 flex items-start lg:justify-end text-primary hideme">
-            <div className="flex space-x-6 items-center h-10"></div>
-          </div>
-        </div>
+    //         <div className="grid main-footer-links-section2">
+    //           {links2.map((page) => (
+    //             <span key={page.url} className="py-3 md:py-0 md:pb-4">
+    //               <Link href={page.url!}>
+    //                 <a className="text-accent-9 hover:text-accent-6 transition ease-in-out duration-150">
+    //                   {page.name}
+    //                 </a>
+    //               </Link>
+    //             </span>
+    //           ))}
+    //         </div>
+    //       </div>
+    //       <div className="col-span-1 lg:col-span-2 flex items-start lg:justify-end text-primary hideme">
+    //         <div className="flex space-x-6 items-center h-10"></div>
+    //       </div>
+    //     </div>
 
-        <div className="pb-6 flex flex-col justify-between items-center space-y-4 text-accent-6 text-sm">
-          <div className="footertermslink">
-            {[...termlinks, ...sitePages].map((page) => (
-              <span key={page.url} className="py-3 md:py-0 md:pb-4">
-                <Link href={page.url!}>
-                  <a className="text-accent-9 hover:text-accent-6 transition ease-in-out duration-150">
-                    {page.name}
-                  </a>
-                </Link>
+    //     <div className="pb-6 flex flex-col justify-between items-center space-y-4 text-accent-6 text-sm">
+    //       <div className="footertermslink">
+    //         {[...termlinks, ...sitePages].map((page) => (
+    //           <span key={page.url} className="py-3 md:py-0 md:pb-4">
+    //             <Link href={page.url!}>
+    //               <a className="text-accent-9 hover:text-accent-6 transition ease-in-out duration-150">
+    //                 {page.name}
+    //               </a>
+    //             </Link>
+    //           </span>
+    //         ))}
+    //       </div>
+    //       <div className="flex items-center text-primary text-sm">
+    //         SleekShop includes a comprehensive listing of both professional-use
+    //         and professional quality products that are found in salons and spas.
+    //         We strongly advise that professional-use products are solely used by
+    //         professional stylists.
+    //       </div>
+    //     </div>
+    //     <div className="pb-6 flex flex-col md:flex-row justify-between items-center space-y-4 text-accent-6 text-sm">
+    //       <div>
+    //         <span>
+    //           &copy; {new Date().getFullYear()} SleekShop, Inc. All rights
+    //           reserved.
+    //         </span>
+    //       </div>
+    //       <div className="flex items-center text-primary text-sm">
+    //         <span className="text-primary">
+    //           <Image src={creditcard} alt="Credit Cards" />
+    //           <Image src={secureshoppingimg} alt="Secure Shopping" />
+
+    //           {/*<img src={ require('./images/credit-cards.png') } />*/}
+    //         </span>
+    //       </div>
+    //     </div>
+    //   </Container>
+
+    //   <script
+    //     type="text/javascript"
+    //     src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/3.0.3/handlebars.js"
+    //   ></script>
+    //   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+    //   <script src="//libraries.unbxdapi.com/search-sdk/v2.0.4/vanillaSearch.min.js"></script>
+
+    //   <script
+    //     type="text/javascript"
+    //     src="https://libraries.unbxdapi.com/unbxdAutosuggest_v1.js"
+    //   ></script>
+
+    //   <script src="//sandbox.unbxd.io/sleekhair_mybigcommerce_stage_autosuggest.js"></script>
+    //   <script src="//sandbox.unbxd.io/sleekhair_mybigcommerce_stage_search.js"></script>
+    // </footer>
+
+    <footer className="footer-main">
+      <div className="footer-pt-1">
+        <div className="container">
+          <div className="footer-coloum">
+            <div className="footer-links-title">Help</div>
+            <div className="footer-links">
+              <span className="">
+                <a className="" href="#">
+                  Shipping &amp; Returns
+                </a>
               </span>
-            ))}
+              <span className="">
+                <a className="" href="#">
+                  Track Your Order{' '}
+                </a>
+              </span>
+              <span className="">
+                <a className="" href="#">
+                  Store Finder
+                </a>
+              </span>
+              <span className="">
+                <a className="" href="#">
+                  FAQs
+                </a>
+              </span>
+            </div>
           </div>
-          <div className="flex items-center text-primary text-sm">
-            SleekShop includes a comprehensive listing of both professional-use
-            and professional quality products that are found in salons and spas.
-            We strongly advise that professional-use products are solely used by
-            professional stylists.
+          <div className="footer-coloum">
+            <div className="footer-links-title">About</div>
+            <div className="footer-links">
+              <span className="">
+                <a className="" href="#">
+                  About Us
+                </a>
+              </span>
+              <span className="">
+                <a className="" href="#">
+                  Contact Us
+                </a>
+              </span>
+              <span className="">
+                <a className="" href="#">
+                  Careers
+                </a>
+              </span>
+              <span className="">
+                <a className="" href="#">
+                  Become an Affiliate
+                </a>
+              </span>
+            </div>
+          </div>
+          <div className="footer-coloum">
+            <div className="footer-links-title">CATEGORIES</div>
+            <div className="footer-links">
+              <span className="">
+                <a className="" href="#">
+                  Shirts
+                </a>
+              </span>
+              <span className="">
+                <a className="" href="#">
+                  Jeans
+                </a>
+              </span>
+              <span className="">
+                <a className="" href="#">
+                  Footwear
+                </a>
+              </span>
+              <span className="">
+                <a className="" href="#">
+                  Accessories
+                </a>
+              </span>
+            </div>
+          </div>
+          <div className="footer-coloum">
+            <div className="footer-links-title">
+              JOIN THE LIST AND RECEIVE 15% OFF YOUR FIRST ORDER
+            </div>
+            <div className="newsletter-form">
+              <input
+                type="email"
+                value=""
+                name="email"
+                id="k_id_email"
+                placeholder="Your email"
+              />
+              <button type="submit" className="newsletter-form-button">
+                Send
+              </button>
+            </div>
+            <div className="social-links">
+              <ul className="social-links-ul">
+                <li className="social-links-item">
+                  <a
+                    className="icon icon--facebook"
+                    title="Connect with Sleekshop on facebook"
+                    href="https://www.facebook.com/sleekshopcom/?business_id=887407754647488"
+                    target="_blank"
+                  >
+                    <img
+                      src="./images/facebook-icon.png"
+                      alt="Connect with Sleekshop on facebook"
+                      title="Connect with Sleekshop on facebook"
+                    />
+                  </a>
+                </li>
+                <li className="social-links-item">
+                  <a
+                    className="icon icon--instagram"
+                    title="Connect with Sleekshop on instagram"
+                    href="https://www.instagram.com/sleekshop_com/"
+                    target="_blank"
+                  >
+                    <img
+                      src="./images/instagram-icon.png"
+                      alt="Connect with Sleekshop on instagram"
+                      title="Connect with Sleekshop on instagram"
+                    />
+                  </a>
+                </li>
+                <li className="social-links-item">
+                  <a
+                    className="icon icon--pinterest"
+                    title="Connect with Sleekshop on pinterest"
+                    href="https://www.pinterest.com/sleekshop/"
+                    target="_blank"
+                  >
+                    <img
+                      src="./images/pinterest-icon.png"
+                      alt="Connect with Sleekshop on pinterest"
+                      title="Connect with Sleekshop on pinterest"
+                    />
+                  </a>
+                </li>
+              </ul>
+            </div>
           </div>
         </div>
-        <div className="pb-6 flex flex-col md:flex-row justify-between items-center space-y-4 text-accent-6 text-sm">
-          <div>
+      </div>
+      <div className="footer-pt-2">
+        <div className="container">
+          <div className="copy-rights">
             <span>
-              &copy; {new Date().getFullYear()} SleekShop, Inc. All rights
-              reserved.
+              © 2021 <a href="#">SleekShop</a>, Inc. All rights reserved.
+            </span>
+            <span>
+              <a href="#">Privacy Policy</a>
+            </span>
+            <span>
+              <a href="#">Terms &amp; Conditions</a>
             </span>
           </div>
-          <div className="flex items-center text-primary text-sm">
-            <span className="text-primary">
-              <Image src={creditcard} alt="Credit Cards" />
-              <Image src={secureshoppingimg} alt="Secure Shopping" />
-
-              {/*<img src={ require('./images/credit-cards.png') } />*/}
-            </span>
+          <div className="payment-methods">
+            <img
+              src="./images/payment-methods-icon.png"
+              alt="Payment Methods"
+              title="Payment Methods"
+            />
           </div>
         </div>
-      </Container>
+      </div>
 
       <script
         type="text/javascript"

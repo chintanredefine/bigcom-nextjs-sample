@@ -43,12 +43,10 @@ export default function Profile() {
   // Payment Methods (9)
   const [ShowPage, setShowPage] = useState(1)
   const [userName, setuserName] = useState('User')
+  // const [Refresh, setRefresh] = useState(false)
 
   useEffect(() => {
-    if (!data) {
-      setModalView('LOGIN_VIEW')
-      return openModal()
-    } else {
+    if (data) {
       const newUserName = data.firstName + ' ' + data.lastName
       setuserName(newUserName)
     }
@@ -62,6 +60,7 @@ export default function Profile() {
           userName={userName}
           setShowPage={setShowPage}
           ShowPage={ShowPage}
+          // setRefresh={setRefresh}
         />
         <div className="right-side-content">
           {data && (

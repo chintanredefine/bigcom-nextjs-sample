@@ -18,9 +18,15 @@ interface Props {
   userName?: string
   setShowPage?: any
   ShowPage?: any
+  setRefresh?: any
 }
 
-const ProfileHead: FC<Props> = ({ userName, setShowPage, ShowPage }) => {
+const ProfileHead: FC<Props> = ({
+  userName,
+  setShowPage,
+  ShowPage,
+  setRefresh,
+}) => {
   const logout = useLogout()
 
   return (
@@ -59,7 +65,10 @@ const ProfileHead: FC<Props> = ({ userName, setShowPage, ShowPage }) => {
               <span>Buy it again</span>
             </li>
             <li
-              onClick={() => setShowPage(2)}
+              onClick={() => {
+                setShowPage(2)
+                // setRefresh(false)
+              }}
               className={`${ShowPage === 2 && 'active'}`}
             >
               <OrderHistorySvg />
