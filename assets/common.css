@@ -235,6 +235,12 @@
   justify-content: center;
 }
 
+.form-input,
+.form-select,
+textarea {
+  width: 100%;
+}
+
 @media (min-width: 768px) {
   .d-md-flex {
     display: -ms-flexbox !important;

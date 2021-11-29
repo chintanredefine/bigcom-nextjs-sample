@@ -320,9 +320,9 @@ const Footer: FC<Props> = ({ className, pages }) => {
                     target="_blank"
                   >
                     <img
-                      src="./images/facebook-icon.png"
-                      alt="Connect with Sleekshop on facebook"
-                      title="Connect with Sleekshop on facebook"
+                      src={require('./images/facebook-icon.png')}
+                      // alt="Connect with Sleekshop on facebook"
+                      // title="Connect with Sleekshop on facebook"
                     />
                   </a>
                 </li>
@@ -334,9 +334,9 @@ const Footer: FC<Props> = ({ className, pages }) => {
                     target="_blank"
                   >
                     <img
-                      src="./images/instagram-icon.png"
-                      alt="Connect with Sleekshop on instagram"
-                      title="Connect with Sleekshop on instagram"
+                      src={require('./images/instagram-icon.png')}
+                      // alt="Connect with Sleekshop on instagram"
+                      // title="Connect with Sleekshop on instagram"
                     />
                   </a>
                 </li>
@@ -348,9 +348,9 @@ const Footer: FC<Props> = ({ className, pages }) => {
                     target="_blank"
                   >
                     <img
-                      src="./images/pinterest-icon.png"
-                      alt="Connect with Sleekshop on pinterest"
-                      title="Connect with Sleekshop on pinterest"
+                      src={require('./images/pinterest-icon.png')}
+                      // alt="Connect with Sleekshop on pinterest"
+                      // title="Connect with Sleekshop on pinterest"
                     />
                   </a>
                 </li>
@@ -374,9 +374,9 @@ const Footer: FC<Props> = ({ className, pages }) => {
           </div>
           <div className="payment-methods">
             <img
-              src="./images/payment-methods-icon.png"
-              alt="Payment Methods"
-              title="Payment Methods"
+              src={require('./images/payment-methods-icon.png')}
+              // alt="Payment Methods"
+              // title="Payment Methods"
             />
           </div>
         </div>

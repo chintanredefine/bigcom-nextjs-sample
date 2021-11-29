@@ -2,7 +2,7 @@
 import useCustomer from '@framework/customer/use-customer'
 import { useEffect, useState } from 'react'
 
-import commerce from '@lib/api/commerce'
+// import commerce from '@lib/api/commerce'
 // import { Layout } from '@components/common'
 
 // import ProfileHead from '@components/common/ProfileNavlink/profile_head'
@@ -261,7 +261,7 @@ export default function Orders() {
     // </div>
 
     <>
-      <div className="MainContentInnerdiv mb-2 orderHistory d-flex justify-content-between">
+      <div className="MainContentInnerdiv mb-2 orderHistory ">
         <h3>Send a Message</h3>
         <div className="form-field form-field--select">
           <label className="form-label">
