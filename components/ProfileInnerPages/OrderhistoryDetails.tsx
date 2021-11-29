@@ -26,6 +26,7 @@ export default function Reward(propData: any) {
         country_iso2: '',
         zip: '',
         shipping_method: '',
+        status: '',
       },
     ],
   })
@@ -104,7 +105,7 @@ export default function Reward(propData: any) {
       <div className="MainContentInnerdiv mb-2">
         {/* <!-- title of the Buy It Again Page  --> */}
         <div className="mainContentChild d-flex justify-content-between">
-          <div className="Heading">Buy It Again</div>
+          <div className="Heading">Products Ordered</div>
           <div className="Heading">
             {orderedItem.order_products.length} Items
           </div>
@@ -157,7 +158,7 @@ export default function Reward(propData: any) {
           </p>
           <p>Shipping data : {orderedItem.date_shipped}</p>
           <p>Tracking # : 485098495884598</p>
-          <p>Career : USPC</p>
+          {/* <p>Career : USPC</p> */}
         </div>
         <div
           className="
@@ -169,7 +170,16 @@ export default function Reward(propData: any) {
                     align-items-center
                   "
         >
-          <button className="ButtonTrackOrder">TRACK ORDER</button>
+          {orderedItem.shipping_addresses[0].status !== 'Cancelled' ? (
+            <button className="ButtonTrackOrder">TRACK ORDER</button>
+          ) : (
+            <button
+              className="ButtonTrackOrder "
+              style={{ border: '2px solid rgba(255, 71, 15, 0.767)' }}
+            >
+              Canceled
+            </button>
+          )}
         </div>
       </div>
       {/* <!-- ---------------------------- component Shipment---------------------------- --> */}

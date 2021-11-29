@@ -191,6 +191,7 @@ export default function editProfile() {
         <form
           onSubmit={handleUpdateProfile}
           className="w-100 flex flex-col justify-between"
+          style={{ width: '100%' }}
         >
           <div className="margin-0">
             <div className="width100 mb-6">

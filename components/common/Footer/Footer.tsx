@@ -1,20 +1,17 @@
 import { FC } from 'react'
 import cn from 'classnames'
-import Link from 'next/link'
+import Image from 'next/image'
+
 import { useRouter } from 'next/router'
 import type { Page } from '@commerce/types/page'
 import getSlug from '@lib/get-slug'
-import { Github, Vercel } from '@components/icons'
-import { Logo, Container } from '@components/ui'
-import { I18nWidget } from '@components/common'
+
 import s from './Footer.module.css'
-import Image from 'next/image'
-import creditcard from './images/credit-cards.png'
-import secureshoppingimg from './images/secure-shopping.jpg'
-import instagramicon from './images/insta-icon.png'
-import fbicon from './images/fb-icon.png'
-import pinteresticon from './images/pintrest-icon.png'
-import twittericon from './images/twiter-icon.png'
+
+import PaymentMethodPng from './images/payment-methods-icon.png'
+import Pinterrest from './images/pinterest-icon.png'
+import Instagram from './images/instagram-icon.png'
+import Facebook from './images/facebook-icon.png'
 
 interface Props {
   className?: string
@@ -319,11 +316,12 @@ const Footer: FC<Props> = ({ className, pages }) => {
                     href="https://www.facebook.com/sleekshopcom/?business_id=887407754647488"
                     target="_blank"
                   >
-                    <img
+                    <Image src={Facebook} alt="" />
+                    {/* <img
                       src={require('./images/facebook-icon.png')}
                       // alt="Connect with Sleekshop on facebook"
                       // title="Connect with Sleekshop on facebook"
-                    />
+                    /> */}
                   </a>
                 </li>
                 <li className="social-links-item">
@@ -333,11 +331,12 @@ const Footer: FC<Props> = ({ className, pages }) => {
                     href="https://www.instagram.com/sleekshop_com/"
                     target="_blank"
                   >
-                    <img
+                    <Image src={Instagram} alt="" />
+                    {/* <img
                       src={require('./images/instagram-icon.png')}
                       // alt="Connect with Sleekshop on instagram"
                       // title="Connect with Sleekshop on instagram"
-                    />
+                    /> */}
                   </a>
                 </li>
                 <li className="social-links-item">
@@ -347,11 +346,12 @@ const Footer: FC<Props> = ({ className, pages }) => {
                     href="https://www.pinterest.com/sleekshop/"
                     target="_blank"
                   >
-                    <img
+                    <Image src={Pinterrest} alt="" />
+                    {/* <img
                       src={require('./images/pinterest-icon.png')}
                       // alt="Connect with Sleekshop on pinterest"
                       // title="Connect with Sleekshop on pinterest"
-                    />
+                    /> */}
                   </a>
                 </li>
               </ul>
@@ -373,11 +373,12 @@ const Footer: FC<Props> = ({ className, pages }) => {
             </span>
           </div>
           <div className="payment-methods">
-            <img
-              src={require('./images/payment-methods-icon.png')}
+            <Image src={PaymentMethodPng} alt="" />
+            {/* <img
+              src={PaymentMethodPng}
               // alt="Payment Methods"
               // title="Payment Methods"
-            />
+            /> */}
           </div>
         </div>
       </div>
