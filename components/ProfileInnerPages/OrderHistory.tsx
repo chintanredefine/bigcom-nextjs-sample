@@ -1,10 +1,19 @@
+import { FC } from 'react'
+
 import { Bag } from '@components/icons'
 import useCustomer from '@framework/customer/use-customer'
 import { useEffect, useState } from 'react'
 import OrderHistoryDetails from '@components/ProfileInnerPages/OrderhistoryDetails'
 
-export default function Reward() {
-  const [ShowOrderHistoryDetails, setShowOrderHistoryDetails] = useState(false)
+interface Props {
+  ShowOrderHistoryDetails?: any
+  setShowOrderHistoryDetails?: any
+}
+
+const Reward: FC<Props> = ({
+  ShowOrderHistoryDetails,
+  setShowOrderHistoryDetails,
+}) => {
   const { data: customer } = useCustomer()
   const [OrderHistoryData, setOrderHistoryData] = useState<string[]>([])
   const [DetailedData, setDetailedData] = useState<string[]>([])
@@ -124,3 +133,5 @@ export default function Reward() {
     </>
   )
 }
+
+export default Reward

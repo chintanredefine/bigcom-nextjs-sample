@@ -46,7 +46,7 @@ export default function Orders() {
                     <div className="productCardImgParent">
                       <img
                         className="ProductImg"
-                        src={order?.prod_image[0]?.data[0]?.url_standard}
+                        src={order?.prod_image}
                         alt="image not found"
                       />
                     </div>
@@ -62,7 +62,7 @@ export default function Orders() {
                       </p>
                     </div>
                     <div>
-                      <p className="Product-price">$ {order?.prod_price}</p>
+                      <p className="Product-price">$ {order?.price_inc_tax}</p>
                     </div>
                   </div>
                 )

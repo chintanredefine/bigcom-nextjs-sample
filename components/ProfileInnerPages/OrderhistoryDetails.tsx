@@ -52,7 +52,6 @@ export default function Reward(propData: any) {
     <>
       {/* <!-- ---------------------------- component order history ---------------------------- --> */}
       <div className="MainContentInnerdiv mb-2 orderHistory d-flex justify-content-between">
-        {console.log('orderedItem 123456789 ==>> ', orderedItem)}
         <div>
           <p className="Heading">Order Details</p>
           <p className="subHeading">Thanks For Your Order</p>

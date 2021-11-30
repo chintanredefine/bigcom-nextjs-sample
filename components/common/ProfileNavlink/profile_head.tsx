@@ -23,9 +23,15 @@ interface Props {
   setShowPage?: any
   ShowPage?: any
   setRefresh?: any
+  setShowOrderHistoryDetails?: any
 }
 
-const ProfileHead: FC<Props> = ({ userName, setShowPage, ShowPage }) => {
+const ProfileHead: FC<Props> = ({
+  userName,
+  setShowPage,
+  ShowPage,
+  setShowOrderHistoryDetails,
+}) => {
   const logout = useLogout()
   const { openModal, setModalView } = useUI()
 
@@ -74,6 +80,7 @@ const ProfileHead: FC<Props> = ({ userName, setShowPage, ShowPage }) => {
             <li
               onClick={() => {
                 setShowPage(2)
+                setShowOrderHistoryDetails(false)
               }}
               className={`${ShowPage === 2 && 'active'}`}
             >

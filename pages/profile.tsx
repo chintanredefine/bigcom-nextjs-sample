@@ -43,7 +43,7 @@ export default function Profile() {
   // Payment Methods (9)
   const [ShowPage, setShowPage] = useState(1)
   const [userName, setuserName] = useState('User')
-  // const [Refresh, setRefresh] = useState(false)
+  const [ShowOrderHistoryDetails, setShowOrderHistoryDetails] = useState(false)
 
   useEffect(() => {
     if (data) {
@@ -63,6 +63,7 @@ export default function Profile() {
           userName={userName}
           setShowPage={setShowPage}
           ShowPage={ShowPage}
+          setShowOrderHistoryDetails={setShowOrderHistoryDetails}
         />
         <div className="right-side-content">
           {data && (
@@ -71,7 +72,10 @@ export default function Profile() {
               {ShowPage === 1 ? (
                 <Order />
               ) : ShowPage === 2 ? (
-                <OrderHistory />
+                <OrderHistory
+                  ShowOrderHistoryDetails={ShowOrderHistoryDetails}
+                  setShowOrderHistoryDetails={setShowOrderHistoryDetails}
+                />
               ) : ShowPage === 3 ? (
                 <SleekVault />
               ) : ShowPage === 4 ? (
