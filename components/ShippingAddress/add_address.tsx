@@ -60,7 +60,7 @@ const AddAddressCompo = (props: {
   }, [])
 
   const fetchAllStates = (countryId: any) => {
-    // console.log('started fetching all states data ... |')
+    // console.log('started fetching all states data ... some changes |')
     fetch('https://www.ystore.us/sleekshop/getStates.php', {
       method: 'Post',
       body: JSON.stringify({
