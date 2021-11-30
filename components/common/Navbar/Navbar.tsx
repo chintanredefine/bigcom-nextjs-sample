@@ -95,7 +95,10 @@ const Navbar: FC<NavbarProps> = ({ links }) => {
       <div className="staticmsgbelowmenu">
         <Container>
           <div className="covidAndRocket">
-            <span>COVID 19 UPDATE: WORLDWIDE FREESHIP</span> &nbsp;
+            <span style={{ color: 'white' }}>
+              COVID 19 UPDATE: WORLDWIDE FREESHIP
+            </span>
+            &nbsp;
             <RocketSvg />
           </div>
         </Container>

@@ -42,8 +42,6 @@ export default function Reward() {
               {/* <!-- ---------------------------- component View Orders ---------------------------- --> */}
 
               {OrderHistoryData.map((order: any) => {
-                console.log('orderHistory.Tsx', order)
-
                 return (
                   <>
                     <div className="MainContentInnerdiv mb-2 orderHistory ViewOrderGparent">

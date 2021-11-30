@@ -1,21 +1,32 @@
 .formComtainer {
-  width: 100vw;
   background: #ffffff;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  width: 100%;
+}
+
+.W-100 {
+  width: 100%;
+}
+
+.W-90 {
+  width: 90%;
+}
+
+.W-80 {
+  width: 80%;
 }
 
 .form {
-  max-width: 80vw;
-  min-width: 40vw;
+  width: 100%;
 }
 
 .inputFieldAd {
   width: 100%;
   background: #f0f0f0;
-  height: 3.5rem;
+  height: 2.5rem;
 }
 
 .submitBtn {
