@@ -2,11 +2,14 @@
 import useCustomer from '@framework/customer/use-customer'
 import { useEffect, useState } from 'react'
 import { Bag } from '@components/icons'
+import useAddItem from '@framework/cart/use-add-item'
 
 export default function Orders() {
   const [orderedItem, setorderedItem] = useState<string[]>([])
 
   const { data: customer } = useCustomer()
+
+  const addItem = useAddItem()
 
   useEffect(() => {
     let cid = customer?.entityId
@@ -63,6 +66,22 @@ export default function Orders() {
                     </div>
                     <div>
                       <p className="Product-price">$ {order?.price_inc_tax}</p>
+                    </div>
+
+                    <div className="AddToCartOnHover">
+                      <h6
+                        className="h6AddToCart"
+                        onClick={async () => {
+                          let productId = order?.product_id
+                          let variantId = order?.variant_id
+                          await addItem({
+                            productId,
+                            variantId,
+                          })
+                        }}
+                      >
+                        Add to Cart
+                      </h6>
                     </div>
                   </div>
                 )
