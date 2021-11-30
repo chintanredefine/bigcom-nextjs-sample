@@ -601,6 +601,11 @@ footer {
   margin-bottom: 70px !important;
   height: fit-content;
 }
+
+.left-menu li {
+  cursor: pointer;
+}
+
 .name-and-details {
   display: flex;
   width: 100%;
