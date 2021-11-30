@@ -17,6 +17,8 @@ export default function Orders() {
       )
         .then((response) => response.json())
         .then((rs1) => {
+          console.log('new Order Data \n', rs1)
+
           setorderedItem(rs1)
         })
     }

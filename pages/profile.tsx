@@ -63,7 +63,6 @@ export default function Profile() {
           userName={userName}
           setShowPage={setShowPage}
           ShowPage={ShowPage}
-          // setRefresh={setRefresh}
         />
         <div className="right-side-content">
           {data && (

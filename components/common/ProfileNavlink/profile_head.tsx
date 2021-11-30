@@ -14,6 +14,10 @@ import SignOutSvg from '@assets/sleekshop-new-svg/signout.svg'
 
 import useLogout from '@framework/auth/use-logout'
 
+import useCustomer from '@framework/customer/use-customer'
+
+import { useUI } from '@components/ui'
+
 interface Props {
   userName?: string
   setShowPage?: any
@@ -21,13 +25,16 @@ interface Props {
   setRefresh?: any
 }
 
-const ProfileHead: FC<Props> = ({
-  userName,
-  setShowPage,
-  ShowPage,
-  setRefresh,
-}) => {
+const ProfileHead: FC<Props> = ({ userName, setShowPage, ShowPage }) => {
   const logout = useLogout()
+  const { openModal, setModalView } = useUI()
+
+  const { data } = useCustomer()
+
+  const HandleLogin = () => {
+    setModalView('LOGIN_VIEW')
+    return openModal()
+  }
 
   return (
     <>
@@ -38,7 +45,7 @@ const ProfileHead: FC<Props> = ({
           </div>
           <div className="name-details">
             <span>
-              Hello, <strong>{userName}</strong>
+              Hello, <strong>{userName?.toUpperCase()}</strong>
             </span>
           </div>
         </div>
@@ -67,7 +74,6 @@ const ProfileHead: FC<Props> = ({
             <li
               onClick={() => {
                 setShowPage(2)
-                // setRefresh(false)
               }}
               className={`${ShowPage === 2 && 'active'}`}
             >
@@ -138,10 +144,19 @@ const ProfileHead: FC<Props> = ({
               <PaymentMethodSvg />
               <span>Payment Methods</span>
             </li>
-            <li onClick={() => logout()}>
-              <SignOutSvg />
-              <span>Log off</span>
-            </li>
+            {data ? (
+              <li onClick={() => logout()}>
+                <SignOutSvg />
+                <span>Log off</span>
+              </li>
+            ) : (
+              <li onClick={() => HandleLogin()}>
+                <div style={{ transform: 'rotate(180deg)' }}>
+                  <SignOutSvg />
+                </div>
+                <span>Sign In</span>
+              </li>
+            )}
           </ul>
         </div>
       </div>

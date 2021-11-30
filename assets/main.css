@@ -763,4 +763,9 @@ footer {
     margin: 0 10px 70px !important;
   }
 }
+
+.Navbar_mainmenudiv__CB_eL {
+  z-index: 1;
+}
+
 /* new css for design change */
