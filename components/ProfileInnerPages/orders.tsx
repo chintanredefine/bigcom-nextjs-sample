@@ -4,6 +4,8 @@ import { useEffect, useState } from 'react'
 import { Bag } from '@components/icons'
 import useAddItem from '@framework/cart/use-add-item'
 
+import style from './ProfileInner.module.css'
+
 export default function Orders() {
   const [orderedItem, setorderedItem] = useState<string[]>([])
 
@@ -27,6 +29,89 @@ export default function Orders() {
     }
   }, [customer])
 
+  let initialItemCount = [
+    {
+      id: 0,
+      val: 1,
+    },
+  ]
+  const [itemCountState, setitemCountState] = useState(initialItemCount)
+
+  const handleDecrement = (
+    index: any,
+    productQuantity: any,
+    incrementData: any
+  ) => {
+    console.log(
+      'handleDecrement \n itemCountState => ',
+      itemCountState,
+      ' prop -> incrementData === itemCountState => ',
+      incrementData,
+      'index',
+      index,
+      'initialItemCount',
+      initialItemCount,
+      'productQuantity',
+      productQuantity
+    )
+
+    if (
+      itemCountState[index] &&
+      itemCountState[index]['id'] == index &&
+      itemCountState[index]['val'] > 1
+    ) {
+      // newArr[index].val -= 1
+      let newObj = {
+        id: itemCountState[index]['id'],
+        val: itemCountState[index]['val'] - 1,
+      }
+      let newArr = [...itemCountState, newObj] // copying the old datas array
+
+      setitemCountState(newArr)
+    }
+  }
+
+  const handleIncrement = (
+    index: any,
+    productQuantity: any,
+    incrementData: any
+  ) => {
+    console.log(
+      'handleIncrement \n itemCountState => ',
+      itemCountState,
+      ' incrementData => ',
+      incrementData,
+      'index',
+      index,
+      'initialItemCount',
+      initialItemCount,
+      'productQuantity',
+      productQuantity
+    )
+
+    if (itemCountState[index] && itemCountState[index]['id'] == index) {
+      if (itemCountState[index].val < productQuantity) {
+        let newObj = {
+          id: itemCountState[index]['id'],
+          val: itemCountState[index]['val'] + 1,
+        }
+        let newArr = [...itemCountState, newObj] // copying the old datas array
+
+        setitemCountState(newArr)
+      }
+    } else {
+      // if (itemCountState[index].val < productQuantity) {
+      let newObj = {
+        id: index,
+        val: 2,
+      }
+      let newArr = [...itemCountState, newObj] // copying the old datas array
+
+      setitemCountState(newArr)
+      // }
+    }
+  }
+
   return (
     <>
       {Array.isArray(orderedItem) && orderedItem.length > 0 ? (
@@ -41,8 +126,9 @@ export default function Orders() {
 
             {/* <!-- product list  --> */}
             <div className="d-flex row">
-              {orderedItem.map((order: any) => {
-                // console.log('order ', order)
+              {orderedItem.map((order: any, index) => {
+                // console.log('order new have to look where \n ', order)
+                let productQuantity = order?.quantity || 0
 
                 return (
                   <div className="productCard">
@@ -69,14 +155,59 @@ export default function Orders() {
                     </div>
 
                     <div className="AddToCartOnHover">
+                      <div className={`${style.incrementParent}`}>
+                        {/* ===================decreent button=================== */}
+                        <button
+                          className={`${style.decrementBtn}`}
+                          onClick={() =>
+                            handleDecrement(
+                              index,
+                              productQuantity,
+                              itemCountState
+                            )
+                          }
+                        >
+                          -
+                        </button>
+
+                        {/* current value of product quantity //  #input field for all subcomponents */}
+                        <input
+                          disabled
+                          className={`${style.inputEDCartVal}`}
+                          value={
+                            itemCountState[index]
+                              ? itemCountState[index].val
+                              : 1
+                          }
+                        />
+
+                        {/* ===================increment button=================== */}
+                        <button
+                          className={` ${style.incrementBtn} `}
+                          onClick={() => {
+                            handleIncrement(
+                              index,
+                              productQuantity,
+                              itemCountState
+                            )
+                          }}
+                        >
+                          +
+                        </button>
+                      </div>
                       <h6
                         className="h6AddToCart"
                         onClick={async () => {
                           let productId = order?.product_id
                           let variantId = order?.variant_id
+                          // await addItem({
+                          //   productId,
+                          //   variantId,
+                          // })
                           await addItem({
                             productId,
                             variantId,
+                            quantity: itemCountState[index].val,
                           })
                         }}
                       >
