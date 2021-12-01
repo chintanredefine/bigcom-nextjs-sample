@@ -2,11 +2,14 @@
 import useCustomer from '@framework/customer/use-customer'
 import { useEffect, useState } from 'react'
 import { Bag } from '@components/icons'
+import useAddItem from '@framework/cart/use-add-item'
 
 export default function Orders() {
   const [orderedItem, setorderedItem] = useState<string[]>([])
 
   const { data: customer } = useCustomer()
+
+  const addItem = useAddItem()
 
   useEffect(() => {
     let cid = customer?.entityId
@@ -17,6 +20,8 @@ export default function Orders() {
       )
         .then((response) => response.json())
         .then((rs1) => {
+          console.log('new Order Data \n', rs1)
+
           setorderedItem(rs1)
         })
     }
@@ -44,7 +49,7 @@ export default function Orders() {
                     <div className="productCardImgParent">
                       <img
                         className="ProductImg"
-                        src={order?.prod_image[0]?.data[0]?.url_standard}
+                        src={order?.prod_image}
                         alt="image not found"
                       />
                     </div>
@@ -60,7 +65,23 @@ export default function Orders() {
                       </p>
                     </div>
                     <div>
-                      <p className="Product-price">$ {order?.prod_price}</p>
+                      <p className="Product-price">$ {order?.price_inc_tax}</p>
+                    </div>
+
+                    <div className="AddToCartOnHover">
+                      <h6
+                        className="h6AddToCart"
+                        onClick={async () => {
+                          let productId = order?.product_id
+                          let variantId = order?.variant_id
+                          await addItem({
+                            productId,
+                            variantId,
+                          })
+                        }}
+                      >
+                        Add to Cart
+                      </h6>
                     </div>
                   </div>
                 )

@@ -176,14 +176,18 @@
 
 .productCard {
   border: 1px solid #dee3e9;
-  height: 55vh;
+  height: auto;
   margin-top: 2px;
   width: 33.3%;
   padding: 10px;
+  cursor: pointer;
+  position: relative;
 }
 
 .productCardImgParent {
-  height: 60%;
+  height: 200px;
+  width: 180px;
+  margin: auto;
 }
 
 .ProductImg {
@@ -199,10 +203,12 @@
   overflow-x: hidden;
   width: min-content;
   z-index: 1;
+  margin: auto;
 }
 .OHIGPC {
   overflow-x: scroll;
   cursor: grab;
+  margin: auto;
 }
 
 .HistoryImagesCo {
@@ -240,6 +246,78 @@
 textarea {
   width: 100%;
 }
+.AddToCartOnHover {
+  display: none;
+  position: absolute;
+  margin: auto;
+  top: 37%;
+  width: 91%;
+  border-radius: 3px;
+}
+
+.h6AddToCart {
+  background-color: #97d5ce;
+  padding: 5px;
+  color: #fff;
+  text-align: center;
+}
+
+.productCard:hover .AddToCartOnHover {
+  display: block;
+}
+
+/* fix search bar */
+.unbxd-as-wrapper {
+  width: 100% !important;
+}
+
+.unbxd-as-maincontent .unbxd-as-suggestions-overall .unbxd-as-mobile-view {
+  width: 100% !important;
+}
+.Searchbar_rootcustom__1dui- .open-extend-search {
+  position: relative;
+  height: 20px;
+}
+
+.open-extend-search .Searchbar_iconContainer_close {
+  position: absolute !important;
+  right: 5px !important;
+  top: 7px !important;
+}
+
+.Navbar_nav__2tz61 .justify-center.open-extend {
+  background: none !important;
+  top: 2px !important;
+  position: relative !important;
+  height: 73px;
+}
+
+.Searchbar_rootcustom__1dui- {
+  height: 73px !important;
+  position: relative !important;
+}
+
+.Searchbar_rootcustom__1dui-.open-extend-search {
+  width: 390px !important;
+  background: none !important;
+  margin-top: -5px;
+}
+
+.Searchbar_iconContainer__266wB {
+  padding-left: 0.75em !important;
+}
+
+.open-extend-search .Searchbar_iconContainer__266wB {
+  padding-left: 0.75em;
+  padding-top: 0em;
+}
+
+.open-extend-search .inputcustom {
+  padding: 0.5rem 0.75rem 0.5rem 2.75rem;
+  width: 100%;
+}
+
+/* fix search bar */
 
 @media (min-width: 768px) {
   .d-md-flex {
@@ -261,9 +339,23 @@ textarea {
     width: 98%;
   }
   .productCard {
-    height: 50vh;
+    min-height: 100%;
     width: 49%;
     padding: 10px;
+  }
+
+  .OrderHistoryImagesContainer {
+    width: 50% !important;
+  }
+
+  .productCardImgParent {
+    border: 1px solid #dee3e9 !important;
+    margin-left: 2px !important;
+    width: 100% !important;
+  }
+
+  .View-Order-Button {
+    padding: 10px 100px;
   }
 }
 

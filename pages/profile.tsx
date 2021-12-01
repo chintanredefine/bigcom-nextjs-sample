@@ -16,6 +16,7 @@ import Wishlist from '@components/ProfileInnerPages/wishlist'
 import Addresses from '@components/ProfileInnerPages/addresses'
 import EditProfile from '@components/ProfileInnerPages/editProfile'
 import Message from '@components/ProfileInnerPages/messages'
+import SleekVault from '@components/ProfileInnerPages/sleekValut'
 
 export async function getStaticProps({
   preview,
@@ -42,7 +43,7 @@ export default function Profile() {
   // Payment Methods (9)
   const [ShowPage, setShowPage] = useState(1)
   const [userName, setuserName] = useState('User')
-  // const [Refresh, setRefresh] = useState(false)
+  const [ShowOrderHistoryDetails, setShowOrderHistoryDetails] = useState(false)
 
   useEffect(() => {
     if (data) {
@@ -62,7 +63,7 @@ export default function Profile() {
           userName={userName}
           setShowPage={setShowPage}
           ShowPage={ShowPage}
-          // setRefresh={setRefresh}
+          setShowOrderHistoryDetails={setShowOrderHistoryDetails}
         />
         <div className="right-side-content">
           {data && (
@@ -71,9 +72,12 @@ export default function Profile() {
               {ShowPage === 1 ? (
                 <Order />
               ) : ShowPage === 2 ? (
-                <OrderHistory />
+                <OrderHistory
+                  ShowOrderHistoryDetails={ShowOrderHistoryDetails}
+                  setShowOrderHistoryDetails={setShowOrderHistoryDetails}
+                />
               ) : ShowPage === 3 ? (
-                <>Sleek vault</>
+                <SleekVault />
               ) : ShowPage === 4 ? (
                 <Wishlist />
               ) : ShowPage === 5 ? (

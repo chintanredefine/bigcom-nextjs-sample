@@ -110,25 +110,24 @@ export default function Address() {
             </div>
           )}
 
-          <li className="address">
-            <a
-              className="panel panel--address panel--newAddress"
-              href="#addAddressForm"
-              onClick={() => {
-                setshowAddAddressCompo(true)
-                setshowEditAddressCompo(false)
-              }}
-            >
-              <span className="panel-body">
-                <span className="address-addNew">
+          <div className="MainContentInnerdiv mb-2">
+            <li className="address">
+              <a
+                className="panel panel--address panel--newAddress"
+                href="#addAddressForm"
+                onClick={() => {
+                  setshowAddAddressCompo(true)
+                  setshowEditAddressCompo(false)
+                }}
+              >
+                <div>
                   <span className="address-symbol">+</span>
                   <h5 className="address-title">New Address</h5>
-                </span>
-              </span>
-            </a>
-          </li>
+                </div>
+              </a>
+            </li>
+          </div>
         </ul>
-
         {/* <!-- ---------------------------- component View Orders ---------------------------- --> */}
         {showEditAddressCompo ? (
           <EditAddressCompo

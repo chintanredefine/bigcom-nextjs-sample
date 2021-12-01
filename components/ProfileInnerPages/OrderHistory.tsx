@@ -1,10 +1,19 @@
+import { FC } from 'react'
+
 import { Bag } from '@components/icons'
 import useCustomer from '@framework/customer/use-customer'
 import { useEffect, useState } from 'react'
 import OrderHistoryDetails from '@components/ProfileInnerPages/OrderhistoryDetails'
 
-export default function Reward() {
-  const [ShowOrderHistoryDetails, setShowOrderHistoryDetails] = useState(false)
+interface Props {
+  ShowOrderHistoryDetails?: any
+  setShowOrderHistoryDetails?: any
+}
+
+const Reward: FC<Props> = ({
+  ShowOrderHistoryDetails,
+  setShowOrderHistoryDetails,
+}) => {
   const { data: customer } = useCustomer()
   const [OrderHistoryData, setOrderHistoryData] = useState<string[]>([])
   const [DetailedData, setDetailedData] = useState<string[]>([])
@@ -42,8 +51,6 @@ export default function Reward() {
               {/* <!-- ---------------------------- component View Orders ---------------------------- --> */}
 
               {OrderHistoryData.map((order: any) => {
-                console.log('orderHistory.Tsx', order)
-
                 return (
                   <>
                     <div className="MainContentInnerdiv mb-2 orderHistory ViewOrderGparent">
@@ -69,9 +76,9 @@ export default function Reward() {
                       <div className="OHIGPC">
                         <div className="d-flex OrderHistoryImagesContainer">
                           {order?.productImage.map((imgString: any) => (
-                            <div className="HistoryImagesCo">
+                            <div className="productCardImgParent">
                               <img
-                                className="imgOrderHistory"
+                                className="ProductImg"
                                 src={imgString}
                                 alt=""
                               />
@@ -126,3 +133,5 @@ export default function Reward() {
     </>
   )
 }
+
+export default Reward
