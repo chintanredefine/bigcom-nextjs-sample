@@ -285,17 +285,33 @@ textarea {
 .Navbar_nav__2tz61 .justify-center.open-extend {
   background: none !important;
   top: 2px !important;
-  height: 20px !important;
   position: relative !important;
+  height: 73px;
 }
 
 .Searchbar_rootcustom__1dui- {
-  height: 20px !important;
+  height: 73px !important;
+  position: relative !important;
 }
 
 .Searchbar_rootcustom__1dui-.open-extend-search {
-  height: 20px !important;
-  width: 400px !important;
+  width: 390px !important;
+  background: none !important;
+  margin-top: -5px;
+}
+
+.Searchbar_iconContainer__266wB {
+  padding-left: 0.75em !important;
+}
+
+.open-extend-search .Searchbar_iconContainer__266wB {
+  padding-left: 0.75em;
+  padding-top: 0em;
+}
+
+.open-extend-search .inputcustom {
+  padding: 0.5rem 0.75rem 0.5rem 2.75rem;
+  width: 100%;
 }
 
 /* fix search bar */
