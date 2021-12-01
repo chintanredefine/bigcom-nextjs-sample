@@ -187,6 +187,7 @@
 .productCardImgParent {
   height: 200px;
   width: 180px;
+  margin: auto;
 }
 
 .ProductImg {
@@ -202,10 +203,12 @@
   overflow-x: hidden;
   width: min-content;
   z-index: 1;
+  margin: auto;
 }
 .OHIGPC {
   overflow-x: scroll;
   cursor: grab;
+  margin: auto;
 }
 
 .HistoryImagesCo {
@@ -336,9 +339,23 @@ textarea {
     width: 98%;
   }
   .productCard {
-    height: 75vh;
+    min-height: 100%;
     width: 49%;
     padding: 10px;
+  }
+
+  .OrderHistoryImagesContainer {
+    width: 50% !important;
+  }
+
+  .productCardImgParent {
+    border: 1px solid #dee3e9 !important;
+    margin-left: 2px !important;
+    width: 100% !important;
+  }
+
+  .View-Order-Button {
+    padding: 10px 100px;
   }
 }
 

@@ -207,6 +207,24 @@ footer {
     border-right: none;
     text-align: center;
   }
+
+  /* this is for fixing header text in small devices  */
+
+  .topbarmsgleft {
+    padding-left: 40px !important;
+    width: 70% !important;
+    margin-top: 3.5px !important;
+  }
+
+  .topbarmsgright {
+    width: 30% !important;
+  }
+
+  .mobileMenu-toggle {
+    top: -10px !important;
+  }
+
+  /* end of  this is for fixing header text in small devices  */
 }
 
 .bg-danger {
@@ -404,8 +422,8 @@ footer {
     max-width: 180px;
   }
   .Navbar_nav__2tz61 .flex.items-center.justify-end {
+    margin-top: 0px !important;
     float: right;
-    margin-top: -60px;
   }
   .topbarmsg {
     font-size: 12px;
@@ -418,6 +436,13 @@ footer {
   }
   .staticmsgbelowmenu {
     font-size: 12px;
+  }
+
+  .logo-image {
+    left: -10px !important;
+    min-width: 80% !important;
+    max-width: 80% !important;
+    min-height: 100% !important;
   }
 }
 
@@ -773,4 +798,4 @@ footer {
   z-index: 1;
 }
 
-/* new css for design change */
+/* end of new css for design change */
