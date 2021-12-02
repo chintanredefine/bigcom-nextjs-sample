@@ -35,18 +35,20 @@ export default function Orders() {
     const checkExistanceFunc = (param: any) => {
       // incrementData[index]
       let res = false
+      let res2 = false
       incrementData.map((eachObjOfState: any) => {
-        if (param === 'id' && eachObjOfState[param] === index) {
-          res = true
-        } else if (param === 'val' && eachObjOfState[param] > 1) {
+        if (param === 'id' && eachObjOfState.id === index) {
           res = true
         }
+        if (param === 'val' && eachObjOfState.val > 1) {
+          res2 = true
+        }
       })
-      return res
+      return [res, res2]
     }
 
-    if (checkExistanceFunc('id')) {
-      if (checkExistanceFunc('val')) {
+    if (checkExistanceFunc('id')[0]) {
+      if (checkExistanceFunc('val')[1]) {
         newArr[index]['val'] = newArr[index]['val'] - 1
         setitemCountState(newArr)
       }
@@ -61,18 +63,19 @@ export default function Orders() {
     const checkExistanceFunc = (param: any) => {
       // incrementData[index]
       let res = false
+      let res2 = false
       incrementData.map((eachObjOfState: any) => {
-        if (param === 'id' && eachObjOfState[param] === index) {
+        if (param === 'id' && eachObjOfState.id === index) {
           res = true
-        } else if (param === 'val' && eachObjOfState[param] < productQuantity) {
-          res = true
+        } else if (param === 'val' && eachObjOfState.val < productQuantity) {
+          res2 = true
         }
       })
-      return res
+      return [res, res2]
     }
 
-    if (checkExistanceFunc('id')) {
-      if (checkExistanceFunc('val')) {
+    if (checkExistanceFunc('id')[0]) {
+      if (checkExistanceFunc('val')[1]) {
         let newArr = [...incrementData] // copying the old datas array
         newArr[index]['val'] = newArr[index]['val'] + 1
         setitemCountState(newArr)
