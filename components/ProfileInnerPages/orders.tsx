@@ -22,94 +22,82 @@ export default function Orders() {
       )
         .then((response) => response.json())
         .then((rs1) => {
-          console.log('new Order Data \n', rs1)
-
           setorderedItem(rs1)
         })
     }
   }, [customer])
 
-  let initialItemCount = [
-    {
-      id: 0,
-      val: 1,
-    },
-  ]
-  const [itemCountState, setitemCountState] = useState(initialItemCount)
+  const [itemCountState, setitemCountState] = useState([{ id: 0, val: 1 }])
 
-  const handleDecrement = (
-    index: any,
-    productQuantity: any,
+  const handleDecrement = (index: number, incrementData: any) => {
+    let newArr = [...incrementData] // copying the old datas array
+
+    const checkExistanceFunc = (param: any) => {
+      // incrementData[index]
+      let res = false
+      incrementData.map((eachObjOfState: any) => {
+        if (param === 'id' && eachObjOfState[param] === index) {
+          res = true
+        } else if (param === 'val' && eachObjOfState[param] > 1) {
+          res = true
+        }
+      })
+      return res
+    }
+
+    if (checkExistanceFunc('id')) {
+      if (checkExistanceFunc('val')) {
+        newArr[index]['val'] = newArr[index]['val'] - 1
+        setitemCountState(newArr)
+      }
+    }
+  }
+
+  const handleIncrement = (
+    index: number,
+    productQuantity: number,
     incrementData: any
   ) => {
-    console.log(
-      'handleDecrement \n itemCountState => ',
-      itemCountState,
-      ' prop -> incrementData === itemCountState => ',
-      incrementData,
-      'index',
-      index,
-      'initialItemCount',
-      initialItemCount,
-      'productQuantity',
-      productQuantity
-    )
+    const checkExistanceFunc = (param: any) => {
+      // incrementData[index]
+      let res = false
+      incrementData.map((eachObjOfState: any) => {
+        if (param === 'id' && eachObjOfState[param] === index) {
+          res = true
+        } else if (param === 'val' && eachObjOfState[param] < productQuantity) {
+          res = true
+        }
+      })
+      return res
+    }
 
-    if (
-      itemCountState[index] &&
-      itemCountState[index]['id'] == index &&
-      itemCountState[index]['val'] > 1
-    ) {
-      // newArr[index].val -= 1
-      let newObj = {
-        id: itemCountState[index]['id'],
-        val: itemCountState[index]['val'] - 1,
+    if (checkExistanceFunc('id')) {
+      if (checkExistanceFunc('val')) {
+        let newArr = [...incrementData] // copying the old datas array
+        newArr[index]['val'] = newArr[index]['val'] + 1
+        setitemCountState(newArr)
+      } else {
+        return
       }
-      let newArr = [...itemCountState, newObj] // copying the old datas array
+    } else {
+      let newObj = {
+        id: index,
+        val: 2,
+      }
+      let newArr = [...incrementData, newObj] // copying the old datas array
 
       setitemCountState(newArr)
     }
   }
 
-  const handleIncrement = (
-    index: any,
-    productQuantity: any,
-    incrementData: any
-  ) => {
-    console.log(
-      'handleIncrement \n itemCountState => ',
-      itemCountState,
-      ' incrementData => ',
-      incrementData,
-      'index',
-      index,
-      'initialItemCount',
-      initialItemCount,
-      'productQuantity',
-      productQuantity
-    )
-
-    if (itemCountState[index] && itemCountState[index]['id'] == index) {
-      if (itemCountState[index].val < productQuantity) {
-        let newObj = {
-          id: itemCountState[index]['id'],
-          val: itemCountState[index]['val'] + 1,
-        }
-        let newArr = [...itemCountState, newObj] // copying the old datas array
-
-        setitemCountState(newArr)
+  const handleRenderingItemCount = (index: number, incrementData: any) => {
+    let val = 1
+    incrementData.map((eachObjOfState: any) => {
+      if (eachObjOfState['id'] === index) {
+        val = eachObjOfState['val']
       }
-    } else {
-      // if (itemCountState[index].val < productQuantity) {
-      let newObj = {
-        id: index,
-        val: 2,
-      }
-      let newArr = [...itemCountState, newObj] // copying the old datas array
-
-      setitemCountState(newArr)
-      // }
-    }
+    })
+    return val
   }
 
   return (
@@ -159,13 +147,9 @@ export default function Orders() {
                         {/* ===================decreent button=================== */}
                         <button
                           className={`${style.decrementBtn}`}
-                          onClick={() =>
-                            handleDecrement(
-                              index,
-                              productQuantity,
-                              itemCountState
-                            )
-                          }
+                          onClick={() => {
+                            return handleDecrement(index, itemCountState)
+                          }}
                         >
                           -
                         </button>
@@ -174,18 +158,19 @@ export default function Orders() {
                         <input
                           disabled
                           className={`${style.inputEDCartVal}`}
-                          value={
-                            itemCountState[index]
-                              ? itemCountState[index].val
-                              : 1
-                          }
+                          value={handleRenderingItemCount(
+                            index,
+                            itemCountState
+                          )}
                         />
 
                         {/* ===================increment button=================== */}
                         <button
                           className={` ${style.incrementBtn} `}
                           onClick={() => {
-                            handleIncrement(
+                            console.log('Index Increment = ', index)
+
+                            return handleIncrement(
                               index,
                               productQuantity,
                               itemCountState
@@ -234,6 +219,8 @@ export default function Orders() {
               </h2>
             </div>
           </div>
+
+          <>{console.log('itemCountState', itemCountState)}</>
         </>
       )}
     </>

@@ -36,7 +36,7 @@ export async function getStaticProps({
 
 export default function Profile() {
   const { data } = useCustomer()
-  const { openModal, setModalView } = useUI()
+  const { openModal, setModalView, closeModal } = useUI()
 
   // Buy it again (1)  // Order History (2)  // SleekVault (3)  // Wishlist (4)
   // Recently Viewed (5)  // Messages (6)  // Edit Info (7)   // Addresses (8)
@@ -47,9 +47,12 @@ export default function Profile() {
 
   useEffect(() => {
     if (data) {
+      setModalView('')
       const newUserName = data.firstName + ' ' + data.lastName
       setuserName(newUserName)
+      return closeModal()
     } else {
+      setuserName('User')
       setModalView('LOGIN_VIEW')
       return openModal()
     }
