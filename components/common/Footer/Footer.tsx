@@ -125,12 +125,12 @@ const Footer: FC<Props> = ({ className, pages }) => {
             <div className="footer-links-title">About</div>
             <div className="footer-links">
               <span className="">
-                <a className="" href="/pages/about-us.html">
+                <a className="" href="">
                   About Us
                 </a>
               </span>
               <span className="">
-                <a className="" href="/pages/contact-us.html">
+                <a className="" href="">
                   Contact Us
                 </a>
               </span>
