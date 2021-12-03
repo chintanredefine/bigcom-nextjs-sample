@@ -84,7 +84,7 @@ export default function Home({
       </ul>
 
       <ProductSlider viewCount={1}>
-        {data.slice(0, 5).map((photo: any, index: number) => (
+        {data.slice(0, data.length).map((photo: any, index: number) => (
           <div key={photo.id} className="banner-display">
             <Img alt="The guitarist in the concert." src={photo.image} />
           </div>
@@ -155,6 +155,7 @@ export default function Home({
           <iframe
             src="//lightwidget.com/widgets/5a82391a068b5b14b401c0f2994b3973.html"
             width="100%"
+            height="600px"
           ></iframe>
         </div>
       </Container>
