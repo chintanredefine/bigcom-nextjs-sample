@@ -54,11 +54,9 @@ export default function Orders() {
         },
       })
         .then((res) => {
-          console.log('res', res, res.body)
           return res.json()
         })
         .then((resObj) => {
-          console.log('message send successfully ', resObj)
           if (resObj.success) {
             setresMessage({
               type: 'success',

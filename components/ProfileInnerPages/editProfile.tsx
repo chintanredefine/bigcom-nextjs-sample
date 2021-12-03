@@ -128,12 +128,9 @@ export default function editProfile() {
         method: 'POST',
       })
         .then((res) => {
-          console.log('res', res)
           return res.json()
         })
         .then((resObj) => {
-          console.log('resObj', resObj)
-
           if (resObj.success) {
             setresMessage({
               type: 'success',
@@ -186,191 +183,183 @@ export default function editProfile() {
             >
               {/* First Name */}
               <fieldset className="form-fieldset">
-                <div className="form-row form-row--half">
+                <div className={`form-row form-row--half pb-30 ${style.mb_30}`}>
                   <label className="form-label">First Name</label>
-                  <div className="form-field form-field--select">
+                  <input
+                    type="text"
+                    className="Input_root__2vmVG"
+                    placeholder="First Name"
+                    onChange={(e) =>
+                      setformData({
+                        ...formData,
+                        first_name: e.target.value,
+                      })
+                    }
+                    value={formData.first_name}
+                  />
+                </div>
+
+                {/* Last Name */}
+                <div className={`form-row form-row--half pb-30 ${style.mb_30}`}>
+                  <label className="form-label">Last Name</label>
+
+                  <input
+                    type="text"
+                    placeholder="Last Name"
+                    onChange={(e) =>
+                      setformData({
+                        ...formData,
+                        last_name: e.target.value,
+                      })
+                    }
+                    value={formData.last_name}
+                    className="Input_root__2vmVG"
+                  />
+                </div>
+
+                {/* company */}
+                <div className={`form-row form-row--half pb-30 ${style.mb_30}`}>
+                  <label className="form-label">Company</label>
+
+                  <input
+                    type="text"
+                    placeholder="Company"
+                    onChange={(e) =>
+                      setformData({
+                        ...formData,
+                        company: e.target.value,
+                      })
+                    }
+                    value={formData.company}
+                    className="Input_root__2vmVG"
+                  />
+                </div>
+
+                {/* phone */}
+                <div className={`form-row form-row--half pb-30 ${style.mb_30}`}>
+                  <label className="form-label">Phone Number</label>
+
+                  <input
+                    type="text"
+                    placeholder="Phone Number"
+                    onChange={(e) =>
+                      setformData({
+                        ...formData,
+                        phone: e.target.value,
+                      })
+                    }
+                    value={formData.phone}
+                    className="Input_root__2vmVG"
+                  />
+                </div>
+
+                {/* email */}
+                <div className={`form-row form-row--half pb-30 ${style.mb_30}`}>
+                  <label className="form-label">Email</label>
+
+                  <input
+                    type="text"
+                    placeholder="Email"
+                    onChange={(e) =>
+                      setformData({
+                        ...formData,
+                        email: e.target.value,
+                      })
+                    }
+                    value={formData.email}
+                    className="Input_root__2vmVG"
+                  />
+                </div>
+
+                {/* Change Password toggler  */}
+                <div className={`form-row form-row--half pb-30 ${style.mb_30}`}>
+                  <label className="form-label">Change Password</label>
+
+                  <label className={`${style.switch}`}>
                     <input
-                      type="text"
-                      className={`${style.inputFieldAd} form-input`}
-                      placeholder="First Name"
-                      onChange={(e) =>
-                        setformData({
-                          ...formData,
-                          first_name: e.target.value,
-                        })
-                      }
-                      value={formData.first_name}
-                    />
-                  </div>
-
-                  {/* Last Name */}
-                  <div className="form-row form-row--half">
-                    <label className="form-label">Last Name</label>
-                    <label>
-                      <input
-                        type="text"
-                        placeholder="Last Name"
-                        onChange={(e) =>
-                          setformData({
-                            ...formData,
-                            last_name: e.target.value,
-                          })
-                        }
-                        value={formData.last_name}
-                        className="Input_root__2vmVG"
-                      />
-                    </label>
-                  </div>
-
-                  {/* company */}
-                  <div className="form-row form-row--half">
-                    <label className="form-label">Company</label>
-                    <label>
-                      <input
-                        type="text"
-                        placeholder="Company"
-                        onChange={(e) =>
-                          setformData({
-                            ...formData,
-                            company: e.target.value,
-                          })
-                        }
-                        value={formData.company}
-                        className="Input_root__2vmVG"
-                      />
-                    </label>
-                  </div>
-
-                  {/* phone */}
-                  <div className="form-row form-row--half">
-                    <label className="form-label">Phone Number</label>
-                    <label>
-                      <input
-                        type="text"
-                        placeholder="Phone Number"
-                        onChange={(e) =>
-                          setformData({
-                            ...formData,
-                            phone: e.target.value,
-                          })
-                        }
-                        value={formData.phone}
-                        className="Input_root__2vmVG"
-                      />
-                    </label>
-                  </div>
-
-                  {/* email */}
-                  <div className="form-row form-row--half">
-                    <label className="form-label">Email</label>
-                    <label>
-                      <input
-                        type="text"
-                        placeholder="Email"
-                        onChange={(e) =>
-                          setformData({
-                            ...formData,
-                            email: e.target.value,
-                          })
-                        }
-                        value={formData.email}
-                        className="Input_root__2vmVG"
-                      />
-                    </label>
-                  </div>
-
-                  {/* Change Password toggler  */}
-                  <div className="form-row form-row--half">
-                    <label className="form-label">Change Password</label>
-
-                    <label className={`${style.switch}`}>
-                      <input
-                        type="checkbox"
-                        onChange={(e) => {
-                          setToggle(e.target.checked)
-                        }}
-                      />
-                      <span
-                        className={`${style.slider} ${style.round} `}
-                      ></span>
-                    </label>
-                  </div>
-                  {Toggle && (
-                    <>
-                      {/* New Password */}
-                      <div className="mb-6">
-                        <label className="form-label">New Password</label>
-                        <label>
-                          <input
-                            type="password"
-                            placeholder="Password"
-                            onChange={(e) =>
-                              setformData({
-                                ...formData,
-                                password: e.target.value,
-                              })
-                            }
-                            value={formData.password}
-                            className="Input_root__2vmVG"
-                          />
-                        </label>
-                      </div>
-
-                      {/* Confirm New Password */}
-                      <div className="mb-6">
-                        <label className="form-label">
-                          Confirm New Password
-                        </label>
-                        <label>
-                          <input
-                            type="password"
-                            placeholder="Confirm Password"
-                            onChange={(e) =>
-                              setformData({
-                                ...formData,
-                                confirmPassword: e.target.value,
-                              })
-                            }
-                            value={formData.confirmPassword}
-                            className="Input_root__2vmVG"
-                          />
-                        </label>
-                      </div>
-                    </>
-                  )}
-
-                  {resMessage.msg && (
-                    <div
-                      className={
-                        resMessage.type === 'danger'
-                          ? 'bg-danger'
-                          : resMessage.type === 'warn'
-                          ? 'bg-warn'
-                          : 'bg-success'
-                      }
-                    >
-                      * {resMessage.msg}
-                    </div>
-                  )}
-
-                  {/* Update Button */}
-                  <div className="pt-2 w-full flex flex-col mb-6">
-                    <Button
-                      className="Button_root__24MxS Button_slim__2caxo"
-                      style={{
-                        background: '#e99da1',
-                        border: 'none',
-                        textTransform: 'capitalize',
-                        color: 'white',
-                        padding: '10px 20px ',
-                        borderRadius: '4px',
+                      type="checkbox"
+                      onChange={(e) => {
+                        setToggle(e.target.checked)
                       }}
-                      variant="slim"
-                      type="submit"
+                    />
+                    <span className={`${style.slider} ${style.round} `}></span>
+                  </label>
+                </div>
+                {Toggle && (
+                  <>
+                    {/* New Password */}
+                    <div
+                      className={`form-row form-row--half pb-30 ${style.mb_30}`}
                     >
-                      Update Profile
-                    </Button>
+                      <label className="form-label">New Password</label>
+
+                      <input
+                        type="password"
+                        placeholder="Password"
+                        onChange={(e) =>
+                          setformData({
+                            ...formData,
+                            password: e.target.value,
+                          })
+                        }
+                        value={formData.password}
+                        className="Input_root__2vmVG"
+                      />
+                    </div>
+
+                    {/* Confirm New Password */}
+                    <div
+                      className={`form-row form-row--half pb-30 ${style.mb_30}`}
+                    >
+                      <label className="form-label">Confirm New Password</label>
+
+                      <input
+                        type="password"
+                        placeholder="Confirm Password"
+                        onChange={(e) =>
+                          setformData({
+                            ...formData,
+                            confirmPassword: e.target.value,
+                          })
+                        }
+                        value={formData.confirmPassword}
+                        className="Input_root__2vmVG"
+                      />
+                    </div>
+                  </>
+                )}
+
+                {resMessage.msg && (
+                  <div
+                    className={
+                      resMessage.type === 'danger'
+                        ? 'bg-danger'
+                        : resMessage.type === 'warn'
+                        ? 'bg-warn'
+                        : 'bg-success'
+                    }
+                  >
+                    * {resMessage.msg}
                   </div>
+                )}
+
+                {/* Update Button */}
+                <div className="pt-2 w-full flex flex-col mb-6">
+                  <Button
+                    className="Button_root__24MxS Button_slim__2caxo"
+                    style={{
+                      background: '#e99da1',
+                      border: 'none',
+                      textTransform: 'capitalize',
+                      color: 'white',
+                      padding: '10px 20px ',
+                      borderRadius: '4px',
+                    }}
+                    variant="slim"
+                    type="submit"
+                  >
+                    Update Profile
+                  </Button>
                 </div>
               </fieldset>
             </form>
