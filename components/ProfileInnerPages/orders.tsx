@@ -32,27 +32,14 @@ export default function Orders() {
   const handleDecrement = (index: number, incrementData: any) => {
     let newArr = [...incrementData] // copying the old datas array
 
-    const checkExistanceFunc = (param: any) => {
-      // incrementData[index]
-      let res = false
-      let res2 = false
-      incrementData.map((eachObjOfState: any) => {
-        if (param === 'id' && eachObjOfState.id === index) {
-          res = true
+    newArr.map((oneObjOfNewArray: any) => {
+      if (oneObjOfNewArray.id === index) {
+        if (oneObjOfNewArray.val > 1) {
+          oneObjOfNewArray.val = oneObjOfNewArray.val - 1
         }
-        if (param === 'val' && eachObjOfState.val > 1) {
-          res2 = true
-        }
-      })
-      return [res, res2]
-    }
-
-    if (checkExistanceFunc('id')[0]) {
-      if (checkExistanceFunc('val')[1]) {
-        newArr[index]['val'] = newArr[index]['val'] - 1
-        setitemCountState(newArr)
       }
-    }
+    })
+    return setitemCountState(newArr)
   }
 
   const handleIncrement = (
@@ -63,29 +50,47 @@ export default function Orders() {
     const checkExistanceFunc = (param: any) => {
       // incrementData[index]
       let res = false
-      let res2 = false
-      incrementData.map((eachObjOfState: any) => {
-        if (param === 'id' && eachObjOfState.id === index) {
+
+      console.log('Index Increment = ', index)
+      console.log('param', param, 'productQuantity', productQuantity)
+
+      incrementData.map((oneObjOfState: any) => {
+        console.log('oneObjOfState', oneObjOfState)
+
+        if (param === 'id' && oneObjOfState.id === index) {
           res = true
-        } else if (param === 'val' && eachObjOfState.val < productQuantity) {
-          res2 = true
+          console.log('oneObjOfState by id ', oneObjOfState)
+          if (productQuantity > oneObjOfState.val) {
+            let newArr = [...incrementData] // copying the old datas array
+
+            newArr.map((oneObjOfNewArray) => {
+              if (oneObjOfNewArray.id === index) {
+                oneObjOfNewArray.val = oneObjOfNewArray.val + 1
+              }
+              return
+            })
+            return setitemCountState(newArr)
+          } else {
+            return
+          }
         }
+
+        return
       })
-      return [res, res2]
+      console.log('id and value existance => ', [res])
+
+      return [res]
     }
 
     if (checkExistanceFunc('id')[0]) {
-      if (checkExistanceFunc('val')[1]) {
-        let newArr = [...incrementData] // copying the old datas array
-        newArr[index]['val'] = newArr[index]['val'] + 1
-        setitemCountState(newArr)
-      } else {
-        return
-      }
+      console.log(" checkExistanceFunc('id')[0] ")
     } else {
+      console.log(
+        'grand parent else got called, means did not returned from last return func >'
+      )
       let newObj = {
         id: index,
-        val: 2,
+        val: productQuantity >= 2 ? 2 : 1,
       }
       let newArr = [...incrementData, newObj] // copying the old datas array
 
@@ -96,8 +101,8 @@ export default function Orders() {
   const handleRenderingItemCount = (index: number, incrementData: any) => {
     let val = 1
     incrementData.map((eachObjOfState: any) => {
-      if (eachObjOfState['id'] === index) {
-        val = eachObjOfState['val']
+      if (eachObjOfState.id === index) {
+        val = eachObjOfState.val
       }
     })
     return val
@@ -171,8 +176,6 @@ export default function Orders() {
                         <button
                           className={` ${style.incrementBtn} `}
                           onClick={() => {
-                            console.log('Index Increment = ', index)
-
                             return handleIncrement(
                               index,
                               productQuantity,
@@ -195,7 +198,10 @@ export default function Orders() {
                           await addItem({
                             productId,
                             variantId,
-                            quantity: itemCountState[index].val,
+                            quantity: handleRenderingItemCount(
+                              index,
+                              itemCountState
+                            ),
                           })
                         }}
                       >
@@ -222,8 +228,6 @@ export default function Orders() {
               </h2>
             </div>
           </div>
-
-          <>{console.log('itemCountState', itemCountState)}</>
         </>
       )}
     </>

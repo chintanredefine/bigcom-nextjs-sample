@@ -3,7 +3,6 @@ import useCustomer from '@framework/customer/use-customer'
 import { useEffect, useState } from 'react'
 
 export default function Reward(propData: any) {
-  console.log('OrderHistoryDetails.tsx propData', propData)
   const { data: customer } = useCustomer()
   const [orderedItem, setorderedItem] = useState({
     order_products: [],
@@ -42,7 +41,6 @@ export default function Reward(propData: any) {
       fetch('https://www.ystore.us/sleekshop/getAnOrder.php?order_id=' + cid)
         .then((response) => response.json())
         .then((rs1) => {
-          console.log("detailed orderRecord 'OrderHistoryDetails.tsx", rs1)
           setorderedItem(rs1)
         })
     }

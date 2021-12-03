@@ -128,12 +128,9 @@ export default function editProfile() {
         method: 'POST',
       })
         .then((res) => {
-          console.log('res', res)
           return res.json()
         })
         .then((resObj) => {
-          console.log('resObj', resObj)
-
           if (resObj.success) {
             setresMessage({
               type: 'success',
