@@ -53,3 +53,7 @@ input:checked + .slider:before {
 .slider.round:before {
   border-radius: 50%;
 }
+
+.mb_30 {
+  padding-bottom: 10px !important;
+}

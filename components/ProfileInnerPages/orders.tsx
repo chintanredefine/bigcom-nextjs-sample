@@ -2,11 +2,16 @@
 import useCustomer from '@framework/customer/use-customer'
 import { useEffect, useState } from 'react'
 import { Bag } from '@components/icons'
+import useAddItem from '@framework/cart/use-add-item'
+
+import style from './ProfileInner.module.css'
 
 export default function Orders() {
   const [orderedItem, setorderedItem] = useState<string[]>([])
 
   const { data: customer } = useCustomer()
+
+  const addItem = useAddItem()
 
   useEffect(() => {
     let cid = customer?.entityId
@@ -17,12 +22,91 @@ export default function Orders() {
       )
         .then((response) => response.json())
         .then((rs1) => {
-          console.log('new Order Data \n', rs1)
-
           setorderedItem(rs1)
         })
     }
   }, [customer])
+
+  const [itemCountState, setitemCountState] = useState([{ id: 0, val: 1 }])
+
+  const handleDecrement = (index: number, incrementData: any) => {
+    let newArr = [...incrementData] // copying the old datas array
+
+    newArr.map((oneObjOfNewArray: any) => {
+      if (oneObjOfNewArray.id === index) {
+        if (oneObjOfNewArray.val > 1) {
+          oneObjOfNewArray.val = oneObjOfNewArray.val - 1
+        }
+      }
+    })
+    return setitemCountState(newArr)
+  }
+
+  const handleIncrement = (
+    index: number,
+    productQuantity: number,
+    incrementData: any
+  ) => {
+    const checkExistanceFunc = (param: any) => {
+      // incrementData[index]
+      let res = false
+
+      console.log('Index Increment = ', index)
+      console.log('param', param, 'productQuantity', productQuantity)
+
+      incrementData.map((oneObjOfState: any) => {
+        console.log('oneObjOfState', oneObjOfState)
+
+        if (param === 'id' && oneObjOfState.id === index) {
+          res = true
+          console.log('oneObjOfState by id ', oneObjOfState)
+          if (productQuantity > oneObjOfState.val) {
+            let newArr = [...incrementData] // copying the old datas array
+
+            newArr.map((oneObjOfNewArray) => {
+              if (oneObjOfNewArray.id === index) {
+                oneObjOfNewArray.val = oneObjOfNewArray.val + 1
+              }
+              return
+            })
+            return setitemCountState(newArr)
+          } else {
+            return
+          }
+        }
+
+        return
+      })
+      console.log('id and value existance => ', [res])
+
+      return [res]
+    }
+
+    if (checkExistanceFunc('id')[0]) {
+      console.log(" checkExistanceFunc('id')[0] ")
+    } else {
+      console.log(
+        'grand parent else got called, means did not returned from last return func >'
+      )
+      let newObj = {
+        id: index,
+        val: productQuantity >= 2 ? 2 : 1,
+      }
+      let newArr = [...incrementData, newObj] // copying the old datas array
+
+      setitemCountState(newArr)
+    }
+  }
+
+  const handleRenderingItemCount = (index: number, incrementData: any) => {
+    let val = 1
+    incrementData.map((eachObjOfState: any) => {
+      if (eachObjOfState.id === index) {
+        val = eachObjOfState.val
+      }
+    })
+    return val
+  }
 
   return (
     <>
@@ -38,8 +122,9 @@ export default function Orders() {
 
             {/* <!-- product list  --> */}
             <div className="d-flex row">
-              {orderedItem.map((order: any) => {
-                // console.log('order ', order)
+              {orderedItem.map((order: any, index) => {
+                // console.log('order new have to look where \n ', order)
+                let productQuantity = order?.quantity || 0
 
                 return (
                   <div className="productCard">
@@ -63,6 +148,65 @@ export default function Orders() {
                     </div>
                     <div>
                       <p className="Product-price">$ {order?.price_inc_tax}</p>
+                    </div>
+
+                    <div className="AddToCartOnHover">
+                      <div className={`${style.incrementParent}`}>
+                        {/* ===================decreent button=================== */}
+                        <button
+                          className={`${style.decrementBtn}`}
+                          onClick={() => {
+                            return handleDecrement(index, itemCountState)
+                          }}
+                        >
+                          -
+                        </button>
+
+                        {/* current value of product quantity //  #input field for all subcomponents */}
+                        <input
+                          disabled
+                          className={`${style.inputEDCartVal}`}
+                          value={handleRenderingItemCount(
+                            index,
+                            itemCountState
+                          )}
+                        />
+
+                        {/* ===================increment button=================== */}
+                        <button
+                          className={` ${style.incrementBtn} `}
+                          onClick={() => {
+                            return handleIncrement(
+                              index,
+                              productQuantity,
+                              itemCountState
+                            )
+                          }}
+                        >
+                          +
+                        </button>
+                      </div>
+                      <h6
+                        className="h6AddToCart"
+                        onClick={async () => {
+                          let productId = order?.product_id
+                          let variantId = order?.variant_id
+                          // await addItem({
+                          //   productId,
+                          //   variantId,
+                          // })
+                          await addItem({
+                            productId,
+                            variantId,
+                            quantity: handleRenderingItemCount(
+                              index,
+                              itemCountState
+                            ),
+                          })
+                        }}
+                      >
+                        Add to Cart
+                      </h6>
                     </div>
                   </div>
                 )

@@ -100,7 +100,7 @@ const Footer: FC<Props> = ({ className, pages }) => {
             <div className="footer-links-title">Help</div>
             <div className="footer-links">
               <span className="">
-                <a className="" href="#">
+                <a className="" href="/pages/shipping-policy.html">
                   Shipping &amp; Returns
                 </a>
               </span>
@@ -125,12 +125,12 @@ const Footer: FC<Props> = ({ className, pages }) => {
             <div className="footer-links-title">About</div>
             <div className="footer-links">
               <span className="">
-                <a className="" href="#">
+                <a className="" href="">
                   About Us
                 </a>
               </span>
               <span className="">
-                <a className="" href="#">
+                <a className="" href="">
                   Contact Us
                 </a>
               </span>
@@ -140,7 +140,7 @@ const Footer: FC<Props> = ({ className, pages }) => {
                 </a>
               </span>
               <span className="">
-                <a className="" href="#">
+                <a className="" href="/pages/partnership.html">
                   Become an Affiliate
                 </a>
               </span>
@@ -176,16 +176,7 @@ const Footer: FC<Props> = ({ className, pages }) => {
               JOIN THE LIST AND RECEIVE 15% OFF YOUR FIRST ORDER
             </div>
             <div className="newsletter-form">
-              <input
-                type="email"
-                value=""
-                name="email"
-                id="k_id_email"
-                placeholder="Your email"
-              />
-              <button type="submit" className="newsletter-form-button">
-                Send
-              </button>
+              <div className="klaviyo-form-W2TX3f"></div>
             </div>
             <div className="social-links">
               <ul className="social-links-ul">
@@ -231,10 +222,10 @@ const Footer: FC<Props> = ({ className, pages }) => {
               © 2021 <a href="#">SleekShop</a>, Inc. All rights reserved.
             </span>
             <span>
-              <a href="#">Privacy Policy</a>
+              <a href={termlinks[1].url}>Privacy Policy</a>
             </span>
             <span>
-              <a href="#">Terms &amp; Conditions</a>
+              <a href={termlinks[0].url}>Terms &amp; Conditions</a>
             </span>
           </div>
           <div className="payment-methods">
@@ -258,6 +249,8 @@ const Footer: FC<Props> = ({ className, pages }) => {
 
       <script src="//sandbox.unbxd.io/sleekhair_mybigcommerce_stage_autosuggest.js"></script>
       <script src="//sandbox.unbxd.io/sleekhair_mybigcommerce_stage_search.js"></script>
+      <script src="https://static.klaviyo.com/onsite/js/klaviyo.js?company_id=MpJPGK"></script>
+      <script src="https://a.klaviyo.com/media/js/onsite/onsite.js"></script>
     </footer>
   )
 }

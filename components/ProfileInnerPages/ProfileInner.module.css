@@ -1,0 +1,25 @@
+.incrementParent {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.decrementBtn {
+  width: 30px;
+  background: #cacaca;
+  margin-right: 5px;
+}
+
+.incrementBtn {
+  width: 30px;
+  background: #e99da1;
+  margin-left: 5px;
+}
+
+.inputEDCartVal {
+  border: 2px solid #c7c7c7;
+  width: 50px;
+  border-radius: 5px;
+  text-align: center;
+  background: white;
+}

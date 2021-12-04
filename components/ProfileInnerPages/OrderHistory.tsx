@@ -76,9 +76,9 @@ const Reward: FC<Props> = ({
                       <div className="OHIGPC">
                         <div className="d-flex OrderHistoryImagesContainer">
                           {order?.productImage.map((imgString: any) => (
-                            <div className="HistoryImagesCo">
+                            <div className="productCardImgParent">
                               <img
-                                className="imgOrderHistory"
+                                className="ProductImg"
                                 src={imgString}
                                 alt=""
                               />
