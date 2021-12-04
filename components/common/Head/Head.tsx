@@ -26,21 +26,9 @@ const Head: FC = () => {
 
         <link
           rel="stylesheet"
-          type="text/css"
-          href="https://unbxd.s3.amazonaws.com/unbxd_autosuggest_sleekhair.css"
-        />
-
-        <link
-          rel="stylesheet"
           href="//sandbox.unbxd.io/sleekhair_mybigcommerce_com-u1474746314480_search.css"
         />
-        {/* as we got a mail to remove this */}
-        {/* <link
-          rel="stylesheet"
-          type="text/css"
-          href="https://unbxd.s3.amazonaws.com/unbxd_autosuggest_sleekhair.css"
-        /> */}
-        {/* as we got a mail to remove this */}
+
         <link
           rel="stylesheet"
           href="//sandbox.unbxd.io/sleekhair_mybigcommerce_com-u1474746314480_autosuggest.css"
