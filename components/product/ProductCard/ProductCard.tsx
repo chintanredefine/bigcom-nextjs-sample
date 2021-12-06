@@ -7,7 +7,8 @@ import Image, { ImageProps } from 'next/image'
 import WishlistButton from '@components/wishlist/WishlistButton'
 import usePrice from '@framework/product/use-price'
 import ProductTag from '../ProductTag'
-
+import { useRouter } from 'next/router'
+import Cookies from 'js-cookie'
 interface Props {
   className?: string
   product: Product
@@ -37,26 +38,45 @@ const ProductCard: FC<Props> = ({
     className
   )
 
+  const router = useRouter()
+
+  let newProductSlug = product?.slug?.replace('.html', '')
+
+  console.log(
+    'router in productCard.tsx 1234',
+    router,
+    'product?.slug',
+    product?.slug
+  )
+
+  if (router.asPath !== '/' && router.asPath !== '/search') {
+    newProductSlug = newProductSlug?.replace('products/', '')
+  }
+
   return (
-    <Link href={`${product.slug}`}>
-      <a className="a-ProductCard">
+    <Link href={`${newProductSlug}`}>
+      <a
+        className="a-ProductCard"
+        onClick={() => {
+          Cookies.set('recently_viewed_products', JSON.stringify(product))
+        }}
+      >
         {variant === 'slim' && (
           <>
-          <div className="product-main-image">
-            {product?.images && (
-              <Image
-                quality="100"
-                src={product.images[0]?.url || placeholderImg}
-                alt={product.name || 'Product Image'}
-                layout="fill"
-                objectFit="contain"
-              />
-            )}
+            <div className="product-main-image">
+              {product?.images && (
+                <Image
+                  quality="100"
+                  src={product.images[0]?.url || placeholderImg}
+                  alt={product.name || 'Product Image'}
+                  layout="fill"
+                  objectFit="contain"
+                />
+              )}
             </div>
             <div className="name_header">
               <span>{product.name}</span>
             </div>
-            
           </>
         )}
 
@@ -70,20 +90,19 @@ const ProductCard: FC<Props> = ({
               />
             )}
             <div className={s.imageContainer}>
-            <div className="product-main-image">
-
-              {product?.images && (
-                <Image
-                  alt={product.name || 'Product Image'}
-                  className={s.productImage}
-                  src={product.images[0]?.url || placeholderImg}
-                  height={540}
-                  width={540}
-                  quality="85"
-                  layout="responsive"
-                  {...imgProps}
-                />
-              )}
+              <div className="product-main-image">
+                {product?.images && (
+                  <Image
+                    alt={product.name || 'Product Image'}
+                    className={s.productImage}
+                    src={product.images[0]?.url || placeholderImg}
+                    height={540}
+                    width={540}
+                    quality="85"
+                    layout="responsive"
+                    {...imgProps}
+                  />
+                )}
               </div>
             </div>
             {!noNameTag && (
@@ -96,7 +115,6 @@ const ProductCard: FC<Props> = ({
                 </div>
               </div>
             )}
-            
           </>
         )}
 

@@ -47,6 +47,8 @@ export default function Profile() {
 
   useEffect(() => {
     if (data) {
+      console.log('CurrentUser ', data)
+
       setModalView('')
       const newUserName = data.firstName + ' ' + data.lastName
       setuserName(newUserName)
