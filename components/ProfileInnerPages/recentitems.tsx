@@ -147,9 +147,9 @@ export default function RecentItems() {
             {/* <!-- product list  --> */}
             <div className="d-flex row">
               {orderedItem.map((order: any, index) => {
-                // console.log('order new have to look where \n ', order)
-                let productQuantity = order?.quantity || 0
-
+                console.log('recently View Single Product \n ', order)
+                // let productQuantity = order?.quantity || 0
+                let productQuantity = 2
                 return (
                   <div className="productCard">
                     <div className="productCardImgParent">
