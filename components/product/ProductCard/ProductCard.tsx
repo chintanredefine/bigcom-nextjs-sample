@@ -42,12 +42,12 @@ const ProductCard: FC<Props> = ({
 
   let newProductSlug = product?.slug?.replace('.html', '')
 
-  console.log(
-    'router in productCard.tsx 1234',
-    router,
-    'product?.slug',
-    product?.slug
-  )
+  // console.log(
+  //   'router in productCard.tsx 1234',
+  //   router,
+  //   'product?.slug',
+  //   product?.slug
+  // )
 
   if (router.asPath !== '/' && router.asPath !== '/search') {
     newProductSlug = newProductSlug?.replace('products/', '')
