@@ -165,11 +165,7 @@ export default function RecentItems() {
                     <div>
                       <p className="Product-Name">{order?.name}</p>
                     </div>
-                    <div>
-                      <p className="Product-brand">
-                        {order?.product_options[0]?.display_value}
-                      </p>
-                    </div>
+
                     <div>
                       <p className="Product-price">$ {order?.price}</p>
                     </div>
