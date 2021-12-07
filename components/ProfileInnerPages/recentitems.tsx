@@ -35,7 +35,7 @@ export default function RecentItems() {
           .then((res) => {
             if (res.success) {
               console.log('recent viewed products', res)
-              setorderedItem(res)
+              setorderedItem(res.data)
               //  setrefresh(!refresh)
             }
           })
