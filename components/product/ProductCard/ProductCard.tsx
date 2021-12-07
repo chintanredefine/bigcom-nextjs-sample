@@ -49,7 +49,7 @@ const ProductCard: FC<Props> = ({
   //   product?.slug
   // )
 
-  if (router.asPath !== '/' && router.asPath !== '/search') {
+  if (router.asPath && router.asPath !== '/' && router.asPath !== '/search') {
     newProductSlug = newProductSlug?.replace('products/', '')
   }
 
