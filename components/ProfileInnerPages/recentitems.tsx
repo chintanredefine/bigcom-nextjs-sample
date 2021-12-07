@@ -160,7 +160,7 @@ export default function RecentItems() {
                       />
                     </div>
                     <div className="Product-Model-Parent mt-3">
-                      <p className="Product-Model">SKU: {order.sku}</p>
+                      <p className="Product-Model">SKU: {order?.sku}</p>
                     </div>
                     <div>
                       <p className="Product-Name">{order?.name}</p>
