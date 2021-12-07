@@ -68,24 +68,30 @@ const ProductView: FC<ProductViewProps> = ({ product, relatedProducts }) => {
         <section className="py-12 px-6 mb-10">
           <Text variant="sectionHeading">Related Products</Text>
           <div className={s.relatedProductsGrid}>
-            {relatedProducts.map((p) => (
-              <div
-                key={p.path}
-                className="animated fadeIn bg-accent-0 border border-accent-2"
-              >
-                <ProductCard
-                  noNameTag
-                  product={p}
+            {relatedProducts.map((p) => {
+              console.log("p['path'] before modifying ==>  ", p.path)
+              p['path'] = p['path']?.replace('/products', '')
+              console.log("p['path']", p.path)
+
+              return (
+                <div
                   key={p.path}
-                  variant="simple"
-                  className="animated fadeIn"
-                  imgProps={{
-                    width: 300,
-                    height: 300,
-                  }}
-                />
-              </div>
-            ))}
+                  className="animated fadeIn bg-accent-0 border border-accent-2"
+                >
+                  <ProductCard
+                    noNameTag
+                    product={p}
+                    key={p.path}
+                    variant="simple"
+                    className="animated fadeIn"
+                    imgProps={{
+                      width: 300,
+                      height: 300,
+                    }}
+                  />
+                </div>
+              )
+            })}
           </div>
         </section>
       </Container>

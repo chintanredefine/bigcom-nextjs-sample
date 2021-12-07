@@ -17,7 +17,7 @@ export async function getStaticProps({
   const config = { locale, locales }
   const pagesPromise = commerce.getAllPages({ config, preview })
   const siteInfoPromise = commerce.getSiteInfo({ config, preview })
-    let slg = 'products/' + params!.slug + '.html'
+  let slg = 'products/' + params!.slug + '.html'
   const productPromise = commerce.getProduct({
     variables: { slug: slg },
     config,
@@ -35,7 +35,7 @@ export async function getStaticProps({
   const { products: relatedProducts } = await allProductsPromise
 
   if (!product) {
-    throw new Error(`Product with slug '${params!.slug}' not found`)
+    throw new Error(`Product with slug '${params?.slug}' not found`)
   }
 
   return {

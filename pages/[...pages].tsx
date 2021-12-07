@@ -92,7 +92,7 @@ function changePath(path: string) {
   let s1 = path
   let s2 = s1.split('/')
   let s3 = s2[s2.length - 1].replace('.html', '')
-  console.log(s3 + ' - ' + path)
+  console.log('dynamic path 1234', s3 + ' - ' + path)
   return s3
 }
 
