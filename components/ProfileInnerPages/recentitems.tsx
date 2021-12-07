@@ -155,7 +155,7 @@ export default function RecentItems() {
                     <div className="productCardImgParent">
                       <img
                         className="ProductImg"
-                        src={order?.custom_url?.url}
+                        src={order?.product_image}
                         alt="image not found"
                       />
                     </div>
