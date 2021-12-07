@@ -64,7 +64,6 @@ const ProductCard: FC<Props> = ({
       if (parsedCookie.indexOf(newProductId) === -1) {
         parsedCookie.push(newProductId)
         newCookie.push(...parsedCookie)
-        return
       } else {
         newCookie.push(...parsedCookie)
         return
