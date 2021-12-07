@@ -136,7 +136,7 @@ export default function RecentItems() {
     <>
       {Array.isArray(orderedItem) && orderedItem.length > 0 ? (
         <>
-          {/* <!-- ---------------------------- component buy it again ---------------------------- --> */}
+          {/* <!-- ---------------------------- component recently view items ---------------------------- --> */}
           <div className="MainContentInnerdiv mb-2">
             {/* <!-- title of the Buy It Again Page  --> */}
             <div className="mainContentChild d-flex justify-content-between">
@@ -155,7 +155,7 @@ export default function RecentItems() {
                     <div className="productCardImgParent">
                       <img
                         className="ProductImg"
-                        src={order?.prod_image}
+                        src={order?.custom_url?.url}
                         alt="image not found"
                       />
                     </div>
@@ -171,7 +171,7 @@ export default function RecentItems() {
                       </p>
                     </div>
                     <div>
-                      <p className="Product-price">$ {order?.price_inc_tax}</p>
+                      <p className="Product-price">$ {order?.price}</p>
                     </div>
 
                     <div className="AddToCartOnHover">
