@@ -81,7 +81,7 @@ const ProductCard: FC<Props> = ({
     <div className="a-ProductCard" onClick={() => handleSetCookie(product.id)}>
       {console.log('newProductSlug in page 123489', newProductSlug)}
       <Link href={`${newProductSlug}`}>
-        <a className={rootClassName} aria-label={product.name}>
+        <a className={rootClassName}>
           {variant === 'slim' && (
             <>
               <div className="product-main-image">
@@ -96,7 +96,7 @@ const ProductCard: FC<Props> = ({
                 )}
               </div>
               <div className="name_header">
-                <span>{product.name}</span>
+                <p>{product.name}</p>
               </div>
             </>
           )}

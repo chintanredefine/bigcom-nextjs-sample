@@ -377,6 +377,21 @@ footer {
   }
 }
 
+@media only screen and (min-width: 769px) {
+  .unbxd-view-all-buttonParent {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .unbxd-view-all-buttonChild {
+    flex: 3;
+  }
+  .unbxd-view-all-buttonChild2 {
+    flex: 1;
+  }
+}
+
 @media screen and (max-width: 1024px) {
   .menu .Navbar_navMenu__2ZaDY .Navbar_link__3Blki {
     margin: 0 !important;
@@ -392,11 +407,6 @@ footer {
   }
   .Navbar_mainmenudiv__CB_eL {
     text-align: left;
-  }
-
-  .unbxd-view-all-button {
-    position: absolute !important;
-    margin-top: -2px !important;
   }
 }
 

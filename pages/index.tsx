@@ -92,20 +92,24 @@ export default function Home({
       </ProductSlider>
 
       <Container>
-        <div className="pt-50">
-          <Image
-            src="https://cdn8.bigcommerce.com/s-hmhnh4h9/product_images/uploaded_images/topsellhdline.png"
-            width="1143"
-            height="23"
-          ></Image>
-          <div className="unbxd-view-all-button">
-            <a
-              href="https://www.sleekshop.com/top-selling-products"
-              className="btn btn-info"
-              role="button"
-            >
-              View All
-            </a>
+        <div className="pt-50 ">
+          <div className="unbxd-view-all-buttonParent">
+            <div className="unbxd-view-all-buttonChild">
+              <Image
+                src="https://cdn8.bigcommerce.com/s-hmhnh4h9/product_images/uploaded_images/topsellhdline.png"
+                width="1143"
+                height="23"
+              ></Image>
+            </div>
+            <div className="unbxd-view-all-button unbxd-view-all-buttonChild2">
+              <a
+                href="https://www.sleekshop.com/top-selling-products"
+                className="btn btn-info"
+                role="button"
+              >
+                View All
+              </a>
+            </div>
           </div>
 
           <ProductSlider viewCount={4}>
@@ -116,20 +120,24 @@ export default function Home({
             ))}
           </ProductSlider>
         </div>
-        <div className="pt-50">
-          <Image
-            src="https://cdn8.bigcommerce.com/s-hmhnh4h9/product_images/uploaded_images/recomendhdline.png"
-            width="1143"
-            height="23"
-          ></Image>
-          <div className="unbxd-view-all-button">
-            <a
-              href="https://www.sleekshop.com/top-selling-products"
-              className="btn btn-info"
-              role="button"
-            >
-              View All
-            </a>
+        <div className="pt-50 ">
+          <div className="unbxd-view-all-buttonParent">
+            <div className="unbxd-view-all-buttonChild">
+              <Image
+                src="https://cdn8.bigcommerce.com/s-hmhnh4h9/product_images/uploaded_images/recomendhdline.png"
+                width="1143"
+                height="23"
+              ></Image>
+            </div>
+            <div className="unbxd-view-all-button unbxd-view-all-buttonChild2">
+              <a
+                href="https://www.sleekshop.com/top-selling-products"
+                className="btn btn-info"
+                role="button"
+              >
+                View All
+              </a>
+            </div>
           </div>
 
           <ProductSlider viewCount={4}>
