@@ -64,7 +64,9 @@ export default function Home({
   data,
   pages,
 }: InferGetStaticPropsType<typeof getStaticProps>) {
-  const rndInt = Math.floor(Math.random() * products2.length - 10) + 1
+  const newRamNum = Math.random() * 10
+  const rndInt = Math.floor(newRamNum) + 1
+  const rndIntPlus10 = rndInt + 10
 
   return (
     <>
@@ -146,7 +148,7 @@ export default function Home({
 
           <ProductSlider viewCount={4}>
             {products2
-              .slice(rndInt, rndInt + 10)
+              .slice(rndIntPlus10, rndIntPlus10 + 10)
               .map((product: any, i: number) => (
                 <div key={product.id} className="ken_slide">
                   <ProductCard product={product} variant="slim" />
