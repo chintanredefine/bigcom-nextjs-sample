@@ -79,7 +79,6 @@ const ProductCard: FC<Props> = ({
 
   return (
     <div className="a-ProductCard" onClick={() => handleSetCookie(product.id)}>
-      {console.log('newProductSlug in page 123489', newProductSlug)}
       <Link href={`${newProductSlug}`}>
         <a className={rootClassName}>
           {variant === 'slim' && (

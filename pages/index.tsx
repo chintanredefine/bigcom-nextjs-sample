@@ -64,6 +64,8 @@ export default function Home({
   data,
   pages,
 }: InferGetStaticPropsType<typeof getStaticProps>) {
+  const rndInt = Math.floor(Math.random() * products2.length - 10) + 1
+
   return (
     <>
       <ul id="customUL" className="SearchBrandList">
@@ -113,11 +115,13 @@ export default function Home({
           </div>
 
           <ProductSlider viewCount={4}>
-            {products1.slice(0, 10).map((product: any, i: number) => (
-              <div key={product.id} className="ken_slide">
-                <ProductCard product={product} variant="slim" />
-              </div>
-            ))}
+            {products1
+              .slice(rndInt, rndInt + 10)
+              .map((product: any, i: number) => (
+                <div key={product.id} className="ken_slide">
+                  <ProductCard product={product} variant="slim" />
+                </div>
+              ))}
           </ProductSlider>
         </div>
         <div className="pt-50 ">
@@ -141,11 +145,13 @@ export default function Home({
           </div>
 
           <ProductSlider viewCount={4}>
-            {products2.slice(0, 10).map((product: any, i: number) => (
-              <div key={product.id} className="ken_slide">
-                <ProductCard product={product} variant="slim" />
-              </div>
-            ))}
+            {products2
+              .slice(rndInt, rndInt + 10)
+              .map((product: any, i: number) => (
+                <div key={product.id} className="ken_slide">
+                  <ProductCard product={product} variant="slim" />
+                </div>
+              ))}
           </ProductSlider>
         </div>
       </Container>
