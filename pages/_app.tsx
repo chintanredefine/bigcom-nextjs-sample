@@ -27,12 +27,12 @@ export default function MyApp({ Component, pageProps }: AppProps) {
       let requiredRoute = router?.asPath?.replace('search/', '')
 
       router.push(requiredRoute)
-      console.log(
-        'current Route ck 223344',
-        router,
-        'requiredRoute',
-        requiredRoute
-      )
+      // console.log(
+      //   'current Route ck 223344',
+      //   router,
+      //   'requiredRoute',
+      //   requiredRoute
+      // )
     }
   }, [router])
 

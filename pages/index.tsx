@@ -113,11 +113,14 @@ export default function Home({
           </div>
 
           <ProductSlider viewCount={4}>
-            {products1.slice(10, 20).map((product: any, i: number) => (
-              <div key={product.id} className="ken_slide">
-                <ProductCard product={product} variant="slim" />
-              </div>
-            ))}
+            {products1
+              .slice(0, 10)
+              .reverse()
+              .map((product: any, i: number) => (
+                <div key={product.id} className="ken_slide">
+                  <ProductCard product={product} variant="slim" />
+                </div>
+              ))}
           </ProductSlider>
         </div>
         <div className="pt-50 ">
