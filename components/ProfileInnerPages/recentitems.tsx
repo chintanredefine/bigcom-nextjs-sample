@@ -23,15 +23,11 @@ export default function RecentItems() {
           body: JSON.stringify([...parsedCookie]),
         })
           .then((res) => {
-            console.log('recent 001 viewed products', res)
-
             return res.json()
           })
           .then((res) => {
             if (res.success) {
-              console.log('recent viewed products', res)
               setorderedItem(res.data)
-              //  setrefresh(!refresh)
             }
           })
       }
@@ -53,25 +49,30 @@ export default function RecentItems() {
             {/* <!-- product list  --> */}
             <div className="d-flex row">
               {orderedItem.map((order: any) => {
+                let RedirectUrl = order?.custom_url?.url?.replace('.html', '')
                 return (
                   <div className="productCard">
-                    <div className="productCardImgParent">
-                      <img
-                        className="ProductImg"
-                        src={order?.product_image}
-                        alt="image not found"
-                      />
-                    </div>
-                    <div className="Product-Model-Parent mt-3">
-                      <p className="Product-Model">SKU: {order?.sku}</p>
-                    </div>
-                    <div>
-                      <p className="Product-Name">{order?.name}</p>
-                    </div>
+                    <Link href={RedirectUrl}>
+                      <a>
+                        <div className="productCardImgParent">
+                          <img
+                            className="ProductImg"
+                            src={order?.product_image}
+                            alt="image not found"
+                          />
+                        </div>
+                        <div className="Product-Model-Parent mt-3">
+                          <p className="Product-Model">SKU: {order?.sku}</p>
+                        </div>
+                        <div>
+                          <p className="Product-Name">{order?.name}</p>
+                        </div>
 
-                    <div>
-                      <p className="Product-price">$ {order?.price}</p>
-                    </div>
+                        <div>
+                          <p className="Product-price">$ {order?.price}</p>
+                        </div>
+                      </a>
+                    </Link>
                   </div>
                 )
               })}

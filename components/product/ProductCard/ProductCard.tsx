@@ -42,14 +42,11 @@ const ProductCard: FC<Props> = ({
 
   let newProductSlug = product?.slug?.replace('.html', '')
 
-  // console.log(
-  //   'router in productCard.tsx 1234',
-  //   router,
-  //   'product?.slug',
-  //   product?.slug
-  // )
-
-  if (router.asPath && router.asPath !== '/' && router.asPath !== '/search') {
+  if (
+    router.asPath &&
+    router.asPath !== '/' &&
+    !router.asPath.includes('/search')
+  ) {
     newProductSlug = newProductSlug?.replace('products/', '')
   }
 
@@ -76,13 +73,15 @@ const ProductCard: FC<Props> = ({
 
     Cookies.set('recently_viewed_products', stringifyNewProduct, {
       expires: 1,
+      secure: true,
     })
   }
 
   return (
     <div className="a-ProductCard" onClick={() => handleSetCookie(product.id)}>
+      {console.log('newProductSlug in page 123489', newProductSlug)}
       <Link href={`${newProductSlug}`}>
-        <a>
+        <a className={rootClassName} aria-label={product.name}>
           {variant === 'slim' && (
             <>
               <div className="product-main-image">
