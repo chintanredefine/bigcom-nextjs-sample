@@ -385,10 +385,7 @@ footer {
   }
 
   .unbxd-view-all-buttonChild {
-    flex: 3;
-  }
-  .unbxd-view-all-buttonChild2 {
-    flex: 1;
+    width: 91.5%;
   }
 }
 
