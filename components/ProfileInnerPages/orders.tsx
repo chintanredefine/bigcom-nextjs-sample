@@ -51,15 +51,9 @@ export default function Orders() {
       // incrementData[index]
       let res = false
 
-      console.log('Index Increment = ', index)
-      console.log('param', param, 'productQuantity', productQuantity)
-
       incrementData.map((oneObjOfState: any) => {
-        console.log('oneObjOfState', oneObjOfState)
-
         if (param === 'id' && oneObjOfState.id === index) {
           res = true
-          console.log('oneObjOfState by id ', oneObjOfState)
           if (productQuantity > oneObjOfState.val) {
             let newArr = [...incrementData] // copying the old datas array
 
@@ -77,17 +71,11 @@ export default function Orders() {
 
         return
       })
-      console.log('id and value existance => ', [res])
-
       return [res]
     }
 
     if (checkExistanceFunc('id')[0]) {
-      console.log(" checkExistanceFunc('id')[0] ")
     } else {
-      console.log(
-        'grand parent else got called, means did not returned from last return func >'
-      )
       let newObj = {
         id: index,
         val: productQuantity >= 2 ? 2 : 1,
@@ -123,7 +111,6 @@ export default function Orders() {
             {/* <!-- product list  --> */}
             <div className="d-flex row">
               {orderedItem.map((order: any, index) => {
-                // console.log('order new have to look where \n ', order)
                 let productQuantity = order?.quantity || 0
 
                 return (
@@ -191,10 +178,6 @@ export default function Orders() {
                         onClick={async () => {
                           let productId = order?.product_id
                           let variantId = order?.variant_id
-                          // await addItem({
-                          //   productId,
-                          //   variantId,
-                          // })
                           await addItem({
                             productId,
                             variantId,

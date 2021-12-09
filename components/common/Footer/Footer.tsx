@@ -242,11 +242,6 @@ const Footer: FC<Props> = ({ className, pages }) => {
 
       <script src="//libraries.unbxdapi.com/search-sdk/v2.0.4/vanillaSearch.min.js"></script>
 
-      <script
-        type="text/javascript"
-        src="https://libraries.unbxdapi.com/unbxdAutosuggest_v1.js"
-      ></script>
-
       <script src="//sandbox.unbxd.io/sleekhair_mybigcommerce_stage_autosuggest.js"></script>
       <script src="//sandbox.unbxd.io/sleekhair_mybigcommerce_stage_search.js"></script>
       <script src="https://static.klaviyo.com/onsite/js/klaviyo.js?company_id=MpJPGK"></script>

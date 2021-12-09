@@ -40,16 +40,6 @@ const ProductCard: FC<Props> = ({
 
   const router = useRouter()
 
-  let newProductSlug = product?.slug?.replace('.html', '')
-
-  if (
-    router.asPath &&
-    router.asPath !== '/' &&
-    !router.asPath.includes('/search')
-  ) {
-    newProductSlug = newProductSlug?.replace('products/', '')
-  }
-
   const handleSetCookie = (newProductId: any) => {
     let newCookie: any[] = []
 
@@ -79,7 +69,7 @@ const ProductCard: FC<Props> = ({
 
   return (
     <div className="a-ProductCard" onClick={() => handleSetCookie(product.id)}>
-      <Link href={`${newProductSlug}`}>
+      <Link href={`${product.slug}`}>
         <a className={rootClassName}>
           {variant === 'slim' && (
             <>

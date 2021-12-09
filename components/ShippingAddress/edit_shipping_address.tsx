@@ -40,7 +40,6 @@ const EditAddressCompo = (props: {
   }, [FetchCountries])
 
   const fetchAllStates = (countryId: any) => {
-    // console.log('started fetching all states data ... |')
     fetch('https://www.ystore.us/sleekshop/getStates.php', {
       method: 'Post',
       body: JSON.stringify({
@@ -68,8 +67,6 @@ const EditAddressCompo = (props: {
         }
       )
         .then((res) => {
-          // console.log("res ",res,  res?.body);
-
           return res.json()
         })
         .then((data) => console.log('customer address updated ', data))
@@ -134,7 +131,6 @@ const EditAddressCompo = (props: {
                         )}
 
                         {countries.map((country) => {
-                          // console.log('countries => ', countries, country)
                           let countryName = country['country'] || ''
                           let countryId = country['id'] || ''
                           let countryCode = country['country_iso2'] || ''
@@ -339,7 +335,6 @@ const EditAddressCompo = (props: {
                         {States &&
                           States.length > 0 &&
                           States.map((state) => {
-                            // console.log('countries => ', countries, state)
                             let stateName = state['state'] || ''
 
                             return (

@@ -69,10 +69,6 @@ const ProductView: FC<ProductViewProps> = ({ product, relatedProducts }) => {
           <Text variant="sectionHeading">Related Products</Text>
           <div className={s.relatedProductsGrid}>
             {relatedProducts.map((p) => {
-              console.log("p['path'] before modifying ==>  ", p.path)
-              p['path'] = p['path']?.replace('/products', '')
-              console.log("p['path']", p.path)
-
               return (
                 <div
                   key={p.path}
