@@ -20,21 +20,21 @@ export default function MyApp({ Component, pageProps }: AppProps) {
     document.body.classList?.remove('loading')
   }, [])
 
-  useEffect(() => {
-    let catchRoute = '/search/products/'
+  // useEffect(() => {
+  //   let catchRoute = '/search/products/'
 
-    if (router.asPath.includes(catchRoute)) {
-      let requiredRoute = router?.asPath?.replace('search/', '')
+  //   if (router.asPath.includes(catchRoute)) {
+  //     let requiredRoute = router?.asPath?.replace('search/', '')
 
-      router.push(requiredRoute)
-      // console.log(
-      //   'current Route ck 223344',
-      //   router,
-      //   'requiredRoute',
-      //   requiredRoute
-      // )
-    }
-  }, [router])
+  //     router.push(requiredRoute)
+  //     // console.log(
+  //     //   'current Route ck 223344',
+  //     //   router,
+  //     //   'requiredRoute',
+  //     //   requiredRoute
+  //     // )
+  //   }
+  // }, [router])
 
   return (
     <>
