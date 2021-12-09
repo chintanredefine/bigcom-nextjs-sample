@@ -229,7 +229,7 @@ const Footer: FC<Props> = ({ className, pages }) => {
             </span>
           </div>
           <div className="payment-methods">
-            <Image src={PaymentMethodPng} alt="" />
+            <Image src={PaymentMethodPng && PaymentMethodPng} alt="" />
           </div>
         </div>
       </div>
