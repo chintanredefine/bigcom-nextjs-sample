@@ -279,6 +279,24 @@ textarea {
   height: 20px;
 }
 
+.open-extend-search .Searchbar_iconContainer_close {
+  position: absolute !important;
+  right: 5px !important;
+  top: 7px !important;
+}
+
+.Navbar_nav__2tz61 .justify-center.open-extend {
+  background: none !important;
+  top: 2px !important;
+  position: relative !important;
+  height: 73px;
+}
+
+.Searchbar_rootcustom__1dui- {
+  height: 73px !important;
+  position: relative !important;
+}
+
 .Searchbar_iconContainer__266wB {
   padding-left: 0.75em !important;
 }
