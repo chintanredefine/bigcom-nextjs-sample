@@ -56,7 +56,6 @@ const AddAddressCompo = (props: { setshowAddAddressCompo: any }) => {
   }, [])
 
   const fetchAllStates = (countryId: any) => {
-    // console.log('started fetching all states data ... |')
     fetch('https://www.ystore.us/sleekshop/getStates.php', {
       method: 'Post',
       body: JSON.stringify({
@@ -129,7 +128,6 @@ const AddAddressCompo = (props: { setshowAddAddressCompo: any }) => {
                         )}
 
                         {countries.map((country) => {
-                          // console.log('countries => ', countries, country)
                           let countryName = country['country'] || ''
                           let countryId = country['id'] || ''
                           let countryCode = country['country_iso2'] || ''

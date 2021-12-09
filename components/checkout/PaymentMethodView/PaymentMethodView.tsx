@@ -1,39 +1,28 @@
-import { FC } from "react";
-import cn from "classnames";
+import { FC } from 'react'
+import cn from 'classnames'
 
 // import AddPaymentMethod from '@framework/paymentmethod/add-paymentmethod'
-import { Button, Text } from "@components/ui";
+import { Button, Text } from '@components/ui'
 
-import s from "./PaymentMethodView.module.css";
+import s from './PaymentMethodView.module.css'
 
 interface Form extends HTMLFormElement {
-  cardHolder: HTMLInputElement;
-  cardNumber: HTMLInputElement;
-  cardExpireDate: HTMLInputElement;
-  cardCvc: HTMLInputElement;
-  firstName: HTMLInputElement;
-  lastName: HTMLInputElement;
-  company: HTMLInputElement;
-  streetNumber: HTMLInputElement;
-  zipCode: HTMLInputElement;
-  city: HTMLInputElement;
-  country: HTMLSelectElement;
+  cardHolder: HTMLInputElement
+  cardNumber: HTMLInputElement
+  cardExpireDate: HTMLInputElement
+  cardCvc: HTMLInputElement
+  firstName: HTMLInputElement
+  lastName: HTMLInputElement
+  company: HTMLInputElement
+  streetNumber: HTMLInputElement
+  zipCode: HTMLInputElement
+  city: HTMLInputElement
+  country: HTMLSelectElement
 }
 
 const PaymentMethodView: FC = () => {
-  // console.log(' AddPaymentMethod()', AddPaymentMethod())
-
-  // const addPaymentMethod = AddPaymentMethod()
-  // console.log('addPaymentMethod', addPaymentMethod)
-
   async function handleSubmit(event: React.ChangeEvent<Form>) {
-    event.preventDefault();
-
-    // await addPaymentMethod({
-    //   variantId: 1,
-    //   cardHolder: 'chandan',
-    //   productId: '98479834',
-    // })
+    event.preventDefault()
   }
 
   return (
@@ -47,26 +36,30 @@ const PaymentMethodView: FC = () => {
               <input name="cardHolder" className={s.input} />
             </div>
             <div className="grid gap-3 grid-flow-row grid-cols-12">
-              <div className={cn(s.fieldset, "col-span-7")}>
+              <div className={cn(s.fieldset, 'col-span-7')}>
                 <label className={s.label}>Card Number</label>
                 <input name="cardNumber" className={s.input} />
               </div>
-              <div className={cn(s.fieldset, "col-span-3")}>
+              <div className={cn(s.fieldset, 'col-span-3')}>
                 <label className={s.label}>Expires</label>
-                <input name="cardExpireDate" className={s.input} placeholder="MM/YY" />
+                <input
+                  name="cardExpireDate"
+                  className={s.input}
+                  placeholder="MM/YY"
+                />
               </div>
-              <div className={cn(s.fieldset, "col-span-2")}>
+              <div className={cn(s.fieldset, 'col-span-2')}>
                 <label className={s.label}>CVC</label>
                 <input name="cardCvc" className={s.input} />
               </div>
             </div>
             <hr className="border-accent-2 my-6" />
             <div className="grid gap-3 grid-flow-row grid-cols-12">
-              <div className={cn(s.fieldset, "col-span-6")}>
+              <div className={cn(s.fieldset, 'col-span-6')}>
                 <label className={s.label}>First Name</label>
                 <input name="firstName" className={s.input} />
               </div>
-              <div className={cn(s.fieldset, "col-span-6")}>
+              <div className={cn(s.fieldset, 'col-span-6')}>
                 <label className={s.label}>Last Name</label>
                 <input name="lastName" className={s.input} />
               </div>
@@ -80,15 +73,17 @@ const PaymentMethodView: FC = () => {
               <input name="streetNumber" className={s.input} />
             </div>
             <div className={s.fieldset}>
-              <label className={s.label}>Apartment, Suite, Etc. (Optional)</label>
+              <label className={s.label}>
+                Apartment, Suite, Etc. (Optional)
+              </label>
               <input className={s.input} name="apartment" />
             </div>
             <div className="grid gap-3 grid-flow-row grid-cols-12">
-              <div className={cn(s.fieldset, "col-span-6")}>
+              <div className={cn(s.fieldset, 'col-span-6')}>
                 <label className={s.label}>Postal Code</label>
                 <input name="zipCode" className={s.input} />
               </div>
-              <div className={cn(s.fieldset, "col-span-6")}>
+              <div className={cn(s.fieldset, 'col-span-6')}>
                 <label className={s.label}>City</label>
                 <input name="city" className={s.input} />
               </div>
@@ -108,7 +103,7 @@ const PaymentMethodView: FC = () => {
         </div>
       </form>
     </>
-  );
-};
+  )
+}
 
-export default PaymentMethodView;
+export default PaymentMethodView

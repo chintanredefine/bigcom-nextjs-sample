@@ -229,7 +229,7 @@ const Footer: FC<Props> = ({ className, pages }) => {
             </span>
           </div>
           <div className="payment-methods">
-            <Image src={PaymentMethodPng} alt="" />
+            <Image src={PaymentMethodPng && PaymentMethodPng} alt="" />
           </div>
         </div>
       </div>
@@ -241,11 +241,6 @@ const Footer: FC<Props> = ({ className, pages }) => {
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
       <script src="//libraries.unbxdapi.com/search-sdk/v2.0.4/vanillaSearch.min.js"></script>
-
-      <script
-        type="text/javascript"
-        src="https://libraries.unbxdapi.com/unbxdAutosuggest_v1.js"
-      ></script>
 
       <script src="//sandbox.unbxd.io/sleekhair_mybigcommerce_stage_autosuggest.js"></script>
       <script src="//sandbox.unbxd.io/sleekhair_mybigcommerce_stage_search.js"></script>

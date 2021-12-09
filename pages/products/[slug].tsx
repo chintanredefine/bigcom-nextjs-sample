@@ -35,7 +35,7 @@ export async function getStaticProps({
   const { products: relatedProducts } = await allProductsPromise
 
   if (!product) {
-    throw new Error(`Product with slug '${params!.slug}' not found`)
+    throw new Error(`Product with slug '${params?.slug}' not found`)
   }
 
   return {
