@@ -107,7 +107,7 @@ const Footer: FC<Props> = ({ className, pages }) => {
     }
   }, [data])
 
-  let site_id = process.env.site_id || 7870041
+  let site_id = process.env.site_id || 7870040
 
   return (
     <footer className="footer-main">
