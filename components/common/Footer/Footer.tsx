@@ -1,6 +1,7 @@
-import { FC } from 'react'
+import { FC, useEffect, useState } from 'react'
 import cn from 'classnames'
 import Image from 'next/image'
+import useCustomer from '@framework/customer/use-customer'
 
 import { useRouter } from 'next/router'
 import type { Page } from '@commerce/types/page'
@@ -17,6 +18,12 @@ interface Props {
   className?: string
   children?: any
   pages?: Page[]
+}
+
+declare global {
+  interface Window {
+    sa_emailid: String
+  }
 }
 
 const links = [
@@ -91,6 +98,16 @@ const termlinks = [
 const Footer: FC<Props> = ({ className, pages }) => {
   const { sitePages } = usePages(pages)
   const rootClassName = cn(s.root, className)
+
+  const { data } = useCustomer()
+
+  useEffect(() => {
+    if (data) {
+      window['sa_emailid'] = data.email
+    }
+  }, [data])
+
+  let site_id = process.env.site_id || 7870041
 
   return (
     <footer className="footer-main">
@@ -246,6 +263,27 @@ const Footer: FC<Props> = ({ className, pages }) => {
       <script src="//sandbox.unbxd.io/sleekhair_mybigcommerce_stage_search.js"></script>
       <script src="https://static.klaviyo.com/onsite/js/klaviyo.js?company_id=MpJPGK"></script>
       <script src="https://a.klaviyo.com/media/js/onsite/onsite.js"></script>
+
+      <script
+        type="text/javascript"
+        dangerouslySetInnerHTML={{
+          __html: `
+              var sa_uni = sa_uni || [];
+              sa_uni.push(['sa_pg', '5']);
+              (function() {function sa_async_load() 
+              { var sa = document.createElement('script');
+              sa.type = 'text/javascript';
+              sa.async = true;
+              sa.src = '//cdn.socialannex.com/partner/${site_id}/universal.js';
+              var sax = document.getElementsByTagName('script')[0];
+              sax.parentNode.insertBefore(sa, sax); 
+              }if (window.attachEvent) 
+              {window.attachEvent('onload', sa_async_load);
+              }else {window.addEventListener('load', sa_async_load,false);
+              }})();
+          `,
+        }}
+      />
     </footer>
   )
 }
