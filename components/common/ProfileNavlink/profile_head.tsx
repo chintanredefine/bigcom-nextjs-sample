@@ -154,7 +154,7 @@ const ProfileHead: FC<Props> = ({
             {data ? (
               <li onClick={() => logout()}>
                 <SignOutSvg />
-                <span>Log off</span>
+                <span>Sign Out</span>
               </li>
             ) : (
               <li onClick={() => HandleLogin()}>

@@ -18,6 +18,8 @@ import EditProfile from '@components/ProfileInnerPages/editProfile'
 import Message from '@components/ProfileInnerPages/messages'
 import SleekVault from '@components/ProfileInnerPages/sleekValut'
 
+import Login from '@components/ProfileInnerPages/login'
+
 export async function getStaticProps({
   preview,
   locale,
@@ -53,8 +55,6 @@ export default function Profile() {
       return closeModal()
     } else {
       setuserName('User')
-      setModalView('LOGIN_VIEW')
-      return openModal()
     }
   }, [data])
 
@@ -69,8 +69,8 @@ export default function Profile() {
           setShowOrderHistoryDetails={setShowOrderHistoryDetails}
         />
         <div className="right-side-content">
-          {data && (
-            // all components are going to be here //
+          {data ? (
+            // {/* // all components are going to be here // */}
             <>
               {ShowPage === 1 ? (
                 <Order />
@@ -95,6 +95,8 @@ export default function Profile() {
                 ShowPage === 9 && <Payment />
               )}
             </>
+          ) : (
+            <Login ShowPage={ShowPage} />
           )}
         </div>
       </div>

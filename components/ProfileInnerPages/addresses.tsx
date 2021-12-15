@@ -1,5 +1,6 @@
 import useCustomer from '@framework/customer/use-customer'
 import { useEffect, useState } from 'react'
+import { useUI } from '@components/ui'
 
 import EditAddressCompo from '@components/ShippingAddress/edit_shipping_address'
 import AddAddressCompo from '@components/ShippingAddress/add_address'
@@ -14,6 +15,14 @@ export default function Address() {
   const [refresh, setrefresh] = useState(false)
 
   const { data: customer } = useCustomer()
+  const { openModal, setModalView } = useUI()
+
+  useEffect(() => {
+    if (!customer) {
+      setModalView('LOGIN_VIEW')
+      return openModal()
+    }
+  }, [customer])
 
   // listing of all admin or users inside address tab
   useEffect(() => {
