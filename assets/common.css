@@ -83,6 +83,20 @@
   margin-top: 15px;
 }
 
+.productBrandP {
+  min-height: 44px;
+}
+
+.pPrice_AddToCartP {
+  position: absolute;
+  bottom: 0px;
+  width: 90%;
+}
+
+.pPrice_AddToCart {
+  min-height: 40px;
+}
+
 .MainContentParent .Product-Name {
   font-size: 18px;
   font-weight: 500;
@@ -132,6 +146,17 @@
   -ms-flex-pack: justify !important;
   justify-content: space-between !important;
 }
+
+.justify-content-center {
+  -ms-flex-pack: justify !important;
+  justify-content: center !important;
+}
+
+.justify-content-end {
+  -ms-flex-pack: end !important;
+  justify-content: flex-end !important;
+}
+
 .justify-content-around {
   -ms-flex-pack: distribute !important;
   justify-content: space-around !important;
@@ -148,6 +173,10 @@
 
 .mb-4 {
   margin-bottom: 30px !important;
+}
+
+.mt-1 {
+  margin-top: 4px !important;
 }
 
 .mt-2 {
@@ -180,7 +209,6 @@
   margin-top: 2px;
   width: 33.3%;
   padding: 10px;
-  cursor: pointer;
   position: relative;
 }
 
@@ -246,11 +274,16 @@
 textarea {
   width: 100%;
 }
+
+.addToCartButton {
+  display: none;
+}
+
 .AddToCartOnHover {
   display: none;
   position: absolute;
   margin: auto;
-  top: 37%;
+  top: 22%;
   width: 91%;
   border-radius: 3px;
 }
@@ -260,10 +293,22 @@ textarea {
   padding: 5px;
   color: #fff;
   text-align: center;
+  cursor: pointer;
+  width: 100%;
 }
 
-.productCard:hover .AddToCartOnHover {
-  display: block;
+.detailsh6AddToCart {
+  width: 80%;
+}
+
+.h6AddToCart:disabled {
+  opacity: 0.65;
+  pointer-events: none;
+}
+
+.h6AddToCart:focus .h6AddToCart.focus {
+  outline: 0;
+  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
 }
 
 /* fix search bar */
@@ -334,8 +379,21 @@ textarea {
   }
   .productCard {
     min-height: 100%;
-    width: 49%;
+    width: 50%;
     padding: 10px;
+  }
+
+  .detailproductCard {
+    width: 70%;
+    height: 80%;
+  }
+
+  .addToCartButton {
+    display: block;
+  }
+
+  .detailProductImg {
+    height: 100%;
   }
 
   .OrderHistoryImagesContainer {
@@ -343,7 +401,7 @@ textarea {
   }
 
   .productCardImgParent {
-    border: 1px solid #dee3e9 !important;
+    height: 40% !important;
     margin-left: 2px !important;
     width: 100% !important;
   }
@@ -351,10 +409,43 @@ textarea {
   .View-Order-Button {
     padding: 10px 100px;
   }
+
+  .orderNameP {
+    min-height: 70px;
+  }
+
+  .productBrandP {
+    min-height: 144px;
+  }
+
+  .detailproductCardParent {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 320px;
+  }
+
+  /* The animation code */
+  @keyframes animationToModal {
+    0% {
+      bottom: 0px;
+    }
+  }
+
+  /* The element to apply the animation to */
+  .ModalUpperMostParent {
+    position: relative;
+    animation-name: animationToModal;
+    animation-duration: 4s;
+    bottom: -100px;
+  }
 }
 
 /* Small devices (portrait tablets and large phones, 600px and up) */
 @media only screen and (min-width: 600px) {
+  .productBrandP {
+    min-height: 80px;
+  }
 }
 
 /* Medium devices (landscape tablets, 768px and up) */
@@ -363,4 +454,16 @@ textarea {
 
 /* Large devices (laptops/desktops, 992px and up) */
 @media only screen and (min-width: 992px) {
+  .productCard:hover .AddToCartOnHover {
+    display: block;
+  }
+
+  .orderNameP .Product-Name:hover {
+    text-decoration: underline;
+    cursor: pointer;
+  }
+
+  .Product-Name:hover .AddToCartOnHover {
+    display: none !important;
+  }
 }

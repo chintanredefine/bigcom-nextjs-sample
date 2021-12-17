@@ -6,12 +6,25 @@ import useAddItem from '@framework/cart/use-add-item'
 
 import style from './ProfileInner.module.css'
 
+import AddToCartPlus from '@assets/sleekshop-new-svg/addToCartPlus.svg'
+
+import Modals from './Modals/AddToCartModal'
+
 export default function Orders() {
   const [orderedItem, setorderedItem] = useState<string[]>([])
+
+  const [itemCountState, setitemCountState] = useState([
+    { id: 0, val: 1, status: '', diableAddToCart: false },
+  ])
+
+  const [ShowPartialProductDetailsPage, setShowPartialProductDetailsPage] =
+    useState(false)
 
   const { data: customer } = useCustomer()
 
   const addItem = useAddItem()
+
+  const [CurrentObj, setCurrentObj] = useState(null)
 
   useEffect(() => {
     let cid = customer?.entityId
@@ -23,11 +36,22 @@ export default function Orders() {
         .then((response) => response.json())
         .then((rs1) => {
           setorderedItem(rs1)
+
+          // rs1.map((order: any, index: any) => {
+          //   let productQuantity = order?.quantity || 0
+
+          //   let newObj = {
+          //     id: index,
+          //     val: productQuantity >= 2 ? 2 : 1,
+          //     status: '',
+          //     diableAddToCart: false,
+          //   }
+          //   let newArr = [...itemCountState, newObj] // copying the old datas array
+          //   setitemCountState(newArr)
+          // })
         })
     }
   }, [customer])
-
-  const [itemCountState, setitemCountState] = useState([{ id: 0, val: 1 }])
 
   const handleDecrement = (index: number, incrementData: any) => {
     let newArr = [...incrementData] // copying the old datas array
@@ -36,6 +60,15 @@ export default function Orders() {
       if (oneObjOfNewArray.id === index) {
         if (oneObjOfNewArray.val > 1) {
           oneObjOfNewArray.val = oneObjOfNewArray.val - 1
+          let newArr = [...incrementData] // copying the old datas array
+          newArr.map((oneObjOfNewArray) => {
+            if (oneObjOfNewArray.id === index) {
+              oneObjOfNewArray.status = 'inStock'
+              oneObjOfNewArray.diableAddToCart = false
+            }
+            return
+          })
+          return setitemCountState(newArr)
         }
       }
     })
@@ -65,7 +98,19 @@ export default function Orders() {
             })
             return setitemCountState(newArr)
           } else {
-            return
+            let newArr = [...incrementData] // copying the old datas array
+            newArr.map((oneObjOfNewArray) => {
+              if (
+                oneObjOfNewArray.id === index &&
+                oneObjOfNewArray.val !== productQuantity + 1
+              ) {
+                oneObjOfNewArray.val = oneObjOfNewArray.val + 1
+                oneObjOfNewArray.status = 'outOfStock'
+                oneObjOfNewArray.diableAddToCart = true
+              }
+              return
+            })
+            return setitemCountState(newArr)
           }
         }
 
@@ -75,10 +120,13 @@ export default function Orders() {
     }
 
     if (checkExistanceFunc('id')[0]) {
+      return
     } else {
       let newObj = {
         id: index,
         val: productQuantity >= 2 ? 2 : 1,
+        status: '',
+        diableAddToCart: false,
       }
       let newArr = [...incrementData, newObj] // copying the old datas array
 
@@ -88,18 +136,32 @@ export default function Orders() {
 
   const handleRenderingItemCount = (index: number, incrementData: any) => {
     let val = 1
+    let stockStatus = ''
+    let diableAddToCart = false
+
     incrementData.map((eachObjOfState: any) => {
       if (eachObjOfState.id === index) {
         val = eachObjOfState.val
+        stockStatus = eachObjOfState.status
+        diableAddToCart = eachObjOfState.diableAddToCart
       }
     })
-    return val
+    return [val, stockStatus, diableAddToCart]
   }
 
   return (
     <>
+      {ShowPartialProductDetailsPage && (
+        <Modals
+          setShowPartialProductDetailsPage={setShowPartialProductDetailsPage}
+          ShowPartialProductDetailsPage={ShowPartialProductDetailsPage}
+          CurrentObj={CurrentObj}
+        />
+      )}
+
       {Array.isArray(orderedItem) && orderedItem.length > 0 ? (
         <>
+          {/* {console.log('itemCountState abcXyz ==>> ', itemCountState)} */}
           {/* <!-- ---------------------------- component buy it again ---------------------------- --> */}
           <div className="MainContentInnerdiv mb-2">
             {/* <!-- title of the Buy It Again Page  --> */}
@@ -125,71 +187,104 @@ export default function Orders() {
                     <div className="Product-Model-Parent mt-3">
                       <p className="Product-Model">SKU: {order.sku}</p>
                     </div>
-                    <div>
+                    <div className="mt-2 orderNameP">
                       <p className="Product-Name">{order?.name}</p>
                     </div>
-                    <div>
-                      <p className="Product-brand">
+                    <div className="productBrandP mt-2">
+                      <p className="Product-brand ">
                         {order?.product_options[0]?.display_value}
                       </p>
                     </div>
-                    <div>
-                      <p className="Product-price">$ {order?.price_inc_tax}</p>
+                    <div className="pPrice_AddToCartP">
+                      <div className="mt-2 d-flex align-items-center justify-content-between pPrice_AddToCart ">
+                        <p className="Product-price">
+                          $ {order?.price_inc_tax}
+                        </p>
+                        <p
+                          className="addToCartButton"
+                          onClick={() => {
+                            setCurrentObj(order)
+                            setShowPartialProductDetailsPage(true)
+                          }}
+                        >
+                          <AddToCartPlus />
+                        </p>
+                      </div>
                     </div>
 
                     <div className="AddToCartOnHover">
                       <div className={`${style.incrementParent}`}>
-                        {/* ===================decreent button=================== */}
-                        <button
-                          className={`${style.decrementBtn}`}
-                          onClick={() => {
-                            return handleDecrement(index, itemCountState)
-                          }}
-                        >
-                          -
-                        </button>
+                        <div className={`${style.AddToCartOnHover_0ne}`}>
+                          {/* ===================Qty Text=================== */}
+                          <span className={`${style.QtyText}`}>QTY</span>
 
-                        {/* current value of product quantity //  #input field for all subcomponents */}
-                        <input
-                          disabled
-                          className={`${style.inputEDCartVal}`}
-                          value={handleRenderingItemCount(
-                            index,
-                            itemCountState
-                          )}
-                        />
+                          {/* ===================decreent button=================== */}
+                          <button
+                            className={`${style.decrementBtn}`}
+                            onClick={() => {
+                              return handleDecrement(index, itemCountState)
+                            }}
+                          >
+                            -
+                          </button>
 
-                        {/* ===================increment button=================== */}
-                        <button
-                          className={` ${style.incrementBtn} `}
-                          onClick={() => {
-                            return handleIncrement(
-                              index,
-                              productQuantity,
-                              itemCountState
-                            )
-                          }}
-                        >
-                          +
-                        </button>
+                          {/* current value of product quantity //  #input field for all subcomponents */}
+                          <input
+                            disabled
+                            className={`${style.inputEDCartVal} ${
+                              handleRenderingItemCount(
+                                index,
+                                itemCountState
+                              )[1] === 'outOfStock'
+                                ? style.outOfStock
+                                : handleRenderingItemCount(
+                                    index,
+                                    itemCountState
+                                  )[1] === 'inStock' && style.inStock
+                            }`}
+                            value={Number(
+                              handleRenderingItemCount(index, itemCountState)[0]
+                            )}
+                          />
+
+                          {/* ===================increment button=================== */}
+                          <button
+                            className={` ${style.incrementBtn} `}
+                            onClick={() => {
+                              return handleIncrement(
+                                index,
+                                productQuantity,
+                                itemCountState
+                              )
+                            }}
+                          >
+                            +
+                          </button>
+                        </div>
                       </div>
-                      <h6
+                      <button
+                        disabled={Boolean(
+                          handleRenderingItemCount(index, itemCountState)[2]
+                        )}
                         className="h6AddToCart"
                         onClick={async () => {
                           let productId = order?.product_id
                           let variantId = order?.variant_id
+
+                          let qty = handleRenderingItemCount(
+                            index,
+                            itemCountState
+                          )[0]
+
                           await addItem({
                             productId,
                             variantId,
-                            quantity: handleRenderingItemCount(
-                              index,
-                              itemCountState
-                            ),
+                            quantity: Number(qty),
                           })
                         }}
                       >
                         Add to Cart
-                      </h6>
+                      </button>
                     </div>
                   </div>
                 )

@@ -1,51 +1,15 @@
-// import type { GetStaticPropsContext } from 'next'
-// import commerce from '@lib/api/commerce'
 import { Heart } from '@components/icons'
-// import { Layout } from '@components/common'
-// import { Text, Container } from '@componentss/ui'
-import { useCustomer } from '@framework/customer'
+// import { useCustomer } from '@framework/customer'
 import { WishlistCard } from '@components/wishlist'
 import useWishlist from '@framework/wishlist/use-wishlist'
-// import ProfileHead from '@components/common/ProfileNavlink/profile_head'
-
-// export async function getStaticProps({
-//   preview,
-//   locale,
-//   locales,
-// }: GetStaticPropsContext) {
-//   // Disabling page if Feature is not available
-//   if (!process.env.COMMERCE_WISHLIST_ENABLED) {
-//     return {
-//       notFound: true,
-//     }
-//   }
-
-//   const config = { locale, locales }
-//   const pagesPromise = commerce.getAllPages({ config, preview })
-//   const siteInfoPromise = commerce.getSiteInfo({ config, preview })
-//   const { pages } = await pagesPromise
-//   const { categories } = await siteInfoPromise
-
-//   return {
-//     props: {
-//       pages,
-//       categories,
-//     },
-//   }
-// }
 
 export default function Wishlist() {
-  const { data: customer } = useCustomer()
+  // const { data: customer } = useCustomer()
 
   // @ts-ignore Shopify - Fix this types
   const { data, isLoading, isEmpty } = useWishlist({ includeProducts: true })
 
   return (
-    // <Container>
-    //   <div className="container">
-    // <div className="account account--fixed">
-    //   <h2 className="page-heading">My Wishlist</h2>
-    //   <ProfileHead />
     <div className="MainContentInnerdiv mb-2 orderHistory d-flex justify-content-between">
       <div className="mt-3 mb-20">
         <div className="group flex flex-col">
@@ -71,7 +35,5 @@ export default function Wishlist() {
         </div>
       </div>
     </div>
-    //   </div>
-    // </Container>
   )
 }

@@ -4,22 +4,55 @@
   align-items: center;
 }
 
+.AddToCartOnHover_0ne {
+  border: 2px solid #c7c7c7;
+  margin-bottom: 10px;
+}
+
+.QtyText {
+  width: 53px;
+  background: white;
+  font-size: large;
+}
+
+.detailsQtyText {
+  width: 87px;
+  background: white;
+  font-size: large;
+  text-align: center;
+}
+
 .decrementBtn {
-  width: 30px;
-  background: #cacaca;
-  margin-right: 5px;
+  width: 40px;
+  background: white;
+  border-left: 2px solid #c7c7c7;
+  font-size: large;
 }
 
 .incrementBtn {
-  width: 30px;
-  background: #e99da1;
-  margin-left: 5px;
+  width: 40px;
+  background: white;
+  border-left: 2px solid #c7c7c7;
+  margin-left: 0.5px;
+  font-size: large;
 }
 
 .inputEDCartVal {
-  border: 2px solid #c7c7c7;
+  border-left: 2px solid #c7c7c7;
   width: 50px;
-  border-radius: 5px;
   text-align: center;
   background: white;
+  height: 27px;
+}
+
+.outOfStock {
+  border: 2px solid red;
+}
+
+.inStock {
+  border: 2px solid green;
+}
+
+.ShowPartialProductDetailsPage {
+  display: none;
 }

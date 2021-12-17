@@ -5,8 +5,6 @@ const login = ({ ShowPage }: any) => {
   const { openModal, setModalView } = useUI()
 
   useEffect(() => {
-    console.log('currentPage ', ShowPage)
-
     setModalView('LOGIN_VIEW')
     openModal()
   }, [ShowPage])
