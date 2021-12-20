@@ -41,13 +41,12 @@ const ModalCompo = ({
         val: itemCountState.val - 1,
         diableAddToCart: false,
       }))
-
-      if (CurrentObj.quantity >= itemCountState.val) {
-        setitemCountState((prevState) => ({
-          ...prevState,
-          status: itemStatus,
-        }))
-      }
+    }
+    if (CurrentObj.quantity >= itemCountState.val) {
+      setitemCountState((prevState) => ({
+        ...prevState,
+        status: itemStatus,
+      }))
     }
   }
 
@@ -158,11 +157,14 @@ const ModalCompo = ({
               let productId = CurrentObj?.product_id
               let variantId = CurrentObj?.variant_id
 
-              await addItem({
+              let someRes = await addItem({
                 productId,
                 variantId,
                 quantity: itemCountState.val,
               })
+
+              console.log('someRes', someRes)
+              closeModal()
             }}
           >
             ADD TO BAG
