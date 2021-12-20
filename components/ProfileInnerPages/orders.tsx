@@ -3,6 +3,7 @@ import useCustomer from '@framework/customer/use-customer'
 import { useEffect, useState } from 'react'
 import { Bag } from '@components/icons'
 import useAddItem from '@framework/cart/use-add-item'
+import { useUI } from '@components/ui/context'
 
 import style from './ProfileInner.module.css'
 
@@ -12,6 +13,7 @@ import Modals from './Modals/AddToCartModal'
 
 export default function Orders() {
   const [orderedItem, setorderedItem] = useState<string[]>([])
+  const { openSidebar } = useUI()
 
   const [itemCountState, setitemCountState] = useState([
     { id: 0, val: 1, status: '', diableAddToCart: false },
@@ -281,6 +283,7 @@ export default function Orders() {
                             variantId,
                             quantity: Number(qty),
                           })
+                          openSidebar()
                         }}
                       >
                         Add to Cart

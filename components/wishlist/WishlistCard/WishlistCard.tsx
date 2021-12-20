@@ -16,6 +16,8 @@ import usePrice from '@framework/product/use-price'
 import useAddItem from '@framework/cart/use-add-item'
 import useRemoveItem from '@framework/wishlist/use-remove-item'
 
+import Modals from '../../ProfileInnerPages/Modals/AddToCartModal'
+
 interface Props {
   product: Product
 }
@@ -32,6 +34,15 @@ const WishlistCard: FC<Props> = ({ product }) => {
   const removeItem = useRemoveItem({ wishlist: { includeProducts: true } })
   const [loading, setLoading] = useState(false)
   const [removing, setRemoving] = useState(false)
+
+  const [ShowPartialProductDetailsPage, setShowPartialProductDetailsPage] =
+    useState(false)
+
+  const [itemCountState, setitemCountState] = useState({
+    val: 1,
+    status: '',
+    diableAddToCart: false,
+  })
 
   // TODO: fix this missing argument issue
   /* @ts-ignore */
@@ -52,15 +63,55 @@ const WishlistCard: FC<Props> = ({ product }) => {
   }
   const addToCart = async () => {
     setLoading(true)
+
     try {
       await addItem({
         productId: String(product.id),
         variantId: String(product.variants[0].id),
+        quantity: itemCountState.val,
       })
+
       openSidebar()
       setLoading(false)
     } catch (err) {
       setLoading(false)
+    }
+  }
+
+  const handleDecrement = () => {
+    if (itemCountState.val > 1) {
+      setitemCountState((prevState) => ({
+        ...prevState,
+        val: itemCountState.val - 1,
+      }))
+
+      // if (itemCountState.val - 1 <= 3) {
+      //   let itemStatus = 'inStock'
+      //   setitemCountState((prevState) => ({
+      //     ...prevState,
+      //     status: itemStatus,
+      //     diableAddToCart: false,
+      //   }))
+      // }
+    }
+  }
+
+  const handleIncrement = () => {
+    // if (CurrentObj.quantity > itemCountState.val) {
+    if (true) {
+      setitemCountState((prevState) => ({
+        ...prevState,
+        val: itemCountState.val + 1,
+      }))
+    } else {
+      let itemStatus = 'outOfStock'
+
+      setitemCountState((prevState) => ({
+        ...prevState,
+        val: itemCountState.val + 1,
+        status: itemStatus,
+        diableAddToCart: true,
+      }))
     }
   }
 
@@ -111,6 +162,14 @@ const WishlistCard: FC<Props> = ({ product }) => {
     // </div>
 
     <>
+      {ShowPartialProductDetailsPage && (
+        <Modals
+          setShowPartialProductDetailsPage={setShowPartialProductDetailsPage}
+          ShowPartialProductDetailsPage={ShowPartialProductDetailsPage}
+          CurrentObj={product}
+        />
+      )}
+
       <div className="productCard">
         <div className="d-flex align-items-center justify-content-end closeSvg">
           <button onClick={handleRemove}>
@@ -141,10 +200,9 @@ const WishlistCard: FC<Props> = ({ product }) => {
             <p className="Product-price">{price}</p>
             <p
               className="addToCartButton"
-              // onClick={() => {
-              //   setCurrentObj(order)
-              //   setShowPartialProductDetailsPage(true)
-              // }}
+              onClick={() => {
+                setShowPartialProductDetailsPage(true)
+              }}
             >
               <AddToCartPlus />
             </p>
@@ -160,9 +218,9 @@ const WishlistCard: FC<Props> = ({ product }) => {
               {/* ===================decreent button=================== */}
               <button
                 className={`${style.decrementBtn}`}
-                // onClick={() => {
-                //   return handleDecrement(index, itemCountState)
-                // }}
+                onClick={() => {
+                  return handleDecrement()
+                }}
               >
                 -
               </button>
@@ -170,29 +228,20 @@ const WishlistCard: FC<Props> = ({ product }) => {
               {/* current value of product quantity //  #input field for all subcomponents */}
               <input
                 disabled
-                className={`${style.inputEDCartVal}
-             
-                `}
-                //  ${
-                //   handleRenderingItemCount(index, itemCountState)[1] ===
-                //   'outOfStock'
-                //     ? style.outOfStock
-                //     : handleRenderingItemCount(index, itemCountState)[1] ===
-                //         'inStock' && style.inStock
-                //   }
-
-                // value={Number(
-                //   handleRenderingItemCount(index, itemCountState)[0]
-                // )}
-                value={10}
+                className={`${style.inputEDCartVal}  ${
+                  itemCountState.status === 'outOfStock'
+                    ? style.outOfStock
+                    : itemCountState.status === 'inStock' && style.inStock
+                }`}
+                value={itemCountState.val}
               />
 
               {/* ===================increment button=================== */}
               <button
                 className={` ${style.incrementBtn} `}
-                // onClick={() => {
-                //   return handleIncrement(index, productQuantity, itemCountState)
-                // }}
+                onClick={() => {
+                  return handleIncrement()
+                }}
               >
                 +
               </button>
