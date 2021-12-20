@@ -40,6 +40,23 @@ const ModalCompo = ({
     diableAddToCart: false,
   })
 
+  const addToCart = async () => {
+    setLoading(true)
+
+    try {
+      await addItem({
+        productId: String(CurrentObj.id),
+        variantId: String(CurrentObj.variants[0].id),
+        quantity: itemCountState.val,
+      })
+
+      openSidebar()
+      setLoading(false)
+    } catch (err) {
+      setLoading(false)
+    }
+  }
+
   const handleDecrement = () => {
     if (itemCountState.val > 1) {
       setitemCountState((prevState) => ({
@@ -162,15 +179,7 @@ const ModalCompo = ({
           <button
             disabled={itemCountState.diableAddToCart}
             className="h6AddToCart detailsh6AddToCart"
-            onClick={async () => {
-              await addItem({
-                productId: String(product.id),
-                variantId: String(product.variants[0].id),
-                quantity: itemCountState.val,
-              })
-
-              closeModal()
-            }}
+            onClick={addToCart}
           >
             ADD TO BAG
           </button>
