@@ -1,10 +1,14 @@
-import { FC, useState } from 'react'
+import { FC, useState, useEffect } from 'react'
 import cn from 'classnames'
 import Link from 'next/link'
 import Image from 'next/image'
 import s from './WishlistCard.module.css'
 import { Trash } from '@components/icons'
 import { Button, Text } from '@components/ui'
+
+import style from '@components/ProfileInnerPages/ProfileInner.module.css'
+import AddToCartPlus from '@assets/sleekshop-new-svg/addToCartPlus.svg'
+import CloseSvg from '@assets/sleekshop-new-svg/close.svg'
 
 import { useUI } from '@components/ui/context'
 import type { Product } from '@commerce/types/product'
@@ -36,6 +40,7 @@ const WishlistCard: FC<Props> = ({ product }) => {
 
   const handleRemove = async () => {
     setRemoving(true)
+    console.log('productIdToRemove', product.id!)
 
     try {
       // If this action succeeds then there's no need to do `setRemoving(true)`
@@ -59,47 +64,152 @@ const WishlistCard: FC<Props> = ({ product }) => {
     }
   }
 
-  return (
-    <div className={cn(s.root, { 'opacity-75 pointer-events-none': removing })}>
-      <div className={`col-span-3 ${s.productBg}`}>
-        <Image
-          src={product.images[0]?.url || placeholderImg}
-          width={400}
-          height={400}
-          alt={product.images[0]?.alt || 'Product Image'}
-        />
-      </div>
+  useEffect(() => {
+    console.log('wishlist ', product)
+  }, [product])
 
-      <div className="col-span-7">
-        <h3 className="text-2xl mb-2">
-          <Link href={`/product${product.path}`}>
-            <a>{product.name}</a>
-          </Link>
-        </h3>
-        <div className="mb-4">
-          <Text html={product.description} />
-        </div>
-        <Button
-          aria-label="Add to Cart"
-          type="button"
-          className={
-            'py-1 px-3 border border-secondary rounded-md shadow-sm hover:bg-primary-hover'
-          }
-          onClick={addToCart}
-          loading={loading}
-        >
-          Add to Cart
-        </Button>
-      </div>
-      <div className="col-span-2 flex flex-col justify-between">
-        <div className="flex justify-end font-bold">{price}</div>
-        <div className="flex justify-end">
+  return (
+    // <div className={cn(s.root, { 'opacity-75 pointer-events-none': removing })}>
+    //   <div className={`col-span-3 ${s.productBg}`}>
+    //     <Image
+    //       src={product.images[0]?.url || placeholderImg}
+    //       width={400}
+    //       height={400}
+    //       alt={product.images[0]?.alt || 'Product Image'}
+    //     />
+    //   </div>
+
+    //   <div className="col-span-7">
+    //     <h3 className="text-2xl mb-2">
+    //       <Link href={`/product${product.path}`}>
+    //         <a>{product.name}</a>
+    //       </Link>
+    //     </h3>
+    //     <div className="mb-4">
+    //       <Text html={product.description} />
+    //     </div>
+    //     <Button
+    //       aria-label="Add to Cart"
+    //       type="button"
+    //       className={
+    //         'py-1 px-3 border border-secondary rounded-md shadow-sm hover:bg-primary-hover'
+    //       }
+    //       onClick={addToCart}
+    //       loading={loading}
+    //     >
+    //       Add to Cart
+    //     </Button>
+    //   </div>
+    //   <div className="col-span-2 flex flex-col justify-between">
+    //     <div className="flex justify-end font-bold">{price}</div>
+    //     <div className="flex justify-end">
+    //       <button onClick={handleRemove}>
+    //         <Trash />
+    //       </button>
+    //     </div>
+    //   </div>
+    // </div>
+
+    <>
+      <div className="productCard">
+        <div className="d-flex align-items-center justify-content-end closeSvg">
           <button onClick={handleRemove}>
-            <Trash />
+            <CloseSvg />
+          </button>
+        </div>
+
+        <div className="productCardImgParent">
+          <img
+            className="ProductImg"
+            src={product.images[0]?.url || placeholderImg}
+            alt={product.images[0]?.alt || 'Product Image'}
+          />
+        </div>
+        <div className="Product-Model-Parent mt-3">
+          <p className="Product-Model">SKU: {product.id}</p>
+        </div>
+        <div className="mt-2 orderNameP">
+          <Link href={`${product.path?.replace('.html', '')}`}>
+            <p className="Product-Name">{product.name}</p>
+          </Link>
+        </div>
+        <div className="productBrandP mt-2">
+          {/* <p className="Product-brand ">{product.brand}</p> */}
+        </div>
+        <div className="pPrice_AddToCartP">
+          <div className="mt-2 d-flex align-items-center justify-content-between pPrice_AddToCart ">
+            <p className="Product-price">{price}</p>
+            <p
+              className="addToCartButton"
+              // onClick={() => {
+              //   setCurrentObj(order)
+              //   setShowPartialProductDetailsPage(true)
+              // }}
+            >
+              <AddToCartPlus />
+            </p>
+          </div>
+        </div>
+
+        <div className="AddToCartOnHover">
+          <div className={`${style.incrementParent}`}>
+            <div className={`${style.AddToCartOnHover_0ne}`}>
+              {/* ===================Qty Text=================== */}
+              <span className={`${style.QtyText}`}>QTY</span>
+
+              {/* ===================decreent button=================== */}
+              <button
+                className={`${style.decrementBtn}`}
+                // onClick={() => {
+                //   return handleDecrement(index, itemCountState)
+                // }}
+              >
+                -
+              </button>
+
+              {/* current value of product quantity //  #input field for all subcomponents */}
+              <input
+                disabled
+                className={`${style.inputEDCartVal}
+             
+                `}
+                //  ${
+                //   handleRenderingItemCount(index, itemCountState)[1] ===
+                //   'outOfStock'
+                //     ? style.outOfStock
+                //     : handleRenderingItemCount(index, itemCountState)[1] ===
+                //         'inStock' && style.inStock
+                //   }
+
+                // value={Number(
+                //   handleRenderingItemCount(index, itemCountState)[0]
+                // )}
+                value={10}
+              />
+
+              {/* ===================increment button=================== */}
+              <button
+                className={` ${style.incrementBtn} `}
+                // onClick={() => {
+                //   return handleIncrement(index, productQuantity, itemCountState)
+                // }}
+              >
+                +
+              </button>
+            </div>
+          </div>
+          <button
+            // disabled={Boolean(
+            //   handleRenderingItemCount(index, itemCountState)[2]
+            // )}
+            className="h6AddToCart"
+            onClick={addToCart}
+          >
+            Add to Cart
           </button>
         </div>
       </div>
-    </div>
+    </>
   )
 }
 

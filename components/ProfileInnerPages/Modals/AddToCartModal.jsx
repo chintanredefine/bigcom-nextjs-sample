@@ -1,6 +1,8 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import Modal from 'react-modal'
 import style from '../ProfileInner.module.css'
+
+import CloseSvg from '@assets/sleekshop-new-svg/close.svg'
 
 const customStyles = {
   content: {
@@ -17,76 +19,50 @@ const ModalCompo = ({
   ShowPartialProductDetailsPage,
   CurrentObj,
 }) => {
-  const [itemCount, setitemCount] = useState(1)
 
   function closeModal(e) {
     setShowPartialProductDetailsPage(false)
     return false
   }
 
-  // const handleDecrement = () => {
-  //   if (itemCount > 1) {
-  //     let oneObjOfNewArray = 'inStock'
-  //     let newItemCount = itemCount - 1
-  //     setitemCount(newItemCount)
-  //     return
-  //   }
-  // }
+  const [itemCountState, setitemCountState] = useState({
+    val: 1,
+    status: '',
+    diableAddToCart: false,
+  })
 
-  // const handleIncrement = (index, productQuantity, incrementData) => {
-  //   const checkExistanceFunc = (param) => {
-  //     // incrementData[index]
-  //     let res = false
+  const handleDecrement = () => {
+    if (itemCount > 1) {
+      let itemStatus = 'inStock'
+      setitemCountState((prevState) => ({
+        ...prevState,
+        val: itemCountState.val - 1,
+        status: itemStatus,
+        diableAddToCart: false,
+      }))
+    }
+  }
 
-  //     incrementData.map((oneObjOfState) => {
-  //       if (param === 'id' && oneObjOfState.id === index) {
-  //         res = true
-  //         if (productQuantity > oneObjOfState.val) {
-  //           let newArr = [...incrementData] // copying the old datas array
+  const handleIncrement = () => {
+    if (CurrentObj.productQuantity > oneObjOfState.val) {
+      setitemCountState((prevState) => ({
+        ...prevState,
+        val: itemCountState.val + 1,
+      }))
+    } else {
+      let itemStatus = 'outOfStock'
 
-  //           newArr.map((oneObjOfNewArray) => {
-  //             if (oneObjOfNewArray.id === index) {
-  //               oneObjOfNewArray.val = oneObjOfNewArray.val + 1
-  //             }
-  //             return
-  //           })
-  //           return setitemCountState(newArr)
-  //         } else {
-  //           let newArr = [...incrementData] // copying the old datas array
-  //           newArr.map((oneObjOfNewArray) => {
-  //             if (
-  //               oneObjOfNewArray.id === index &&
-  //               oneObjOfNewArray.val !== productQuantity + 1
-  //             ) {
-  //               oneObjOfNewArray.val = oneObjOfNewArray.val + 1
-  //               oneObjOfNewArray.status = 'outOfStock'
-  //               oneObjOfNewArray.diableAddToCart = true
-  //             }
-  //             return
-  //           })
-  //           return setitemCountState(newArr)
-  //         }
-  //       }
+      setitemCountState((prevState) => ({
+        ...prevState,
+        status: itemStatus,
+        diableAddToCart: true,
+      }))
+    }
+  }
 
-  //       return
-  //     })
-  //     return [res]
-  //   }
-
-  //   if (checkExistanceFunc('id')[0]) {
-  //     return
-  //   } else {
-  //     let newObj = {
-  //       id: index,
-  //       val: productQuantity >= 2 ? 2 : 1,
-  //       status: '',
-  //       diableAddToCart: false,
-  //     }
-  //     let newArr = [...incrementData, newObj] // copying the old datas array
-
-  //     setitemCountState(newArr)
-  //   }
-  // }
+  useEffect(() => {
+    console.log('currentObj ', CurrentObj)
+  }, [])
 
   return (
     <div>
@@ -96,8 +72,10 @@ const ModalCompo = ({
         style={customStyles}
         className="ModalUpperMostParent"
       >
-        <div className="d-flex align-items-center justify-content-end">
-          <button onClick={(e) => closeModal(e)}>close</button>
+        <div className="d-flex align-items-center justify-content-end closeSvg">
+          <button onClick={(e) => closeModal(e)}>
+            <CloseSvg />
+          </button>
         </div>
 
         <div className="detailproductCardParent justify-content-between align-items-center">
@@ -133,9 +111,9 @@ const ModalCompo = ({
               {/* ===================decreent button=================== */}
               <button
                 className={`${style.decrementBtn}`}
-                // onClick={() => {
-                //   return handleDecrement(index, itemCountState)
-                // }}
+                onClick={() => {
+                  return handleDecrement()
+                }}
               >
                 -
               </button>
@@ -143,27 +121,20 @@ const ModalCompo = ({
               {/* current value of product quantity //  #input field for all subcomponents */}
               <input
                 disabled
-                className={`${style.inputEDCartVal} `}
-                // ${
-                //   handleRenderingItemCount(index, itemCountState)[1] ===
-                //   'outOfStock'
-                //     ? style.outOfStock
-                //     : handleRenderingItemCount(index, itemCountState)[1] ===
-                //         'inStock' && style.inStock
-                // }
-                value={itemCount}
+                className={`${style.inputEDCartVal}  ${
+                  itemCountState.status === 'outOfStock'
+                    ? style.outOfStock
+                    : itemCountState.status === 'inStock' && style.inStock
+                }`}
+                value={itemCountState.val}
               />
 
               {/* ===================increment button=================== */}
               <button
                 className={` ${style.incrementBtn} `}
-                // onClick={() => {
-                //   return handleIncrement(
-                //     index,
-                //     productQuantity,
-                //     itemCountState
-                //   )
-                // }}
+                onClick={() => {
+                  return handleIncrement()
+                }}
               >
                 +
               </button>
@@ -172,20 +143,16 @@ const ModalCompo = ({
 
           {/* add to bag button */}
           <button
-            // disabled={Boolean(
-            //   handleRenderingItemCount(index, itemCountState)[2]
-            // )}
+            disabled={itemCountState.diableAddToCart}
             className="h6AddToCart detailsh6AddToCart"
             onClick={async () => {
-              let productId = setCurrentObj?.product_id
-              let variantId = setCurrentObj?.variant_id
-
-              // let qty = handleRenderingItemCount(index, itemCountState)[0]
+              let productId = CurrentObj?.product_id
+              let variantId = CurrentObj?.variant_id
 
               await addItem({
                 productId,
                 variantId,
-                // quantity: Number(qty),
+                quantity: itemCountState.val,
               })
             }}
           >

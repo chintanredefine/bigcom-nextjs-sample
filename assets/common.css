@@ -356,6 +356,10 @@ textarea {
   width: 100%;
 }
 
+.closeSvg button {
+  outline: none;
+}
+
 /* fix search bar */
 
 @media (min-width: 768px) {
@@ -425,20 +429,29 @@ textarea {
     height: 320px;
   }
 
+  .ModalUpperMostParent {
+    position: relative;
+    background: white;
+    background-color: white;
+    height: 100%;
+    border-top: 1px solid #0000000f;
+    padding: 10px;
+    outline: none;
+  }
+
   /* The animation code */
-  @keyframes animationToModal {
+  /* @keyframes animationToModal {
     0% {
       bottom: 0px;
     }
-  }
+  } */
 
   /* The element to apply the animation to */
-  .ModalUpperMostParent {
-    position: relative;
+  /* .ModalUpperMostParent {
     animation-name: animationToModal;
     animation-duration: 4s;
     bottom: -100px;
-  }
+  } */
 }
 
 /* Small devices (portrait tablets and large phones, 600px and up) */

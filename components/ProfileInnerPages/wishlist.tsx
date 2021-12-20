@@ -26,11 +26,18 @@ export default function Wishlist() {
               </p>
             </div>
           ) : (
-            data &&
-            // @ts-ignore Shopify - Fix this types
-            data.items?.map((item) => (
-              <WishlistCard key={item.id} product={item.product! as any} />
-            ))
+            <>
+              <div className="d-flex row">
+                {data &&
+                  // @ts-ignore Shopify - Fix this types
+                  data.items?.map((item) => (
+                    <WishlistCard
+                      key={item.id}
+                      product={item.product! as any}
+                    />
+                  ))}
+              </div>
+            </>
           )}
         </div>
       </div>
