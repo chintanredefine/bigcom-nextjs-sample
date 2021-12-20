@@ -19,7 +19,6 @@ const ModalCompo = ({
   ShowPartialProductDetailsPage,
   CurrentObj,
 }) => {
-
   function closeModal(e) {
     setShowPartialProductDetailsPage(false)
     return false
@@ -44,7 +43,7 @@ const ModalCompo = ({
   }
 
   const handleIncrement = () => {
-    if (CurrentObj.productQuantity > oneObjOfState.val) {
+    if (CurrentObj.quantity > itemCountState.val) {
       setitemCountState((prevState) => ({
         ...prevState,
         val: itemCountState.val + 1,
