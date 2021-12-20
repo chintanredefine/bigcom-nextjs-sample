@@ -40,6 +40,12 @@ const ModalCompo = ({
         val: itemCountState.val - 1,
         diableAddToCart: false,
       }))
+    } else {
+      let itemStatus = 'inStock'
+      setitemCountState((prevState) => ({
+        ...prevState,
+        status: itemStatus,
+      }))
     }
     if (CurrentObj.quantity >= itemCountState.val) {
       let itemStatus = 'inStock'
