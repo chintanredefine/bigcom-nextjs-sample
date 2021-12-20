@@ -34,26 +34,14 @@ const ModalCompo = ({
   })
 
   const handleDecrement = () => {
-    if (itemCountState.val > 1 && itemCountState.val <= CurrentObj.quantity) {
+    if (itemCountState.val > 1) {
       setitemCountState((prevState) => ({
         ...prevState,
         val: itemCountState.val - 1,
       }))
     }
-    // else {
-    //   let itemStatus = 'inStock'
-    //   setitemCountState((prevState) => ({
-    //     ...prevState,
-    //     status: itemStatus,
-    //     diableAddToCart: false,
-    //   }))
-    // }
-    console.log(
-      'itemCountState.val <= CurrentObj.quantity',
-      itemCountState.val,
-      CurrentObj.quantity
-    )
-    if (itemCountState.val <= CurrentObj.quantity) {
+
+    if (itemCountState.val - 1 <= CurrentObj.quantity) {
       let itemStatus = 'inStock'
       setitemCountState((prevState) => ({
         ...prevState,
