@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import Modal from 'react-modal'
-import style from '../ProfileInner.module.css'
+import style from '../../ProfileInnerPages/ProfileInner.module.css'
 import useAddItem from '@framework/cart/use-add-item'
 
 import CloseSvg from '@assets/sleekshop-new-svg/close.svg'
