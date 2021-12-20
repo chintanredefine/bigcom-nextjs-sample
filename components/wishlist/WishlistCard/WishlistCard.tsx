@@ -16,7 +16,7 @@ import usePrice from '@framework/product/use-price'
 import useAddItem from '@framework/cart/use-add-item'
 import useRemoveItem from '@framework/wishlist/use-remove-item'
 
-import Modals from '../../ProfileInnerPages/Modals/AddToCartModal'
+import Modals from '../Modals/AddToCartModal'
 
 interface Props {
   product: Product
@@ -51,7 +51,7 @@ const WishlistCard: FC<Props> = ({ product }) => {
 
   const handleRemove = async () => {
     setRemoving(true)
-    console.log('productIdToRemove', product.id!)
+    // console.log('productIdToRemove', product.id!)
 
     try {
       // If this action succeeds then there's no need to do `setRemoving(true)`
@@ -115,9 +115,9 @@ const WishlistCard: FC<Props> = ({ product }) => {
     }
   }
 
-  useEffect(() => {
-    console.log('wishlist ', product)
-  }, [product])
+  // useEffect(() => {
+  //   console.log('wishlist ', product)
+  // }, [product])
 
   return (
     // <div className={cn(s.root, { 'opacity-75 pointer-events-none': removing })}>
@@ -180,7 +180,7 @@ const WishlistCard: FC<Props> = ({ product }) => {
         <div className="productCardImgParent">
           <img
             className="ProductImg"
-            src={product.images[0]?.url || placeholderImg}
+            src={product.images[0]?.url}
             alt={product.images[0]?.alt || 'Product Image'}
           />
         </div>
