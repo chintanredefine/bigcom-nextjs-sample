@@ -22,6 +22,7 @@ const ModalCompo = ({
   CurrentObj,
 }) => {
   const addItem = useAddItem()
+  const [loading, setLoading] = useState(false)
 
   const { price } = usePrice({
     amount: CurrentObj.price?.value,
