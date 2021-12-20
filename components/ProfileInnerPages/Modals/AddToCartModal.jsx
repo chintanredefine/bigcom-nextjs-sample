@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import Modal from 'react-modal'
 import style from '../ProfileInner.module.css'
+import useAddItem from '@framework/cart/use-add-item'
 
 import CloseSvg from '@assets/sleekshop-new-svg/close.svg'
 
@@ -19,6 +20,8 @@ const ModalCompo = ({
   ShowPartialProductDetailsPage,
   CurrentObj,
 }) => {
+  const addItem = useAddItem()
+
   function closeModal(e) {
     setShowPartialProductDetailsPage(false)
     return false
@@ -31,14 +34,20 @@ const ModalCompo = ({
   })
 
   const handleDecrement = () => {
-    if (itemCount > 1) {
+    if (itemCountState.val > 1) {
       let itemStatus = 'inStock'
       setitemCountState((prevState) => ({
         ...prevState,
         val: itemCountState.val - 1,
-        status: itemStatus,
         diableAddToCart: false,
       }))
+
+      if (CurrentObj.quantity >= itemCountState.val) {
+        setitemCountState((prevState) => ({
+          ...prevState,
+          status: itemStatus,
+        }))
+      }
     }
   }
 
@@ -53,6 +62,7 @@ const ModalCompo = ({
 
       setitemCountState((prevState) => ({
         ...prevState,
+        val: itemCountState.val + 1,
         status: itemStatus,
         diableAddToCart: true,
       }))
