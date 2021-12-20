@@ -35,7 +35,6 @@ const ModalCompo = ({
 
   const handleDecrement = () => {
     if (itemCountState.val > 1) {
-      let itemStatus = 'inStock'
       setitemCountState((prevState) => ({
         ...prevState,
         val: itemCountState.val - 1,
@@ -43,6 +42,7 @@ const ModalCompo = ({
       }))
     }
     if (CurrentObj.quantity >= itemCountState.val) {
+      let itemStatus = 'inStock'
       setitemCountState((prevState) => ({
         ...prevState,
         status: itemStatus,
