@@ -51,11 +51,11 @@ const ModalCompo = ({
         quantity: itemCountState.val,
       })
 
-      openSidebar()
       setLoading(false)
     } catch (err) {
       setLoading(false)
     }
+    closeModal()
   }
 
   const handleDecrement = () => {
