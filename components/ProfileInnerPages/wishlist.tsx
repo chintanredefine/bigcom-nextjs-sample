@@ -1,5 +1,3 @@
-import { useEffect, useState } from 'react'
-
 import { Heart } from '@components/icons'
 // import { useCustomer } from '@framework/customer'
 import { WishlistCard } from '@components/wishlist'
@@ -8,29 +6,14 @@ import useWishlist from '@framework/wishlist/use-wishlist'
 export default function Wishlist() {
   // const { data: customer } = useCustomer()
 
-  const [dataState, setdataState] = useState({
-    data: [],
-    isLoading: '',
-    isEmpty: '',
-    update: true,
-  })
-
-  useEffect(() => {
-    // @ts-ignore Shopify - Fix this types
-    const { data, isLoading, isEmpty } = useWishlist({ includeProducts: true })
-    setdataState({
-      ...data,
-      data: data,
-      isLoading: isLoading,
-      isEmpty: isEmpty,
-    })
-  }, [dataState.update])
+  // @ts-ignore Shopify - Fix this types
+  const { data, isLoading, isEmpty } = useWishlist({ includeProducts: true })
 
   return (
     <div className="MainContentInnerdiv mb-2 orderHistory d-flex justify-content-between">
       <div className="mt-3 mb-20">
         <div className="group flex flex-col">
-          {dataState.isLoading || dataState.isEmpty ? (
+          {isLoading || isEmpty ? (
             // <div className="flex-1 px-12 py-24 flex flex-col justify-center items-center ">
             //   <span className="border border-dashed border-secondary flex items-center justify-center w-16 h-16 bg-primary p-12 rounded-lg text-primary">
             //     <Heart className="absolute" />
@@ -57,14 +40,12 @@ export default function Wishlist() {
           ) : (
             <>
               <div className="d-flex row">
-                {console.log('dataState.data', dataState)}
-                {dataState.data &&
-                  dataState.data.map((item: any) => (
+                {data &&
+                  // @ts-ignore Shopify - Fix this types
+                  data.items?.map((item) => (
                     <WishlistCard
                       key={item.id}
                       product={item.product! as any}
-                      Update={dataState.update}
-                      setUpdate={setdataState}
                     />
                   ))}
               </div>
