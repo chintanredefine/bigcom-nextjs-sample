@@ -15,6 +15,7 @@ import type { Product } from '@commerce/types/product'
 import usePrice from '@framework/product/use-price'
 import useAddItem from '@framework/cart/use-add-item'
 import useRemoveItem from '@framework/wishlist/use-remove-item'
+import useWishlist from '@framework/wishlist/use-wishlist'
 
 import Modals from '../Modals/AddToCartModal'
 
@@ -48,6 +49,7 @@ const WishlistCard: FC<Props> = ({ product }) => {
   /* @ts-ignore */
   const addItem = useAddItem()
   const { openSidebar } = useUI()
+  const { data } = useWishlist()
 
   const handleRemove = async () => {
     setRemoving(true)
@@ -56,8 +58,19 @@ const WishlistCard: FC<Props> = ({ product }) => {
     try {
       // If this action succeeds then there's no need to do `setRemoving(true)`
       // because the component will be removed from the view
-      let deleteRes = await removeItem({ id: product.id! })
-      // console.log('after delete ==> ', deleteRes, 'product.id', product.id)
+      console.log('product which has to be deleted ', product)
+
+      const itemInWishlist = data?.items?.find(
+        // @ts-ignore Wishlist is not always enabled
+        (item) =>
+          item.product_id === Number(product.id) &&
+          (item.variant_id as any) === Number(product.variants[0].id)
+      )
+
+      if (itemInWishlist) {
+        let deleteRes = await removeItem({ id: itemInWishlist.id! })
+        console.log('after delete ==> ', deleteRes, 'product.id', product.id)
+      }
     } catch (error) {
       // console.log('error while removing wishlist ', error)
 
