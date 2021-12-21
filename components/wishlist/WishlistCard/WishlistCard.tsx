@@ -143,52 +143,7 @@ const WishlistCard: FC<Props> = ({ product }) => {
     }
   }
 
-  // useEffect(() => {
-  //   console.log('wishlist ', product)
-  // }, [product])
-
   return (
-    // <div className={cn(s.root, { 'opacity-75 pointer-events-none': removing })}>
-    //   <div className={`col-span-3 ${s.productBg}`}>
-    //     <Image
-    //       src={product.images[0]?.url || placeholderImg}
-    //       width={400}
-    //       height={400}
-    //       alt={product.images[0]?.alt || 'Product Image'}
-    //     />
-    //   </div>
-
-    //   <div className="col-span-7">
-    //     <h3 className="text-2xl mb-2">
-    //       <Link href={`/product${product.path}`}>
-    //         <a>{product.name}</a>
-    //       </Link>
-    //     </h3>
-    //     <div className="mb-4">
-    //       <Text html={product.description} />
-    //     </div>
-    //     <Button
-    //       aria-label="Add to Cart"
-    //       type="button"
-    //       className={
-    //         'py-1 px-3 border border-secondary rounded-md shadow-sm hover:bg-primary-hover'
-    //       }
-    //       onClick={addToCart}
-    //       loading={loading}
-    //     >
-    //       Add to Cart
-    //     </Button>
-    //   </div>
-    //   <div className="col-span-2 flex flex-col justify-between">
-    //     <div className="flex justify-end font-bold">{price}</div>
-    //     <div className="flex justify-end">
-    //       <button onClick={handleRemove}>
-    //         <Trash />
-    //       </button>
-    //     </div>
-    //   </div>
-    // </div>
-
     <>
       {ShowPartialProductDetailsPage && (
         <Modals
