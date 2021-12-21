@@ -69,10 +69,6 @@ const ModalCompo = ({
     }
   }
 
-  useEffect(() => {
-    console.log('currentObj ', CurrentObj)
-  }, [])
-
   return (
     <div>
       <Modal

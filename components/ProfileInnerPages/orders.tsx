@@ -1,6 +1,8 @@
 // import type { GetStaticPropsContext } from 'next'
 import useCustomer from '@framework/customer/use-customer'
 import { useEffect, useState } from 'react'
+// import Link from 'next/link'
+
 import { Bag } from '@components/icons'
 import useAddItem from '@framework/cart/use-add-item'
 import { useUI } from '@components/ui/context'
@@ -190,7 +192,9 @@ export default function Orders() {
                       <p className="Product-Model">SKU: {order.sku}</p>
                     </div>
                     <div className="mt-2 orderNameP">
+                      {/* <Link href={`${order.path?.replace('.html', '')}`}> */}
                       <p className="Product-Name">{order?.name}</p>
+                      {/* </Link> */}
                     </div>
                     <div className="productBrandP mt-2">
                       <p className="Product-brand ">

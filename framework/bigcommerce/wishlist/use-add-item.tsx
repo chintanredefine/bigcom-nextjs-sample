@@ -21,8 +21,6 @@ export const handler: MutationHook<AddItemHook> = {
 
       return useCallback(
         async function addItem(item) {
-          console.log('wishlist addition process is going on ')
-
           if (!customer) {
             // A signed customer is required in order to have a wishlist
             throw new CommerceError({

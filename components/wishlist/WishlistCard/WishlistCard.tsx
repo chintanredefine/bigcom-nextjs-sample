@@ -56,8 +56,11 @@ const WishlistCard: FC<Props> = ({ product }) => {
     try {
       // If this action succeeds then there's no need to do `setRemoving(true)`
       // because the component will be removed from the view
-      await removeItem({ id: product.id! })
+      let deleteRes = await removeItem({ id: product.id! })
+      // console.log('after delete ==> ', deleteRes, 'product.id', product.id)
     } catch (error) {
+      // console.log('error while removing wishlist ', error)
+
       setRemoving(false)
     }
   }
