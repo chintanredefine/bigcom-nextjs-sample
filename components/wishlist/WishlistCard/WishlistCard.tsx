@@ -21,11 +21,13 @@ import Modals from '../Modals/AddToCartModal'
 
 interface Props {
   product: Product
+  setUpdate: any
+  Update: any
 }
 
 const placeholderImg = '/product-img-placeholder.svg'
 
-const WishlistCard: FC<Props> = ({ product }) => {
+const WishlistCard: FC<Props> = ({ product, setUpdate, Update }) => {
   const { price } = usePrice({
     amount: product.price?.value,
     baseAmount: product.price?.retailPrice,
@@ -62,13 +64,26 @@ const WishlistCard: FC<Props> = ({ product }) => {
 
       const itemInWishlist = data?.items?.find(
         // @ts-ignore Wishlist is not always enabled
-        (item) =>
-          item.product_id === Number(product.id) &&
-          (item.variant_id as any) === Number(product.variants[0].id)
+        (item) => {
+          console.log(
+            'item ',
+            item,
+            'product.id',
+            product.id && product.id,
+            'product.variants[0].id',
+            product.variants[0].id && product.variants[0].id
+          )
+
+          return (
+            item.product_id === Number(product.id) &&
+            (item.variant_id as any) === Number(product.variants[0].id)
+          )
+        }
       )
 
       if (itemInWishlist) {
         let deleteRes = await removeItem({ id: itemInWishlist.id! })
+        setUpdate(!Update)
         console.log('after delete ==> ', deleteRes, 'product.id', product.id)
       }
     } catch (error) {
