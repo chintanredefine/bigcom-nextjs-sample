@@ -13,6 +13,7 @@ import PaymentMethodPng from './images/payment-methods-icon.png'
 import Pinterrest from './images/pinterest-icon.png'
 import Instagram from './images/instagram-icon.png'
 import Facebook from './images/facebook-icon.png'
+import { Console } from 'console'
 
 interface Props {
   className?: string
@@ -142,17 +143,17 @@ const Footer: FC<Props> = ({ className, pages }) => {
             <div className="footer-links-title">About</div>
             <div className="footer-links">
               <span className="">
-                <a className="" href="">
+                <a className="" href="/pages/about-us.html">
                   About Us
                 </a>
               </span>
               <span className="">
-                <a className="" href="">
+                <a className="" href="/pages/contact-us.html">
                   Contact Us
                 </a>
               </span>
               <span className="">
-                <a className="" href="#">
+                <a className="" href="/pages/career.html">
                   Careers
                 </a>
               </span>
@@ -292,11 +293,93 @@ function usePages(pages?: Page[]) {
   const { locale } = useRouter()
   const sitePages: Page[] = []
 
+  let SomeDummyStaticPage = [
+    {
+      id: '21',
+      channel_id: 1,
+      name: 'About Us',
+      meta_title: '',
+      is_visible: true,
+      parent_id: 0,
+      sort_order: 41,
+      meta_keywords: '',
+      type: 'page',
+      meta_description: 'About us ',
+      is_homepage: false,
+      is_customers_only: false,
+      search_keywords: '',
+      body: '',
+      url: '/pages/about-us.html',
+    },
+    {
+      id: '22',
+      channel_id: 1,
+      name: 'Contact Us',
+      meta_title: '',
+      is_visible: true,
+      parent_id: 0,
+      sort_order: 35,
+      meta_keywords: '',
+      type: 'page',
+      meta_description: 'Contact Us',
+      is_homepage: false,
+      is_customers_only: false,
+      search_keywords: '',
+      body: '',
+      url: '/pages/contact-us.html',
+    },
+  ]
+
+  let Letspush = false
+
+  pages?.some((obj) => {
+    SomeDummyStaticPage.map((obj2) => {
+      // console.log('====================================')
+      // console.log('obj , obj2 ', obj.id, obj2.id)
+      // console.log('====================================')
+
+      if (obj.id !== obj2.id) {
+        Letspush = true
+
+        console.log('==================================== 001')
+        console.log(
+          '<<== pages.length + 1 === Number(obj.id) ==>> ',
+          pages.length + 1,
+          Number(obj.id),
+          'Letspush',
+          Letspush,
+
+          ' <== obj.id === obj2.id ==> ',
+          obj.id,
+          obj2.id
+        )
+        console.log('====================================')
+      }
+      if (obj.id === obj2.id) {
+        console.log('==================================== 002')
+        console.log('else if is getting called 02', obj.id, obj2.id, Letspush)
+        console.log('====================================')
+        Letspush = false
+      }
+
+      if (pages.length + 1 === Number(obj.id)) {
+        if (Letspush) {
+          pages?.push(obj2)
+          Letspush = false
+        }
+      }
+    })
+  })
+
   if (pages) {
+    console.log('==================================== 003')
+    console.log('pages ==>>> ', typeof pages, pages)
+    console.log('====================================')
     pages.forEach((page) => {
       const slug = page.url && getSlug(page.url)
-      if (!slug) return
+      if (!slug) return alert('page not found' + slug)
       if (locale && !slug.startsWith(`${locale}/`)) return
+      console.info('locale ', locale, 'slug ', slug)
       sitePages.push(page)
     })
   }
