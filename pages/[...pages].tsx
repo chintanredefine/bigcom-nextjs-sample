@@ -45,12 +45,6 @@ export async function getStaticProps({
 
   let page = data?.page || (slug === 'about-us' && aboutusPageData)
 
-  // (slug === 'about-us' && aboutusPageData)
-
-  console.log('====================================')
-  console.log('aboutusPageData ', aboutusPageData)
-  console.log('====================================')
-
   if (!page) {
     // We throw to make sure this fails at build time as this is never expected to happen
     throw new Error(`Page with slug '${slug}' not found`)
