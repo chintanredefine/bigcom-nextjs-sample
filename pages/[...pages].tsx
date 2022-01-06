@@ -11,6 +11,8 @@ import { missingLocaleInPages } from '@lib/usage-warns'
 import type { Page } from '@commerce/types/page'
 import { useRouter } from 'next/router'
 
+import aboutusPageData from '@components/common/about_us'
+
 export async function getStaticProps({
   preview,
   params,
@@ -41,7 +43,13 @@ export async function getStaticProps({
       preview,
     }))
 
-  const page = data?.page
+  let page = data?.page || (slug === 'about-us' && aboutusPageData)
+
+  // (slug === 'about-us' && aboutusPageData)
+
+  console.log('====================================')
+  console.log('aboutusPageData ', aboutusPageData)
+  console.log('====================================')
 
   if (!page) {
     // We throw to make sure this fails at build time as this is never expected to happen
@@ -58,9 +66,6 @@ export async function getStaticPaths({ locales }: GetStaticPathsContext) {
   const config = { locales }
   const { pages }: { pages: Page[] } = await commerce.getAllPages({ config })
   const [invalidPaths, log] = missingLocaleInPages()
-  console.log('====================================');
-  console.log("all pages ... ", pages, config, locales);
-  console.log('====================================');
   const paths = pages
     .map((page: any) => page.url.replace('.html', ''))
     .filter((url) => {
@@ -85,9 +90,7 @@ export default function Pages({
   return router.isFallback ? (
     <h1>Loading...</h1> // TODO (BC) Add Skeleton Views
   ) : (
-    <div className="max-w-2xl mx-8 sm:mx-auto py-20">
-      {page?.body && <Text html={page.body} />}
-    </div>
+    <div className="py-20">{page?.body && <Text html={page.body} />}</div>
   )
 }
 
