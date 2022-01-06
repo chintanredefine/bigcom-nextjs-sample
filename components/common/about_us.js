@@ -38,7 +38,7 @@
                 </div>
                 </div>
                 <div class="about-team-row1">
-                <div class="about-team-title"><sstyle="color: #222324;
+                <div class="about-team-title"><style="color: #222324;
     display: block;
     font-size: 25px;
     font-weight: normal;
