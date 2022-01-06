@@ -90,7 +90,7 @@ export default function Pages({
   return router.isFallback ? (
     <h1>Loading...</h1> // TODO (BC) Add Skeleton Views
   ) : (
-    <>{page?.body && <Text html={page.body} />}</>
+    <div className="py-20">{page?.body && <Text html={page.body} />}</div>
   )
 }
 
