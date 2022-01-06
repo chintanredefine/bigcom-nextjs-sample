@@ -58,6 +58,9 @@ export async function getStaticPaths({ locales }: GetStaticPathsContext) {
   const config = { locales }
   const { pages }: { pages: Page[] } = await commerce.getAllPages({ config })
   const [invalidPaths, log] = missingLocaleInPages()
+  console.log('====================================');
+  console.log("all pages ... ", pages, config, locales);
+  console.log('====================================');
   const paths = pages
     .map((page: any) => page.url.replace('.html', ''))
     .filter((url) => {

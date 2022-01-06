@@ -134,19 +134,21 @@ export default function Brands({
                     <>
                       {node.name.charAt(0) == charfirst && (
                         <>
-                          <li
-                            key={node.path}
-                            className="brand-item"
-                            data-sort={charfirst}
-                            data-name={node.name}
-                          >
-                            <a
-                              className="navPage-subMenu-action navPages-action"
-                              href={`${node.path}`}
+                          <a href={`${node.path}`}>
+                            <li
+                              key={node.path}
+                              className="brand-item"
+                              data-sort={charfirst}
+                              data-name={node.name}
                             >
-                              {node.name}
-                            </a>
-                          </li>
+                              <a
+                                className="navPage-subMenu-action navPages-action"
+                                href={`${node.path}`}
+                              >
+                                {node.name}
+                              </a>
+                            </li>
+                          </a>
                         </>
                       )}
                     </>
