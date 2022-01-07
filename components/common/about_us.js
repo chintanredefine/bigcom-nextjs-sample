@@ -1,51 +1,49 @@
-
-     const page = {
-         id: 9,
-         name: "about-us",
-         is_visible: true,
-         sort_order: 41,
-        //  body: `<h2class=\"fg-white\">AboutUs<\/h2><pclass=\"fg-white\">developing and supporting complex IT solutions.Touchingmillions of lives world wide by bringing in innovative technology <\/p>`,
-         body: `<main class="page">
+const page = {
+  id: 9,
+  name: 'about-us',
+  is_visible: true,
+  sort_order: 41,
+  //  body: `<h2class=\"fg-white\">AboutUs<\/h2><pclass=\"fg-white\">developing and supporting complex IT solutions.Touchingmillions of lives world wide by bringing in innovative technology <\/p>`,
+  body: `<main class="page">
         <h1 class="page-heading" style="text-transform: uppercase;text-align: center;display: flex;align-items: center;justify-content: center;font-size: 28px;" >Who We Are</h1>
-
-                    <div class="page-content">
-                            <p><div id="socialannex1"></div></p><div class="about-us-team">
+        <div class="page-content">
+                <p><div id="socialannex1"></div></p><div class="about-us-team">
                 <div class="about-team-row1">
                 <div class="about-team-title"><span style="color: #222324;
-    display: block;
-    font-size: 25px;
-    font-weight: normal;
-    line-height: 25px;
-    margin: 0 auto;
-    padding: 5px 0;
-    text-transform: uppercase; border-top: 1px solid #00000085;">Mission Statement</span></div>
+                    display: block;
+                    font-size: 25px;
+                    font-weight: normal;
+                    line-height: 25px;
+                    margin: 0 auto;
+                    padding: 5px 0;
+                    text-transform: uppercase; border-top: 1px solid #00000085;">Mission Statement</span></div>
                 <div class="about-team-datail">
                 <p>Sleekshop.com seeks to be the world’s leading online source of exclusive, quality beauty products from classic, emerging and niche brands. Through exceptional service, creativity and innovation, we strive to be not only become the ultimate beauty destination for customers worldwide, but also a place where our brands can grow and flourish. We are deeply dedicated to serving our employees, customers and brand partners alike.</p>
                 </div>
                 </div>
                 <div class="about-team-row1">
                 <div class="about-team-title"><span style="color: #222324;
-    display: block;
-    font-size: 25px;
-    font-weight: normal;
-    line-height: 25px;
-    margin: 0 auto;
-    padding: 5px 0;
-    text-transform: uppercase; border-top: 1px solid #00000085;">History</span></div>
+                    display: block;
+                    font-size: 25px;
+                    font-weight: normal;
+                    line-height: 25px;
+                    margin: 0 auto;
+                    padding: 5px 0;
+                    text-transform: uppercase; border-top: 1px solid #00000085;">History</span></div>
                 <div class="about-team-datail">
                 <p>Founded in 1997, Sleekshop.com was started by Andrew Ngo when he was just a junior in high school. As an avid and self-taught technology guru (from graphic design to building computers and everything in between), Andrew always had a natural ambition for achievement and innovation. His entrepreneurial spirit was nurtured at a very young age in his mother's salon where she worked as a nail technician and hairstylist. At the salon, Andrew was able to spend a lot of time watching and learning how to grow a business. By age 15, he was managing all aspects of the salon including inventory, sales and customer service. Discovering the gap in access to high quality beauty products for everyday consumers, Andrew quickly sought to make all exclusive leading brands available to the world at the best prices possible.</p>
                 <p>Merging his passion for the internet with his extensive knowledge in the beauty industry, Andrew launched Sleekshop in the humble environment of his garage. While pursuing a Bachelor's of Economics at UC Irvine, Andrew steadily grew Sleekshop's volume from one order a month to several requests day. Despite various hurdles of juggling school and the increasing demands of a small business, Andrew pressed on with confidence that his vision would someday become a reality.</p>
                 </div>
                 </div>
                 <div class="about-team-row1">
-                <div class="about-team-title"><style="color: #222324;
-    display: block;
-    font-size: 25px;
-    font-weight: normal;
-    line-height: 25px;
-    margin: 0 auto;
-    padding: 5px 0;
-    text-transform: uppercase; border-top: 1px solid #00000085;">Present Day</span></div>
+                <div class="about-team-title"><span style="color: #222324;
+                    display: block;
+                    font-size: 25px;
+                    font-weight: normal;
+                    line-height: 25px;
+                    margin: 0 auto;
+                    padding: 5px 0;
+                    text-transform: uppercase; border-top: 1px solid #00000085;">Present Day</span></div>
                 <div class="about-team-datail">
                 <p>Today, more than a decade later, Sleekshop.com is one of the top online destinations for leading hair care products from every brand imaginable. And it's not just limited to hair—Sleekshop.com now offers brands for nails, skin, cosmetics, babies and even pets! With over 16,000 products of 300 salon-exclusive and specialty brands, Sleekhair.com is committed to helping customers worldwide (in 60+ countries) fulfill just about any beauty care need.</p>
                 <p>From its beginnings in a garage to going global, Sleekshop.com prides itself on having a foundation of stellar yet personalized service and a fun, family culture. To this day, Sleekshop.com stands as a proud family-owned business based on Andrew's founding principal of "continually innovating and creating better experiences for not only [its] customers, but [its] employees, vendors, and the entire beauty industry."</p>
@@ -159,7 +157,7 @@
                 </div><p><div id="socialannex1"></div></p>
                     </div>
 
-                </main>`
-     }
+                </main>`,
+}
 
-    module.exports = page
+module.exports = page
