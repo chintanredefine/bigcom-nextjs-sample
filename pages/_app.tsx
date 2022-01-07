@@ -1,3 +1,4 @@
+import '@assets/css/AllNewFont.css'
 import '@assets/main.css'
 import '@assets/chrome-bug.css'
 import 'keen-slider/keen-slider.min.css'

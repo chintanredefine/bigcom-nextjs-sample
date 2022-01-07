@@ -33,14 +33,17 @@ const Head: FC = () => {
         />
 
         <link
-          href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;600;700&display=swap"
           rel="stylesheet"
-        ></link>
+          data-href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;600;700&amp;display=swap"
+          data-optimized-fonts="true"
+        />
+        <style data-href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;600;700&amp;display=swap" />
+
+        <link
+          href="https://www.ystore.us/sleekshop/common.css"
+          rel="stylesheet"
+        />
       </NextHead>
-      <link
-        href="https://www.ystore.us/sleekshop/common.css"
-        rel="stylesheet"
-      />
     </>
   )
 }
