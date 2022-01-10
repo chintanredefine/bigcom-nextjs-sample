@@ -68,7 +68,7 @@ const Reward: FC<Props> = ({
                         <div className="trackOrderParent d-flex justify-content-around align-items-center">
                           <p className="subHeading">
                             <span className="Heading">Grand Total :</span> $
-                            {order?.orderTotal}
+                            {Number(order?.orderTotal).toFixed(2)}
                           </p>
                         </div>
                       </div>
@@ -76,7 +76,7 @@ const Reward: FC<Props> = ({
                       <div className="OHIGPC">
                         <div className="d-flex OrderHistoryImagesContainer">
                           {order?.productImage.map((imgString: any) => (
-                            <div className="productCardImgParent">
+                            <div className="productCardImgParent productCardImgParentOnly">
                               <img
                                 className="ProductImg"
                                 src={imgString}

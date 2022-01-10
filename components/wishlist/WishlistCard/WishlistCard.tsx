@@ -237,7 +237,7 @@ const WishlistCard: FC<Props> = ({ product }) => {
             className="h6AddToCart"
             onClick={addToCart}
           >
-            Add to Cart
+            ADD TO BAG
           </button>
         </div>
       </div>

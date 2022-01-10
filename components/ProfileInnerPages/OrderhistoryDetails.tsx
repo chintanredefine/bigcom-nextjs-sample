@@ -1,6 +1,7 @@
 // import { Bag } from '@components/icons'
 import useCustomer from '@framework/customer/use-customer'
 import { useEffect, useState } from 'react'
+import Link from 'next/link'
 
 export default function Reward(propData: any) {
   const { data: customer } = useCustomer()
@@ -116,7 +117,7 @@ export default function Reward(propData: any) {
         {/* <!-- product list  --> */}
         <div className="d-flex justify-content-between row">
           {/* product card */}
-          {orderedItem?.order_products.map((ordPro) => {
+          {orderedItem.order_products.map((ordPro: any) => {
             return (
               <>
                 <div className="productCard">
@@ -132,15 +133,36 @@ export default function Reward(propData: any) {
                       SKU: {ordPro && ordPro['sku']}
                     </p>
                   </div>
-                  <div>
-                    <p className="Product-Name">{ordPro && ordPro['name']}</p>
+                  <div className="orderNameP">
+                    <Link
+                      href={`/products/${ordPro.name
+                        .split(' ')
+                        .join('-')
+                        .split('(')
+                        .join('')
+                        .split(')')
+                        .join('')}`}
+                    >
+                      <a>
+                        <p className="Product-Name">
+                          {ordPro && ordPro['name']}
+                        </p>
+                      </a>
+                    </Link>
                   </div>
                   <div>
-                    <p className="Product-brand">{ordPro && ordPro['name']}</p>
+                    {[
+                      console.log('==================================== start'),
+                      console.log('ordPro ', ordPro),
+                      console.log('==================================== end '),
+                    ]}
+                    <p className="Product-brand">
+                      {ordPro && ordPro['product_options'][0]['display_value']}
+                    </p>
                   </div>
                   <div>
                     <p className="Product-price">
-                      $ {ordPro && ordPro['base_total']}
+                      $ {ordPro && Number(ordPro['base_total']).toFixed(2)}
                     </p>
                   </div>
                 </div>
@@ -207,27 +229,27 @@ export default function Reward(propData: any) {
         <p className="Heading mb-4">Order Total</p>
         <div className="d-flex justify-content-between mb-2">
           <div>Subtotal :</div>
-          <div>$ {orderedItem.base_shipping_cost}</div>
+          <div>$ {Number(orderedItem.base_shipping_cost).toFixed(2)}</div>
         </div>
         <hr />
         <div className="d-flex justify-content-between mb-2">
           <div>Coupon :</div>
-          <div>$ {orderedItem.coupon_discount}</div>
+          <div>$ {Number(orderedItem.coupon_discount).toFixed(2)}</div>
         </div>
         <hr />
         <div className="d-flex justify-content-between mb-2">
           <div>Shipping :</div>
-          <div>$ {orderedItem.shipping_cost_inc_tax}</div>
+          <div>$ {Number(orderedItem.shipping_cost_inc_tax).toFixed(2)}</div>
         </div>
         <hr />
         <div className="d-flex justify-content-between mb-2">
           <div>Sales Tax :</div>
-          <div>$ {orderedItem.subtotal_tax}</div>
+          <div>$ {Number(orderedItem.subtotal_tax).toFixed(2)}</div>
         </div>
         <hr />
         <div className="Heading-grandTotal d-flex justify-content-between mb-2 mt-3">
           <div>Grand Total :</div>
-          <div>$ {orderedItem.total_inc_tax}</div>
+          <div>$ {Number(orderedItem.total_inc_tax).toFixed(2)}</div>
         </div>
       </div>
       {/* <!-- ---------------------------- component order total ---------------------------- --> */}
