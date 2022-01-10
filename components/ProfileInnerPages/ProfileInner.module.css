@@ -6,7 +6,7 @@
 }
 
 .AddToCartOnHover_0ne {
-  border: 2px solid #c7c7c7;
+  border: 2px solid #eeeeee;
   margin-bottom: 10px;
   height: 40px;
 }
@@ -28,7 +28,7 @@
 .decrementBtn {
   width: 40px;
   background: white;
-  border-left: 2px solid #c7c7c7;
+  border-left: 2px solid #eeeeee;
   font-size: large;
   outline: none !important;
   margin-left: 0.5px;
@@ -38,7 +38,7 @@
 .incrementBtn {
   width: 40px;
   background: white;
-  border-left: 2px solid #c7c7c7;
+  border-left: 2px solid #eeeeee;
   margin-left: 0.5px;
   font-size: large;
   outline: none !important;
@@ -50,7 +50,7 @@
 }
 
 .inputEDCartVal {
-  border-left: 2px solid #c7c7c7;
+  border-left: 2px solid #eeeeee;
   width: 50px;
   text-align: center;
   background: white;

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import Modal from 'react-modal'
 import style from '../ProfileInner.module.css'
 import useAddItem from '@framework/cart/use-add-item'
@@ -12,6 +12,9 @@ const customStyles = {
     right: '0px',
     bottom: '0px',
     width: '100vw',
+    position: "fixed",
+    inset: "0px",
+    backgroundColor: "rgb(0 0 0 / 35%)",
   },
 }
 
@@ -92,18 +95,18 @@ const ModalCompo = ({
                 alt="image not found"
               />
             </div>
-            <div className="Product-Model-Parent mt-3">
+            <div className="Product-Model-Parent mt-3 skuFontSt">
               <p className="Product-Model">SKU: {CurrentObj?.sku}</p>
             </div>
-            <div className="mt-1 CurrentObjNameP">
+            <div className="mt-1 CurrentObjNameP productName">
               <p className="Product-Name">{CurrentObj?.name}</p>
             </div>
 
-            <p className="Product-brand mt-1">
+            <p className="Product-brand mt-1 productBrandText">
               {CurrentObj?.product_options[0]?.display_value}
             </p>
 
-            <p className="Product-price mt-1">$ {CurrentObj?.price_inc_tax}</p>
+            <p className="Product-price mt-1 productPriceAdd">$ {CurrentObj?.price_inc_tax}</p>
           </div>
 
           {/* there will be incrementer bottons  */}

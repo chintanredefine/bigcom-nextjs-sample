@@ -310,7 +310,7 @@ textarea {
 }
 
 .h6AddToCart {
-  background-color: #97d5ce;
+  background-color: #95bfb8;
   padding: 5px;
   color: #fff;
   text-align: center;
@@ -383,7 +383,7 @@ textarea {
 
 .skuFontSt {
   line-height: 17px;
-  font-weight: 600 !important;
+  font-weight: 500 !important;
 }
 
 .orderNameP {
@@ -393,19 +393,19 @@ textarea {
 
 .orderNameP .productName {
   text-transform: uppercase;
-  font-weight: 700 !important;
+  font-weight: 500 !important;
 }
 
 .productBrandText {
   line-height: 17px;
-  font-weight: 600 !important;
+  font-weight: 500 !important;
 }
 
 .productPriceAdd {
   font-size: 16px;
   line-height: 17px;
   color: #515456 !important;
-  font-weight: 800 !important;
+  font-weight: 600 !important;
 }
 
 /* fix search bar */
