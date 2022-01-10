@@ -1,7 +1,7 @@
 // import type { GetStaticPropsContext } from 'next'
 import useCustomer from '@framework/customer/use-customer'
 import { useEffect, useState } from 'react'
-// import Link from 'next/link'
+import Link from 'next/link'
 
 import { Bag } from '@components/icons'
 import useAddItem from '@framework/cart/use-add-item'
@@ -189,22 +189,43 @@ export default function Orders() {
                       />
                     </div>
                     <div className="Product-Model-Parent mt-3">
-                      <p className="Product-Model">SKU: {order.sku}</p>
+                      <p className="Product-Model skuFontSt">
+                        SKU: {order.sku}
+                      </p>
                     </div>
-                    <div className="mt-2 orderNameP">
-                      {/* <Link href={`${order.path?.replace('.html', '')}`}> */}
-                      <p className="Product-Name">{order?.name}</p>
-                      {/* </Link> */}
+                    <div className="mt-2 orderNameP ">
+                      {[
+                        console.log(
+                          '==================================== start'
+                        ),
+                        console.log('order ', order),
+                        console.log('==================================== end'),
+                      ]}
+                      <Link
+                        href={`/products/${order?.name
+                          .split(' ')
+                          .join('-')
+                          .split('(')
+                          .join('')
+                          .split(')')
+                          .join('')}`}
+                      >
+                        <a>
+                          <p className="Product-Name productName">
+                            {order?.name}
+                          </p>
+                        </a>
+                      </Link>
                     </div>
                     <div className="productBrandP mt-2">
-                      <p className="Product-brand ">
+                      <p className="Product-brand productBrandText">
                         {order?.product_options[0]?.display_value}
                       </p>
                     </div>
                     <div className="pPrice_AddToCartP">
                       <div className="mt-2 d-flex align-items-center justify-content-between pPrice_AddToCart ">
-                        <p className="Product-price">
-                          $ {order?.price_inc_tax}
+                        <p className="Product-price productPriceAdd">
+                          $ {Number(order?.price_inc_tax).toFixed(2)}
                         </p>
                         <p
                           className="addToCartButton"
@@ -272,7 +293,7 @@ export default function Orders() {
                         disabled={Boolean(
                           handleRenderingItemCount(index, itemCountState)[2]
                         )}
-                        className="h6AddToCart"
+                        className={`h6AddToCart ${style.h6AddToCart}`}
                         onClick={async () => {
                           let productId = order?.product_id
                           let variantId = order?.variant_id
@@ -290,7 +311,7 @@ export default function Orders() {
                           openSidebar()
                         }}
                       >
-                        Add to Cart
+                        ADD TO BAG
                       </button>
                     </div>
                   </div>
