@@ -2,13 +2,12 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  background: white;
-}
-
-.AddToCartOnHover_0ne {
+  background: #ffffff;
   border: 2px solid #eeeeee;
+  box-sizing: border-box;
+  height: 44px;
   margin-bottom: 10px;
-  height: 40px;
+  width: 70%;
 }
 
 .QtyText {
@@ -43,10 +42,6 @@
   font-size: large;
   outline: none !important;
   height: 36px;
-}
-
-.h6AddToCart {
-  height: 42px;
 }
 
 .inputEDCartVal {
