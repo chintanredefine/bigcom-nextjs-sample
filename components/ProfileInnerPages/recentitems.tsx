@@ -61,15 +61,21 @@ export default function RecentItems() {
                             alt="image not found"
                           />
                         </div>
-                        <div className="Product-Model-Parent mt-3">
-                          <p className="Product-Model">SKU: {order?.sku}</p>
+                        <div className="Product-Model-Parent mt-3 skuParent">
+                          <p className="Product-Model skuFontSt">
+                            SKU: {order?.sku}
+                          </p>
                         </div>
                         <div>
-                          <p className="Product-Name">{order?.name}</p>
+                          <p className="Product-Name productName recentViewproductName">
+                            {order?.name}
+                          </p>
                         </div>
 
                         <div>
-                          <p className="Product-price">$ {order?.price}</p>
+                          <p className="Product-price productPriceAdd recentlyViewproductPriceAdd">
+                            $ {Number(order?.price).toFixed(2)}
+                          </p>
                         </div>
                       </a>
                     </Link>

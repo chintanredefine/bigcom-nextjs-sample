@@ -150,7 +150,7 @@ export default function Orders() {
                             <option value={order.orderId}>
                               Order #{order.orderId} - Placed on{' '}
                               {order.dateCreated}
-                              for $ {order.orderTotal}
+                              for $ {Number(order.orderTotal).toFixed(2)}
                             </option>
                           )
                         })}

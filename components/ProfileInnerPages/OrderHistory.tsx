@@ -78,7 +78,7 @@ const Reward: FC<Props> = ({
                           {order?.productImage.map((imgString: any) => (
                             <div className="productCardImgParent productCardImgParentOnly">
                               <img
-                                className="ProductImg"
+                                className="ProductImg ProductImageOnlyOrderHistory"
                                 src={imgString}
                                 alt=""
                               />

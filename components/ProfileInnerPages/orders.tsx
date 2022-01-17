@@ -188,19 +188,12 @@ export default function Orders() {
                         alt="image not found"
                       />
                     </div>
-                    <div className="Product-Model-Parent mt-3">
+                    <div className="Product-Model-Parent mt-3 skuParent">
                       <p className="Product-Model skuFontSt">
                         SKU: {order.sku}
                       </p>
                     </div>
                     <div className="mt-2 orderNameP ">
-                      {[
-                        console.log(
-                          '==================================== start'
-                        ),
-                        console.log('order ', order),
-                        console.log('==================================== end'),
-                      ]}
                       <Link
                         href={`/products/${order?.name
                           .split(' ')
@@ -222,78 +215,74 @@ export default function Orders() {
                         {order?.product_options[0]?.display_value}
                       </p>
                     </div>
-                    <div className="pPrice_AddToCartP">
-                      <div className="mt-2 d-flex align-items-center justify-content-between pPrice_AddToCart ">
-                        <p className="Product-price productPriceAdd">
-                          $ {Number(order?.price_inc_tax).toFixed(2)}
-                        </p>
-                        <p
-                          className="addToCartButton"
-                          onClick={() => {
-                            setCurrentObj(order)
-                            setShowPartialProductDetailsPage(true)
-                          }}
-                        >
-                          <AddToCartPlus />
-                        </p>
-                      </div>
+                    <div className="mt-2 d-flex align-items-center justify-content-between pPrice_AddToCart ">
+                      <p className="Product-price productPriceAdd">
+                        $ {Number(order?.price_inc_tax).toFixed(2)}
+                      </p>
+                      <p
+                        className="addToCartButton"
+                        onClick={() => {
+                          setCurrentObj(order)
+                          setShowPartialProductDetailsPage(true)
+                        }}
+                      >
+                        <AddToCartPlus />
+                      </p>
                     </div>
 
                     <div className="AddToCartOnHover">
                       <div className={`${style.incrementParent}`}>
-                        <div className={`${style.AddToCartOnHover_0ne}`}>
-                          {/* ===================Qty Text=================== */}
-                          <span className={`${style.QtyText}`}>QTY</span>
+                        {/* ===================Qty Text=================== */}
+                        <span className={`${style.QtyText}`}>QTY</span>
 
-                          {/* ===================decreent button=================== */}
-                          <button
-                            className={`${style.decrementBtn}`}
-                            onClick={() => {
-                              return handleDecrement(index, itemCountState)
-                            }}
-                          >
-                            -
-                          </button>
+                        {/* ===================decreent button=================== */}
+                        <button
+                          className={`${style.decrementBtn}`}
+                          onClick={() => {
+                            return handleDecrement(index, itemCountState)
+                          }}
+                        >
+                          -
+                        </button>
 
-                          {/* current value of product quantity //  #input field for all subcomponents */}
-                          <input
-                            disabled
-                            className={`${style.inputEDCartVal} ${
-                              handleRenderingItemCount(
-                                index,
-                                itemCountState
-                              )[1] === 'outOfStock'
-                                ? style.outOfStock
-                                : handleRenderingItemCount(
-                                    index,
-                                    itemCountState
-                                  )[1] === 'inStock' && style.inStock
-                            }`}
-                            value={Number(
-                              handleRenderingItemCount(index, itemCountState)[0]
-                            )}
-                          />
+                        {/* current value of product quantity //  #input field for all subcomponents */}
+                        <input
+                          disabled
+                          className={`${style.inputEDCartVal} ${
+                            handleRenderingItemCount(
+                              index,
+                              itemCountState
+                            )[1] === 'outOfStock'
+                              ? style.outOfStock
+                              : handleRenderingItemCount(
+                                  index,
+                                  itemCountState
+                                )[1] === 'inStock' && style.inStock
+                          }`}
+                          value={Number(
+                            handleRenderingItemCount(index, itemCountState)[0]
+                          )}
+                        />
 
-                          {/* ===================increment button=================== */}
-                          <button
-                            className={` ${style.incrementBtn} `}
-                            onClick={() => {
-                              return handleIncrement(
-                                index,
-                                productQuantity,
-                                itemCountState
-                              )
-                            }}
-                          >
-                            +
-                          </button>
-                        </div>
+                        {/* ===================increment button=================== */}
+                        <button
+                          className={` ${style.incrementBtn} `}
+                          onClick={() => {
+                            return handleIncrement(
+                              index,
+                              productQuantity,
+                              itemCountState
+                            )
+                          }}
+                        >
+                          +
+                        </button>
                       </div>
                       <button
                         disabled={Boolean(
                           handleRenderingItemCount(index, itemCountState)[2]
                         )}
-                        className={`h6AddToCart ${style.h6AddToCart}`}
+                        className={`h6AddToCart`}
                         onClick={async () => {
                           let productId = order?.product_id
                           let variantId = order?.variant_id
