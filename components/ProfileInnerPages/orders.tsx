@@ -215,21 +215,19 @@ export default function Orders() {
                         {order?.product_options[0]?.display_value}
                       </p>
                     </div>
-                    <div className="pPrice_AddToCartP">
-                      <div className="mt-2 d-flex align-items-center justify-content-between pPrice_AddToCart ">
-                        <p className="Product-price productPriceAdd">
-                          $ {Number(order?.price_inc_tax).toFixed(2)}
-                        </p>
-                        <p
-                          className="addToCartButton"
-                          onClick={() => {
-                            setCurrentObj(order)
-                            setShowPartialProductDetailsPage(true)
-                          }}
-                        >
-                          <AddToCartPlus />
-                        </p>
-                      </div>
+                    <div className="mt-2 d-flex align-items-center justify-content-between pPrice_AddToCart ">
+                      <p className="Product-price productPriceAdd">
+                        $ {Number(order?.price_inc_tax).toFixed(2)}
+                      </p>
+                      <p
+                        className="addToCartButton"
+                        onClick={() => {
+                          setCurrentObj(order)
+                          setShowPartialProductDetailsPage(true)
+                        }}
+                      >
+                        <AddToCartPlus />
+                      </p>
                     </div>
 
                     <div className="AddToCartOnHover">

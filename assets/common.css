@@ -5,13 +5,13 @@
   font-family: Jost, sans-serif !important;
 }
 
-.orderHistory {
+/* .orderHistory {
   padding: 15px 10px !important;
 }
 
 .orderHistory div p {
   padding: 10px 0px;
-}
+} */
 
 .BillingShipping {
   border: none;
@@ -81,11 +81,13 @@
   height: 23px;
 }
 
-.pPrice_AddToCartP {
-  position: absolute;
-  bottom: 0px;
-  width: 90%;
-  height: 24px;
+.recentViewproductName {
+  min-height: 59px;
+  margin-top: 20px;
+}
+
+.recentlyViewproductPriceAdd {
+  margin-top: 20px;
 }
 
 .MainContentParent .Product-Name {
@@ -170,6 +172,10 @@
   margin-top: 4px !important;
 }
 
+.mt-12 {
+  margin-top: 12px !important;
+}
+
 .mt-2 {
   margin-top: 10px !important;
 }
@@ -223,9 +229,15 @@
   max-height: 238px;
 }
 
+.ProductImageOnlyOrderHistory {
+  height: 219px;
+  max-height: 219px;
+}
+
 .productCardImgParentOnly {
   border-width: 1px 1px 1px 1px;
   max-width: 245px;
+  min-width: 160px;
 }
 
 .ViewOrderGparent {
@@ -329,6 +341,10 @@ textarea {
   pointer-events: none;
 }
 
+.deleteButtonWishlist {
+  float: right;
+}
+
 /* .h6AddToCart:focus .h6AddToCart.focus {
   outline: 0;
   box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
@@ -383,6 +399,10 @@ textarea {
   outline: none;
 }
 
+.closeSvg {
+  padding: 20px;
+}
+
 .skuParent {
   height: 14px;
 }
@@ -397,7 +417,7 @@ textarea {
   color: #50585e;
 }
 .orderNameP {
-  height: 80px;
+  height: 70px;
 }
 
 .orderNameP .productName {
@@ -424,7 +444,7 @@ textarea {
 .productPriceAdd {
   font-style: normal;
   font-weight: 500;
-  font-size: 14px;
+  font-size: 16px;
   line-height: 24px;
   display: flex;
   align-items: center;
@@ -446,8 +466,18 @@ textarea {
   align-items: center;
 }
 
-/* .QtyText {
-} */
+.maskForProductDetailsPage {
+  background-color: rgb(230, 209, 209);
+  margin-top: 20vh;
+  background-color: #fff;
+  margin-left: -10px;
+  width: 100vw;
+  height: 80vh;
+}
+
+.detailsParentModal {
+  padding: 10px;
+}
 
 /* fix search bar */
 
@@ -471,14 +501,18 @@ textarea {
     width: 98%;
   }
   .productCard {
-    min-height: 100%;
     width: 50%;
-    padding: 10px;
+    height: 400px;
+  }
+
+  .ProductImg {
+    max-height: 160px;
   }
 
   .detailproductCard {
-    width: 70%;
-    height: 80%;
+    width: 70vw;
+    height: 65%;
+    border: 2px solid #eee;
   }
 
   .addToCartButton {
@@ -491,12 +525,17 @@ textarea {
 
   .OrderHistoryImagesContainer {
     width: 50% !important;
+    overflow: scroll;
   }
 
   .productCardImgParent {
     height: 40% !important;
     margin-left: 2px !important;
     width: 100% !important;
+  }
+
+  .productCardImgParentmodal {
+    height: 50% !important;
   }
 
   .View-Order-Button {
@@ -507,15 +546,11 @@ textarea {
     min-height: 70px;
   }
 
-  .productBrandP {
-    min-height: 144px;
-  }
-
   .detailproductCardParent {
     display: flex;
     flex-direction: column;
     align-items: center;
-    height: 320px;
+    height: 95%;
   }
 
   .ModalUpperMostParent {

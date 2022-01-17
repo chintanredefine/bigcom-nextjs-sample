@@ -5,16 +5,17 @@
   background: #ffffff;
   border: 2px solid #eeeeee;
   box-sizing: border-box;
-  height: 44px;
   margin-bottom: 10px;
-  width: 70%;
+  height: 44px;
+  width: 173px;
 }
 
 .QtyText {
-  width: 53px;
+  width: 30%;
   background: white;
   font-weight: bolder;
   color: #4b4b4c;
+  text-align: center;
 }
 
 .detailsQtyText {
@@ -25,31 +26,37 @@
 }
 
 .decrementBtn {
-  width: 40px;
+  width: 20%;
   background: white;
   border-left: 2px solid #eeeeee;
   font-size: large;
   outline: none !important;
   margin-left: 0.5px;
-  height: 36px;
+  height: 40px;
 }
 
 .incrementBtn {
-  width: 40px;
+  width: 20%;
   background: white;
   border-left: 2px solid #eeeeee;
   margin-left: 0.5px;
   font-size: large;
   outline: none !important;
-  height: 36px;
+  height: 40px;
+}
+
+.AddToCartOnHover_0ne {
+  justify-content: center;
+  align-items: center;
+  height: 55px;
 }
 
 .inputEDCartVal {
   border-left: 2px solid #eeeeee;
-  width: 50px;
+  width: 30%;
   text-align: center;
   background: white;
-  height: 36px;
+  height: 40px;
 }
 
 .outOfStock {
@@ -62,4 +69,11 @@
 
 .ShowPartialProductDetailsPage {
   display: none;
+}
+
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {
+  .incrementParent {
+    width: 70%;
+  }
 }

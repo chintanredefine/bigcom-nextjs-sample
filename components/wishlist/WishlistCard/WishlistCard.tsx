@@ -63,15 +63,6 @@ const WishlistCard: FC<Props> = ({ product }) => {
       const itemInWishlist = data?.items?.find(
         // @ts-ignore Wishlist is not always enabled
         (item) => {
-          console.log(
-            'item ',
-            item,
-            'product.id',
-            product.id && product.id,
-            'product.variants[0].id',
-            product.variants[0].id && product.variants[0].id
-          )
-
           return (
             item.product_id === Number(product.id) &&
             (item.variant_id as any) === Number(product.variants[0].id)
@@ -81,11 +72,8 @@ const WishlistCard: FC<Props> = ({ product }) => {
 
       if (itemInWishlist) {
         let deleteRes = await removeItem({ id: itemInWishlist.id! })
-        console.log('after delete ==> ', deleteRes, 'product.id', product.id)
       }
     } catch (error) {
-      // console.log('error while removing wishlist ', error)
-
       setRemoving(false)
     }
   }
@@ -112,20 +100,10 @@ const WishlistCard: FC<Props> = ({ product }) => {
         ...prevState,
         val: itemCountState.val - 1,
       }))
-
-      // if (itemCountState.val - 1 <= 3) {
-      //   let itemStatus = 'inStock'
-      //   setitemCountState((prevState) => ({
-      //     ...prevState,
-      //     status: itemStatus,
-      //     diableAddToCart: false,
-      //   }))
-      // }
     }
   }
 
   const handleIncrement = () => {
-    // if (CurrentObj.quantity > itemCountState.val) {
     if (true) {
       setitemCountState((prevState) => ({
         ...prevState,
@@ -154,11 +132,9 @@ const WishlistCard: FC<Props> = ({ product }) => {
       )}
 
       <div className="productCard">
-        <div className="d-flex align-items-center justify-content-end closeSvg">
-          <button onClick={handleRemove}>
-            <CloseSvg />
-          </button>
-        </div>
+        <button className="deleteButtonWishlist" onClick={handleRemove}>
+          <CloseSvg />
+        </button>
 
         <div className="productCardImgParent">
           <img
@@ -167,20 +143,22 @@ const WishlistCard: FC<Props> = ({ product }) => {
             alt={product.images[0]?.alt || 'Product Image'}
           />
         </div>
-        <div className="Product-Model-Parent mt-3">
-          <p className="Product-Model">SKU: {product.id}</p>
+        <div className="Product-Model-Parent mt-1 skuParent">
+          <p className="Product-Model skuFontSt">SKU: {product.id}</p>
         </div>
-        <div className="mt-2 orderNameP">
+        <div className="mt-1 orderNameP">
           <Link href={`${product.path?.replace('.html', '')}`}>
-            <p className="Product-Name">{product.name}</p>
+            <a>
+              <p className="Product-Name productName">{product.name}</p>
+            </a>
           </Link>
         </div>
-        <div className="productBrandP mt-2">
+        <div className="productBrandP mt-1">
           {/* <p className="Product-brand ">{product.brand}</p> */}
         </div>
         <div className="pPrice_AddToCartP">
-          <div className="mt-2 d-flex align-items-center justify-content-between pPrice_AddToCart ">
-            <p className="Product-price">{price}</p>
+          <div className="mt-1 d-flex align-items-center justify-content-between pPrice_AddToCart ">
+            <p className="Product-price productPriceAdd">{price}</p>
             <p
               className="addToCartButton"
               onClick={() => {
@@ -194,41 +172,39 @@ const WishlistCard: FC<Props> = ({ product }) => {
 
         <div className="AddToCartOnHover">
           <div className={`${style.incrementParent}`}>
-            <div className={`${style.AddToCartOnHover_0ne}`}>
-              {/* ===================Qty Text=================== */}
-              <span className={`${style.QtyText}`}>QTY</span>
+            {/* ===================Qty Text=================== */}
+            <span className={`${style.QtyText}`}>QTY</span>
 
-              {/* ===================decreent button=================== */}
-              <button
-                className={`${style.decrementBtn}`}
-                onClick={() => {
-                  return handleDecrement()
-                }}
-              >
-                -
-              </button>
+            {/* ===================decreent button=================== */}
+            <button
+              className={`${style.decrementBtn}`}
+              onClick={() => {
+                return handleDecrement()
+              }}
+            >
+              -
+            </button>
 
-              {/* current value of product quantity //  #input field for all subcomponents */}
-              <input
-                disabled
-                className={`${style.inputEDCartVal}  ${
-                  itemCountState.status === 'outOfStock'
-                    ? style.outOfStock
-                    : itemCountState.status === 'inStock' && style.inStock
-                }`}
-                value={itemCountState.val}
-              />
+            {/* current value of product quantity //  #input field for all subcomponents */}
+            <input
+              disabled
+              className={`${style.inputEDCartVal}  ${
+                itemCountState.status === 'outOfStock'
+                  ? style.outOfStock
+                  : itemCountState.status === 'inStock' && style.inStock
+              }`}
+              value={itemCountState.val}
+            />
 
-              {/* ===================increment button=================== */}
-              <button
-                className={` ${style.incrementBtn} `}
-                onClick={() => {
-                  return handleIncrement()
-                }}
-              >
-                +
-              </button>
-            </div>
+            {/* ===================increment button=================== */}
+            <button
+              className={` ${style.incrementBtn} `}
+              onClick={() => {
+                return handleIncrement()
+              }}
+            >
+              +
+            </button>
           </div>
           <button
             // disabled={Boolean(

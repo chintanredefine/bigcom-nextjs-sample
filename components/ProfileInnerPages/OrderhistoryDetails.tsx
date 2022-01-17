@@ -151,11 +151,6 @@ export default function Reward(propData: any) {
                     </Link>
                   </div>
                   <div>
-                    {[
-                      console.log('==================================== start'),
-                      console.log('ordPro ', ordPro),
-                      console.log('==================================== end '),
-                    ]}
                     <p className="Product-brand">
                       {ordPro && ordPro['product_options'][0]['display_value']}
                     </p>
