@@ -25,13 +25,13 @@ const Head: FC = () => {
           type="text/javascript"
           dangerouslySetInnerHTML={{
             __html: `
-          var p = '${
+          var p = '/${
             (router &&
               router.query &&
               router.query.category &&
               router.query.category) ||
             ''
-          }'; UnbxdAnalyticsConf =
+          }/'; UnbxdAnalyticsConf =
           window.UnbxdAnalyticsConf || {}; UnbxdAnalyticsConf["page"] = 'p:"' +
           p + '"'; UnbxdAnalyticsConf["page_type"] = "BOOLEAN" ;`,
           }}
