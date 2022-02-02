@@ -1,12 +1,9 @@
-
 export default async (request, resposne) => {
   try {
       var http = require("https");
-
       const {id} = request.query
-      const {sku} = request.query
 
-      if(!id || !sku){
+      if(!id){
         resposne.status(200)
         resposne.json({
             "status": "error",
@@ -15,16 +12,17 @@ export default async (request, resposne) => {
         return resposne;
       }
 
-      const {BIGCOMMERCE_STORE_API_URL} = process.env
-      const {BIGCOMMERCE_STORE_API_TOKEN} = process.env
+      const {STAMPED_API_KEY_PUBLIC} = process.env
+      const {STAMPED_TOKEN} = process.env
 
       var options = {
-        "method": "GET",
-        "hostname": "api.bigcommerce.com",
+        "method": "POST",
+        "hostname": "stamped.io",
         "port": null,
-        "path": `${BIGCOMMERCE_STORE_API_URL}/v3/catalog/products/${id}/variants?sku=${sku}`,
+        "path": "/api/widget/badges?isIncludeBreakdown=true&isincludehtml=true",
         "headers": {
-          "x-auth-token": `${BIGCOMMERCE_STORE_API_TOKEN}`,
+          "authorization": "Basic " + STAMPED_TOKEN,
+          "content-type": "application/json",
           "cache-control": "no-cache"
         }
       };
@@ -39,13 +37,17 @@ export default async (request, resposne) => {
          res.on("end", function () {
             var body = Buffer.concat(chunks);
             resposne.status(200)
-            resposne.json(body.toString())
+    		    console.log(body.toString());
+            resposne.json(JSON.parse(body))
           });
       });
 
+      req.write(JSON.stringify({ productIds: [ { productId: id } ],
+        apiKey: STAMPED_API_KEY_PUBLIC,
+        storeUrl: 'sleekshop.com' 
+      }));
       req.end();
   } catch (error) {
-      console.log(error);
       resposne.status(200)
       resposne.json({
           "status": "error",

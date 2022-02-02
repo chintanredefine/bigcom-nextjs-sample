@@ -23,6 +23,7 @@
   "dependencies": {
     "@react-spring/web": "^9.2.1",
     "@svgr/webpack": "^6.0.0",
+    "@types/react-tabs": "^2.3.4",
     "@vercel/fetch": "^6.1.0",
     "autoprefixer": "^10.2.6",
     "body-scroll-lock": "^3.1.5",
@@ -45,7 +46,7 @@
     "react-fast-marquee": "^1.1.4",
     "react-merge-refs": "^1.1.0",
     "react-modal": "^3.14.4",
-    "react-tabs": "^3.2.2",
+    "react-multi-carousel": "^2.6.5",
     "react-use-measure": "^2.0.4",
     "sharp": "^0.29.3",
     "stripe": "^8.176.0",
@@ -80,7 +81,7 @@
     "postcss-flexbugs-fixes": "^5.0.2",
     "postcss-preset-env": "^6.7.0",
     "prettier": "^2.3.0",
-    "react-tabs": "^3.2.2",
+    "react-tabs": "^3.2.3",
     "typescript": "4.3.4"
   },
   "husky": {

@@ -36,6 +36,7 @@
   background: #f6f6f8;
   color: #5a6268;
   width: 50%;
+  font-weight: 400;
 }
 .topbarmsgright {
   float: right;
@@ -284,6 +285,7 @@ footer {
 .currency-right {
   float: right;
   display: flex;
+  font-weight: 400;
 }
 .currency-right img {
   margin-right: 12px;

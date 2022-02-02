@@ -1,10 +1,10 @@
 .root {
-  @apply relative grid items-start gap-1 grid-cols-1 overflow-x-hidden;
+  @apply relative grid items-start gap-1 grid-cols-1 overflow-x-hidden mr-px;
   min-height: auto;
 }
 
 .main {
-  @apply relative px-0 pb-0 box-border  flex flex-col col-span-1;
+  @apply relative px-0 pb-0 box-border flex flex-col col-span-1;
   min-height: 500px;
 }
 
@@ -41,6 +41,8 @@
   @apply grid grid-cols-2 py-2 gap-2 md:grid-cols-4 md:gap-7;
 }
 
+
+
 @screen lg {
   .root {
     @apply grid-cols-12;
@@ -57,4 +59,5 @@
   .imageContainer {
     max-height: 600px;
   }
+
 }

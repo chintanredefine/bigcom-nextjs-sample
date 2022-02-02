@@ -10,6 +10,7 @@ interface SwatchProps {
   className?: string
   variant?: 'size' | 'color' | string
   color?: string
+  image?: string
   label?: string | null
 }
 
@@ -18,12 +19,13 @@ const Swatch: React.FC<Omit<ButtonProps, 'variant'> & SwatchProps> = React.memo(
     active,
     className,
     color = '',
+    image = '',
     label = null,
     variant = 'size',
+    id = 0,
     ...props
   }) => {
     variant = variant?.toLowerCase()
-
     if (label) {
       label = label?.toLowerCase()
     }
@@ -45,7 +47,7 @@ const Swatch: React.FC<Omit<ButtonProps, 'variant'> & SwatchProps> = React.memo(
         aria-label="Variant Swatch"
         className={swatchClassName}
         {...(label && color && { title: label })}
-        style={color ? { backgroundColor: color } : {}}
+        style={image ? { backgroundImage: `url(${image})` } : {}}
         {...props}
       >
         {color && active && (
@@ -53,7 +55,15 @@ const Swatch: React.FC<Omit<ButtonProps, 'variant'> & SwatchProps> = React.memo(
             <Check />
           </span>
         )}
-        {!color ? label : null}
+        <div className="variant_label">{!color ? label : null}</div>
+        {id > 0 ? (
+          <div className="variant_qty">
+            QTY.{id}{' '}
+            <Check className="inline-block check_icn" fontSize="small" />
+          </div>
+        ) : (
+          ''
+        )}
       </Button>
     )
   }
