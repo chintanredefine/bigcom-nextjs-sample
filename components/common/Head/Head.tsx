@@ -3,7 +3,11 @@ import NextHead from 'next/head'
 import { DefaultSeo } from 'next-seo'
 import config from '@config/seo.json'
 
+import { useRouter } from 'next/router'
+
 const Head: FC = () => {
+  const router = useRouter()
+
   return (
     <>
       <DefaultSeo {...config} />
@@ -14,6 +18,22 @@ const Head: FC = () => {
           dangerouslySetInnerHTML={{
             __html: `var UnbxdSiteName="sleekhair_mybigcommerce_com-u1474746314480";
           var UnbxdApiKey="a32a56fd1a3bd51b04a38278db19e452";`,
+          }}
+        />
+
+        <script
+          type="text/javascript"
+          dangerouslySetInnerHTML={{
+            __html: `
+          var p = '/${
+            (router &&
+              router.query &&
+              router.query.category &&
+              router.query.category) ||
+            ''
+          }/'; UnbxdAnalyticsConf =
+          window.UnbxdAnalyticsConf || {}; UnbxdAnalyticsConf["page"] = 'p:"' +
+          p + '"'; UnbxdAnalyticsConf["page_type"] = "BOOLEAN" ;`,
           }}
         />
 

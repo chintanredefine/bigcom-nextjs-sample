@@ -257,14 +257,14 @@ const Footer: FC<Props> = ({ className, pages }) => {
           __html: `
               var sa_uni = sa_uni || [];
               sa_uni.push(['sa_pg', '5']);
-              (function() {function sa_async_load() 
+              (function() {function sa_async_load()
               { var sa = document.createElement('script');
               sa.type = 'text/javascript';
               sa.async = true;
               sa.src = '//cdn.socialannex.com/partner/${site_id}/universal.js';
               var sax = document.getElementsByTagName('script')[0];
-              sax.parentNode.insertBefore(sa, sax); 
-              }if (window.attachEvent) 
+              sax.parentNode.insertBefore(sa, sax);
+              }if (window.attachEvent)
               {window.attachEvent('onload', sa_async_load);
               }else {window.addEventListener('load', sa_async_load,false);
               }})();
@@ -299,7 +299,6 @@ function usePages(pages?: Page[]) {
       const slug = page.url && getSlug(page.url)
       if (!slug) return alert('page not found' + slug)
       if (locale && !slug.startsWith(`${locale}/`)) return
-      console.info('locale ', locale, 'slug ', slug)
       sitePages.push(page)
     })
   }

@@ -19,7 +19,7 @@
   &:nth-child(6n + 1) .header .name span,
   &:nth-child(6n + 1) .header .price,
   &:nth-child(6n + 1) .wishlistButton {
-    @apply bg-violet text-white;
+    @apply bg-pink text-white;
   }
 
   &:nth-child(6n + 5) .header .name span,
@@ -111,4 +111,8 @@
 
 .root:global(.secondary) .header span {
   @apply bg-accent-0 text-accent-9;
+}
+
+.related_product {
+  
 }
