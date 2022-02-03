@@ -16,6 +16,7 @@ import 'react-tabs/style/react-tabs.css';
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 import getConfig from "next/config"
+import Link from 'next/link'
 
 interface ProductViewProps {
   product: Product
@@ -30,6 +31,8 @@ interface ProductViewProps {
 const {publicRuntimeConfig} = getConfig()
 
 const ProductView: FC<ProductViewProps> = ({ product, relatedProducts, variants, currentVariant, skuChange, reviews, ratings }) => {
+
+  console.log(reviews)
 
   const productSku = currentVariant.data ? currentVariant.data[0].sku : ''
   const currentSwatchId = currentVariant.data ? currentVariant.data[0].option_values[0].id : ''
@@ -149,6 +152,7 @@ const ProductView: FC<ProductViewProps> = ({ product, relatedProducts, variants,
               infinite={true}
             >
               {relatedProducts.map((p) => (
+              <Link href={`/${p.slug ? p.slug.replace('.html', '') : p.slug}`}>
                 <div key={p.path} className="animated fadeIn ItemPro">
                   <img src={p.images[0]?.url!} />
                   <div className="produtDetails">
@@ -156,14 +160,75 @@ const ProductView: FC<ProductViewProps> = ({ product, relatedProducts, variants,
                     <p>{getPrice(p)}</p>
                   </div>
                 </div>
+                </Link>
               ))}
             </Carousel>          
         </section>
+        {reviews  ? (
         <section className="py-12 px-6 mb-10 ReviewsSection">
           <div className="review_bottom">
-           No Reviews
+            <h2 className="Text_sectionHeading__2H2XC">Reviews</h2>
+            <div className="product_reviews">
+              <h3>All Comments ({reviews.total})</h3>
+              {reviews.results.map((preview: any, i: number) => {
+
+                let date = new Date(preview.review.dateCreated);
+                let reviewDate = `${ date.getDate()} - ${date.getMonth()} - ${date.getFullYear()}`;
+
+                return (
+                  <div key={i} className="review-item">
+                    <div className="review-details">
+                        <div className="customer-name">
+                          {preview.customer ? (
+                            <>
+                            { preview.customer.profileImageUrl ? (
+                              <img src={preview.customer.profileImageUrl} />
+                            ) : (
+                              <img src="/user.jpg" />
+                            )}
+
+                            <p>
+                              {preview.customer.name ? ( 
+                                preview.customer.name
+                                ) : (
+                                  preview.customer.firstName + ' ' + preview.customer.lastName
+                                )
+                              }
+                              <span className="review-date">{reviewDate}</span>
+                            </p>
+                            </>
+                          ) : (
+                            <>
+                            <img src="/user.jpg" />
+                            <p>
+                              {preview.review.email}
+                              <span className="review-date">{reviewDate}</span>
+                            </p>
+                            </>
+                          )}
+
+                        </div>
+                      <div className="review-ratings">
+                        {preview.review.rating > 0 ? (
+                        <img src={'/' + preview.review.rating + 'star.png'} />
+                        ) : ''}
+                      </div>
+                    </div>
+
+                    <div className="review-body">
+                      <h4>{preview.review.title}</h4>
+                      <Text
+                        className="break-words w-full max-w-xl"
+                        html={preview.review ? preview.review.body : ''}
+                      />
+                    </div>
+                  </div>
+                )
+              })}
+            </div>
           </div>
         </section>
+        ) : '' }
       </Container>
       <NextSeo
         title={product.name}
