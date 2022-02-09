@@ -1,9 +1,6 @@
 import $ from 'jquery'
 
-console.log('started running abc file')
 const SomeFunc = () => {
-  console.log('started running abc file')
-
   var unbxdAutoSuggestFunction = function (c, u, e) {
     ;(window.Unbxd = window.Unbxd || {}),
       (Unbxd.autosuggestVersion = '1.0.1'),

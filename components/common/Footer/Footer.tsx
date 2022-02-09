@@ -105,8 +105,8 @@ const Footer: FC<Props> = ({ className, pages }) => {
   const { data } = useCustomer()
 
   useEffect(() => {
-    AbcFile()
     if (data) {
+      AbcFile()
       window['sa_emailid'] = data.email
     }
   }, [data])
