@@ -15,7 +15,7 @@ import Pinterrest from './images/pinterest-icon.png'
 import Instagram from './images/instagram-icon.png'
 import Facebook from './images/facebook-icon.png'
 
-// import AbcFile from './abc.js'
+import AbcFile from './abc.js'
 
 interface Props {
   className?: string
@@ -105,7 +105,7 @@ const Footer: FC<Props> = ({ className, pages }) => {
   const { data } = useCustomer()
 
   useEffect(() => {
-    // AbcFile()
+    AbcFile()
     if (data) {
       window['sa_emailid'] = data.email
     }
@@ -286,7 +286,7 @@ const Footer: FC<Props> = ({ className, pages }) => {
       ></script>
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
       {/* <script src="//sandbox.unbxd.io/sleekhair_mybigcommerce_stage_autosuggest.js"></script> */}
-      <script src="./abc.js"></script>
+
       {/* <!-- Related To Search (Need To Integrate Search and Category pages) --> */}
       <script src="//sandbox.unbxd.io/sleekhair_mybigcommerce_stage_search.js"></script>
       <script src="//libraries.unbxdapi.com/search-sdk/v2.0.4/vanillaSearch.min.js"></script>

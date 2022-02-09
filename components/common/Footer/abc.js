@@ -1,8 +1,8 @@
 import $ from 'jquery'
-console.log('started running abc file 001')
 
+console.log('started running abc file')
 const SomeFunc = () => {
-  return `console.log('started running abc file 002')
+  console.log('started running abc file')
 
   var unbxdAutoSuggestFunction = function (c, u, e) {
     ;(window.Unbxd = window.Unbxd || {}),
@@ -2165,7 +2165,6 @@ const SomeFunc = () => {
   function getUnbxdApiKey() {
     return window.UnbxdApiKey
   }
-
   var unbxd_as_config
   unbxdAutoSuggestFunction($, Handlebars),
     (unbxd_as_config = {
@@ -2397,12 +2396,13 @@ const SomeFunc = () => {
         ].join(''),
       },
       onSimpleEnter: function (t) {
-        console.log(this.input.value.trim().length), t.preventDefault()
-        0 < this.input.value.trim().length &&
-          (window.location =
-            window.location.origin +
-            '/search?q=' +
-            encodeURIComponent(this.input.value))
+        console.log(this.input.value.trim().length),
+          t.preventDefault(),
+          0 < this.input.value.trim().length &&
+            (window.location =
+              window.location.origin +
+              '/search?q=' +
+              encodeURIComponent(this.input.value))
       },
       onItemSelect: function (t, s) {
         'POPULAR_PRODUCTS' === t.type || 'POPULAR_PRODUCTS_FILTERED' === t.type
@@ -2502,7 +2502,6 @@ const SomeFunc = () => {
     })
 
   console.log('this console proves that this script is running ')
-  `
 }
 
 export default SomeFunc
