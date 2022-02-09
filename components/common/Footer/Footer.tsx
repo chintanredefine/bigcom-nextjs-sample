@@ -1,6 +1,7 @@
 import { FC, useEffect } from 'react'
 import cn from 'classnames'
 import Image from 'next/image'
+
 import useCustomer from '@framework/customer/use-customer'
 
 import { useRouter } from 'next/router'
@@ -13,6 +14,8 @@ import PaymentMethodPng from './images/payment-methods-icon.png'
 import Pinterrest from './images/pinterest-icon.png'
 import Instagram from './images/instagram-icon.png'
 import Facebook from './images/facebook-icon.png'
+
+// import AbcFile from './abc.js'
 
 interface Props {
   className?: string
@@ -102,6 +105,7 @@ const Footer: FC<Props> = ({ className, pages }) => {
   const { data } = useCustomer()
 
   useEffect(() => {
+    // AbcFile()
     if (data) {
       window['sa_emailid'] = data.email
     }
@@ -281,8 +285,8 @@ const Footer: FC<Props> = ({ className, pages }) => {
         src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/3.0.3/handlebars.js"
       ></script>
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-      <script src="//sandbox.unbxd.io/sleekhair_mybigcommerce_stage_autosuggest.js"></script>
-
+      {/* <script src="//sandbox.unbxd.io/sleekhair_mybigcommerce_stage_autosuggest.js"></script> */}
+      <script src="./abc.js"></script>
       {/* <!-- Related To Search (Need To Integrate Search and Category pages) --> */}
       <script src="//sandbox.unbxd.io/sleekhair_mybigcommerce_stage_search.js"></script>
       <script src="//libraries.unbxdapi.com/search-sdk/v2.0.4/vanillaSearch.min.js"></script>
