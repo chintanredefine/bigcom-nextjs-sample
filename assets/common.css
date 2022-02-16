@@ -768,4 +768,8 @@ textarea {
     display: flex;
     align-items: center;
   }
+
+  .PaddingForNoItemForDeskTopView {
+    padding: 6rem auto;
+  }
 }

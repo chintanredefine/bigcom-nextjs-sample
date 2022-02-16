@@ -33,24 +33,22 @@ const Reward: FC<Props> = ({
 
   return (
     <>
-      {/* <!-- ---------------------------- component order card ---------------------------- --> */}
+      {Array.isArray(OrderHistoryData) && OrderHistoryData.length > 0 && (
+        <div className="d-flex align-items-center orderHistoryHeading">
+          {ShowOrderHistoryDetails && (
+            <div onClick={setShowOrderHistoryDetails(false)}>
+              <BackIconSvg />
+            </div>
+          )}
 
-      <div className="d-flex align-items-center orderHistoryHeading">
-        {ShowOrderHistoryDetails && (
-          <div onClick={setShowOrderHistoryDetails(false)}>
-            <BackIconSvg />
+          <div className="orderHistoryHeadingUnd">
+            <p className="Heading">Order History</p>
+            <p className="subHeading d-flex align-items-center">
+              Review Your Order Here
+            </p>
           </div>
-        )}
-
-        <div className="orderHistoryHeadingUnd">
-          <p className="Heading">Order History</p>
-          <p className="subHeading d-flex align-items-center">
-            Review Your Order Here
-          </p>
         </div>
-      </div>
-      {/* <!-- ---------------------------- component order card ---------------------------- --> */}
-
+      )}
       {ShowOrderHistoryDetails ? (
         <OrderHistoryDetails data={DetailedData} />
       ) : (
@@ -130,7 +128,7 @@ const Reward: FC<Props> = ({
           ) : (
             <>
               <div className="MainContentInnerdiv mb-2">
-                <div className="flex-1 p-24 flex flex-col justify-center items-center ">
+                <div className="flex-1 PaddingForNoItemForDeskTopView flex flex-col justify-center items-center ">
                   <span className="border border-dashed border-secondary rounded-full flex items-center justify-center w-16 h-16 p-12 bg-primary text-primary">
                     <Bag className="absolute" />
                   </span>
