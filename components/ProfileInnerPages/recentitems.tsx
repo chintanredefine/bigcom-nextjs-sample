@@ -43,7 +43,7 @@ export default function RecentItems() {
           <div className="MainContentInnerdiv mb-2">
             {/* <!-- title of the Buy It Again Page  --> */}
             <div className="mainContentChild d-flex justify-content-between">
-              <div className="Heading">Recently Viewed Products</div>
+              <div className="Heading">Recently Viewed </div>
               <div className="Heading">{orderedItem?.length} Items</div>
             </div>
 
@@ -77,7 +77,7 @@ export default function RecentItems() {
 
                     <div className="productBrandP mt-2">
                       <p className="Product-brand productBrandText">
-                        Brand Id {order.brand_id}
+                        Brand Id : {order.brand_id}
                       </p>
                     </div>
 
