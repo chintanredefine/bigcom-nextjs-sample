@@ -18,7 +18,7 @@ export default async (request, resposne) => {
       method: 'GET',
       hostname: 'stamped.io',
       port: null,
-      path: '/api/v2/239827/dashboard/reviews/?search=' + id,
+      path: '/api/v2/239827/dashboard/reviews/?productId=' + id,
       headers: {
         authorization: 'Basic ' + STAMPED_TOKEN,
         'cache-control': 'no-cache',

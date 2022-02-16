@@ -816,5 +816,28 @@ footer {
 .Navbar_mainmenudiv__CB_eL {
   z-index: 1;
 }
+.react-multi-carousel-list .animated.fadeIn.ItemPro {cursor: pointer;}
 
 /* end of new css for design change */
+
+
+
+
+
+
+/* 31.1.2022 css */
+
+
+.PDPView .ReviewsSection .Text_sectionHeading__2H2XC {font-size: 22px;line-height: 30px;}
+.PDPView .ReviewsSection .product_reviews h3, .ReviewsSection .Text_sectionHeading__2H2XC {color: #50585E;letter-spacing: 0.2px;font-weight: 500;}
+.PDPView .ReviewsSection .product_reviews h3 {font-size: 18px;line-height: 20px;}
+.PDPView .ReviewsSection .customer-name img { border: 1px solid #50585E; border-radius: 50px; width: 48px; height: 48px; }
+.PDPView .ReviewsSection .customer-name p { font-weight: 500; font-size: 14px; line-height: 20px; padding-left: 15px; }
+.PDPView .ReviewsSection .customer-name p, .PDPView .ReviewsSection .customer-name p span { color: #50585E; }
+.PDPView .ReviewsSection .customer-name p span { font-weight: normal; display: block; padding-top: 5px; }
+.PDPView .ReviewsSection .customer-name { display: flex; }
+.PDPView .ReviewsSection .review-details { display: flex; width: 100%; align-items: center; }
+.PDPView .ReviewsSection .review-ratings { padding-left: 100px; }
+.PDPView .ReviewsSection .Text_body__V9VBQ.break-words.w-full.max-w-xl { font-size: 16px; line-height: 28px; max-width: 100%; color: #5A7184; }
+.PDPView .ReviewsSection .review-body { padding-top: 25px; }
+.PDPView .ReviewsSection  .review-item { border-bottom: 1px solid #F7F8F9; padding: 40px 0 30px; }

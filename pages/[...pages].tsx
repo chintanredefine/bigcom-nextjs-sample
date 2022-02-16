@@ -11,7 +11,8 @@ import { missingLocaleInPages } from '@lib/usage-warns'
 import type { Page } from '@commerce/types/page'
 import { useRouter } from 'next/router'
 
-import aboutusPageData from '@components/common/about_us'
+import aboutusPageData from '@components/common/DummyPages/about_us'
+import contactusPageData from '@components/common/DummyPages/contact_us'
 
 export async function getStaticProps({
   preview,
@@ -43,7 +44,10 @@ export async function getStaticProps({
       preview,
     }))
 
-  let page = data?.page || (slug === 'about-us' && aboutusPageData)
+  let page =
+    (data?.page && data.page.body.length > 100 && data?.page) ||
+    (slug === 'about-us' && aboutusPageData) ||
+    (slug === 'contact-us' && contactusPageData)
 
   if (!page) {
     // We throw to make sure this fails at build time as this is never expected to happen

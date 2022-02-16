@@ -5,6 +5,13 @@
   font-family: Jost, sans-serif !important;
 }
 
+.MainContentInnerdivOrderHis {
+  width: 100%;
+  border: 1px solid #dee3e9;
+  padding: 0.7rem !important;
+  font-family: Jost, sans-serif !important;
+}
+
 /* .orderHistory {
   padding: 15px 10px !important;
 }
@@ -35,6 +42,24 @@
   color: #50585e;
 }
 
+.HeadingOrdrHis {
+  font-family: Jost;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 24px;
+  display: flex;
+  align-items: center;
+  letter-spacing: 2px;
+  color: #50585e;
+}
+
+.subHeadingOrdrHis {
+  font-weight: normal;
+  display: flex;
+  font-family: Jost;
+}
+
 .Heading-grandTotal {
   font-size: 18px;
   font-weight: 700;
@@ -56,6 +81,7 @@
 
 .mainContentChild {
   padding: 20px 3px;
+  width: 100%;
 }
 
 .MainContentParent .p {
@@ -206,9 +232,10 @@
 
 .productCard {
   border: 1px solid #dee3e9;
-  margin-top: 2px;
+  margin-top: -1px;
+  margin-left: -1px;
   width: 33.3%;
-  height: 443px;
+  height: 459px;
   padding: 10px;
   position: relative;
 }
@@ -230,14 +257,22 @@
 }
 
 .ProductImageOnlyOrderHistory {
-  height: 219px;
-  max-height: 219px;
+  height: 150px;
 }
 
 .productCardImgParentOnly {
-  border-width: 1px 1px 1px 1px;
-  max-width: 245px;
-  min-width: 160px;
+  width: 50%;
+  height: 176px;
+  background: #ffffff;
+  border: 1px solid #dee3e9;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.productCardImgParentmodal {
+  height: 145px;
 }
 
 .ViewOrderGparent {
@@ -247,22 +282,6 @@
 .OrderHistoryImagesContainer {
   z-index: 1;
   margin: auto;
-}
-.OHIGPC {
-  overflow-x: scroll;
-  cursor: grab;
-  margin: auto;
-}
-
-/* Hide scrollbar for Chrome, Safari and Opera */
-.OHIGPC::-webkit-scrollbar {
-  display: none;
-}
-
-/* Hide scrollbar for IE, Edge and Firefox */
-.OHIGPC {
-  -ms-overflow-style: none; /* IE and Edge */
-  scrollbar-width: none; /* Firefox */
 }
 
 .HistoryImagesCo {
@@ -277,8 +296,18 @@
 }
 
 .View-Order-Button {
-  border: 2px solid rgba(0, 128, 68, 0.767);
+  border: 2px solid #95bfb8;
+  box-sizing: border-box;
   padding: 10px 140px;
+  width: 100%;
+
+  font-family: Jost;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 22px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
 }
 
 .View-Order-Button:hover {
@@ -286,7 +315,7 @@
   color: rgba(0, 0, 0, 0.692);
 }
 .View-Order-Button:active {
-  background-color: rgba(7, 182, 100, 0.767);
+  background-color: #8ec9bf;
 }
 
 .covidAndRocket {
@@ -336,6 +365,10 @@ textarea {
   width: 80%;
 }
 
+.detailsh6AddToCartModel {
+  width: 232px;
+}
+
 .h6AddToCart:disabled {
   opacity: 0.65;
   pointer-events: none;
@@ -343,6 +376,9 @@ textarea {
 
 .deleteButtonWishlist {
   float: right;
+  position: absolute;
+  right: 10px;
+  top: 10px;
 }
 
 /* .h6AddToCart:focus .h6AddToCart.focus {
@@ -467,7 +503,6 @@ textarea {
 }
 
 .maskForProductDetailsPage {
-  background-color: rgb(230, 209, 209);
   margin-top: 20vh;
   background-color: #fff;
   margin-left: -10px;
@@ -477,6 +512,17 @@ textarea {
 
 .detailsParentModal {
   padding: 10px;
+}
+
+.orderHistoryHeading {
+  border: 1px solid #dee3e9;
+  border-bottom: none;
+  padding: 20px 10px;
+}
+
+.orderHistoryHeadingUnd {
+  padding-left: 12px;
+  line-height: 40px;
 }
 
 /* fix search bar */
@@ -502,17 +548,74 @@ textarea {
   }
   .productCard {
     width: 50%;
-    height: 400px;
+    height: 372px;
+    margin-left: 0px;
+  }
+
+  .buyItAgainHeading {
+    font-family: Jost;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 24px;
+    line-height: 24px;
+    display: flex;
+    align-items: center;
+    letter-spacing: 2px;
+    color: #50585e;
+  }
+
+  .itemQuantity {
+    font-family: Jost;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 28px;
+    color: #5a7184;
+  }
+
+  .orderHistoryHeading {
+    padding: 15px 10px;
+    margin-top: -60px;
+  }
+
+  .MainContentInnerdiv {
+    padding: 0px !important;
+    margin-top: -60px;
+  }
+
+  .MainContentInnerdivOH {
+    margin-top: 0px;
+  }
+
+  .MainContentInnerdivOHpd {
+    padding: 15px 10px !important;
+  }
+
+  .MainContentInnerdivOHMarMin {
+    margin-top: -60px !important;
+  }
+
+  .mainContentChild {
+    padding: 35px 24px;
+  }
+
+  .skuParent {
+    margin-top: 0.75rem !important;
   }
 
   .ProductImg {
-    max-height: 160px;
+    max-height: 145px;
   }
 
   .detailproductCard {
     width: 70vw;
     height: 65%;
     border: 2px solid #eee;
+  }
+
+  .detailproductCardAddTCM {
+    width: 175px;
+    height: 352px;
   }
 
   .addToCartButton {
@@ -524,8 +627,10 @@ textarea {
   }
 
   .OrderHistoryImagesContainer {
-    width: 50% !important;
-    overflow: scroll;
+    width: 100% !important;
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 20px;
   }
 
   .productCardImgParent {
@@ -535,15 +640,15 @@ textarea {
   }
 
   .productCardImgParentmodal {
-    height: 50% !important;
+    height: 145px !important;
   }
 
   .View-Order-Button {
-    padding: 10px 100px;
+    padding: 10px;
   }
 
   .orderNameP {
-    min-height: 70px;
+    min-height: 100px;
   }
 
   .detailproductCardParent {
@@ -595,5 +700,64 @@ textarea {
 
   .Product-Name:hover .AddToCartOnHover {
     display: none !important;
+  }
+
+  .ViewOrderGparentChld {
+    display: flex;
+    justify-content: space-between;
+    line-height: 35px;
+  }
+
+  .trackOrderParentDeskV {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+  }
+
+  .productCardImgParentOnly {
+    width: 131px;
+    height: 134px;
+    background: #ffffff;
+    border: 1px solid #dee3e9;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .ProductImageOnlyOrderHistory {
+    height: 130px;
+  }
+
+  .View-Order-Button {
+    width: 430px;
+    height: 56px;
+    left: 186px;
+    top: 308px;
+    background: #ffffff;
+    border: 2px solid #95bfb8;
+    box-sizing: border-box;
+
+    font-family: Jost;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 22px;
+    /* identical to box height, or 157% */
+
+    display: flex;
+    align-items: center;
+    text-align: center;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+
+    /* #50585E */
+
+    color: #50585e;
+  }
+
+  .OrderHistoryImagesContainerdesk {
+    display: flex;
+    align-items: center;
   }
 }

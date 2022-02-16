@@ -1,6 +1,7 @@
 import { FC, useEffect } from 'react'
 import cn from 'classnames'
 import Image from 'next/image'
+
 import useCustomer from '@framework/customer/use-customer'
 
 import { useRouter } from 'next/router'
@@ -13,6 +14,8 @@ import PaymentMethodPng from './images/payment-methods-icon.png'
 import Pinterrest from './images/pinterest-icon.png'
 import Instagram from './images/instagram-icon.png'
 import Facebook from './images/facebook-icon.png'
+
+// import AbcFile from './abc.js'
 
 interface Props {
   className?: string
@@ -101,11 +104,12 @@ const Footer: FC<Props> = ({ className, pages }) => {
 
   const { data } = useCustomer()
 
-  useEffect(() => {
-    if (data) {
-      window['sa_emailid'] = data.email
-    }
-  }, [data])
+  // useEffect(() => {
+  //   if (data) {
+  //     AbcFile()
+  //     window['sa_emailid'] = data.email
+  //   }
+  // }, [data])
 
   let site_id = process.env.site_id || 7870040
 

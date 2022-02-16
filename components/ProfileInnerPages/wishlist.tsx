@@ -11,9 +11,9 @@ export default function Wishlist() {
 
   return (
     <div className="MainContentInnerdiv mb-2 orderHistory d-flex justify-content-between">
-      <div className="mt-3 mb-20 w-100">
-        <div className="group flex flex-col">
-          {isLoading || isEmpty ? (
+      {isLoading || isEmpty ? (
+        <div className="mt-3 mb-20 w-100">
+          <div className="group flex flex-col">
             <div className="flex-1 p-24 flex flex-col justify-center items-center ">
               <span className="border border-dashed border-secondary rounded-full flex items-center justify-center w-16 h-16 p-12 bg-primary text-primary">
                 <Heart className="absolute" />
@@ -25,22 +25,29 @@ export default function Wishlist() {
                 Biscuit oat cake wafer icing ice cream tiramisu pudding cupcake.
               </p>
             </div>
-          ) : (
-            <>
-              <div className="d-flex row">
-                {data &&
-                  // @ts-ignore Shopify - Fix this types
-                  data.items?.map((item) => (
-                    <WishlistCard
-                      key={item.id}
-                      product={item.product! as any}
-                    />
-                  ))}
-              </div>
-            </>
-          )}
+          </div>
         </div>
-      </div>
+      ) : (
+        <>
+          <div className="d-flex row">
+            <div className="mainContentChild d-flex justify-content-between">
+              <div className="Heading buyItAgainHeading">Wishlist</div>
+              <div className="Heading itemQuantity">
+                {data.items?.length} Items
+              </div>
+            </div>
+            {data &&
+              // @ts-ignore Shopify - Fix this types
+              data.items?.map((item) => (
+                <WishlistCard
+                  key={item.id}
+                  product={item.product! as any}
+                  color={item?.product?.options[0]?.values[0]! as any}
+                />
+              ))}
+          </div>
+        </>
+      )}
     </div>
   )
 }

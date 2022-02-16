@@ -114,11 +114,6 @@ export default function Slug({
           .then(response => setReviews(response))
           .catch(error => setReviews(error));
 
-        fetch(`${publicRuntimeConfig.BASE_URL}/api/catalog/ratings?id=${pid}`)
-          .then(response => response.json())
-          .then(response => setRatings(response))
-          .catch(error => setRatings(error));
-
         let pUrl = product ? product.path : ''
         if(pUrl && sku){
           pUrl = pUrl.replace('.html', '')

@@ -5,6 +5,8 @@ import useCustomer from '@framework/customer/use-customer'
 import { useEffect, useState } from 'react'
 import OrderHistoryDetails from '@components/ProfileInnerPages/OrderhistoryDetails'
 
+import BackIconSvg from '@assets/sleekshop-new-svg/BackIcon.svg'
+
 interface Props {
   ShowOrderHistoryDetails?: any
   setShowOrderHistoryDetails?: any
@@ -38,8 +40,15 @@ const Reward: FC<Props> = ({
           {Array.isArray(OrderHistoryData) && OrderHistoryData.length > 0 ? (
             <>
               {/* <!-- ---------------------------- component order card ---------------------------- --> */}
-              <div className="MainContentInnerdiv mb-2 orderHistory d-flex justify-content-between">
-                <div>
+
+              <div className="d-flex align-items-center orderHistoryHeading">
+                {ShowOrderHistoryDetails && (
+                  <div onClick={setShowOrderHistoryDetails(false)}>
+                    <BackIconSvg />
+                  </div>
+                )}
+
+                <div className="orderHistoryHeadingUnd">
                   <p className="Heading">Order History</p>
                   <p className="subHeading d-flex align-items-center">
                     Review Your Order Here
@@ -53,38 +62,44 @@ const Reward: FC<Props> = ({
               {OrderHistoryData.map((order: any) => {
                 return (
                   <>
-                    <div className="MainContentInnerdiv mb-2 orderHistory ViewOrderGparent">
-                      <div className="d-flex justify-content-between">
+                    <div className="MainContentInnerdivOrderHis mb-2 orderHistory ViewOrderGparent">
+                      <div className="ViewOrderGparentChld">
                         <div>
-                          <p className="subHeading">
-                            <span className="Heading"> Oder Id : </span>
-                            {order?.orderId}
+                          <p className="subHeading subHeadingOrdrHis">
+                            <span className="Heading HeadingOrdrHis">
+                              Oder Id :
+                            </span>
+                            <span>{order?.orderId}</span>
                           </p>
-                          <p className="subHeading">
-                            <span className="Heading"> Order Data :</span>
-                            {order?.dateCreated}
+                          <p className="subHeading subHeadingOrdrHis">
+                            <span className="Heading HeadingOrdrHis">
+                              Order Data :
+                            </span>
+                            <span>{order?.dateCreated}</span>
                           </p>
                         </div>
-                        <div className="trackOrderParent d-flex justify-content-around align-items-center">
-                          <p className="subHeading">
-                            <span className="Heading">Grand Total :</span> $
-                            {Number(order?.orderTotal).toFixed(2)}
+                        <div className="trackOrderParent trackOrderParentDeskV">
+                          <p className="subHeading subHeadingOrdrHis">
+                            <span className="Heading HeadingOrdrHis">
+                              Grand Total :
+                            </span>
+                            <span>
+                              $ {Number(order?.orderTotal).toFixed(2)}
+                            </span>
                           </p>
                         </div>
                       </div>
 
-                      <div className="OHIGPC">
-                        <div className="d-flex OrderHistoryImagesContainer">
-                          {order?.productImage.map((imgString: any) => (
-                            <div className="productCardImgParent productCardImgParentOnly">
-                              <img
-                                className="ProductImg ProductImageOnlyOrderHistory"
-                                src={imgString}
-                                alt=""
-                              />
-                            </div>
-                          ))}
-                        </div>
+                      <div className="OrderHistoryImagesContainer OrderHistoryImagesContainerdesk">
+                        {order?.productImage.map((imgString: any) => (
+                          <div className=" productCardImgParentOnly">
+                            <img
+                              className="ProductImageOnlyOrderHistory"
+                              src={imgString}
+                              alt=""
+                            />
+                          </div>
+                        ))}
                       </div>
 
                       <div

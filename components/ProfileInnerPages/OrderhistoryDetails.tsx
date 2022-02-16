@@ -50,7 +50,7 @@ export default function Reward(propData: any) {
   return (
     <>
       {/* <!-- ---------------------------- component order history ---------------------------- --> */}
-      <div className="MainContentInnerdiv mb-2 orderHistory d-flex justify-content-between">
+      <div className="MainContentInnerdiv MainContentInnerdivOH MainContentInnerdivOHpd MainContentInnerdivOHMarMin  mb-2 orderHistory d-flex justify-content-between">
         <div>
           <p className="Heading">Order Details</p>
           <p className="subHeading">Thanks For Your Order</p>
@@ -70,7 +70,7 @@ export default function Reward(propData: any) {
       {/* <!-- ---------------------------- component order history ---------------------------- --> */}
 
       {/* <!-- ---------------------------- component BillingShipping ---------------------------- --> */}
-      <div className="MainContentInnerdiv mb-2 BillingShipping d-flex justify-content-between">
+      <div className="MainContentInnerdiv MainContentInnerdivOH mb-2 BillingShipping d-flex justify-content-between">
         <div className="Billing">
           <p className="BillingHeading Heading">Billing</p>
           <p className="subHeading">
@@ -105,7 +105,7 @@ export default function Reward(propData: any) {
       {/* <!-- ---------------------------- component order history ---------------------------- --> */}
 
       {/* <!-- ---------------------------- component buy it again ---------------------------- --> */}
-      <div className="MainContentInnerdiv mb-2">
+      <div className="MainContentInnerdiv MainContentInnerdivOH mb-2">
         {/* <!-- title of the Buy It Again Page  --> */}
         <div className="mainContentChild d-flex justify-content-between">
           <div className="Heading">Products Ordered</div>
@@ -128,12 +128,12 @@ export default function Reward(propData: any) {
                       alt=""
                     />
                   </div>
-                  <div className="Product-Model-Parent">
-                    <p className="Product-Model">
+                  <div className="Product-Model-Parent mt-3 skuParent">
+                    <p className="Product-Model skuFontSt">
                       SKU: {ordPro && ordPro['sku']}
                     </p>
                   </div>
-                  <div className="orderNameP">
+                  <div className="mt-2 orderNameP">
                     <Link
                       href={`/products/${ordPro.name
                         .split(' ')
@@ -144,19 +144,23 @@ export default function Reward(propData: any) {
                         .join('')}`}
                     >
                       <a>
-                        <p className="Product-Name">
+                        <p className="Product-Name productName">
                           {ordPro && ordPro['name']}
                         </p>
                       </a>
                     </Link>
                   </div>
-                  <div>
-                    <p className="Product-brand">
-                      {ordPro && ordPro['product_options'][0]['display_value']}
+                  <div className="productBrandP mt-2">
+                    <p className="Product-brand productBrandText">
+                      {ordPro &&
+                        ordPro['product_options'][0]['display_value'].replace(
+                          'Model',
+                          ''
+                        )}
                     </p>
                   </div>
-                  <div>
-                    <p className="Product-price">
+                  <div className="mt-2 d-flex align-items-center justify-content-between pPrice_AddToCart ">
+                    <p className="Product-price productPriceAdd">
                       $ {ordPro && Number(ordPro['base_total']).toFixed(2)}
                     </p>
                   </div>
@@ -169,7 +173,7 @@ export default function Reward(propData: any) {
       {/* <!-- ---------------------------- component buy it again ---------------------------- --> */}
 
       {/* <!-- ---------------------------- component Shipment ---------------------------- --> */}
-      <div className="MainContentInnerdiv mb-2 BillingShipping d-flex justify-content-between">
+      <div className="MainContentInnerdiv MainContentInnerdivOH mb-2 BillingShipping d-flex justify-content-between">
         <div className="Billing subHeading">
           <p className="BillingHeading Heading mb-2 shipement-p">Shipment</p>
           <p>
@@ -204,7 +208,7 @@ export default function Reward(propData: any) {
       {/* <!-- ---------------------------- component Shipment---------------------------- --> */}
 
       {/* <!-- ---------------------------- component order card ---------------------------- --> */}
-      <div className="MainContentInnerdiv mb-2 orderHistory d-flex justify-content-between">
+      <div className="MainContentInnerdiv MainContentInnerdivOH MainContentInnerdivOHpd mb-2 orderHistory d-flex justify-content-between">
         <div>
           <p className="Heading">Payment Details</p>
           <p className="subHeading d-flex align-items-center">
@@ -220,7 +224,7 @@ export default function Reward(propData: any) {
       {/* <!-- ---------------------------- component order card ---------------------------- --> */}
 
       {/* <!-- ---------------------------- component order total ---------------------------- --> */}
-      <div className="MainContentInnerdiv mb-2 orderHistory">
+      <div className="MainContentInnerdiv MainContentInnerdivOH MainContentInnerdivOHpd mb-2 orderHistory">
         <p className="Heading mb-4">Order Total</p>
         <div className="d-flex justify-content-between mb-2">
           <div>Subtotal :</div>

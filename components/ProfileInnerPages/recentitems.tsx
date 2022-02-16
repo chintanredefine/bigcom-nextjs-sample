@@ -12,7 +12,8 @@ export default function RecentItems() {
 
   useEffect(() => {
     if (customer && customer?.entityId) {
-      let productCookie = Cookies.get('recently_viewed_products') || '[]'
+      let productCookie =
+        Cookies.get('recently_viewed_products') || '["181986"]'
       const parsedCookie = JSON.parse(productCookie)
 
       if (parsedCookie.length > 0) {
@@ -42,8 +43,10 @@ export default function RecentItems() {
           <div className="MainContentInnerdiv mb-2">
             {/* <!-- title of the Buy It Again Page  --> */}
             <div className="mainContentChild d-flex justify-content-between">
-              <div className="Heading">Recently Viewed Products</div>
-              <div className="Heading">{orderedItem?.length} Items</div>
+              <div className="Heading buyItAgainHeading">Recently Viewed </div>
+              <div className="Heading itemQuantity">
+                {orderedItem?.length} Items
+              </div>
             </div>
 
             {/* <!-- product list  --> */}
@@ -52,33 +55,39 @@ export default function RecentItems() {
                 let RedirectUrl = order?.custom_url?.url?.replace('.html', '')
                 return (
                   <div className="productCard">
-                    <Link href={RedirectUrl}>
-                      <a>
-                        <div className="productCardImgParent">
-                          <img
-                            className="ProductImg"
-                            src={order?.product_image}
-                            alt="image not found"
-                          />
-                        </div>
-                        <div className="Product-Model-Parent mt-3 skuParent">
-                          <p className="Product-Model skuFontSt">
-                            SKU: {order?.sku}
-                          </p>
-                        </div>
-                        <div>
-                          <p className="Product-Name productName recentViewproductName">
+                    <div className="productCardImgParent">
+                      <img
+                        className="ProductImg"
+                        src={order?.product_image}
+                        alt="image not found"
+                      />
+                    </div>
+                    <div className="Product-Model-Parent mt-3 skuParent">
+                      <p className="Product-Model skuFontSt">
+                        SKU: {order?.sku}
+                      </p>
+                    </div>
+                    <div className="mt-2 orderNameP">
+                      <Link href={RedirectUrl}>
+                        <a>
+                          <p className="Product-Name productName">
                             {order?.name}
                           </p>
-                        </div>
+                        </a>
+                      </Link>
+                    </div>
 
-                        <div>
-                          <p className="Product-price productPriceAdd recentlyViewproductPriceAdd">
-                            $ {Number(order?.price).toFixed(2)}
-                          </p>
-                        </div>
-                      </a>
-                    </Link>
+                    <div className="productBrandP mt-2">
+                      <p className="Product-brand productBrandText">
+                        Brand Id : {order.brand_id}
+                      </p>
+                    </div>
+
+                    <div className="mt-2 d-flex align-items-center justify-content-between pPrice_AddToCart ">
+                      <p className="Product-price productPriceAdd">
+                        $ {Number(order?.price).toFixed(2)}
+                      </p>
+                    </div>
                   </div>
                 )
               })}
