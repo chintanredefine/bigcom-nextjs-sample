@@ -33,30 +33,30 @@ const Reward: FC<Props> = ({
 
   return (
     <>
+      {/* <!-- ---------------------------- component order card ---------------------------- --> */}
+
+      <div className="d-flex align-items-center orderHistoryHeading">
+        {ShowOrderHistoryDetails && (
+          <div onClick={setShowOrderHistoryDetails(false)}>
+            <BackIconSvg />
+          </div>
+        )}
+
+        <div className="orderHistoryHeadingUnd">
+          <p className="Heading">Order History</p>
+          <p className="subHeading d-flex align-items-center">
+            Review Your Order Here
+          </p>
+        </div>
+      </div>
+      {/* <!-- ---------------------------- component order card ---------------------------- --> */}
+
       {ShowOrderHistoryDetails ? (
         <OrderHistoryDetails data={DetailedData} />
       ) : (
         <>
           {Array.isArray(OrderHistoryData) && OrderHistoryData.length > 0 ? (
             <>
-              {/* <!-- ---------------------------- component order card ---------------------------- --> */}
-
-              <div className="d-flex align-items-center orderHistoryHeading">
-                {ShowOrderHistoryDetails && (
-                  <div onClick={setShowOrderHistoryDetails(false)}>
-                    <BackIconSvg />
-                  </div>
-                )}
-
-                <div className="orderHistoryHeadingUnd">
-                  <p className="Heading">Order History</p>
-                  <p className="subHeading d-flex align-items-center">
-                    Review Your Order Here
-                  </p>
-                </div>
-              </div>
-              {/* <!-- ---------------------------- component order card ---------------------------- --> */}
-
               {/* <!-- ---------------------------- component View Orders ---------------------------- --> */}
 
               {OrderHistoryData.map((order: any) => {

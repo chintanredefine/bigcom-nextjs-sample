@@ -618,6 +618,10 @@ textarea {
     height: 352px;
   }
 
+  .detailproductCardAddTCMWish {
+    height: auto;
+  }
+
   .addToCartButton {
     display: block;
   }
@@ -668,6 +672,14 @@ textarea {
     outline: none;
   }
 
+  .MainContentInnerdiv {
+    border: none;
+  }
+
+  .mainContentChild {
+    border: 1px solid #dee3e9;
+  }
+
   /* The animation code */
   /* @keyframes animationToModal {
     0% {
@@ -681,10 +693,6 @@ textarea {
     animation-duration: 4s;
     bottom: -100px;
   } */
-}
-
-/* Small devices (portrait tablets and large phones, 600px and up) */
-@media only screen and (min-width: 600px) {
 }
 
 /* Medium devices (landscape tablets, 768px and up) */

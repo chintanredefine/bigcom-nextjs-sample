@@ -187,12 +187,12 @@ export default function Orders() {
                   ''
                 )
                 Model = order?.product_options[0]?.display_value.replace(
-                  'option',
+                  'option :',
                   ''
                 )
 
                 Model = order?.product_options[0]?.display_value.replace(
-                  'Model',
+                  'Color :',
                   ''
                 )
 
