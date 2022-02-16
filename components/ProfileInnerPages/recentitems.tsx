@@ -43,8 +43,10 @@ export default function RecentItems() {
           <div className="MainContentInnerdiv mb-2">
             {/* <!-- title of the Buy It Again Page  --> */}
             <div className="mainContentChild d-flex justify-content-between">
-              <div className="Heading">Recently Viewed </div>
-              <div className="Heading">{orderedItem?.length} Items</div>
+              <div className="Heading buyItAgainHeading">Recently Viewed </div>
+              <div className="Heading itemQuantity">
+                {orderedItem?.length} Items
+              </div>
             </div>
 
             {/* <!-- product list  --> */}
