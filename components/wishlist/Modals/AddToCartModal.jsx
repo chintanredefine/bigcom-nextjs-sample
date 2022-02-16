@@ -1,10 +1,12 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import Modal from 'react-modal'
 import style from '../../ProfileInnerPages/ProfileInner.module.css'
 import useAddItem from '@framework/cart/use-add-item'
 import usePrice from '@framework/product/use-price'
 
 import CloseSvg from '@assets/sleekshop-new-svg/close.svg'
+import MinusSvg from '@assets/sleekshop-new-svg/Minus.svg'
+import PlusSvg from '@assets/sleekshop-new-svg/Plus.svg'
 
 const customStyles = {
   content: {
@@ -104,7 +106,8 @@ const ModalCompo = ({
         onRequestClose={(e) => closeModal(e)}
         style={customStyles}
         className="ModalUpperMostParent"
-      >       
+      >  
+      {console.log("CurrentObj ", CurrentObj)}     
        <div className='maskForProductDetailsPage'>
         <div className="d-flex align-items-center justify-content-end closeSvg">
           <button onClick={(e) => closeModal(e)}>
@@ -113,7 +116,7 @@ const ModalCompo = ({
         </div>
 
         <div className="detailproductCardParent align-items-center">
-          <div className="detailproductCard">
+          <div className="detailproductCard detailproductCardAddTCM detailproductCardAddTCMWish">
             <div className="productCardImgParent productCardImgParentmodal d-flex align-items-center justify-content-center">
               <img
                 className="detailProductImg "
@@ -129,17 +132,17 @@ const ModalCompo = ({
               <p className="Product-Name">{CurrentObj?.name}</p>
             </div>
 
-            {/* <p className="Product-brand mt-1 productBrandText">
-              {CurrentObj?.options[0]?.display_value}
-            </p> */}
+            <p className="Product-brand mt-1 productBrandText">
+              {CurrentObj?.options[0]?.values[0].label.replace("Size :", "")}
+            </p>
 
-            <p className="Product-price mt-1 productPriceAdd">{price}</p>
+            <p className="Product-price mt-12 productPriceAdd">{price}</p>
           </div>
           </div>
 
           {/* there will be incrementer bottons  */}
 
-          <div className={`${style.incrementParent} ${style.incrementParentModal} mt-2`}>
+          <div className={`${style.incrementParent} ${style.incrementParentModel} mt-2`}>
             <div className={`d-flex justify-content-center align-items-center`}>
               {/* ===================Qty Text=================== */}
               <p className={`${style.detailsQtyText}`}>QTY</p>
@@ -151,7 +154,7 @@ const ModalCompo = ({
                   return handleDecrement()
                 }}
               >
-                -
+                <MinusSvg/>
               </button>
 
               {/* current value of product quantity //  #input field for all subcomponents */}
@@ -172,7 +175,7 @@ const ModalCompo = ({
                   return handleIncrement()
                 }}
               >
-                +
+                <PlusSvg/>
               </button>
             </div>
           </div>
@@ -180,7 +183,7 @@ const ModalCompo = ({
           {/* add to bag button */}
           <button
             disabled={itemCountState.diableAddToCart}
-            className="h6AddToCart detailsh6AddToCart"
+            className="h6AddToCart detailsh6AddToCart detailsh6AddToCartModel"
             onClick={addToCart}
           >
             ADD TO BAG
