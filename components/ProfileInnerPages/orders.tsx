@@ -184,19 +184,10 @@ export default function Orders() {
                 let productQuantity = order?.quantity || 0
 
                 let Model = order?.product_options[0]?.display_value
-                console.log('crnt Model', Model)
-
                 Model = Model.replace('option :', '')
-                console.log('crnt Model', Model)
-
                 Model.replace('Model', '')
-                console.log('crnt Model', Model)
-
                 Model = Model.replace('Color :', '')
-                console.log('crnt Model', Model)
-
                 Model = Model.replace('Size :', '')
-                console.log('crnt Model', Model)
 
                 return (
                   <div className="productCard">
