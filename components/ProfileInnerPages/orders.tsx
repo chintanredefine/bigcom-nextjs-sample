@@ -10,6 +10,8 @@ import { useUI } from '@components/ui/context'
 import style from './ProfileInner.module.css'
 
 import AddToCartPlus from '@assets/sleekshop-new-svg/addToCartPlus.svg'
+import MinusSvg from '@assets/sleekshop-new-svg/Minus.svg'
+import PlusSvg from '@assets/sleekshop-new-svg/Plus.svg'
 
 import Modals from './Modals/AddToCartModal'
 
@@ -170,14 +172,29 @@ export default function Orders() {
           <div className="MainContentInnerdiv mb-2">
             {/* <!-- title of the Buy It Again Page  --> */}
             <div className="mainContentChild d-flex justify-content-between">
-              <div className="Heading">Buy It Again</div>
-              <div className="Heading">{orderedItem?.length} Items</div>
+              <div className="Heading buyItAgainHeading">Buy It Again</div>
+              <div className="Heading itemQuantity">
+                {orderedItem?.length} Items
+              </div>
             </div>
 
             {/* <!-- product list  --> */}
             <div className="d-flex row">
               {orderedItem.map((order: any, index) => {
                 let productQuantity = order?.quantity || 0
+                let Model = order?.product_options[0]?.display_value.replace(
+                  'Model',
+                  ''
+                )
+                Model = order?.product_options[0]?.display_value.replace(
+                  'option',
+                  ''
+                )
+
+                Model = order?.product_options[0]?.display_value.replace(
+                  'Model',
+                  ''
+                )
 
                 return (
                   <div className="productCard">
@@ -211,9 +228,7 @@ export default function Orders() {
                       </Link>
                     </div>
                     <div className="productBrandP mt-2">
-                      <p className="Product-brand productBrandText">
-                        {order?.product_options[0]?.display_value}
-                      </p>
+                      <p className="Product-brand productBrandText">{Model}</p>
                     </div>
                     <div className="mt-2 d-flex align-items-center justify-content-between pPrice_AddToCart ">
                       <p className="Product-price productPriceAdd">
@@ -242,7 +257,7 @@ export default function Orders() {
                             return handleDecrement(index, itemCountState)
                           }}
                         >
-                          -
+                          <MinusSvg />
                         </button>
 
                         {/* current value of product quantity //  #input field for all subcomponents */}
@@ -275,7 +290,7 @@ export default function Orders() {
                             )
                           }}
                         >
-                          +
+                          <PlusSvg />
                         </button>
                       </div>
                       <button

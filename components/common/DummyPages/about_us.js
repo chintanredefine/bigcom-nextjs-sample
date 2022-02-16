@@ -154,8 +154,8 @@ const page = {
                 </tbody>
                 </table>
                 </div>
-                </div><p><div id="socialannex1"></div></p>
-                    </div>
+                </div>
+                </div>
 
                 </main>`,
 }

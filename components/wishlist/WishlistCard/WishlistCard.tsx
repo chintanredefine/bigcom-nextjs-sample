@@ -19,13 +19,17 @@ import useWishlist from '@framework/wishlist/use-wishlist'
 
 import Modals from '../Modals/AddToCartModal'
 
+import MinusSvg from '@assets/sleekshop-new-svg/Minus.svg'
+import PlusSvg from '@assets/sleekshop-new-svg/Plus.svg'
+
 interface Props {
   product: Product
+  color: any
 }
 
 const placeholderImg = '/product-img-placeholder.svg'
 
-const WishlistCard: FC<Props> = ({ product }) => {
+const WishlistCard: FC<Props> = ({ product, color }) => {
   const { price } = usePrice({
     amount: product.price?.value,
     baseAmount: product.price?.retailPrice,
@@ -58,7 +62,7 @@ const WishlistCard: FC<Props> = ({ product }) => {
     try {
       // If this action succeeds then there's no need to do `setRemoving(true)`
       // because the component will be removed from the view
-      console.log('product which has to be deleted ', product)
+      // console.log('product which has to be deleted ', product)
 
       const itemInWishlist = data?.items?.find(
         // @ts-ignore Wishlist is not always enabled
@@ -121,6 +125,8 @@ const WishlistCard: FC<Props> = ({ product }) => {
     }
   }
 
+  let Model = color.label.replace('Color :', '')
+
   return (
     <>
       {ShowPartialProductDetailsPage && (
@@ -143,31 +149,29 @@ const WishlistCard: FC<Props> = ({ product }) => {
             alt={product.images[0]?.alt || 'Product Image'}
           />
         </div>
-        <div className="Product-Model-Parent mt-1 skuParent">
+        <div className="Product-Model-Parent mt-3 skuParent">
           <p className="Product-Model skuFontSt">SKU: {product.id}</p>
         </div>
-        <div className="mt-1 orderNameP">
+        <div className="mt-2 orderNameP">
           <Link href={`${product.path?.replace('.html', '')}`}>
             <a>
               <p className="Product-Name productName">{product.name}</p>
             </a>
           </Link>
         </div>
-        <div className="productBrandP mt-1">
-          {/* <p className="Product-brand ">{product.brand}</p> */}
+        <div className="productBrandP mt-2">
+          <p className="Product-brand productBrandText">{Model}</p>
         </div>
-        <div className="pPrice_AddToCartP">
-          <div className="mt-1 d-flex align-items-center justify-content-between pPrice_AddToCart ">
-            <p className="Product-price productPriceAdd">{price}</p>
-            <p
-              className="addToCartButton"
-              onClick={() => {
-                setShowPartialProductDetailsPage(true)
-              }}
-            >
-              <AddToCartPlus />
-            </p>
-          </div>
+        <div className="mt-2 d-flex align-items-center justify-content-between pPrice_AddToCart ">
+          <p className="Product-price productPriceAdd">{price}</p>
+          <p
+            className="addToCartButton"
+            onClick={() => {
+              setShowPartialProductDetailsPage(true)
+            }}
+          >
+            <AddToCartPlus />
+          </p>
         </div>
 
         <div className="AddToCartOnHover">
@@ -182,7 +186,7 @@ const WishlistCard: FC<Props> = ({ product }) => {
                 return handleDecrement()
               }}
             >
-              -
+              <MinusSvg />
             </button>
 
             {/* current value of product quantity //  #input field for all subcomponents */}
@@ -203,7 +207,7 @@ const WishlistCard: FC<Props> = ({ product }) => {
                 return handleIncrement()
               }}
             >
-              +
+              <PlusSvg />
             </button>
           </div>
           <button

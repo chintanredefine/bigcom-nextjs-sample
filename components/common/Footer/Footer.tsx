@@ -15,7 +15,7 @@ import Pinterrest from './images/pinterest-icon.png'
 import Instagram from './images/instagram-icon.png'
 import Facebook from './images/facebook-icon.png'
 
-import AbcFile from './abc.js'
+// import AbcFile from './abc.js'
 
 interface Props {
   className?: string
@@ -104,12 +104,12 @@ const Footer: FC<Props> = ({ className, pages }) => {
 
   const { data } = useCustomer()
 
-  useEffect(() => {
-    if (data) {
-      AbcFile()
-      window['sa_emailid'] = data.email
-    }
-  }, [data])
+  // useEffect(() => {
+  //   if (data) {
+  //     AbcFile()
+  //     window['sa_emailid'] = data.email
+  //   }
+  // }, [data])
 
   let site_id = process.env.site_id || 7870040
 
@@ -285,7 +285,7 @@ const Footer: FC<Props> = ({ className, pages }) => {
         src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/3.0.3/handlebars.js"
       ></script>
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-      {/* <script src="//sandbox.unbxd.io/sleekhair_mybigcommerce_stage_autosuggest.js"></script> */}
+      <script src="//sandbox.unbxd.io/sleekhair_mybigcommerce_stage_autosuggest.js"></script>
 
       {/* <!-- Related To Search (Need To Integrate Search and Category pages) --> */}
       <script src="//sandbox.unbxd.io/sleekhair_mybigcommerce_stage_search.js"></script>

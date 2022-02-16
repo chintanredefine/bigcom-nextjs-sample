@@ -4,6 +4,8 @@ import style from '../ProfileInner.module.css'
 import useAddItem from '@framework/cart/use-add-item'
 
 import CloseSvg from '@assets/sleekshop-new-svg/close.svg'
+import MinusSvg from '@assets/sleekshop-new-svg/Minus.svg'
+import PlusSvg from '@assets/sleekshop-new-svg/Plus.svg'
 
 const customStyles = {
   content: {
@@ -87,7 +89,7 @@ const ModalCompo = ({
         </div>
 
         <div className="detailproductCardParent align-items-center">
-          <div className="detailproductCard">
+          <div className="detailproductCard detailproductCardAddTCM">
             <div className="productCardImgParent productCardImgParentmodal d-flex align-items-center justify-content-center">
               <img
                 className="detailProductImg "
@@ -113,7 +115,7 @@ const ModalCompo = ({
 
   {/* there will be incrementer bottons  */}
 
-          <div className={`${style.incrementParent} mt-2`}>
+          <div className={`${style.incrementParent} ${style.incrementParentModel}  mt-2`}>
             <div className={`d-flex justify-content-center align-items-center`}>
               {/* ===================Qty Text=================== */}
               <p className={`${style.detailsQtyText}`}>QTY</p>
@@ -125,7 +127,7 @@ const ModalCompo = ({
                   return handleDecrement()
                 }}
               >
-                -
+                <MinusSvg/>
               </button>
 
               {/* current value of product quantity //  #input field for all subcomponents */}
@@ -146,7 +148,7 @@ const ModalCompo = ({
                   return handleIncrement()
                 }}
               >
-                +
+                <PlusSvg/>
               </button>
             </div>
           </div>
@@ -154,7 +156,7 @@ const ModalCompo = ({
           {/* add to bag button */}
           <button
             disabled={itemCountState.diableAddToCart}
-            className="h6AddToCart detailsh6AddToCart"
+            className="h6AddToCart detailsh6AddToCart detailsh6AddToCartModel"
             onClick={async () => {
               let productId = CurrentObj?.product_id
               let variantId = CurrentObj?.variant_id

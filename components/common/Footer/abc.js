@@ -2310,8 +2310,7 @@ const SomeFunc = () => {
       },
       processResultsStyles: function (t) {
         return (
-          0 == $('.unbxd-as-maincontent').length &&
-            $('.unbxd-as-sidecontent').css('margin-left', '130px'),
+          false && $('.unbxd-as-sidecontent').css('margin-left', '130px'),
           screen.width < 1024
             ? 0 < $('#mobile-search').val().length
               ? $('.unbxd-as-wrapper').css({ visibility: 'visible' })

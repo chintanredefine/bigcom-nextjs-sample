@@ -33,6 +33,9 @@
   outline: none !important;
   margin-left: 0.5px;
   height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .incrementBtn {
@@ -43,6 +46,9 @@
   font-size: large;
   outline: none !important;
   height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .AddToCartOnHover_0ne {
@@ -75,5 +81,9 @@
 @media only screen and (max-width: 600px) {
   .incrementParent {
     width: 70%;
+  }
+
+  .incrementParentModel {
+    width: 173px;
   }
 }
