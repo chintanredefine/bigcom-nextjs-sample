@@ -99,7 +99,7 @@ export default function RecentItems() {
       ) : (
         <>
           <div className="MainContentInnerdiv mb-2">
-            <div className="flex-1 p-24 flex flex-col justify-center items-center ">
+            <div className="flex-1 PaddingForNoItemForDeskTopView flex flex-col justify-center items-center ">
               <span className="border border-dashed border-secondary rounded-full flex items-center justify-center w-16 h-16 p-12 bg-primary text-primary">
                 <Bag className="absolute" />
               </span>

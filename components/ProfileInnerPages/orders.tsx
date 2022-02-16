@@ -182,19 +182,21 @@ export default function Orders() {
             <div className="d-flex row">
               {orderedItem.map((order: any, index) => {
                 let productQuantity = order?.quantity || 0
-                let Model = order?.product_options[0]?.display_value.replace(
-                  'Model',
-                  ''
-                )
-                Model = order?.product_options[0]?.display_value.replace(
-                  'option :',
-                  ''
-                )
 
-                Model = order?.product_options[0]?.display_value.replace(
-                  'Color :',
-                  ''
-                )
+                let Model = order?.product_options[0]?.display_value
+                console.log('crnt Model', Model)
+
+                Model = Model.replace('option :', '')
+                console.log('crnt Model', Model)
+
+                Model.replace('Model', '')
+                console.log('crnt Model', Model)
+
+                Model = Model.replace('Color :', '')
+                console.log('crnt Model', Model)
+
+                Model = Model.replace('Size :', '')
+                console.log('crnt Model', Model)
 
                 return (
                   <div className="productCard">
@@ -329,7 +331,7 @@ export default function Orders() {
       ) : (
         <>
           <div className="MainContentInnerdiv mb-2">
-            <div className="flex-1 p-24 flex flex-col justify-center items-center ">
+            <div className="flex-1 PaddingForNoItemForDeskTopView flex flex-col justify-center items-center ">
               <span className="border border-dashed border-secondary rounded-full flex items-center justify-center w-16 h-16 p-12 bg-primary text-primary">
                 <Bag className="absolute" />
               </span>

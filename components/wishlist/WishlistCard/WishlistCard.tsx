@@ -125,7 +125,13 @@ const WishlistCard: FC<Props> = ({ product, color }) => {
     }
   }
 
-  let Model = color.label.replace('Color :', '')
+  let Model = color.label
+
+  Model = Model.replace('Color :', '')
+  Model = Model.replace('option :', '')
+  Model.replace('Model', '')
+  Model = Model.replace('Color :', '')
+  Model = Model.replace('Size :', '')
 
   return (
     <>
