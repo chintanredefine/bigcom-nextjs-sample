@@ -580,6 +580,7 @@ textarea {
   .orderHistoryHeading {
     padding: 15px 10px;
     margin-top: -60px;
+    border: none;
   }
 
   .MainContentInnerdiv {
@@ -593,10 +594,6 @@ textarea {
 
   .MainContentInnerdivOHpd {
     padding: 15px 10px !important;
-  }
-
-  .MainContentInnerdivOHMarMin {
-    margin-top: -60px !important;
   }
 
   .mainContentChild {
@@ -676,7 +673,7 @@ textarea {
     outline: none;
   }
 
-  .MainContentInnerdiv {
+  .MainContentInnerdivOHMarMin {
     border: none;
   }
 
@@ -697,6 +694,45 @@ textarea {
     animation-duration: 4s;
     bottom: -100px;
   } */
+
+  .subHeadingOrdrHis {
+    margin-bottom: 10px;
+  }
+
+  .ThankYouCont {
+    display: none;
+  }
+
+  .Billing {
+    margin-bottom: 10px;
+  }
+
+  .Billing,
+  .Shipping {
+    width: 100%;
+  }
+
+  .ShippngOnly {
+    flex-direction: column;
+  }
+
+  .BillingOfShippingOnly {
+    border-bottom: none;
+  }
+
+  .BillingOfShippingBtnContOnly {
+    border-top: none;
+    margin-top: -10px;
+  }
+
+  .ButtonTrackOrder {
+    width: 90%;
+    margin-bottom: 10px;
+  }
+
+  .MainCoctOrdCont {
+    border: none;
+  }
 }
 
 /* Medium devices (landscape tablets, 768px and up) */
@@ -775,5 +811,10 @@ textarea {
 
   .PaddingForNoItemForDeskTopView {
     padding: 6rem auto;
+  }
+
+  .BillingShipping {
+    display: flex;
+    justify-content: space-between;
   }
 }
