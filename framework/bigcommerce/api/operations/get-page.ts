@@ -36,13 +36,18 @@ export default function getPageOperation({
     preview?: boolean
   }): Promise<T['data']> {
     const cfg = commerce.getConfig(config)
+        console.log("variables.id ", variables.id)
+
     // RecursivePartial forces the method to check for every prop in the data, which is
     // required in case there's a custom `url`
     const { data } = await cfg.storeApiFetch<
       RecursivePartial<{ data: Page[] }>
     >(url || `/v3/content/pages?id=${variables.id}&include=body`)
+
     const firstPage = data?.[0]
     const page = firstPage as RecursiveRequired<typeof firstPage>
+
+
 
     if (preview || page?.is_visible) {
       return { page: normalizePage(page as any) }

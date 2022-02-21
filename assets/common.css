@@ -525,6 +525,10 @@ textarea {
   line-height: 40px;
 }
 
+.Layout_root__3wCB1 {
+  width: 100vw;
+}
+
 /* fix search bar */
 
 @media (min-width: 768px) {
