@@ -1,0 +1,108 @@
+.getintouchinner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.getintouchouter h2 {
+  margin-top: 40px;
+  text-transform: uppercase;
+}
+
+.sendemail {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.sendemail-text,
+.sendemailimg {
+  width: 46%;
+}
+
+.firstImg {
+  width: 450px;
+}
+
+.secondImg {
+  width: 250px;
+}
+
+.ContactFormDiv {
+  display: flex;
+  justify-content: space-between;
+}
+
+.form-row--full {
+  width: 60%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-bottom: 30px;
+}
+
+.form-row--full .form-field {
+  width: 100%;
+}
+
+.form-row--half {
+  display: inline-block;
+  width: 35%;
+}
+
+#contact_fullname {
+  background-image: url(https://cdn11.bigcommerce.com/s-hmhnh4h9/product_images/uploaded_images/nameobj.png);
+  background-position: 10px;
+  background-repeat: no-repeat;
+  padding-left: 40px;
+  border: none;
+  outline: none;
+}
+
+#contact_phone {
+  background-image: url(https://cdn11.bigcommerce.com/s-hmhnh4h9/product_images/uploaded_images/phoneobj.png);
+  background-position: 10px;
+  background-repeat: no-repeat;
+  padding-left: 40px;
+  border: none;
+  outline: none;
+}
+
+#contact_email {
+  background-image: url(https://cdn11.bigcommerce.com/s-hmhnh4h9/product_images/uploaded_images/emailobj.png);
+  background-position: 10px;
+  background-repeat: no-repeat;
+  padding-left: 40px;
+  border: none;
+  outline: none;
+}
+
+#contact_orderno {
+  background-image: url(https://cdn11.bigcommerce.com/s-hmhnh4h9/product_images/uploaded_images/orderobj.png);
+  background-position: 10px;
+  background-repeat: no-repeat;
+  padding-left: 40px;
+  border: none;
+  outline: none;
+}
+
+#contact_question {
+  background-image: url(https://cdn11.bigcommerce.com/s-hmhnh4h9/product_images/uploaded_images/commentsobj.png);
+  background-repeat: no-repeat;
+  padding-left: 40px;
+  background-position: 10px 15px;
+  background-size: 15px;
+  min-height: 200px;
+  border: none;
+  outline: none;
+}
+
+.SubmitBtn {
+  background: #e99da1;
+  border: none;
+  text-transform: uppercase;
+  height: 49px;
+  padding: 10px 20px;
+  cursor: pointer;
+}

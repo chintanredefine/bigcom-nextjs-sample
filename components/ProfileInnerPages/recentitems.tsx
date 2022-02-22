@@ -79,7 +79,7 @@ export default function RecentItems() {
 
                     <div className="productBrandP mt-2">
                       <p className="Product-brand productBrandText">
-                        Brand Id : {order.brand_id}
+                        {order.brand_id}
                       </p>
                     </div>
 

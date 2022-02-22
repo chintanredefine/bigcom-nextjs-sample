@@ -1,10 +1,9 @@
 const page = {
-  id: 10,
+  id: 4,
   name: 'contact-us',
   is_visible: true,
-  sort_order: 42,
-  body: `
-  <main class="page">
+  sort_order: 41,
+  body: `<main class="page">
     <div class="contact-bannerouter">
         <a href="/customer-service.html"
            class="error-banner-img"
@@ -25,7 +24,7 @@ const page = {
                         <a href="#"
                            class="email-img"
                            title="error">
-                            <img class="lazyload"
+                            <img class="lazyload firstImg"
                                  data-sizes="auto"
                                  src="https://cdn11.bigcommerce.com/s-hmhnh4h9/product_images/uploaded_images/eailupdateimg.png"
                                  title="error"
@@ -45,7 +44,7 @@ const page = {
                         <a href="#"
                            class="email-img"
                            title="error">
-                            <img class="lazyload"
+                            <img class="lazyload secondImg"
                                  data-sizes="auto"
                                  src="https://cdn11.bigcommerce.com/s-hmhnh4h9/product_images/uploaded_images/ringupdateimg.png"
                                  title="error"
@@ -83,11 +82,10 @@ const page = {
             <div id="contact-us-page"
                  class="page-content page-content--centered">
                 <p>
-                <div style="display: none;">&nbsp;Test1234</div>
                 </p>
                 <form data-contact-form
-                      class="form"
-                      action="/pages.php?action=sendContactForm"
+                      class="form ContactFormDiv"
+                      action="/"
                       method="post">
 
 
@@ -98,7 +96,7 @@ const page = {
                     <div class="form-row form-row--half">
                         <div class="form-field">
                             <!-- <label class="form-label" for="contact_fullname">Full Name</label> -->
-                            <input class="form-input"
+                            <input class="form-input conFormInput"
                                    type="text"
                                    id="contact_fullname"
                                    placeholder="FULL NAME"
@@ -108,7 +106,7 @@ const page = {
 
                         <div class="form-field">
                             <!-- <label class="form-label" for="contact_phone">Phone Number</label> -->
-                            <input class="form-input"
+                            <input class="form-input conFormInput"
                                    type="text"
                                    id="contact_phone"
                                    placeholder="PHONE"
@@ -120,7 +118,7 @@ const page = {
                             <!-- <label class="form-label" for="contact_email">Email Address -->
                             <small>Required</small>
                             </label>
-                            <input class="form-input"
+                            <input class="form-input conFormInput"
                                    type="text"
                                    id="contact_email"
                                    placeholder="EMAIL"
@@ -130,7 +128,7 @@ const page = {
 
                         <div class="form-field">
                             <!--<label class="form-label" for="contact_orderno">Order Number</label> -->
-                            <input class="form-input"
+                            <input class="form-input conFormInput"
                                    type="text"
                                    id="contact_orderno"
                                    placeholder="COMPANY"
@@ -150,13 +148,13 @@ const page = {
                                       placeholder="COMMENTS/QUESTIONS*"
                                       rows="5"
                                       cols="50"
-                                      class="form-input"></textarea>
+                                      class="form-input conFormInput"></textarea>
                         </div>
 
 
 
                         <div class="form-actions">
-                            <input class="button button--primary"
+                            <input class="button button--primary SubmitBtn"
                                    type="submit"
                                    value="Submit Form">
                         </div>
@@ -181,8 +179,7 @@ const page = {
         <div class="modal-content"></div>
         <div class="loadingOverlay"></div>
     </div>
-</main>
-  `,
+</main>`,
 }
 
 module.exports = page

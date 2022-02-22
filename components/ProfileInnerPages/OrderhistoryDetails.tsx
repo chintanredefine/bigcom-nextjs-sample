@@ -51,7 +51,7 @@ export default function Reward(propData: any) {
     <>
       {/* <!-- ---------------------------- component order history ---------------------------- --> */}
       <div className="MainContentInnerdiv MainContentInnerdivOH MainContentInnerdivOHpd MainContentInnerdivOHMarMin  mb-2 orderHistory d-flex justify-content-between">
-        <div>
+        <div className={`ThankYouCont`}>
           <p className="Heading">Order Details</p>
           <p className="subHeading">Thanks For Your Order</p>
         </div>
@@ -70,7 +70,7 @@ export default function Reward(propData: any) {
       {/* <!-- ---------------------------- component order history ---------------------------- --> */}
 
       {/* <!-- ---------------------------- component BillingShipping ---------------------------- --> */}
-      <div className="MainContentInnerdiv MainContentInnerdivOH mb-2 BillingShipping d-flex justify-content-between">
+      <div className="MainContentInnerdiv MainContentInnerdivOH mb-2 BillingShipping">
         <div className="Billing">
           <p className="BillingHeading Heading">Billing</p>
           <p className="subHeading">
@@ -105,7 +105,7 @@ export default function Reward(propData: any) {
       {/* <!-- ---------------------------- component order history ---------------------------- --> */}
 
       {/* <!-- ---------------------------- component buy it again ---------------------------- --> */}
-      <div className="MainContentInnerdiv MainContentInnerdivOH mb-2">
+      <div className="MainContentInnerdiv MainContentInnerdivOH MainCoctOrdCont mb-2">
         {/* <!-- title of the Buy It Again Page  --> */}
         <div className="mainContentChild d-flex justify-content-between">
           <div className="Heading">Products Ordered</div>
@@ -173,8 +173,8 @@ export default function Reward(propData: any) {
       {/* <!-- ---------------------------- component buy it again ---------------------------- --> */}
 
       {/* <!-- ---------------------------- component Shipment ---------------------------- --> */}
-      <div className="MainContentInnerdiv MainContentInnerdivOH mb-2 BillingShipping d-flex justify-content-between">
-        <div className="Billing subHeading">
+      <div className="MainContentInnerdiv MainContentInnerdivOH mb-2 BillingShipping ShippngOnly d-flex justify-content-between">
+        <div className="Billing subHeading BillingOfShippingOnly">
           <p className="BillingHeading Heading mb-2 shipement-p">Shipment</p>
           <p>
             Shipping method :{orderedItem.shipping_addresses[0].shipping_method}
@@ -183,21 +183,12 @@ export default function Reward(propData: any) {
           <p>Tracking # : 485098495884598</p>
           {/* <p>Career : USPC</p> */}
         </div>
-        <div
-          className="
-                    Shipping
-                    subHeading
-                    trackOrderParent
-                    d-flex
-                    justify-content-around
-                    align-items-center
-                  "
-        >
+        <div className="Shipping subHeading trackOrderParent BillingOfShippingBtnContOnly d-flex justify-content-around align-items-center">
           {orderedItem.shipping_addresses[0].status !== 'Cancelled' ? (
             <button className="ButtonTrackOrder">TRACK ORDER</button>
           ) : (
             <button
-              className="ButtonTrackOrder "
+              className="ButtonTrackOrder"
               style={{ border: '2px solid rgba(255, 71, 15, 0.767)' }}
             >
               Canceled

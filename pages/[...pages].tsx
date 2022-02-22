@@ -21,6 +21,9 @@ export async function getStaticProps({
   locales,
 }: GetStaticPropsContext<{ pages: string[] }>) {
   const config = { locale, locales }
+
+  console.log('config ', config, preview, params)
+
   const pagesPromise = commerce.getAllPages({ config, preview })
   const siteInfoPromise = commerce.getSiteInfo({ config, preview })
   const { pages } = await pagesPromise
@@ -30,11 +33,17 @@ export async function getStaticProps({
   let p1 = s1.split('/')
   let p2 = p1[p1.length - 1].replace('.html', '')
   const slug = `${p2}`
-  const slug1 = `pages/${path}`
+  // const slug1 = `pages/${path}`
+  console.log('pages ', pages)
 
   const pageItem = pages.find((p: Page) =>
     p.url ? changePath(p.url) === slug : false
   )
+
+  console.log('slug', slug)
+  // console.log('slug1', slug1)
+
+  // console.log('pageItem 123456', pageItem)
 
   const data =
     pageItem &&
@@ -45,7 +54,7 @@ export async function getStaticProps({
     }))
 
   let page =
-    (data?.page && data.page.body.length > 100 && data?.page) ||
+    (data?.page && data?.page.body.length > 50 && data?.page) ||
     (slug === 'about-us' && aboutusPageData) ||
     (slug === 'contact-us' && contactusPageData)
 

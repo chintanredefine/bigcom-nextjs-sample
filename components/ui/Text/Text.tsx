@@ -11,7 +11,7 @@ interface TextProps {
   className?: string
   style?: CSSProperties
   children?: React.ReactNode | any
-  html?: string
+  html?: any
   onClick?: () => any
 }
 

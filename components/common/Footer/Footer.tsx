@@ -254,7 +254,6 @@ const Footer: FC<Props> = ({ className, pages }) => {
           </div>
         </div>
       </div>
-
       <script
         type="text/javascript"
         dangerouslySetInnerHTML={{
@@ -275,10 +274,8 @@ const Footer: FC<Props> = ({ className, pages }) => {
           `,
         }}
       />
-
       <script src="https://static.klaviyo.com/onsite/js/klaviyo.js?company_id=MpJPGK"></script>
       <script src="https://a.klaviyo.com/media/js/onsite/onsite.js"></script>
-
       {/* <!-- Related To Autosuggest (Need To Integrate All Pages) --> */}
       <script
         type="text/javascript"

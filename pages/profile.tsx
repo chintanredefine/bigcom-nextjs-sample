@@ -68,6 +68,12 @@ export default function Profile() {
           ShowPage={ShowPage}
           setShowOrderHistoryDetails={setShowOrderHistoryDetails}
         />
+        {console.log(
+          'Getting clicked or not ',
+
+          'ShowOrderHistoryDetails',
+          ShowOrderHistoryDetails
+        )}
         <div className="right-side-content">
           {data ? (
             // {/* // all components are going to be here // */}

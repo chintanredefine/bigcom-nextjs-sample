@@ -4,6 +4,7 @@ import 'keen-slider/keen-slider.min.css'
 import '@assets/common.css'
 import '@assets/orders.css'
 import '@assets/css/newfonts.css'
+import '@assets/css/dummypage.css'
 
 import { FC, useEffect } from 'react'
 import type { AppProps } from 'next/app'
