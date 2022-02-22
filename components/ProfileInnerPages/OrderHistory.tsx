@@ -36,7 +36,10 @@ const Reward: FC<Props> = ({
       {Array.isArray(OrderHistoryData) && OrderHistoryData.length > 0 && (
         <div className="d-flex align-items-center orderHistoryHeading">
           {ShowOrderHistoryDetails && (
-            <div onClick={() => setShowOrderHistoryDetails(false)}>
+            <div
+              className="backBtnOH"
+              onClick={() => setShowOrderHistoryDetails(false)}
+            >
               <BackIconSvg />
             </div>
           )}
