@@ -529,6 +529,10 @@ textarea {
   width: 100vw;
 }
 
+.backBtnOH {
+  cursor: pointer;
+}
+
 /* fix search bar */
 
 @media (min-width: 768px) {
