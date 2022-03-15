@@ -855,3 +855,21 @@ textarea {
     left: 150px;
   }
 }
+
+/* css changes for search result list */
+
+.category_thumbnail_span img {
+  max-height: 100% !important;
+}
+
+.overlay-badge {
+  width: 58px;
+  font-size: 16px;
+}
+
+.unbxd_filter_section .UNX-text-facet-wrap.customcategory,
+.unbxd_filter_section .UNX-text-facet-wrap.custombrand {
+  width: 120px;
+}
+
+/* css changes for search result list */
