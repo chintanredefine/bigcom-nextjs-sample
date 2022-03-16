@@ -21,10 +21,11 @@ const Head: FC = () => {
           }}
         />
 
-        <script
-          type="text/javascript"
-          dangerouslySetInnerHTML={{
-            __html: `
+        {router.asPath.includes('/search') && !router.asPath.includes('?q') && (
+          <script
+            type="text/javascript"
+            dangerouslySetInnerHTML={{
+              __html: `
           var p = '/${
             (router &&
               router.query &&
@@ -34,8 +35,9 @@ const Head: FC = () => {
           }/'; UnbxdAnalyticsConf =
           window.UnbxdAnalyticsConf || {}; UnbxdAnalyticsConf["page"] = 'p:"' +
           p + '"'; UnbxdAnalyticsConf["page_type"] = "BOOLEAN" ;`,
-          }}
-        />
+            }}
+          />
+        )}
 
         <link
           href="//libraries.unbxdapi.com/search-sdk/v2.0.4/vanillaSearch.min.css"
