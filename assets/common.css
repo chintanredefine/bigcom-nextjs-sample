@@ -858,18 +858,30 @@ textarea {
 
 /* css changes for search result list */
 
-.category_thumbnail_span img {
+.category_thumbnail_span img,
+.unbxd-as-popular-product-image-container img {
   max-height: 100% !important;
 }
 
 .overlay-badge {
   width: 58px;
-  font-size: 16px;
+  font-size: 14px;
+}
+
+.unbxd-as-popular-product-info .new,
+.unbxd-as-popular-product-info .unbxd-product-info,
+.unbxd-as-popular-product-info .unbxd-as-popular-product-name,
+.unbxd-as-popular-product-info .unbxd-produxt-price {
+  font-size: 14px;
 }
 
 .unbxd_filter_section .UNX-text-facet-wrap.customcategory,
 .unbxd_filter_section .UNX-text-facet-wrap.custombrand {
   width: 120px;
+}
+
+.unbxd-as-popular-product-name .reviews-more {
+  width: 100%;
 }
 
 /* css changes for search result list */
