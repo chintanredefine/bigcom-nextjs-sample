@@ -1,12 +1,19 @@
-import { FC } from 'react'
+import { useEffect, useState } from 'react'
 import NextHead from 'next/head'
 import { DefaultSeo } from 'next-seo'
 import config from '@config/seo.json'
 
 import { useRouter } from 'next/router'
+import document from 'next/document'
 
-const Head: FC = () => {
+const Head = () => {
   const router = useRouter()
+
+  const [CurrentRouter, setCurrentRouter] = useState(router.asPath)
+
+  useEffect(() => {
+    setCurrentRouter(router.asPath)
+  }, [router, document])
 
   return (
     <>
@@ -20,24 +27,6 @@ const Head: FC = () => {
           var UnbxdApiKey="a32a56fd1a3bd51b04a38278db19e452";`,
           }}
         />
-
-        {router.asPath.includes('/search') && !router.asPath.includes('?q') && (
-          <script
-            type="text/javascript"
-            dangerouslySetInnerHTML={{
-              __html: `
-          var p = '/${
-            (router &&
-              router.query &&
-              router.query.category &&
-              router.query.category) ||
-            ''
-          }/'; UnbxdAnalyticsConf =
-          window.UnbxdAnalyticsConf || {}; UnbxdAnalyticsConf["page"] = 'p:"' +
-          p + '"'; UnbxdAnalyticsConf["page_type"] = "BOOLEAN" ;`,
-            }}
-          />
-        )}
 
         <link
           href="//libraries.unbxdapi.com/search-sdk/v2.0.4/vanillaSearch.min.css"
