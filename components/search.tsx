@@ -65,21 +65,16 @@ export default function Search({ categories, brands }: SearchPropsType) {
     setActiveFilter(filter)
   }
 
-  return (
-    <>
-      <NextHead>
-        {console.log(
-          'router.asPath.includes',
-          asPath,
-          !asPath.includes('/search?q='),
-          !asPath.includes('?sort='),
-          asPath.includes('/search')
-        )}
+  const loadDynamicScript = () => {
+    console.log('router yes my coustom function is working ')
 
-        {/* we have to as this script only if there is a category page  */}
-        {!asPath.includes('/search?q=') &&
-          !asPath.includes('?sort=') &&
-          asPath.includes('/search') && (
+    let queryParams = router?.query?.category
+
+    console.log('router ==>', router, 'and queryParams ==>> ', queryParams)
+    if (queryParams) {
+      if (!queryParams.includes('sort=')) {
+        return (
+          <NextHead>
             <script
               type="text/javascript"
               dangerouslySetInnerHTML={{
@@ -91,9 +86,16 @@ export default function Search({ categories, brands }: SearchPropsType) {
                           p + '"'; UnbxdAnalyticsConf["page_type"] = "BOOLEAN" ;`,
               }}
             />
-          )}
-      </NextHead>
+            )
+          </NextHead>
+        )
+      }
+    }
+  }
 
+  return (
+    <>
+      {loadDynamicScript()}
       <Container>
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 mt-3 mb-20">
           <div className="col-span-8 lg:col-span-2 order-1 lg:order-none">
