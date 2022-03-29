@@ -1,20 +1,9 @@
-import { useEffect, useState } from 'react'
+import React from 'react'
 import NextHead from 'next/head'
 import { DefaultSeo } from 'next-seo'
 import config from '@config/seo.json'
 
-import { useRouter } from 'next/router'
-import document from 'next/document'
-
 const Head = () => {
-  const router = useRouter()
-
-  const [CurrentRouter, setCurrentRouter] = useState(router.asPath)
-
-  useEffect(() => {
-    setCurrentRouter(router.asPath)
-  }, [router, document])
-
   return (
     <>
       <DefaultSeo {...config} />
