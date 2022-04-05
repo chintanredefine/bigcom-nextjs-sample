@@ -82,7 +82,7 @@ export default function Search({ categories, brands }: SearchPropsType) {
                           var p = '/${
                             router?.query?.category || ''
                           }/'; UnbxdAnalyticsConf =
-                          window.UnbxdAnalyticsConf || {}; UnbxdAnalyticsConf["page"] = 'p:"' +
+                          window.UnbxdAnalyticsConf || {}; UnbxdAnalyticsConf["page"] = 'categoryPath:"' +
                           p + '"'; UnbxdAnalyticsConf["page_type"] = "BOOLEAN" ;`,
               }}
             />
