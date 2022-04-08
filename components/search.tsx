@@ -66,11 +66,11 @@ export default function Search({ categories, brands }: SearchPropsType) {
   }
 
   const loadDynamicScript = () => {
-    console.log('router yes my coustom function is working ')
+    //  console.log('router yes my coustom function is working ')
 
     let queryParams = router?.query?.category
 
-    console.log('router ==>', router, 'and queryParams ==>> ', queryParams)
+    //  console.log('router ==>', router, 'and queryParams ==>> ', queryParams)
     if (queryParams) {
       if (!queryParams.includes('sort=')) {
         return (
@@ -79,9 +79,9 @@ export default function Search({ categories, brands }: SearchPropsType) {
               type="text/javascript"
               dangerouslySetInnerHTML={{
                 __html: `
-                          var p = '/${
+                          var p = 'categoryPath:"/${
                             router?.query?.category || ''
-                          }/'; UnbxdAnalyticsConf =
+                          }/"'; UnbxdAnalyticsConf =
                           window.UnbxdAnalyticsConf || {}; UnbxdAnalyticsConf["page"] = 'categoryPath:"' +
                           p + '"'; UnbxdAnalyticsConf["page_type"] = "BOOLEAN" ;`,
               }}
