@@ -82,8 +82,8 @@ export default function Search({ categories, brands }: SearchPropsType) {
                           var p = 'categoryPath:"/${
                             router?.query?.category || ''
                           }/"'; UnbxdAnalyticsConf =
-                          window.UnbxdAnalyticsConf || {}; UnbxdAnalyticsConf["page"] = 'categoryPath:"' +
-                          p + '"'; UnbxdAnalyticsConf["page_type"] = "BOOLEAN" ;`,
+                          window.UnbxdAnalyticsConf || {}; UnbxdAnalyticsConf["page"] = 
+                          p; UnbxdAnalyticsConf["page_type"] = "BOOLEAN" ;`,
               }}
             />
             )
