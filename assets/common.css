@@ -884,4 +884,13 @@ textarea {
   width: 100%;
 }
 
+html {
+  scroll-behavior: smooth !important;
+}
+@media screen and (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: sm;
+  }
+}
+
 /* css changes for search result list */

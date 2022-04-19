@@ -106,3 +106,283 @@
   padding: 10px 20px;
   cursor: pointer;
 }
+
+/* ==========================  ammonia pages css ========================== */
+
+.ammonia {
+  margin-top: 60px;
+  text-align: left;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+.d-sticky-link-ammonia {
+  width: 12%;
+}
+.d-main-left-ammonia {
+  width: 88%;
+}
+.d-sticky-link-ammonia {
+  float: none;
+}
+.d-sticky-link-ammonia ul {
+  position: sticky;
+  top: 60px;
+}
+.d-left-ammonia {
+  float: left;
+  width: 56%;
+}
+.d-right-ammonia {
+  float: left;
+  width: 44%;
+}
+.ammonia-title-1 {
+  margin-bottom: 20px;
+  font-family: 'Bebas Neue', cursive !important;
+  font-size: 30px;
+  line-height: 34px;
+  font-weight: 400;
+  color: #181818;
+}
+.ammonia-title-2 {
+  margin-bottom: 20px;
+  font-family: 'Bodoni Moda', serif !important;
+  font-size: 32px;
+  line-height: 38px;
+  font-weight: 400;
+  color: #242424;
+}
+.ammonia-title-3 {
+  margin-bottom: 20px;
+  font-family: 'Bebas Neue', cursive !important;
+  font-size: 24px;
+  line-height: 30px;
+  font-weight: 400;
+  color: #181818;
+}
+.ammonia-text {
+  margin-bottom: 20px !important;
+  line-height: 28px;
+}
+.ammonia-relative {
+  position: relative;
+}
+.ammonia-absolute {
+  position: absolute;
+  width: 1036px;
+}
+.max-w-504 {
+  max-width: 504px;
+  width: 100%;
+}
+.m-b-10 {
+  margin-bottom: 10px;
+}
+.m-b-50 {
+  margin-bottom: 50px;
+}
+.m-b-30 {
+  margin-bottom: 30px;
+}
+.d-sticky-link-ammonia ul li {
+  margin-bottom: 10px;
+  list-style: none;
+}
+.d-sticky-link-ammonia ul li a {
+  display: block;
+  height: 50px;
+  width: 50px;
+  text-align: center;
+  line-height: 50px;
+  background-color: #efefef;
+  -webkit-border-radius: 50px;
+  -moz-border-radius: 50px;
+  border-radius: 50px;
+  font-family: 'Bebas Neue', cursive !important;
+  font-size: 26px;
+  font-weight: 400;
+  text-decoration: none;
+}
+.d-sticky-link-ammonia ul li a.pink {
+  background-color: #e2a8ae;
+}
+.d-sticky-link-ammonia ul li a.pink:hover,
+.d-sticky-link-ammonia ul li a.black:hover {
+  background-color: #efefef;
+}
+.d-sticky-link-ammonia ul li a.black {
+  background-color: #000000;
+}
+.d-sticky-link-ammonia ul li a:hover {
+  background-color: #e2a8ae;
+  color: #000000;
+}
+.d-sec-2-img {
+  margin-top: -23%;
+}
+.d-text-3 {
+  margin-top: -15%;
+}
+.d-sec-4-img {
+  margin-top: -55%;
+}
+.d-text-5a {
+  margin-top: -22%;
+  z-index: 38;
+  position: relative;
+}
+
+.footer-sticky {
+  background-color: #f1aaaa;
+  height: 70px;
+  position: fixed;
+  -webkit-box-shadow: inset 0px 0px 15px 0px rgba(0, 0, 0, 0.32);
+  -moz-box-shadow: inset 0px 0px 15px 0px rgba(0, 0, 0, 0.32);
+  box-shadow: inset 0px 0px 15px 0px rgba(0, 0, 0, 0.32);
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 39;
+  display: none;
+}
+.footer-sticky ul {
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+.footer-sticky ul li {
+  list-style: none;
+  margin-left: 10px;
+  margin-right: 10px;
+  margin-top: 10px;
+}
+.footer-sticky ul li a {
+  display: block;
+  height: 50px;
+  width: 50px;
+  text-align: center;
+  line-height: 50px;
+  background-color: #f8d6d6;
+  -webkit-border-radius: 50px;
+  -moz-border-radius: 50px;
+  border-radius: 50px;
+  font-family: 'Bebas Neue', cursive !important;
+  font-size: 26px;
+  font-weight: 400;
+  text-decoration: none;
+}
+.footer-sticky ul li a.pink {
+  background-color: #f8d6d6;
+}
+.footer-sticky ul li a.pink:hover,
+.footer-sticky ul li a.black:hover {
+  background-color: #eb9090;
+}
+.footer-sticky ul li a.black {
+  background-color: #f8d6d6;
+}
+.footer-sticky ul li a:hover {
+  background-color: #eb9090;
+  color: #000000;
+}
+.m-img {
+  display: none;
+}
+
+.d-sticky-link-ammonia ul li a img,
+.footer-sticky ul li a img {
+  display: inline;
+  vertical-align: unset;
+}
+
+@media (max-width: 1090px) {
+  .d-left-ammonia {
+    padding-right: 20px;
+  }
+}
+@media (max-width: 1050px) {
+  .d-sec-2-img,
+  .d-text-2,
+  .d-sec-3-img,
+  .d-text-3,
+  .d-sec-4-img,
+  .d-text-4,
+  .d-sec-5-img,
+  .d-text-5,
+  .d-sec-6-img,
+  .d-text-6,
+  .d-text-5a {
+    margin-top: 0px;
+  }
+}
+@media (max-width: 768px) {
+  .d-sticky-link-ammonia {
+    display: none;
+  }
+  .d-left-ammonia,
+  .d-right-ammonia,
+  .d-main-left-ammonia {
+    width: 100%;
+  }
+  .d-sec-2-img,
+  .d-text-2,
+  .d-sec-3-img,
+  .d-text-3,
+  .d-sec-4-img,
+  .d-text-4,
+  .d-sec-5-img,
+  .d-text-5,
+  .d-sec-6-img,
+  .d-text-6,
+  .d-text-5a {
+    margin-top: 0px;
+  }
+  .d-sec-1-img,
+  .d-sec-2-img,
+  .d-sec-3-img,
+  .d-sec-4-img,
+  .d-sec-5-img,
+  .d-sec-6-img {
+    display: none;
+  }
+  .d-left-ammonia {
+    padding-right: 0px;
+  }
+  .max-w-504 {
+    max-width: inherit;
+  }
+  .footer-sticky {
+    display: block;
+  }
+  .m-img {
+    display: block;
+  }
+}
+@media (max-width: 420px) {
+  .footer-sticky ul li a {
+    display: block;
+    height: 40px;
+    width: 40px;
+    text-align: center;
+    line-height: 40px;
+  }
+  .footer-sticky ul li {
+    margin-top: 15px;
+    margin-left: 5px;
+    margin-right: 5px;
+  }
+  .footer-sticky ul {
+    width: 100%;
+  }
+}
+/* ==========================  end of ammonia pages css  ==========================*/

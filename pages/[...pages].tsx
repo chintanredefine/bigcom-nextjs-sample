@@ -3,6 +3,8 @@ import type {
   GetStaticPropsContext,
   InferGetStaticPropsType,
 } from 'next'
+import { useEffect } from 'react'
+
 import commerce from '@lib/api/commerce'
 import { Text } from '@components/ui'
 import { Layout } from '@components/common'
@@ -13,6 +15,9 @@ import { useRouter } from 'next/router'
 
 import aboutusPageData from '@components/common/DummyPages/about_us'
 import contactusPageData from '@components/common/DummyPages/contact_us'
+import ammoniaPageData from '@components/common/DummyPages/ammonia_vs'
+
+import dynamicScript from '@components/common/Footer/dynamicScript'
 
 export async function getStaticProps({
   preview,
@@ -34,16 +39,10 @@ export async function getStaticProps({
   let p2 = p1[p1.length - 1].replace('.html', '')
   const slug = `${p2}`
   // const slug1 = `pages/${path}`
-  console.log('pages ', pages)
 
   const pageItem = pages.find((p: Page) =>
     p.url ? changePath(p.url) === slug : false
   )
-
-  console.log('slug', slug)
-  // console.log('slug1', slug1)
-
-  // console.log('pageItem 123456', pageItem)
 
   const data =
     pageItem &&
@@ -56,7 +55,10 @@ export async function getStaticProps({
   let page =
     (data?.page && data?.page.body.length > 50 && data?.page) ||
     (slug === 'about-us' && aboutusPageData) ||
-    (slug === 'contact-us' && contactusPageData)
+    (slug === 'contact-us' && contactusPageData) ||
+    (slug === 'ammonia-vs-no-ammonia' && ammoniaPageData)
+
+  console.log('slug SleekShop => ', slug, data, path, '\n')
 
   if (!page) {
     // We throw to make sure this fails at build time as this is never expected to happen
@@ -94,6 +96,13 @@ export default function Pages({
   page,
 }: InferGetStaticPropsType<typeof getStaticProps>) {
   const router = useRouter()
+
+  useEffect(() => {
+    console.log('dynamicScript', dynamicScript)
+
+    dynamicScript()
+  }, [])
+
   return router.isFallback ? (
     <h1>Loading...</h1> // TODO (BC) Add Skeleton Views
   ) : (

@@ -2,8 +2,28 @@ import React from 'react'
 import NextHead from 'next/head'
 import { DefaultSeo } from 'next-seo'
 import config from '@config/seo.json'
+import { useRouter } from 'next/router'
 
 const Head = () => {
+  const router = useRouter()
+
+  const loadDynamicStyle = () => {
+    // console.log('router ==>', router, router.asPath)
+    if (router.asPath.includes('ammonia-vs-no-ammonia')) {
+      return (
+        <NextHead>
+          <style>
+            <link rel="preconnect" href="https://fonts.googleapis.com" />
+            <link
+              href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Bodoni+Moda:wght@400;600&display=swap"
+              rel="stylesheet"
+            />
+          </style>
+        </NextHead>
+      )
+    }
+  }
+
   return (
     <>
       <DefaultSeo {...config} />
@@ -37,12 +57,21 @@ const Head = () => {
           data-href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;600;700&amp;display=swap"
           data-optimized-fonts="true"
         />
+
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Bodoni+Moda:wght@400;600&display=swap"
+          rel="stylesheet"
+        />
+
         <style data-href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;600;700&amp;display=swap" />
 
         <link
           href="https://www.ystore.us/sleekshop/common.css"
           rel="stylesheet"
         />
+
+        {loadDynamicStyle()}
       </NextHead>
     </>
   )
