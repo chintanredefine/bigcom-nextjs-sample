@@ -214,9 +214,11 @@
 .d-sticky-link-ammonia ul li a.black {
   background-color: #000000;
 }
-.d-sticky-link-ammonia ul li a:hover {
+.d-sticky-link-ammonia ul li a:hover, .d-sticky-link-ammonia ul li a.active {
   background-color: #e2a8ae;
   color: #000000;
+
+  
 }
 .d-sec-2-img {
   margin-top: -23%;
@@ -280,6 +282,7 @@
   font-size: 26px;
   font-weight: 400;
   text-decoration: none;
+  position: relative;
 }
 .footer-sticky ul li a.pink {
   background-color: #f8d6d6;
@@ -291,10 +294,11 @@
 .footer-sticky ul li a.black {
   background-color: #f8d6d6;
 }
-.footer-sticky ul li a:hover {
+.footer-sticky ul li a:hover ,.footer-sticky ul li a.active {
   background-color: #eb9090;
   color: #000000;
 }
+.footer-sticky ul li a.active::after{content: "";position: absolute;top: -9px;left: 50%; margin-left: -11px;width: 0; height: 0;border-top: solid 10px #ee3a53;border-left: solid 10px transparent;border-right: solid 10px transparent;}	
 .m-img {
   display: none;
 }
@@ -303,6 +307,10 @@
 .footer-sticky ul li a img {
   display: inline;
   vertical-align: unset;
+}
+
+.ammonia-vs-no-ammonia_parent{
+  margin-top: -5rem
 }
 
 @media (max-width: 1090px) {
@@ -329,6 +337,10 @@
   .d-sticky-link-ammonia {
     display: none;
   }
+  .ammonia-vs-no-ammonia_parent{
+    margin-top: -9rem
+  }
+
   .d-left-ammonia,
   .d-right-ammonia,
   .d-main-left-ammonia {
@@ -384,5 +396,6 @@
   .footer-sticky ul {
     width: 100%;
   }
+  .footer-sticky ul li a.active::after{top: -15px;}
 }
 /* ==========================  end of ammonia pages css  ==========================*/

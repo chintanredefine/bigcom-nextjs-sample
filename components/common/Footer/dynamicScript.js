@@ -1,30 +1,57 @@
 import $ from 'jquery'
 
 const dynamicScript = () => {
-  console.log('hey there this is me , dynamic script')
-  $('.sticky-link a').on('click', function () {
-    var aa = $(this).attr('title')
-
-    console.log('$(aa)', aa)
-
-    if ($(window).width() < 767) {
-      $('html, body').animate(
-        {
-          scrollTop: $(aa).offset().top - 100,
-        },
-        0
-      )
-    } else {
-      console.log('$(aa).offset().top', $(aa).offset().top)
-
-      $('html, body').animate(
-        {
-          scrollTop: $(aa).offset().top - 200,
-        },
-        0
-      )
+  $(function() {
+    function onScroll(event) {
+      var scrollPos = $(document).scrollTop()
+      $('.sticky-link a').each(function () {
+        //alert("test");
+        var currLink = $(this)
+        var refElement = $(currLink.attr('href'))
+        if (
+          refElement.position().top <= scrollPos &&
+          refElement.position().top + refElement.height() > scrollPos
+        ) {
+          $('.sticky-link ul li a').removeClass('active')
+          currLink.addClass('active')
+        } else {
+          currLink.removeClass('active')
+        }
+      })
     }
+
+    $(document).on('scroll', onScroll)
+
+    //smoothscroll
+    $('.sticky-link a[href^="#"]').on('click', function (e) {
+      //  e.preventDefault();
+      $(document).off('scroll')
+
+      $('.sticky-link a').each(function () {
+        $(this).removeClass('active')
+      })
+      $(this).addClass('active')
+
+      var target = this.hash,
+        menu = target
+      $target = $(target)
+      $('html, body')
+        .stop()
+        .animate(
+          {
+            scrollTop: $target.offset().top - 50,
+          },
+          500,
+          'swing',
+          function () {
+            window.location.hash = target
+            $(document).on('scroll', onScroll)
+          }
+        )
+    })
   })
+
+  
 }
 
 export default dynamicScript
