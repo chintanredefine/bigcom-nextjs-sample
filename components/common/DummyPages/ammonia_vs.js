@@ -4,31 +4,31 @@ const page = {
   id: 133,
   channel_id: 1,
   name: 'ammonia-vs-no-ammonia',
-  is_visible: true,
+  is_visible: true, 
   sort_order: 41,
-  body: `<main class="page">
+  body: `<main class="page ammonia-vs-no-ammonia_parent">
         <div class="ammonia px-4">
-  <div class="d-sticky-link-ammonia sticky-link">
-    <ul>
+  <div class="d-sticky-link-ammonia">
+    <ul class="sticky-link">
       <li>
-        <a title="#Ammonia01" href="javascript:void(0);" class="pink" 
+        <a href="#Ammonia01" class="pink active" 
           ><img src="	https://cdn11.bigcommerce.com/s-hmhnh4h9/product_images/uploaded_images/mobile-icon-01.png" alt=""
         /></a>
       </li>
       <li>
-        <a title="#Ammonia02" href="javascript:void(0);">01</a>
+        <a href="#Ammonia02" >01</a>
       </li>
       <li>
-        <a title="#Ammonia03" href="javascript:void(0);">02</a>
+        <a href="#Ammonia03">02</a>
       </li>
       <li>
-        <a title="#Ammonia04" href="javascript:void(0);">03</a>
+        <a href="#Ammonia04">03</a>
       </li>
       <li>
-        <a title="#Ammonia05" href="javascript:void(0);">04</a>
+        <a href="#Ammonia05">04</a>
       </li>
       <li>
-        <a title="#Ammonia06" href="javascript:void(0);" class="black"
+        <a href="#Ammonia06" class="black"
           ><img src="https://cdn11.bigcommerce.com/s-hmhnh4h9/product_images/uploaded_images/mobile-icon-02.png" alt=""
         /></a>
       </li>
@@ -207,24 +207,24 @@ const page = {
 <div class="footer-sticky sticky-link">
   <ul>
     <li>
-      <a title="#Ammonia01" href="javascript:void(0);" class="pink"
+      <a href="#Ammonia01" href="javascript:void(0);" class="pink active"
         ><img src="https://cdn11.bigcommerce.com/s-hmhnh4h9/product_images/uploaded_images/destop-icon-01.png" alt=""
       /></a>
     </li>
     <li>
-      <a title="#Ammonia02" href="javascript:void(0);">01</a>
+      <a href="#Ammonia02" href="javascript:void(0);">01</a>
     </li>
     <li>
-      <a title="#Ammonia03" href="javascript:void(0);">02</a>
+      <a href="#Ammonia03" href="javascript:void(0);">02</a>
     </li>
     <li>
-      <a title="#Ammonia04" href="javascript:void(0);">03</a>
+      <a href="#Ammonia04" href="javascript:void(0);">03</a>
     </li>
     <li>
-      <a title="#Ammonia05" href="javascript:void(0);">04</a>
+      <a href="#Ammonia05" href="javascript:void(0);">04</a>
     </li>
     <li>
-      <a title="#Ammonia06" href="javascript:void(0);" class="black"
+      <a href="#Ammonia06" href="javascript:void(0);" class="black"
         ><img src="https://cdn11.bigcommerce.com/s-hmhnh4h9/product_images/uploaded_images/destop-icon-02.png" alt=""
       /></a>
     </li>
