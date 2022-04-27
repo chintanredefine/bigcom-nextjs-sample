@@ -76,7 +76,7 @@ module.exports = withCommerceConfig({
     })
 
     return config
-  },
+  }
 })
 
 // Don't delete this console log, useful to see the commerce config in Vercel deployments
