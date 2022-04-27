@@ -48,8 +48,8 @@ const ProductCard: FC<Props> = ({
         {variant === 'slim' && (
           <>
             <div className={s.header}>
-              {console.log(`category page `)}
-              {console.log('category page ', product, variant)}
+              {/* {console.log(`category page `)}
+              {console.log('category page ', product, variant)} */}
 
               <span>{product.name}</span>
             </div>

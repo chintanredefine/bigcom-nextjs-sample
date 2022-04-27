@@ -27,7 +27,7 @@ export async function getStaticProps({
 }: GetStaticPropsContext<{ pages: string[] }>) {
   const config = { locale, locales }
 
-  console.log('config ', config, preview, params)
+  // console.log('config ', config, preview, params)
 
   const pagesPromise = commerce.getAllPages({ config, preview })
   const siteInfoPromise = commerce.getSiteInfo({ config, preview })
@@ -58,7 +58,7 @@ export async function getStaticProps({
     (slug === 'contact-us' && contactusPageData) ||
     (slug === 'ammonia-vs-no-ammonia' && ammoniaPageData)
 
-  console.log('slug SleekShop => ', slug, data, path, '\n')
+  // console.log('slug SleekShop => ', slug, data, path, '\n')
 
   if (!page) {
     // We throw to make sure this fails at build time as this is never expected to happen
@@ -98,8 +98,6 @@ export default function Pages({
   const router = useRouter()
 
   useEffect(() => {
-    console.log('dynamicScript', dynamicScript)
-
     dynamicScript()
   }, [])
 

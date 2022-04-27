@@ -23,7 +23,7 @@ export const handler: MutationHook<AddPaymentMethodHook> = {
 
       return useCallback(
         async function addItem(item) {
-          console.log('payment Method addition process is going on ')
+          // console.log('payment Method addition process is going on ')
 
           if (!customer) {
             // A signed customer is required in order to have a wishlist

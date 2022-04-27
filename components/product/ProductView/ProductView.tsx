@@ -32,7 +32,7 @@ const {publicRuntimeConfig} = getConfig()
 
 const ProductView: FC<ProductViewProps> = ({ product, relatedProducts, variants, currentVariant, skuChange, reviews, ratings }) => {
 
-  console.log(reviews)
+  // console.log(reviews)
 
   const productSku = currentVariant.data ? currentVariant.data[0].sku : ''
   const currentSwatchId = currentVariant.data ? currentVariant.data[0].option_values[0].id : ''
