@@ -278,15 +278,12 @@ const Footer: FC<Props> = ({ className, pages }) => {
       <script src="//sandbox.unbxd.io/sleekhair_mybigcommerce_stage_autosuggest.js"></script>
 
       {/* <!-- Related To Search (Need To Integrate Search and Category pages) --> */}
-      {/* <script src="//sandbox.unbxd.io/sleekhair_mybigcommerce_stage_search.js"></script> */}
+      <script src="//sandbox.unbxd.io/sleekhair_mybigcommerce_stage_search.js"></script>
       <script src="//libraries.unbxdapi.com/search-sdk/v2.0.4/vanillaSearch.min.js"></script>
 
-    {/* for unbxd category pages */}
+      {/* for unbxd category pages */}
 
-    <script src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js"></script>
-    <script src="https://libraries.unbxdapi.com/search-sdk/v2.0.3/vanillaSearch.min.js"></script>
-  
-
+      <script src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js"></script>
     </footer>
   )
 }
