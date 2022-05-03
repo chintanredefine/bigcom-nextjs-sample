@@ -105,6 +105,18 @@ const Footer: FC<Props> = ({ className, pages }) => {
   const { data } = useCustomer()
 
   let site_id = process.env.site_id || 7870040
+  const router = useRouter()
+
+  const LoadTheseLinkExceptPDP = () => {
+    if (!router.asPath.includes('/products/')) {
+      return (
+        <>
+          {/* <script src="//sandbox.unbxd.io/sleekhair_mybigcommerce_stage_search.js"></script> */}
+          <script src="//libraries.unbxdapi.com/search-sdk/v2.0.4/vanillaSearch.min.js"></script>
+        </>
+      )
+    }
+  }
 
   return (
     <footer className="footer-main">
@@ -278,9 +290,7 @@ const Footer: FC<Props> = ({ className, pages }) => {
       <script src="//sandbox.unbxd.io/sleekhair_mybigcommerce_stage_autosuggest.js"></script>
 
       {/* <!-- Related To Search (Need To Integrate Search and Category pages) --> */}
-      {/* <script src="//sandbox.unbxd.io/sleekhair_mybigcommerce_stage_search.js"></script> */}
-      <script src="//libraries.unbxdapi.com/search-sdk/v2.0.4/vanillaSearch.min.js"></script>
-
+      {LoadTheseLinkExceptPDP()}
       {/* for unbxd category pages */}
 
       <script src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js"></script>
