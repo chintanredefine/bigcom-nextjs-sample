@@ -27,8 +27,6 @@ const Head = () => {
   }
 
   const LoadTheseLinkExceptPDP = () => {
-    console.log('as path doesn exist ', router.asPath)
-
     if (!router.asPath.includes('/products/')) {
       return (
         <>
@@ -47,7 +45,7 @@ const Head = () => {
 
   useEffect(() => {
     someUnbsdCategoryScripts()
-  }, [router.asPath])
+  }, [])
 
   return (
     <>

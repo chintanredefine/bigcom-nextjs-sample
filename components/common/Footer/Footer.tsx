@@ -111,7 +111,7 @@ const Footer: FC<Props> = ({ className, pages }) => {
     if (!router.asPath.includes('/products/')) {
       return (
         <>
-          {/* <script src="//sandbox.unbxd.io/sleekhair_mybigcommerce_stage_search.js"></script> */}
+          <script src="//sandbox.unbxd.io/sleekhair_mybigcommerce_stage_search.js"></script>
           <script src="//libraries.unbxdapi.com/search-sdk/v2.0.4/vanillaSearch.min.js"></script>
         </>
       )
