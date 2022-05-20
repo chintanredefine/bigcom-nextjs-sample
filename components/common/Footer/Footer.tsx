@@ -101,22 +101,10 @@ const termlinks = [
 const Footer: FC<Props> = ({ className, pages }) => {
   const { sitePages } = usePages(pages)
   const rootClassName = cn(s.root, className)
-
   const { data } = useCustomer()
-
-  let site_id = process.env.site_id || 7870040
   const router = useRouter()
 
-  const LoadTheseLinkExceptPDP = () => {
-    if (!router.asPath.includes('/products/')) {
-      return (
-        <>
-          <script src="//sandbox.unbxd.io/sleekhair_mybigcommerce_stage_search.js"></script>
-          <script src="//libraries.unbxdapi.com/search-sdk/v2.0.4/vanillaSearch.min.js"></script>
-        </>
-      )
-    }
-  }
+  let site_id = process.env.site_id || 7870040
 
   return (
     <footer className="footer-main">
@@ -125,23 +113,23 @@ const Footer: FC<Props> = ({ className, pages }) => {
           <div className="footer-coloum">
             <div className="footer-links-title">Help</div>
             <div className="footer-links">
-              <span className="">
-                <a className="" href="/pages/shipping-policy.html">
+              <span >
+                <a href="/pages/shipping-policy.html">
                   Shipping &amp; Returns
                 </a>
               </span>
-              <span className="">
-                <a className="" href="#">
+              <span >
+                <a href="#">
                   Track Your Order
                 </a>
               </span>
-              <span className="">
-                <a className="" href="#">
+              <span >
+                <a href="#">
                   Store Finder
                 </a>
               </span>
-              <span className="">
-                <a className="" href="#">
+              <span >
+                <a href="#">
                   FAQs
                 </a>
               </span>
@@ -150,23 +138,23 @@ const Footer: FC<Props> = ({ className, pages }) => {
           <div className="footer-coloum">
             <div className="footer-links-title">About</div>
             <div className="footer-links">
-              <span className="">
-                <a className="" href="/pages/about-us.html">
+              <span >
+                <a href="/pages/about-us.html">
                   About Us
                 </a>
               </span>
-              <span className="">
-                <a className="" href="/pages/contact-us.html">
+              <span >
+                <a href="/pages/contact-us.html">
                   Contact Us
                 </a>
               </span>
-              <span className="">
-                <a className="" href="/pages/career.html">
+              <span >
+                <a href="/pages/career.html">
                   Careers
                 </a>
               </span>
-              <span className="">
-                <a className="" href="/pages/partnership.html">
+              <span >
+                <a href="/pages/partnership.html">
                   Become an Affiliate
                 </a>
               </span>
@@ -175,23 +163,23 @@ const Footer: FC<Props> = ({ className, pages }) => {
           <div className="footer-coloum">
             <div className="footer-links-title">CATEGORIES</div>
             <div className="footer-links">
-              <span className="">
-                <a className="" href="#">
+              <span >
+                <a href="#">
                   Shirts
                 </a>
               </span>
-              <span className="">
-                <a className="" href="#">
+              <span >
+                <a href="#">
                   Jeans
                 </a>
               </span>
-              <span className="">
-                <a className="" href="#">
+              <span >
+                <a href="#">
                   Footwear
                 </a>
               </span>
-              <span className="">
-                <a className="" href="#">
+              <span >
+                <a href="#">
                   Accessories
                 </a>
               </span>
@@ -290,8 +278,7 @@ const Footer: FC<Props> = ({ className, pages }) => {
       <script src="//sandbox.unbxd.io/sleekhair_mybigcommerce_stage_autosuggest.js"></script>
 
       {/* <!-- Related To Search (Need To Integrate Search and Category pages) --> */}
-
-      {currentPath.includes('/search/') && (
+      {router.asPath.includes('/search') && (
         <>
           <script src="//sandbox.unbxd.io/sleekhair_mybigcommerce_stage_search.js"></script>
           <script src="//libraries.unbxdapi.com/search-sdk/v2.0.4/vanillaSearch.min.js"></script>
