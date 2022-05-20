@@ -1,4 +1,4 @@
-import { FC, useState } from 'react'
+import { FC } from 'react'
 import cn from 'classnames'
 import Image from 'next/image'
 
@@ -278,7 +278,6 @@ const Footer: FC<Props> = ({ className, pages }) => {
       <script src="//sandbox.unbxd.io/sleekhair_mybigcommerce_stage_autosuggest.js"></script>
 
       {/* <!-- Related To Search (Need To Integrate Search and Category pages) --> */}
-      {console.log("router.asPath ", router.asPath)}
       {router.asPath.includes('/search') && (
         <>
           <script src="//sandbox.unbxd.io/sleekhair_mybigcommerce_stage_search.js"></script>
