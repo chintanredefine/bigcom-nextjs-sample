@@ -103,7 +103,6 @@ const Footer: FC<Props> = ({ className, pages }) => {
   const rootClassName = cn(s.root, className)
   const { data } = useCustomer()
   const router = useRouter()
-  // const [currentPath, setcurrentPath] = useState(router.asPath)
 
   let site_id = process.env.site_id || 7870040
 
