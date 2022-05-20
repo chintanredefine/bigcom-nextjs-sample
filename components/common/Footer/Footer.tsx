@@ -1,6 +1,7 @@
-import { FC } from 'react'
+import { FC, useEffect, useState } from 'react'
 import cn from 'classnames'
 import Image from 'next/image'
+import Script from 'next/script'
 
 import useCustomer from '@framework/customer/use-customer'
 
@@ -101,22 +102,17 @@ const termlinks = [
 const Footer: FC<Props> = ({ className, pages }) => {
   const { sitePages } = usePages(pages)
   const rootClassName = cn(s.root, className)
+  const router = useRouter()
+
+  const [currentPath, setcurrentPath] = useState(router.asPath)
 
   const { data } = useCustomer()
 
   let site_id = process.env.site_id || 7870040
-  const router = useRouter()
 
-  const LoadTheseLinkExceptPDP = () => {
-    if (!router.asPath.includes('/products/')) {
-      return (
-        <>
-          <script src="//sandbox.unbxd.io/sleekhair_mybigcommerce_stage_search.js"></script>
-          <script src="//libraries.unbxdapi.com/search-sdk/v2.0.4/vanillaSearch.min.js"></script>
-        </>
-      )
-    }
-  }
+  useEffect(() => {
+    setcurrentPath(router.asPath)
+  }, [router.asPath])
 
   return (
     <footer className="footer-main">
@@ -263,20 +259,20 @@ const Footer: FC<Props> = ({ className, pages }) => {
         type="text/javascript"
         dangerouslySetInnerHTML={{
           __html: `
-              var sa_uni = sa_uni || [];
-              sa_uni.push(['sa_pg', '5']);
-              (function() {function sa_async_load()
-              { var sa = document.createElement('script');
-              sa.type = 'text/javascript';
-              sa.async = true;
-              sa.src = '//cdn.socialannex.com/partner/${site_id}/universal.js';
-              var sax = document.getElementsByTagName('script')[0];
-              sax.parentNode.insertBefore(sa, sax);
-              }if (window.attachEvent)
-              {window.attachEvent('onload', sa_async_load);
-              }else {window.addEventListener('load', sa_async_load,false);
-              }})();
-          `,
+          var sa_uni = sa_uni || [];
+          sa_uni.push(['sa_pg', '5']);
+          (function() {function sa_async_load()
+            { var sa = document.createElement('script');
+            sa.type = 'text/javascript';
+            sa.async = true;
+            sa.src = '//cdn.socialannex.com/partner/${site_id}/universal.js';
+            var sax = document.getElementsByTagName('script')[0];
+            sax.parentNode.insertBefore(sa, sax);
+          }if (window.attachEvent)
+          {window.attachEvent('onload', sa_async_load);
+        }else {window.addEventListener('load', sa_async_load,false);
+      }})();
+      `,
         }}
       />
       <script src="https://static.klaviyo.com/onsite/js/klaviyo.js?company_id=MpJPGK"></script>
@@ -290,7 +286,13 @@ const Footer: FC<Props> = ({ className, pages }) => {
       <script src="//sandbox.unbxd.io/sleekhair_mybigcommerce_stage_autosuggest.js"></script>
 
       {/* <!-- Related To Search (Need To Integrate Search and Category pages) --> */}
-      {LoadTheseLinkExceptPDP()}
+
+      {currentPath.includes('/search/') && (
+        <>
+          <script src="//sandbox.unbxd.io/sleekhair_mybigcommerce_stage_search.js"></script>
+          <script src="//libraries.unbxdapi.com/search-sdk/v2.0.4/vanillaSearch.min.js"></script>
+        </>
+      )}
       {/* for unbxd category pages */}
 
       <script src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js"></script>
