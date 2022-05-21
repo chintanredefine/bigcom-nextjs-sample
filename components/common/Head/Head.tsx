@@ -4,7 +4,7 @@ import { DefaultSeo } from 'next-seo'
 import config from '@config/seo.json'
 import { useRouter } from 'next/router'
 
-import { someUnbsdCategoryScripts } from './unbxdScript'
+// import { someUnbsdCategoryScripts } from './unbxdScript'
 
 const Head = () => {
   const router = useRouter()
@@ -43,9 +43,9 @@ const Head = () => {
     }
   }
 
-  useEffect(() => {
-    someUnbsdCategoryScripts()
-  }, [])
+  // useEffect(() => {
+  //   someUnbsdCategoryScripts()
+  // }, [])
 
   return (
     <>
