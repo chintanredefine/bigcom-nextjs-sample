@@ -108,21 +108,23 @@ const Footer: FC<Props> = ({ className, pages }) => {
 
   const addSearchScript = () => {
     if (currentRoute.includes('/search')) {
-      return <>
-        <script src="//sandbox.unbxd.io/sleekhair_mybigcommerce_stage_search.js"></script>
-        <script src="//libraries.unbxdapi.com/search-sdk/v2.0.4/vanillaSearch.min.js"></script>
-      </>
+      return (
+        <>
+          <script src="//sandbox.unbxd.io/sleekhair_mybigcommerce_stage_search.js"></script>
+          <script src="//libraries.unbxdapi.com/search-sdk/v2.0.4/vanillaSearch.min.js"></script>
+        </>
+      )
     }
   }
 
   useLayoutEffect(() => {
-    console.log("currentRoute useLayoutEffect", currentRoute);
+    console.log('currentRoute useLayoutEffect', currentRoute)
 
     setcurrentRoute(router.asPath)
   }, [router.asPath])
 
   useEffect(() => {
-    console.log("currentRoute useEffect", currentRoute);
+    console.log('currentRoute useEffect', currentRoute)
 
     setcurrentRoute(router.asPath)
   }, [router.asPath])
@@ -134,75 +136,51 @@ const Footer: FC<Props> = ({ className, pages }) => {
           <div className="footer-coloum">
             <div className="footer-links-title">Help</div>
             <div className="footer-links">
-              <span >
-                <a href="/pages/shipping-policy.html">
-                  Shipping &amp; Returns
-                </a>
+              <span>
+                <a href="/pages/shipping-policy.html">Shipping &amp; Returns</a>
               </span>
-              <span >
-                <a href="#">
-                  Track Your Order
-                </a>
+              <span>
+                <a href="#">Track Your Order</a>
               </span>
-              <span >
-                <a href="#">
-                  Store Finder
-                </a>
+              <span>
+                <a href="#">Store Finder</a>
               </span>
-              <span >
-                <a href="#">
-                  FAQs
-                </a>
+              <span>
+                <a href="#">FAQs</a>
               </span>
             </div>
           </div>
           <div className="footer-coloum">
             <div className="footer-links-title">About</div>
             <div className="footer-links">
-              <span >
-                <a href="/pages/about-us.html">
-                  About Us
-                </a>
+              <span>
+                <a href="/pages/about-us.html">About Us</a>
               </span>
-              <span >
-                <a href="/pages/contact-us.html">
-                  Contact Us
-                </a>
+              <span>
+                <a href="/pages/contact-us.html">Contact Us</a>
               </span>
-              <span >
-                <a href="/pages/career.html">
-                  Careers
-                </a>
+              <span>
+                <a href="/pages/career.html">Careers</a>
               </span>
-              <span >
-                <a href="/pages/partnership.html">
-                  Become an Affiliate
-                </a>
+              <span>
+                <a href="/pages/partnership.html">Become an Affiliate</a>
               </span>
             </div>
           </div>
           <div className="footer-coloum">
             <div className="footer-links-title">CATEGORIES</div>
             <div className="footer-links">
-              <span >
-                <a href="#">
-                  Shirts
-                </a>
+              <span>
+                <a href="#">Shirts</a>
               </span>
-              <span >
-                <a href="#">
-                  Jeans
-                </a>
+              <span>
+                <a href="#">Jeans</a>
               </span>
-              <span >
-                <a href="#">
-                  Footwear
-                </a>
+              <span>
+                <a href="#">Footwear</a>
               </span>
-              <span >
-                <a href="#">
-                  Accessories
-                </a>
+              <span>
+                <a href="#">Accessories</a>
               </span>
             </div>
           </div>
@@ -300,9 +278,7 @@ const Footer: FC<Props> = ({ className, pages }) => {
 
       {/* <!-- Related To Search (Need To Integrate Search and Category pages) --> */}
 
-      {
-        addSearchScript()
-      }
+      {addSearchScript()}
 
       {/* for unbxd category pages */}
 
