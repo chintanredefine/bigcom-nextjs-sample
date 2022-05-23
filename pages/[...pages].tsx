@@ -17,7 +17,7 @@ import aboutusPageData from '@components/common/DummyPages/about_us'
 import contactusPageData from '@components/common/DummyPages/contact_us'
 import ammoniaPageData from '@components/common/DummyPages/ammonia_vs'
 
-import dynamicScript from '@components/common/Footer/dynamicScript'
+import scriptForAmmoniaVs from '@components/common/Footer/scriptForAmmoniaVs'
 
 export async function getStaticProps({
   preview,
@@ -98,7 +98,7 @@ export default function Pages({
   const router = useRouter()
 
   useEffect(() => {
-    dynamicScript()
+    scriptForAmmoniaVs()
   }, [])
 
   return router.isFallback ? (

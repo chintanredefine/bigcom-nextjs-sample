@@ -1,6 +1,7 @@
-import { FC } from 'react'
+import { FC, useEffect, useState, useLayoutEffect } from 'react'
 import cn from 'classnames'
 import Image from 'next/image'
+import Script from 'next/script'
 
 import useCustomer from '@framework/customer/use-customer'
 
@@ -15,8 +16,6 @@ import Pinterrest from './images/pinterest-icon.png'
 import Instagram from './images/instagram-icon.png'
 import Facebook from './images/facebook-icon.png'
 
-// console.log('dynamicScript', dynamicScript)
-//
 interface Props {
   className?: string
   children?: any
@@ -103,8 +102,32 @@ const Footer: FC<Props> = ({ className, pages }) => {
   const rootClassName = cn(s.root, className)
   const { data } = useCustomer()
   const router = useRouter()
+  const [currentRoute, setcurrentRoute] = useState(router.asPath)
 
   let site_id = process.env.site_id || 7870040
+
+  const addSearchScript = () => {
+    if (currentRoute.includes('/search')) {
+      return (
+        <>
+          <script src="//sandbox.unbxd.io/sleekhair_mybigcommerce_stage_search.js"></script>
+          <script src="//libraries.unbxdapi.com/search-sdk/v2.0.4/vanillaSearch.min.js"></script>
+        </>
+      )
+    }
+  }
+
+  useLayoutEffect(() => {
+    console.log('currentRoute useLayoutEffect', currentRoute)
+
+    setcurrentRoute(router.asPath)
+  }, [router.asPath])
+
+  useEffect(() => {
+    console.log('currentRoute useEffect', currentRoute)
+
+    setcurrentRoute(router.asPath)
+  }, [router.asPath])
 
   return (
     <footer className="footer-main">
@@ -113,75 +136,51 @@ const Footer: FC<Props> = ({ className, pages }) => {
           <div className="footer-coloum">
             <div className="footer-links-title">Help</div>
             <div className="footer-links">
-              <span >
-                <a href="/pages/shipping-policy.html">
-                  Shipping &amp; Returns
-                </a>
+              <span>
+                <a href="/pages/shipping-policy.html">Shipping &amp; Returns</a>
               </span>
-              <span >
-                <a href="#">
-                  Track Your Order
-                </a>
+              <span>
+                <a href="#">Track Your Order</a>
               </span>
-              <span >
-                <a href="#">
-                  Store Finder
-                </a>
+              <span>
+                <a href="#">Store Finder</a>
               </span>
-              <span >
-                <a href="#">
-                  FAQs
-                </a>
+              <span>
+                <a href="#">FAQs</a>
               </span>
             </div>
           </div>
           <div className="footer-coloum">
             <div className="footer-links-title">About</div>
             <div className="footer-links">
-              <span >
-                <a href="/pages/about-us.html">
-                  About Us
-                </a>
+              <span>
+                <a href="/pages/about-us.html">About Us</a>
               </span>
-              <span >
-                <a href="/pages/contact-us.html">
-                  Contact Us
-                </a>
+              <span>
+                <a href="/pages/contact-us.html">Contact Us</a>
               </span>
-              <span >
-                <a href="/pages/career.html">
-                  Careers
-                </a>
+              <span>
+                <a href="/pages/career.html">Careers</a>
               </span>
-              <span >
-                <a href="/pages/partnership.html">
-                  Become an Affiliate
-                </a>
+              <span>
+                <a href="/pages/partnership.html">Become an Affiliate</a>
               </span>
             </div>
           </div>
           <div className="footer-coloum">
             <div className="footer-links-title">CATEGORIES</div>
             <div className="footer-links">
-              <span >
-                <a href="#">
-                  Shirts
-                </a>
+              <span>
+                <a href="#">Shirts</a>
               </span>
-              <span >
-                <a href="#">
-                  Jeans
-                </a>
+              <span>
+                <a href="#">Jeans</a>
               </span>
-              <span >
-                <a href="#">
-                  Footwear
-                </a>
+              <span>
+                <a href="#">Footwear</a>
               </span>
-              <span >
-                <a href="#">
-                  Accessories
-                </a>
+              <span>
+                <a href="#">Accessories</a>
               </span>
             </div>
           </div>
@@ -251,20 +250,20 @@ const Footer: FC<Props> = ({ className, pages }) => {
         type="text/javascript"
         dangerouslySetInnerHTML={{
           __html: `
-              var sa_uni = sa_uni || [];
-              sa_uni.push(['sa_pg', '5']);
-              (function() {function sa_async_load()
-              { var sa = document.createElement('script');
-              sa.type = 'text/javascript';
-              sa.async = true;
-              sa.src = '//cdn.socialannex.com/partner/${site_id}/universal.js';
-              var sax = document.getElementsByTagName('script')[0];
-              sax.parentNode.insertBefore(sa, sax);
-              }if (window.attachEvent)
-              {window.attachEvent('onload', sa_async_load);
-              }else {window.addEventListener('load', sa_async_load,false);
-              }})();
-          `,
+          var sa_uni = sa_uni || [];
+          sa_uni.push(['sa_pg', '5']);
+          (function() {function sa_async_load()
+            { var sa = document.createElement('script');
+            sa.type = 'text/javascript';
+            sa.async = true;
+            sa.src = '//cdn.socialannex.com/partner/${site_id}/universal.js';
+            var sax = document.getElementsByTagName('script')[0];
+            sax.parentNode.insertBefore(sa, sax);
+          }if (window.attachEvent)
+          {window.attachEvent('onload', sa_async_load);
+        }else {window.addEventListener('load', sa_async_load,false);
+      }})();
+      `,
         }}
       />
       <script src="https://static.klaviyo.com/onsite/js/klaviyo.js?company_id=MpJPGK"></script>
@@ -278,12 +277,9 @@ const Footer: FC<Props> = ({ className, pages }) => {
       <script src="//sandbox.unbxd.io/sleekhair_mybigcommerce_stage_autosuggest.js"></script>
 
       {/* <!-- Related To Search (Need To Integrate Search and Category pages) --> */}
-      {router.asPath.includes('/search') && (
-        <>
-          <script src="//sandbox.unbxd.io/sleekhair_mybigcommerce_stage_search.js"></script>
-          <script src="//libraries.unbxdapi.com/search-sdk/v2.0.4/vanillaSearch.min.js"></script>
-        </>
-      )}
+
+      {addSearchScript()}
+
       {/* for unbxd category pages */}
 
       <script src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js"></script>
