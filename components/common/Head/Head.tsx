@@ -13,7 +13,7 @@ const Head = () => {
     // console.log('router ==>', router, router.asPath)
     if (router.asPath.includes('ammonia-vs-no-ammonia')) {
       return (
-        <NextHead>
+        <>
           <style>
             <link rel="preconnect" href="https://fonts.googleapis.com" />
             <link
@@ -21,7 +21,7 @@ const Head = () => {
               rel="stylesheet"
             />
           </style>
-        </NextHead>
+        </>
       )
     }
   }

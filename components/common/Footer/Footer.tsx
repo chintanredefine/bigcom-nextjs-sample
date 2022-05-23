@@ -1,4 +1,4 @@
-import { FC, useEffect, useState } from 'react'
+import { FC, useEffect, useState, useLayoutEffect } from 'react'
 import cn from 'classnames'
 import Image from 'next/image'
 import Script from 'next/script'
@@ -16,8 +16,6 @@ import Pinterrest from './images/pinterest-icon.png'
 import Instagram from './images/instagram-icon.png'
 import Facebook from './images/facebook-icon.png'
 
-// console.log('dynamicScript', dynamicScript)
-//
 interface Props {
   className?: string
   children?: any
@@ -100,15 +98,32 @@ const termlinks = [
 ]
 
 const Footer: FC<Props> = ({ className, pages }) => {
-  const [currentRoute, setcurrentRoute] = useState('')
   const { sitePages } = usePages(pages)
   const rootClassName = cn(s.root, className)
   const { data } = useCustomer()
   const router = useRouter()
+  const [currentRoute, setcurrentRoute] = useState(router.asPath)
 
   let site_id = process.env.site_id || 7870040
 
+  const addSearchScript = () => {
+    if (currentRoute.includes('/search')) {
+      return <>
+        <script src="//sandbox.unbxd.io/sleekhair_mybigcommerce_stage_search.js"></script>
+        <script src="//libraries.unbxdapi.com/search-sdk/v2.0.4/vanillaSearch.min.js"></script>
+      </>
+    }
+  }
+
+  useLayoutEffect(() => {
+    console.log("currentRoute useLayoutEffect", currentRoute);
+
+    setcurrentRoute(router.asPath)
+  }, [router.asPath])
+
   useEffect(() => {
+    console.log("currentRoute useEffect", currentRoute);
+
     setcurrentRoute(router.asPath)
   }, [router.asPath])
 
@@ -284,14 +299,11 @@ const Footer: FC<Props> = ({ className, pages }) => {
       <script src="//sandbox.unbxd.io/sleekhair_mybigcommerce_stage_autosuggest.js"></script>
 
       {/* <!-- Related To Search (Need To Integrate Search and Category pages) --> */}
-      {console.log("currentRoute.includes('/search')", currentRoute.includes('/search'))
+
+      {
+        addSearchScript()
       }
-      {currentRoute.includes('/search') && (
-        <>
-          <script src="//sandbox.unbxd.io/sleekhair_mybigcommerce_stage_search.js"></script>
-          <script src="//libraries.unbxdapi.com/search-sdk/v2.0.4/vanillaSearch.min.js"></script>
-        </>
-      )}
+
       {/* for unbxd category pages */}
 
       <script src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js"></script>

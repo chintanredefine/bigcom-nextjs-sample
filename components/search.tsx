@@ -79,14 +79,12 @@ export default function Search({ categories, brands }: SearchPropsType) {
               type="text/javascript"
               dangerouslySetInnerHTML={{
                 __html: `
-                          var p = 'categoryPath:"/${
-                            router?.query?.category || ''
-                          }/"'; UnbxdAnalyticsConf =
+                          var p = 'categoryPath:"/${router?.query?.category || ''
+                  }/"'; UnbxdAnalyticsConf =
                           window.UnbxdAnalyticsConf || {}; UnbxdAnalyticsConf["page"] = 
                           p; UnbxdAnalyticsConf["page_type"] = "BOOLEAN" ;`,
               }}
             />
-            )
           </NextHead>
         )
       }
@@ -100,7 +98,7 @@ export default function Search({ categories, brands }: SearchPropsType) {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 mt-3 mb-20">
           <div className="col-span-8 lg:col-span-2 order-1 lg:order-none">
             {/* Categories */}
-            <div className="relative inline-block w-full">
+            {/* <div className="relative inline-block w-full">
               <div className="lg:hidden">
                 <span className="rounded-md shadow-sm">
                   <button
@@ -130,11 +128,10 @@ export default function Search({ categories, brands }: SearchPropsType) {
                 </span>
               </div>
               <div
-                className={`origin-top-left absolute lg:relative left-0 mt-2 w-full rounded-md shadow-lg lg:shadow-none z-10 mb-10 lg:block ${
-                  activeFilter !== 'categories' || toggleFilter !== true
-                    ? 'hidden'
-                    : ''
-                }`}
+                className={`origin-top-left absolute lg:relative left-0 mt-2 w-full rounded-md shadow-lg lg:shadow-none z-10 mb-10 lg:block ${activeFilter !== 'categories' || toggleFilter !== true
+                  ? 'hidden'
+                  : ''
+                  }`}
               >
                 <div className="rounded-sm bg-accent-0 shadow-xs lg:bg-none lg:shadow-none">
                   <div
@@ -195,10 +192,10 @@ export default function Search({ categories, brands }: SearchPropsType) {
                   </div>
                 </div>
               </div>
-            </div>
+            </div> */}
 
             {/* Designs */}
-            <div className="relative inline-block w-full">
+            {/* <div className="relative inline-block w-full">
               <div className="lg:hidden mt-3">
                 <span className="rounded-md shadow-sm">
                   <button
@@ -228,11 +225,10 @@ export default function Search({ categories, brands }: SearchPropsType) {
                 </span>
               </div>
               <div
-                className={`origin-top-left absolute lg:relative left-0 mt-2 w-full rounded-md shadow-lg lg:shadow-none z-10 mb-10 lg:block ${
-                  activeFilter !== 'brands' || toggleFilter !== true
-                    ? 'hidden'
-                    : ''
-                }`}
+                className={`origin-top-left absolute lg:relative left-0 mt-2 w-full rounded-md shadow-lg lg:shadow-none z-10 mb-10 lg:block ${activeFilter !== 'brands' || toggleFilter !== true
+                  ? 'hidden'
+                  : ''
+                  }`}
               >
                 <div className="rounded-sm bg-accent-0 shadow-xs lg:bg-none lg:shadow-none">
                   <div
@@ -298,10 +294,10 @@ export default function Search({ categories, brands }: SearchPropsType) {
                   </div>
                 </div>
               </div>
-            </div>
+            </div> */}
           </div>
           {/* Products */}
-          <div className="col-span-8 order-3 lg:order-none">
+          {/* <div className="col-span-8 order-3 lg:order-none">
             {(q || activeCategory || activeBrand) && (
               <div className="mb-12 transition ease-in duration-75">
                 {data ? (
@@ -371,10 +367,10 @@ export default function Search({ categories, brands }: SearchPropsType) {
                 ))}
               </div>
             )}{' '}
-          </div>
+          </div> */}
 
           {/* Sort */}
-          <div className="col-span-8 lg:col-span-2 order-2 lg:order-none">
+          {/* <div className="col-span-8 lg:col-span-2 order-2 lg:order-none">
             <div className="relative inline-block w-full">
               <div className="lg:hidden">
                 <span className="rounded-md shadow-sm">
@@ -403,11 +399,10 @@ export default function Search({ categories, brands }: SearchPropsType) {
                 </span>
               </div>
               <div
-                className={`origin-top-left absolute lg:relative left-0 mt-2 w-full rounded-md shadow-lg lg:shadow-none z-10 mb-10 lg:block ${
-                  activeFilter !== 'sort' || toggleFilter !== true
-                    ? 'hidden'
-                    : ''
-                }`}
+                className={`origin-top-left absolute lg:relative left-0 mt-2 w-full rounded-md shadow-lg lg:shadow-none z-10 mb-10 lg:block ${activeFilter !== 'sort' || toggleFilter !== true
+                  ? 'hidden'
+                  : ''
+                  }`}
               >
                 <div className="rounded-sm bg-accent-0 shadow-xs lg:bg-none lg:shadow-none">
                   <div
@@ -467,7 +462,7 @@ export default function Search({ categories, brands }: SearchPropsType) {
                 </div>
               </div>
             </div>
-          </div>
+          </div> */}
         </div>
       </Container>
     </>
