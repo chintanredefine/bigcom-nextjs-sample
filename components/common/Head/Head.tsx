@@ -60,10 +60,10 @@ const Head = () => {
           }}
         />
 
-        <link
-          rel="stylesheet"
-          href="//sandbox.unbxd.io/sleekhair_mybigcommerce_com-u1474746314480_autosuggest.css"
-        />
+       // <link
+       //   rel="stylesheet"
+       //   href="//sandbox.unbxd.io/sleekhair_mybigcommerce_com-u1474746314480_autosuggest.css"
+       // />
 
         <link
           rel="stylesheet"
@@ -83,7 +83,7 @@ const Head = () => {
           href="https://www.ystore.us/sleekshop/common.css"
           rel="stylesheet"
         />
-        {LoadTheseLinkExceptPDP()}
+        //{LoadTheseLinkExceptPDP()}
         {loadDynamicStyle()}
       </NextHead>
     </>
