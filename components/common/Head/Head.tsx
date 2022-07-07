@@ -62,11 +62,6 @@ const Head = () => {
 
         <link
           rel="stylesheet"
-          href="//sandbox.unbxd.io/sleekhair_mybigcommerce_com-u1474746314480_autosuggest.css"
-        />
-
-        <link
-          rel="stylesheet"
           data-href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;600;700&amp;display=swap"
           data-optimized-fonts="true"
         />
@@ -83,7 +78,7 @@ const Head = () => {
           href="https://www.ystore.us/sleekshop/common.css"
           rel="stylesheet"
         />
-        {LoadTheseLinkExceptPDP()}
+        
         {loadDynamicStyle()}
       </NextHead>
     </>
