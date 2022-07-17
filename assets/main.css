@@ -221,8 +221,10 @@ footer {
     width: 30% !important;
   }
 
-  .mobileMenu-toggle {
-    top: -10px !important;
+  .mobileMenu-toggle-mobile {
+    top: 30px !important;
+    right: 0px !important;
+    left: unset !important;
   }
 
   /* end of  this is for fixing header text in small devices  */
@@ -406,6 +408,62 @@ footer {
   }
   .Navbar_mainmenudiv__CB_eL {
     text-align: left;
+    max-width: unset !important;
+    width: 100vw;
+  }
+
+  .Navbar_mainmenudiv-mobile {
+    height: 105vh;
+  }
+
+  .linkMobile {
+    display: flex !important;
+    justify-content: space-between;
+  }
+
+  .linkMobileBtnContainer {
+    display: flex !important;
+    flex-direction: column;
+    justify-content: center;
+    padding-top: 75px !important;
+  }
+
+  .linkMobileLoginBtn {
+    display: flex !important;
+    width: 94%;
+    background: #95bfb8;
+    justify-content: center;
+    padding: 10px 0;
+  }
+  .linkMobileRegisterBtn {
+    display: flex !important;
+    width: 94%;
+    background: #ffffff;
+    border: 1px solid #50585e;
+    margin-top: 10px;
+    justify-content: center;
+    padding: 10px 0;
+  }
+
+  #mobile-search.inputcustom {
+    padding: 0.5rem 0.75rem 1.5rem 2.75rem !important;
+  }
+
+  .Searchbar_rootcustom__1dui- {
+    height: 40px !important;
+  }
+
+  .Searchbar_iconContainer__266wB {
+    margin-top: unset;
+  }
+
+  .Searchbar_iconContainer_close {
+    bottom: unset;
+    top: 8px;
+  }
+
+  .name-icon {
+    width: 85px;
   }
 
   .unbxd-view-all-button {
@@ -611,6 +669,9 @@ footer {
   }
   .payment-methods img {
     display: inline-block;
+  }
+  .MainNewTag div.page {
+    margin: unset !important;
   }
 }
 

@@ -123,7 +123,7 @@ const Footer: FC<Props> = ({ className, pages }) => {
   // }, [router.asPath])
 
   useEffect(() => {
-    console.log('currentRoute useEffect', currentRoute)
+    // console.log('currentRoute useEffect', currentRoute)
 
     setcurrentRoute(router.asPath)
   }, [router.asPath])

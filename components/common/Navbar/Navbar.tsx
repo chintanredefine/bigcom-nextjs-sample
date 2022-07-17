@@ -1,14 +1,21 @@
-import { FC } from 'react'
-import React, { useState } from 'react'
+import React, { FC, useState, useEffect } from 'react'
 import Link from 'next/link'
-import s from './Navbar.module.css'
-import NavbarRoot from './NavbarRoot'
+import useCustomer from '@framework/customer/use-customer'
+import useLogout from '@framework/auth/use-logout'
 import { Logo, Container } from '@components/ui'
 import { Searchbar, UserNav } from '@components/common'
-import FlagImg from '@assets/images/flag-icon.png'
+import { useUI } from '@components/ui'
+
 import Image from 'next/image'
 
+import s from './Navbar.module.css'
+import NavbarRoot from './NavbarRoot'
+
+import FlagImg from '@assets/images/flag-icon.png'
+import HelloImageSvg from '@assets/sleekshop-new-svg/hello-icon-image.svg'
+import MoveForwardSvg from '@assets/sleekshop-new-svg/moveForward.svg'
 import RocketSvg from '@assets/sleekshop-new-svg/rocket-icon.svg'
+import SignOutSvg from '@assets/sleekshop-new-svg/signout.svg'
 
 interface Link {
   href: string
@@ -19,11 +26,38 @@ interface NavbarProps {
   isActive?: boolean
 }
 
+
 const Navbar: FC<NavbarProps> = ({ links }) => {
   const [isActive, setActive] = useState(false)
+  const [userName, setuserName] = useState('User')
+  const { openModal, setModalView } = useUI()
+
+  const { data } = useCustomer()
+  const logout = useLogout()
 
   const handleToggle = () => {
     setActive(!isActive)
+  }
+
+  useEffect(() => {
+    if (data) {
+      const newUserName = data.firstName + ' ' + data.lastName
+      setuserName(newUserName)
+    } else {
+      setuserName('User')
+    }
+  }, [data])
+
+  const HandleLogin = () => {
+    setModalView('LOGIN_VIEW')
+    setActive(false)
+    return openModal()
+  }
+
+  const HandleRegister = () => {
+    setModalView('SIGNUP_VIEW')
+    setActive(false)
+    return openModal()
   }
 
   return (
@@ -65,7 +99,7 @@ const Navbar: FC<NavbarProps> = ({ links }) => {
           href="javascript:void(0)"
           onClick={handleToggle}
           className={
-            isActive ? 'mobileMenu-toggle is-open' : 'mobileMenu-toggle'
+            isActive ? 'mobileMenu-toggle mobileMenu-toggle-mobile is-open' : 'mobileMenu-toggle'
           }
           data-mobile-menu-toggle="menu"
           title="Menu"
@@ -77,17 +111,59 @@ const Navbar: FC<NavbarProps> = ({ links }) => {
         </a>
 
         <div
-          className={s.mainmenudiv + (isActive ? ' menu menu-block ' : ' menu')}
+          className={s.mainmenudiv + (isActive ? ' menu menu-block Navbar_mainmenudiv-mobile' : ' menu')}
         >
           <nav className={s.navMenu}>
-            <Link href="/search">
-              <a className={s.link}>All</a>
-            </Link>
-            {links?.map((l) => (
-              <Link href={l.href} key={l.href}>
-                <a className={s.link}>{l.label}</a>
-              </Link>
-            ))}
+
+            {isActive && <div className="name-and-details">
+              <div className="name-icon">
+                <HelloImageSvg />
+              </div>
+              <div className="name-details">
+                <span>
+                  Hello, <strong>{userName?.toUpperCase()}</strong>
+                </span>
+              </div>
+            </div>}
+
+            {links?.map((l) => {
+              if (l.href === '/search/recommended-for-you' || l.href === '/search/new-arrival' || l.href === '/search/top-selling-products') {
+                return <></>
+              } else {
+                return <Link href={l.href} key={l.href} >
+                  <a className={`${s.link} linkMobile`} onClick={() => setActive(false)}>
+                    <span>{l.label}</span>
+                    {isActive && <span><MoveForwardSvg /></span>}
+                  </a>
+                </Link>
+              }
+            })}
+
+            {isActive && <div className={`${s.link} linkMobileBtnContainer`}>
+              {
+                data ? (
+                  <div onClick={() => logout()} className={` linkMobileLoginBtn`}>
+                    <SignOutSvg />
+                    <span>Sign Out</span>
+                  </div>
+                ) : (
+                  <>
+                    <div onClick={() => HandleLogin()} className={`linkMobileLoginBtn`}>
+                      <span style={{ transform: 'rotate(180deg)' }}>
+                        <SignOutSvg />
+                      </span>
+                      <span>Sign In</span>
+                    </div>
+                    <div onClick={() => HandleRegister()} className={`linkMobileRegisterBtn`}>
+                      <span style={{ transform: 'rotate(180deg)' }}>
+                        <SignOutSvg />
+                      </span>
+                      <span>Register</span>
+                    </div>
+                  </>
+                )}
+            </div>
+            }
           </nav>
         </div>
       </Container>
