@@ -50,12 +50,6 @@ type Action =
     type: 'SET_USER_AVATAR'
     value: string
   }
-  | {
-    type: 'SET_IS_ACTIVE_SIDEBAR'
-    value: boolean
-  }
-
-
 
 type MODAL_VIEWS =
   | 'SIGNUP_VIEW'
@@ -127,12 +121,6 @@ function uiReducer(state: State, action: Action) {
         userAvatar: action.value,
       }
     }
-    case 'SET_IS_ACTIVE_SIDEBAR': {
-      return {
-        ...state,
-        isActiveSideBar: action.value,
-      }
-    }
   }
 }
 
@@ -192,11 +180,6 @@ export const UIProvider: FC = (props) => {
     [dispatch]
   )
 
-  const setIsActiveSidebar = useCallback(
-    (value: boolean) => dispatch({ type: 'SET_IS_ACTIVE_SIDEBAR', value }),
-    [dispatch]
-  )
-
   const value = useMemo(
     () => ({
       ...state,
@@ -211,7 +194,6 @@ export const UIProvider: FC = (props) => {
       setModalView,
       setSidebarView,
       setUserAvatar,
-      setIsActiveSidebar
     }),
     [state]
   )

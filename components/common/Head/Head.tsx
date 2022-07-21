@@ -3,13 +3,10 @@ import NextHead from 'next/head'
 import { DefaultSeo } from 'next-seo'
 import config from '@config/seo.json'
 import { useRouter } from 'next/router'
-import { useUI } from '@components/ui'
-
 // import { someUnbsdCategoryScripts } from './unbxdScript'
 
 const Head = () => {
   const router = useRouter()
-  const { setIsActiveSidebar } = useUI()
 
   const loadDynamicStyle = () => {
     // console.log('router ==>', router, router.asPath)
@@ -45,13 +42,9 @@ const Head = () => {
     }
   }
 
-  useEffect(() => {
-    // someUnbsdCategoryScripts()
-    if (localStorage.getItem("userAvatar")) {
-      console.log("setIsActiveSidebar ", setIsActiveSidebar, name)
-      setIsActiveSidebar(true)
-    }
-  }, [])
+  // useEffect(() => {
+  //   // someUnbsdCategoryScripts()
+  // }, [])
 
   return (
     <>

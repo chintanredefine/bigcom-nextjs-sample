@@ -24,10 +24,11 @@ interface Link {
 interface NavbarProps {
   links?: Link[]
   isActive?: boolean
+  setIsActiveSidebar?: any
 }
 
 
-const Navbar: FC<NavbarProps> = ({ links }) => {
+const Navbar: FC<NavbarProps> = ({ links, setIsActiveSidebar }) => {
   const [isActive, setActive] = useState(false)
   const [userName, setuserName] = useState('User')
   const { openModal, setModalView } = useUI()
@@ -37,6 +38,7 @@ const Navbar: FC<NavbarProps> = ({ links }) => {
 
   const handleToggle = () => {
     setActive(!isActive)
+    setIsActiveSidebar((oldData: any) => !oldData)
   }
 
   useEffect(() => {
