@@ -1,5 +1,5 @@
 import cn from 'classnames'
-import React, { FC } from 'react'
+import React, { FC, useState } from 'react'
 import dynamic from 'next/dynamic'
 import { useRouter } from 'next/router'
 import { CommerceProvider } from '@framework'
@@ -103,6 +103,8 @@ const Layout: FC<Props> = ({
     href: `/search/${c.slug}`,
   }))
 
+  const [IsActiveSidebar, setIsActiveSidebar] = useState(false)
+
   return (
     <CommerceProvider locale={locale}>
       <Script
@@ -110,20 +112,26 @@ const Layout: FC<Props> = ({
         strategy="beforeInteractive"
       />
       <div className={cn(s.root)}>
-        <Navbar links={navBarlinks} />
-        <main className="fit MainNewTag">{children}</main>
-        <Footer pages={pageProps.pages} />
-        <ModalUI />
-        <SidebarUI />
-        <FeatureBar
-          title="This site uses cookies to improve your experience. By clicking, you agree to our Privacy Policy."
-          hide={acceptedCookies}
-          action={
-            <Button className="mx-5" onClick={() => onAcceptCookies()}>
-              Accept cookies
-            </Button>
-          }
-        />
+        {
+          IsActiveSidebar ? <Navbar links={navBarlinks} setIsActiveSidebar={setIsActiveSidebar} />
+            : <>
+              <Navbar links={navBarlinks} setIsActiveSidebar={setIsActiveSidebar} />
+              <main className="fit MainNewTag">{children}</main>
+              <Footer pages={pageProps.pages} />
+              <ModalUI />
+              <SidebarUI />
+              <FeatureBar
+                title="This site uses cookies to improve your experience. By clicking, you agree to our Privacy Policy."
+                hide={acceptedCookies}
+                action={
+                  <Button className="mx-5" onClick={() => onAcceptCookies()}>
+                    Accept cookies
+                  </Button>
+                }
+              />
+            </>
+        }
+
       </div>
     </CommerceProvider>
   )

@@ -21,35 +21,35 @@ const initialState = {
 
 type Action =
   | {
-      type: 'OPEN_SIDEBAR'
-    }
+    type: 'OPEN_SIDEBAR'
+  }
   | {
-      type: 'CLOSE_SIDEBAR'
-    }
+    type: 'CLOSE_SIDEBAR'
+  }
   | {
-      type: 'OPEN_DROPDOWN'
-    }
+    type: 'OPEN_DROPDOWN'
+  }
   | {
-      type: 'CLOSE_DROPDOWN'
-    }
+    type: 'CLOSE_DROPDOWN'
+  }
   | {
-      type: 'OPEN_MODAL'
-    }
+    type: 'OPEN_MODAL'
+  }
   | {
-      type: 'CLOSE_MODAL'
-    }
+    type: 'CLOSE_MODAL'
+  }
   | {
-      type: 'SET_MODAL_VIEW'
-      view: MODAL_VIEWS
-    }
+    type: 'SET_MODAL_VIEW'
+    view: MODAL_VIEWS
+  }
   | {
-      type: 'SET_SIDEBAR_VIEW'
-      view: SIDEBAR_VIEWS
-    }
+    type: 'SET_SIDEBAR_VIEW'
+    view: SIDEBAR_VIEWS
+  }
   | {
-      type: 'SET_USER_AVATAR'
-      value: string
-    }
+    type: 'SET_USER_AVATAR'
+    value: string
+  }
 
 type MODAL_VIEWS =
   | 'SIGNUP_VIEW'
