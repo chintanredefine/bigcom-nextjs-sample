@@ -277,7 +277,7 @@ const Footer: FC<Props> = ({ className, pages }) => {
 
       {/* <!-- Related To Search (Need To Integrate Search and Category pages.) --> */}
 
-      {addSearchScript()}
+      
 
       {/* for unbxd category pages df*/}
 
