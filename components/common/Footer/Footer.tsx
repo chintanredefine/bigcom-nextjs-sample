@@ -273,7 +273,7 @@ const Footer: FC<Props> = ({ className, pages }) => {
         src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/3.0.3/handlebars.js"
       ></script>
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-      <script src="//sandbox.unbxd.io/sleekhair_mybigcommerce_stage_autosuggest.js"></script>
+      {/*<script src="//sandbox.unbxd.io/sleekhair_mybigcommerce_stage_autosuggest.js"></script>*/}
 
       {/* <!-- Related To Search (Need To Integrate Search and Category pages.) --> */}
 
