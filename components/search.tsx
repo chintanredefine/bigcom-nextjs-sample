@@ -349,16 +349,41 @@ export default function Search({ categories, brands }: SearchPropsType) {
             {data ? (
               <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
                 {data.products.map((product: Product) => (
-                  <ProductCard
-                    variant="simple"
-                    key={product.path}
-                    className="animated fadeIn"
-                    product={product}
-                    imgProps={{
-                      width: 480,
-                      height: 480,
-                    }}
-                  />
+                  <div className="productCard">
+                    <div className="productCardImgParent">
+                      <img
+                        className="ProductImg"
+                        src={Product?.product_image}
+                        alt="image not found"
+                      />
+                    </div>
+                    <div className="Product-Model-Parent mt-3 skuParent">
+                      <p className="Product-Model skuFontSt">
+                        SKU: {product?.sku}
+                      </p>
+                    </div>
+                    <div className="mt-2 orderNameP">
+                      <Link href={product.path}>
+                        <a>
+                          <p className="Product-Name productName">
+                            {product?.name}
+                          </p>
+                        </a>
+                      </Link>
+                    </div>
+
+                    <div className="productBrandP mt-2">
+                      <p className="Product-brand productBrandText">
+                        {product.brand_id}
+                      </p>
+                    </div>
+
+                    <div className="mt-2 d-flex align-items-center justify-content-between pPrice_AddToCart ">
+                      <p className="Product-price productPriceAdd">
+                        $ {Number(product?.price).toFixed(2)}
+                      </p>
+                    </div>
+                  </div>
                 ))}
               </div>
             ) : (
