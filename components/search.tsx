@@ -351,9 +351,10 @@ export default function Search({ categories, brands }: SearchPropsType) {
                 {data.products.map((product: Product) => (
                   <div className="productCard">
                     <div className="productCardImgParent">
+                      {product}
                       <img
                         className="ProductImg"
-                        src={product}
+                        src=""
                         alt="image not found"
                       />
                     </div>
