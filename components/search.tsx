@@ -353,7 +353,7 @@ export default function Search({ categories, brands }: SearchPropsType) {
                     <div className="productCardImgParent">
                       <img
                         className="ProductImg"
-                        src={Product?.product_image}
+                        src={product?.product_image}
                         alt="image not found"
                       />
                     </div>
