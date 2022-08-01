@@ -364,7 +364,7 @@ export default function Search({ categories, brands }: SearchPropsType) {
                       </p>
                     </div>
                     <div className="mt-2 orderNameP">
-                      <Link href={product.path}>
+                      <Link href={product?.path}>
                         <a>
                           <p className="Product-Name productName">
                             {product?.name}
