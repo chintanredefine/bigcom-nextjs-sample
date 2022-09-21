@@ -8,6 +8,8 @@ import { Button, Text, Rating, useUI } from '@components/ui'
 import usePrice from '@framework/product/use-price'
 import ProductTag from '../ProductTag'
 import { WishlistButton } from '@components/wishlist'
+// import {unbxdTrack} from './../../common/Unbxd/track';
+import { CheckMark } from '@components/icons'
 
 import {
   getProductVariant,
@@ -24,6 +26,12 @@ interface ProductSidebarProps {
   reviews: any
 }
 
+// declare global {
+//   interface Window {
+//     Unbxd: any
+//   }
+// }
+
 const ProductSidebar: FC<ProductSidebarProps> = ({
   product,
   className,
@@ -35,6 +43,7 @@ const ProductSidebar: FC<ProductSidebarProps> = ({
   const addItem = useAddItem()
   const { openSidebar } = useUI()
   const [loading, setLoading] = useState(false)
+  const [afterCartText, setAfterCartText] = useState(false)  
   const [selectedOptions, setSelectedOptions] = useState<SelectedOptions>({})
 
   useEffect(() => {
@@ -52,13 +61,21 @@ const ProductSidebar: FC<ProductSidebarProps> = ({
 
     setLoading(true)
     try {
+      // console.log("Adding To Cart ......................");
       await addItem({
         quantity: Number(qty),
         productId: String(product.id),
         variantId: String(variant_id ? variant_id : product.variants[0].id),
+        //variantId: String(variant ? variant : product.variants[0].id),
       })
       openSidebar()
       setLoading(false)
+      setAfterCartText(true)
+      setTimeout(() => {
+        setAfterCartText(false)
+      }, 5000);
+      // unbxdTrack(product.id,itemQty);
+      // window.Unbxd.track("cart",{"pid":product.id,"qty":itemQty})
     } catch (err) {
       setLoading(false)
     }
@@ -70,8 +87,7 @@ const ProductSidebar: FC<ProductSidebarProps> = ({
     currencyCode: product.price.currencyCode!,
   })
 
-  var minVal = 1,
-    maxVal = 20 // Set Max and Min values
+  var minVal = 1, maxVal = 20 // Set Max and Min values
 
   function increaseQty(element: any) {
     element = document.getElementById('qty')
@@ -91,6 +107,7 @@ const ProductSidebar: FC<ProductSidebarProps> = ({
   }
 
   const productSku = currentVariant.sku.toLowerCase()
+ 
 
   return (
     <div className={className}>
@@ -199,25 +216,53 @@ const ProductSidebar: FC<ProductSidebarProps> = ({
             />
           )}
         </div>
-
+        
         <div className="action to_cart">
           {process.env.COMMERCE_CART_ENABLED && (
             <Button
+              data-product-id = {product.id}
               aria-label="Add to Bag"
               type="button"
-              className={s.button}
+              className={afterCartText ? 'added-to-bag-button ' +  s.button : s.button }
               onClick={(event) => {
                 addToCart(event, null)
               }}
               loading={loading}
-              disabled={variant?.availableForSale === false}
+              afterCartText={afterCartText}
+              disabled={variant?.inventory.isInStock === false}
             >
-              {variant?.availableForSale === false
+              {variant?.inventory.isInStock === false
                 ? 'Not Available'
-                : 'ADD TO BAG'}
+                : afterCartText?<span className="added-to-bag">ADDED TO BAG <CheckMark /></span>:'ADD TO BAG'}
             </Button>
           )}
+
+
         </div>
+
+        {variant?.inventory.isInStock === false
+          ?<div className='out_of_stock_modal'>
+            <div className="notify-section inline-page">
+              <form className="notify-form">
+                <input
+                  type="text"
+                  placeholder="Youremail@mail.com"
+                  className="form-input"
+                />
+                <button
+                  type="submit"
+                  placeholder="Youremail@mail.com"
+                  className="form-input"
+                >
+                  Notify Me When Available
+                </button>
+                <p>Be notified when this Item is back in stock</p>
+              </form>
+            </div> 
+          </div> 
+          :" "
+        }
+
       </div>
     </div>
   )

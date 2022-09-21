@@ -71,12 +71,14 @@ const WishlistButton: FC<Props> = ({
       onClick={handleWishlistChange}
       {...props}
     >
+
       <Heart
         className={cn(s.icon, {
           [s.loading]: loading,
           [s.inWishlist]: itemInWishlist,
         })}
       />
+      <span>Add To Wishlist</span>
     </button>
   )
 }

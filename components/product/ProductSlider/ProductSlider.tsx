@@ -98,17 +98,14 @@ const ProductSlider: React.FC<ProductSliderProps> = ({
               ...child,
               props: {
                 ...child.props,
-                className: `${
-                  child.props.className ? `${child.props.className} ` : ''
-                }keen-slider__slide`,
+                className: `${child.props.className ? `${child.props.className} ` : ''
+                  }keen-slider__slide`,
               },
             }
           }
           return child
         })}
       </div>
-
-     
     </div>
   )
 }

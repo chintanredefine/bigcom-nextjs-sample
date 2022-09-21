@@ -18,9 +18,10 @@ export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   Component?: string | JSXElementConstructor<any>
   width?: string | number
   loading?: boolean
+  afterCartText?: boolean
   disabled?: boolean
 }
-
+// eslint-disable-next-line react/display-name
 const Button: React.FC<ButtonProps> = forwardRef((props, buttonRef) => {
   const {
     className,
@@ -29,6 +30,7 @@ const Button: React.FC<ButtonProps> = forwardRef((props, buttonRef) => {
     active,
     width,
     loading = false,
+    afterCartText = false,
     disabled = false,
     style = {},
     Component = 'button',
@@ -61,12 +63,16 @@ const Button: React.FC<ButtonProps> = forwardRef((props, buttonRef) => {
       }}
       {...rest}
     >
+      
       {children}
+      
+      
       {loading && (
         <i className="pl-2 m-0 flex">
           <LoadingDots />
         </i>
       )}
+      
     </Component>
   )
 })

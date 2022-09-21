@@ -14,7 +14,9 @@ const isVendure = provider === 'vendure'
 module.exports = withCommerceConfig({
   publicRuntimeConfig: {
       BASE_URL: process.env.BASE_URL,
-      COLOR_SWATCH_URL: process.env.COLOR_SWATCH_URL
+      COLOR_SWATCH_URL: process.env.COLOR_SWATCH_URL,
+      UNBXD_SITENAME:process.env.UNBXD_SITENAME,
+      UNBXD_APIKEY:process.env.UNBXD_APIKEY
   },
   async headers() {
     return [
@@ -77,7 +79,6 @@ module.exports = withCommerceConfig({
 
     return config
   }
-})
-
+}) 
 // Don't delete this console log, useful to see the commerce config in Vercel deployments
 console.log('next.config.js', JSON.stringify(module.exports, null, 2))

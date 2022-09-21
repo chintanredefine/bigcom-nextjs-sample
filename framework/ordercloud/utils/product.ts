@@ -15,33 +15,41 @@ export function normalize(product: RawProduct): Product {
     },
     variants: product.xp.Variants?.length
       ? product.xp.Variants.map((variant) => ({
-          id: variant.ID,
-          options: variant.Specs.map((spec) => ({
-            id: spec.SpecID,
-            __typename: 'MultipleChoiceOption',
-            displayName: spec.Name,
-            values: [
-              {
-                label: spec.Value,
-              },
-            ],
-          })),
-        }))
+        id: variant.ID,
+        options: variant.Specs.map((spec) => ({
+          id: spec.SpecID,
+          __typename: 'MultipleChoiceOption',
+          displayName: spec.Name,
+          values: [
+            {
+              label: spec.Value,
+            },
+          ],
+        })),
+        availableForSale: true,
+        inventory: {
+          isInStock: true
+        },
+      }))
       : [
-          {
-            id: '',
-            options: [],
+        {
+          id: '',
+          options: [],
+          availableForSale: true,
+          inventory: {
+            isInStock: false
           },
-        ],
+        },
+      ],
     options: product.xp.Specs?.length
       ? product.xp.Specs.map((spec) => ({
-          id: spec.ID,
-          displayName: spec.Name,
-          values: spec.Options.map((option) => ({
-            label: option.Value,
-            ...(option.xp?.hexColor && { hexColors: [option.xp.hexColor] }),
-          })),
-        }))
+        id: spec.ID,
+        displayName: spec.Name,
+        values: spec.Options.map((option) => ({
+          label: option.Value,
+          ...(option.xp?.hexColor && { hexColors: [option.xp.hexColor] }),
+        })),
+      }))
       : [],
   }
 }

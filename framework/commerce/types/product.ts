@@ -29,6 +29,9 @@ export type ProductVariant = {
   id: string | number
   options: ProductOption[]
   availableForSale?: boolean
+  inventory: {
+    isInStock?: boolean
+  }
 }
 
 export type Product = {

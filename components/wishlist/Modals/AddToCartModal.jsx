@@ -57,6 +57,7 @@ const ModalCompo = ({
       })
 
       setLoading(false)
+      // window.Unbxd.track("cart",{"pid":product.id,"qty":itemCountState.val})
     } catch (err) {
       setLoading(false)
     }

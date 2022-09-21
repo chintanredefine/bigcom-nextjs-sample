@@ -93,6 +93,7 @@ const WishlistCard: FC<Props> = ({ product, color }) => {
 
       openSidebar()
       setLoading(false)
+      // window.Unbxd.track("cart",{"pid":product.id,"qty":itemCountState.val})
     } catch (err) {
       setLoading(false)
     }
@@ -198,11 +199,10 @@ const WishlistCard: FC<Props> = ({ product, color }) => {
             {/* current value of product quantity //  #input field for all subcomponents */}
             <input
               disabled
-              className={`${style.inputEDCartVal}  ${
-                itemCountState.status === 'outOfStock'
-                  ? style.outOfStock
-                  : itemCountState.status === 'inStock' && style.inStock
-              }`}
+              className={`${style.inputEDCartVal}  ${itemCountState.status === 'outOfStock'
+                ? style.outOfStock
+                : itemCountState.status === 'inStock' && style.inStock
+                }`}
               value={itemCountState.val}
             />
 

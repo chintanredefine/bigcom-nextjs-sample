@@ -8,9 +8,12 @@ import { SelectedOptions } from '../helpers'
 import React, { useState } from 'react'
 import getConfig from 'next/config'
 import { Cross } from '@components/icons'
-import { Button } from '@components/ui'
+import { Button, Text, Rating, useUI } from '@components/ui'
+
 import { WishlistButton } from '@components/wishlist'
 import useCart from '@framework/cart/use-cart'
+// import {unbxdTrack} from './../../common/Unbxd/track';
+import { CheckMark } from '@components/icons'
 
 interface ProductOptionsProps {
   options: ProductOption[]
@@ -44,7 +47,10 @@ const ProductOptions: React.FC<ProductOptionsProps> = React.memo(
     }
 
     const addItem = useAddItem()
-    const [loading, setLoading] = useState(false)
+
+    const { openSidebar } = useUI()
+    const [loading, setLoading] = useState(false)  
+    const [afterCartText, setAfterCartText] = useState(false)  
 
     const addToCart = async (
       element: any,
@@ -68,7 +74,16 @@ const ProductOptions: React.FC<ProductOptionsProps> = React.memo(
           productId: String(product.id),
           variantId: String(variant_id ? variant_id : product.variants[0].id),
         })
+        openSidebar();
         setLoading(false)
+        setAfterCartText(true)
+        setTimeout(() => {
+          setAfterCartText(false)
+        }, 5000);
+        // unbxdTrack(product.id,cartQty);
+        // window.Unbxd.track("cart",{"pid":product.id,"qty":cartQty})
+        varientQty = document.getElementById('varient_qty')
+        varientQty.value = 1;
       } catch (err) {
         setLoading(false)
       }
@@ -77,9 +92,32 @@ const ProductOptions: React.FC<ProductOptionsProps> = React.memo(
     const customclass = 'color-swatch'
 
     function loadOptions(va: any) {
-      let sku = va.sku.toLowerCase()
-      skuChange(sku)
+      // let sku = va.sku.toLowerCase()
+      // skuChange(sku);
     }
+
+    function setCurrentVariant(va: any, inputSearch: any) { 
+      console.log(va);
+      inputSearch = document.getElementById('selected_variant')
+      inputSearch.value = va.id 
+
+      inputSearch = document.getElementsByClassName('product-sku');
+ 
+      for (let i = 0; i < inputSearch.length; i++) {
+        inputSearch[i].innerHTML = 'SKU: '+va.sku;
+      } 
+
+      inputSearch = document.getElementsByClassName('selected_swatch_thumb');
+ 
+      for (let i = 0; i < inputSearch.length; i++) {
+        inputSearch[i].src = va.image_url;
+      } 
+
+      inputSearch = document.getElementById('option-label');
+      inputSearch.innerHTML = va.option_values[0].label;
+
+    }
+
 
     function handleSearch(input: any, ul: any, li: any) {
       var filter, a, i, txtValue
@@ -202,14 +240,19 @@ const ProductOptions: React.FC<ProductOptionsProps> = React.memo(
       }
     }
 
-    function viewMoreShow(element: any, x: any) {
-      x = document.getElementById('all_options_list')
-      x.style.display = 'block'
+    function viewMoreShow(element: any, x: any, p:any)  {
+      // element = document.getElementById('modal_overlay')
+      // element.style.display = 'block'
 
-      element = document.getElementById('modal_overlay')
-      element.style.display = 'block'
+      element = document.getElementById('all_options_list')
+      element.style.display = 'block';
+
+      p = document.getElementById('options-overlay')
+      p.style.display = 'block'
 
       filterInStockOptions(element, null, null, null, null)
+
+      
     }
 
     function viewLessShow(element: any, x: any, y: any) {
@@ -221,6 +264,8 @@ const ProductOptions: React.FC<ProductOptionsProps> = React.memo(
 
       y = document.getElementById('view_less')
       y.style.display = 'none'
+
+      document.body.classList.remove('option-popup-open');
     }
 
     function changeToList(element: any) {
@@ -257,19 +302,38 @@ const ProductOptions: React.FC<ProductOptionsProps> = React.memo(
       y.classList.remove('active')
     }
 
-    function modalClose(element: any, x: any, y: any, z: any) {
-      element = document.getElementById('all_options_list')
-      element.style.display = 'none'
-      element.classList.remove('modal_option_fix')
 
-      x = document.getElementById('modal_overlay')
-      x.style.display = 'none'
+    function innerModalClose(element: any, x: any, y: any, z: any, p:any) {
+      
+      element = document.getElementById('all_options_list')
+      element.classList.remove('modal_option_fix')
 
       y = document.getElementById('selected_color_options')
       y.style.display = 'none'
 
       z = document.getElementById('disabled_color_options')
       z.style.display = 'none'
+ 
+    }
+    
+    function modalClose(element: any, x: any, y: any, z: any, p:any) {
+      
+      element = document.getElementById('all_options_list')
+      element.style.display = 'none'
+      element.classList.remove('modal_option_fix')
+
+      // x = document.getElementById('modal_overlay')
+      // x.style.display = 'none';
+
+      p = document.getElementById('options-overlay')
+      p.style.display = 'none';
+
+      y = document.getElementById('selected_color_options')
+      y.style.display = 'none'
+
+      z = document.getElementById('disabled_color_options')
+      z.style.display = 'none'
+ 
     }
 
     function pickColor(
@@ -282,6 +346,7 @@ const ProductOptions: React.FC<ProductOptionsProps> = React.memo(
       inputSearch: any,
       catbtn: any
     ) {
+      console.log('PICK COLOR')
       let sku = va.sku.toLowerCase()
       let colorTitle = va.option_values ? va.option_values[0].label : ''
 
@@ -297,19 +362,37 @@ const ProductOptions: React.FC<ProductOptionsProps> = React.memo(
       let cid = va.option_values ? va.option_values[0].id : ''
       let colorimg = va.image_url
 
+      element = document.getElementById('selected_color_options')
+      element.style.display = 'none'
+
+      element = document.getElementById('disabled_color_options')
+      element.style.display = 'none'
+
+      element = document.getElementById('varient_qty')
+      element.value = 1;
+
       if (va.inventory_level > 0) {
+        console.log('IN Stock')
         x = document.getElementById('selected_color_title')
         x.innerText = colorTitle
 
-        y = document.getElementById('selected_color_sku')
-        y.innerText = 'SKU: ' + sku
+        // y = document.getElementById('selected_color_sku')
+        // y.innerText = 'SKU: ' + sku
+
+        y = document.getElementsByClassName('option-sku');
+        for (let i = 0; i < y.length; i++) {
+          y[i].innerHTML = 'SKU: '+sku;
+        } 
+
 
         cimg = document.getElementById('selected_color_img')
         cimg.src = colorimg
 
         element = document.getElementById('selected_color_options')
         element.style.display = 'block'
+
       } else {
+        console.log('No Stock')
         x = document.getElementById('disabled_color_title')
         x.innerText = colorTitle
 
@@ -347,9 +430,9 @@ const ProductOptions: React.FC<ProductOptionsProps> = React.memo(
       <div className="product-options">
         <div className="pb-6 grid" key="Options" id="options_list">
           <div className="flex justify-between">
-            <h2 className="uppercase font-medium text-sm tracking-wide">
+            <h2 className="uppercase font-medium text-sm tracking-wide" >
               Color
-              <span className="option-title">
+              <span className="option-title" id="option-label">
                 {currentVariant.option_values
                   ? currentVariant.option_values[0].label
                   : ''}
@@ -398,16 +481,17 @@ const ProductOptions: React.FC<ProductOptionsProps> = React.memo(
               {variants.data.map((v: any, i: number) => {
                 let pUrl = product.path.replace('.html', '')
                 const opt = v.option_values[0]
-                const active =
-                  selectedOptions[opt.option_display_name.toLowerCase()]
+                const active = selectedOptions[opt.option_display_name.toLowerCase()]
+                // const swatch = v.image_url;
                 const swatch =
                   publicRuntimeConfig.COLOR_SWATCH_URL +
-                  '/product_images/attribute_value_images/' +
+                  '/stencil/70w/attribute_value_images/' +
                   opt.id +
                   '.preview.jpg'
                 const isDisabled =
                   v.inventory_level == 0 ? ' color_disabled' : ' color_enabled'
                 const itemQty = items ? items[v.id] : 0
+                
                 return (
                   <Swatch
                     key={`${opt.id}-${i}`}
@@ -418,8 +502,9 @@ const ProductOptions: React.FC<ProductOptionsProps> = React.memo(
                     label={opt.label}
                     id={itemQty}
                     className={customclass + isDisabled}
-                    onClick={(event) => {
-                      loadOptions(v)
+                    onClick={() => {
+                      loadOptions(v);     
+                      setCurrentVariant(v, null);    
                     }}
                   />
                 )
@@ -432,7 +517,7 @@ const ProductOptions: React.FC<ProductOptionsProps> = React.memo(
                   <div
                     className="a-section a-spacing-none expanderBullet"
                     onClick={(event) => {
-                      viewMoreShow(event, null)
+                      viewMoreShow(event, null,null)
                     }}
                   >
                     View All
@@ -451,11 +536,10 @@ const ProductOptions: React.FC<ProductOptionsProps> = React.memo(
                 <div
                   className="a-section a-spacing-none expanderBullet"
                   onClick={(event) => {
-                    viewMoreShow(event, null)
+                    viewMoreShow(event, null, null)
                   }}
                 >
-                  View All
-                  <br /> Shades
+                  See More
                 </div>
               </div>
             ) : (
@@ -463,117 +547,119 @@ const ProductOptions: React.FC<ProductOptionsProps> = React.memo(
             )}
           </div>
         </div>
-
+        <div id="options-overlay" className="options-overlay"></div>
         <div
           className="pb-6 grid options_modal"
           key="Options"
           id="all_options_list"
           style={{ display: 'none' }}
         >
-          <div className="flex justify-between items-baseline headModal">
-            <h2 className="uppercase font-medium text-sm tracking-wide">
-              Color
-            </h2>
-            <div className="filter_middle">
-              <button
-                className="in-stock-btn active"
-                id="in_stock_filter"
-                aria-label="In Stock"
-                type="button"
-                onClick={(event) => {
-                  filterInStockOptions(event, null, null, null, null)
-                }}
-              >
-                In Stock
-              </button>
-              <button
-                className="out-of-stock-btn"
-                id="out_of_stock_filter"
-                aria-label="Out Of Stock"
-                type="button"
-                onClick={(event) => {
-                  filterOutOfStockOptions(event, null, null, null, null)
-                }}
-              >
-                Out Of Stock
-              </button>
-            </div>
-            <span id="shade_search_block">
-              <input type="hidden" id="filter_type" defaultValue="instock" />
-              <input
-                type="text"
-                id="shade_search_modal"
-                placeholder="Shade Search"
-                onKeyUp={(event) => {
-                  handleSearchModal(event, null, null, null, null)
-                }}
-              />
-            </span>
-            <span
-              className="modal_close_btn cursor-pointer"
-              onClick={(event) => {
-                modalClose(event, null, null, null)
-              }}
-            >
-              <Cross />
-            </span>
-            <div className="mobile_options">
-              <span
-                className="grid_btn active"
-                id="modal_grid_btn"
-                onClick={(event) => {
-                  changeToGridModal(event, null, null)
-                }}
-              >
-                Grid
+          <div className='popup-main-content'>
+            <div className="flex justify-between items-baseline headModal">
+              <h2 className="uppercase font-medium text-sm tracking-wide">
+                Color
+              </h2>
+              <div className="filter_middle">
+                <button
+                  className="in-stock-btn active"
+                  id="in_stock_filter"
+                  aria-label="In Stock"
+                  type="button"
+                  onClick={(event) => {
+                    filterInStockOptions(event, null, null, null, null)
+                  }}
+                >
+                  In Stock
+                </button>
+                <button
+                  className="out-of-stock-btn"
+                  id="out_of_stock_filter"
+                  aria-label="Out Of Stock"
+                  type="button"
+                  onClick={(event) => {
+                    filterOutOfStockOptions(event, null, null, null, null)
+                  }}
+                >
+                  Out Of Stock
+                </button>
+              </div>
+              <span id="shade_search_block">
+                <input type="hidden" id="filter_type" defaultValue="instock" />
+                <input
+                  type="text"
+                  id="shade_search_modal"
+                  placeholder="Shade Search"
+                  onKeyUp={(event) => {
+                    handleSearchModal(event, null, null, null, null)
+                  }}
+                />
               </span>
-              <span className="seperator">/</span>
               <span
-                className="list_btn"
-                id="modal_list_btn"
+                className="modal_close_btn cursor-pointer"
                 onClick={(event) => {
-                  changeToListModal(event, null, null)
+                  modalClose(event, null, null, null,null)
                 }}
               >
-                List
+                <Cross />
               </span>
+              <div className="mobile_options">
+                <span
+                  className="grid_btn active"
+                  id="modal_grid_btn"
+                  onClick={(event) => {
+                    changeToGridModal(event, null, null)
+                  }}
+                >
+                  Grid
+                </span>
+                <span className="seperator">/</span>
+                <span
+                  className="list_btn"
+                  id="modal_list_btn"
+                  onClick={(event) => {
+                    changeToListModal(event, null, null)
+                  }}
+                >
+                  List
+                </span>
+              </div>
             </div>
-          </div>
-          <div className="option-section">
-            <div
-              id="alloptions_modal"
-              className="flex_div flex justify-start flex-wrap flex-row py-4"
-            >
-              <input type="hidden" value={currentVariant.id} />
-              {variants.data.map((v: any, i: number) => {
-                let pUrl = product.path.replace('.html', '')
-                const opt = v.option_values[0]
-                const active =
-                  selectedOptions[opt.option_display_name.toLowerCase()]
-                const swatch =
+            <div className="option-section">
+              <div
+                id="alloptions_modal"
+                className="flex_div flex justify-start flex-wrap flex-row py-4"
+              >
+                <input type="hidden" value={currentVariant.id} />
+                {variants.data.map((v: any, i: number) => {
+                  let pUrl = product.path.replace('.html', '')
+                  const opt = v.option_values[0]
+                  const active =selectedOptions[opt.option_display_name.toLowerCase()]
+                  // const swatch = v.image_url;
+                  const swatch =
                   publicRuntimeConfig.COLOR_SWATCH_URL +
-                  '/product_images/attribute_value_images/' +
+                  '/stencil/70w/attribute_value_images/' +
                   opt.id +
                   '.preview.jpg'
-                const isDisabled =
-                  v.inventory_level == 0 ? ' color_disabled' : ' color_enabled'
-                const itemQty = items ? items[v.id] : 0
-                return (
-                  <Swatch
-                    key={`${opt.id}-${i}`}
-                    active={currentVariant.sku == v.sku}
-                    variant={opt.option_display_name}
-                    color={v.hexColors ? v.hexColors[0] : ''}
-                    image={swatch ? swatch : ''}
-                    label={opt.label}
-                    id={itemQty}
-                    className={customclass + isDisabled}
-                    onClick={(event) => {
-                      pickColor(v, null, null, null, null, null, null, null)
-                    }}
-                  />
-                )
-              })}
+                  const isDisabled =
+                    v.inventory_level == 0 ? ' color_disabled' : ' color_enabled'
+                  const itemQty = items ? items[v.id] : 0
+                  return (
+                    <Swatch
+                      key={`${opt.id}-${i}`}
+                      active={currentVariant.sku == v.sku}
+                      variant={opt.option_display_name}
+                      color={v.hexColors ? v.hexColors[0] : ''}
+                      image={swatch ? swatch : ''}
+                      label={opt.label}
+                      id={itemQty}
+                      className={customclass + isDisabled}
+                      onClick={() => {
+                        pickColor(v, null, null, null, null, null, null, null)
+                      }}
+                    />
+                  )
+                })}
+              </div>
             </div>
           </div>
 
@@ -586,7 +672,7 @@ const ProductOptions: React.FC<ProductOptionsProps> = React.memo(
             <span
               className="modal_close_btn cursor-pointer"
               onClick={(event) => {
-                modalClose(event, null, null, null)
+                innerModalClose(event, null, null, null, null)
               }}
             >
               <Cross />
@@ -596,7 +682,7 @@ const ProductOptions: React.FC<ProductOptionsProps> = React.memo(
                 ? currentVariant.option_values[0].label
                 : ''}
             </div>
-            <div className="option-sku" id="selected_color_sku">
+            <div className="option-sku desktop" id="selected_color_sku">
               SKU: {currentVariant.sku}
             </div>
             <img
@@ -604,6 +690,9 @@ const ProductOptions: React.FC<ProductOptionsProps> = React.memo(
               src={currentVariant.image_url}
               id="selected_color_img"
             />
+            <div className="option-sku mobile" id="selected_color_sku">
+              SKU: {currentVariant.sku}
+            </div>
             <div className="add_to_cart">
               <div className="wishlist">
                 {process.env.COMMERCE_WISHLIST_ENABLED && (
@@ -685,16 +774,17 @@ const ProductOptions: React.FC<ProductOptionsProps> = React.memo(
                   <Button
                     aria-label="Add to Bag"
                     type="button"
-                    className={s.button}
+                    className={afterCartText ? 'added-to-bag-button ' +  s.button : s.button }
                     onClick={(event) => {
                       addToCart(event, null, null)
                     }}
                     loading={loading}
+                    afterCartText={afterCartText}
                     disabled={currentVariant?.availableForSale === false}
                   >
                     {currentVariant?.availableForSale === false
                       ? 'Not Available'
-                      : 'ADD TO BAG'}
+                      : afterCartText?<span className="added-to-bag">ADDED TO BAG <CheckMark /></span>:'ADD TO BAG'}
                   </Button>
                 )}
               </div>
@@ -710,7 +800,7 @@ const ProductOptions: React.FC<ProductOptionsProps> = React.memo(
             <span
               className="modal_close_btn cursor-pointer"
               onClick={(event) => {
-                modalClose(event, null, null, null)
+                innerModalClose(event, null, null, null,null)
               }}
             >
               <Cross />

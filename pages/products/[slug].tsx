@@ -53,19 +53,19 @@ export async function getStaticProps({
 }
 
 export async function getStaticPaths({ locales }: GetStaticPathsContext) {
-  const { products } = await commerce.getAllProductPaths()
+  const { products } = await commerce?.getAllProductPaths()
 
   return {
     paths: locales
-      ? locales.reduce<string[]>((arr, locale) => {
+      ? locales?.reduce<string[]>((arr, locale) => {
         // Add a product path for every locale
         products.forEach((product: any) => {
-          let p = product.path.replace('.html', '')
+          let p = product?.path?.replace('.html', '')
           arr.push(`/${locale}${p}`)
         })
         return arr
       }, [])
-      : products.map((product: any) => product.path.replace('.html', '')),
+      : products.map((product: any) => product?.path?.replace('.html', '')),
     fallback: 'blocking',
   }
 }
@@ -82,32 +82,31 @@ export default function Slug({
   const [ratings, setRatings] = useState<string>('')
 
   useEffect(() => {
-    console.log("this is Product page component , ");
 
     if (!sku) {
-      let skusearch = window.location.search
-      let psku = skusearch.replace("?sku=", "")
+      let skusearch = window?.location?.search
+      let psku = skusearch?.replace("?sku=", "")
       setSku(psku)
     }
 
-    let pid = product ? product.id : ''
+    let pid = product ? product?.id : '';
     if (pid) {
 
       fetch(`${publicRuntimeConfig.BASE_URL}/api/catalog/variants?id=${pid}`)
-        .then(response => response.json())
-        .then(response => setVariants(response))
-        .catch(error => setVariants(error));
+      .then(response => response.json())
+      .then(response => setVariants(response))
+      .catch(error => setVariants(error));
 
-      if (sku) {
+      if(sku){
         fetch(`${publicRuntimeConfig.BASE_URL}/api/catalog/variant?id=${pid}&sku=${sku}`)
-          .then(response => response.json())
-          .then(response => setResult(response))
-          .catch(error => setResult(error));
-      } else {
+        .then(response => response.json())
+        .then(response => setResult(response))
+        .catch(error => setResult(error));
+      }else{
         fetch(`${publicRuntimeConfig.BASE_URL}/api/catalog/variants?id=${pid}`)
-          .then(response => response.json())
-          .then(response => setResult(response))
-          .catch(error => setResult(error));
+        .then(response => response.json())
+        .then(response => setResult(response))
+        .catch(error => setResult(error));
       }
 
       fetch(`${publicRuntimeConfig.BASE_URL}/api/catalog/getReviews?id=${pid}`)
@@ -115,13 +114,19 @@ export default function Slug({
         .then(response => setReviews(response))
         .catch(error => setReviews(error));
 
+      // fetch(`${publicRuntimeConfig.BASE_URL}/api/catalog/ratings?id=${pid}`)
+      //   .then(response => response.json())
+      //   .then(response => setRatings(response))
+      //   .catch(error => setRatings(error));
+
+
       let pUrl = product ? product.path : ''
       if (pUrl && sku) {
-        pUrl = pUrl.replace('.html', '')
+        pUrl = pUrl?.replace('.html', '')
         router.push(`${pUrl}?sku=${sku}`)
       }
     }
-  }, [sku])
+  }, [])
 
   const skuChange = (testSku: string) => {
     setSku(testSku)
@@ -130,8 +135,11 @@ export default function Slug({
   return router.isFallback ? (
     <h1>Loading...</h1>
   ) : (
-    // <ProductView product={product} relatedProducts={relatedProducts} variants={variants} currentVariant={result} skuChange={skuChange} reviews={reviews} ratings={ratings} />
-    <></>
+    <>
+      {/* {console.log("product", product)} */}
+      {console.log("Product View ", product, relatedProducts, variants, result, skuChange, reviews, ratings)}
+      <ProductView product={product} relatedProducts={relatedProducts} variants={variants} currentVariant={result} skuChange={skuChange} reviews={reviews} ratings={ratings} />
+    </>
   )
 }
 

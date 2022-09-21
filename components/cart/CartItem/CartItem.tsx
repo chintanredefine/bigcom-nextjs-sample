@@ -56,7 +56,8 @@ const CartItem = ({
   const handleRemove = async () => {
     setRemoving(true)
     try {
-      await removeItem(item)
+      await removeItem(item) 
+      // window.Unbxd.track("cart",{"pid":item.productId,"qty":item.quantity})
     } catch (error) {
       setRemoving(false)
     }

@@ -1,7 +1,7 @@
 import cn from 'classnames'
 import React from 'react'
 import s from './Swatch.module.css'
-import { Check } from '@components/icons'
+import { CheckMark } from '@components/icons'
 import Button, { ButtonProps } from '@components/ui/Button'
 import { isDark } from '@lib/colors'
 interface SwatchProps {
@@ -41,25 +41,25 @@ const Swatch: React.FC<Omit<ButtonProps, 'variant'> & SwatchProps> = React.memo(
       },
       className
     )
+ 
 
     return (
       <Button
         aria-label="Variant Swatch"
         className={swatchClassName}
-        {...(label && color && { title: label })}
         style={image ? { backgroundImage: `url(${image})` } : {}}
-        {...props}
+        {...props}         
       >
         {color && active && (
           <span>
-            <Check />
+            <CheckMark />
           </span>
         )}
         <div className="variant_label">{!color ? label : null}</div>
         {id > 0 ? (
           <div className="variant_qty">
             QTY.{id}{' '}
-            <Check className="inline-block check_icn" fontSize="small" />
+            <CheckMark className="inline-block check_icn" fontSize="small" />
           </div>
         ) : (
           ''

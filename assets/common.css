@@ -254,6 +254,7 @@
 .ProductImg {
   height: 238px;
   max-height: 238px;
+  
 }
 
 .ProductImageOnlyOrderHistory {
@@ -545,6 +546,10 @@ textarea {
 
 /* fix search bar */
 
+ .ProductSlider_root__2cu05{
+    height: 500px;
+  }
+
 @media (min-width: 768px) {
   .d-md-flex {
     display: -ms-flexbox !important;
@@ -746,6 +751,10 @@ textarea {
 
   .MainCoctOrdCont {
     border: none;
+  }
+
+  .ProductSlider_root__2cu05{
+    height: 200px;
   }
 }
 

@@ -1,7 +1,6 @@
 import { FC, useEffect, useState, useLayoutEffect } from 'react'
 import cn from 'classnames'
 import Image from 'next/image'
-import Script from 'next/script'
 
 import useCustomer from '@framework/customer/use-customer'
 
@@ -111,19 +110,20 @@ const Footer: FC<Props> = ({ className, pages }) => {
       return (
         <>
           <script src="//sandbox.unbxd.io/sleekhair_mybigcommerce_stage_search.js"></script>
-          <script src="//libraries.unbxdapi.com/search-sdk/v2.0.4/vanillaSearch.min.js"></script>
+          <script src="//libraries.unbxdapi.com/search-sdk/v2.0.13/vanillaSearch.min.js"></script>
         </>
       )
     }
   }
 
-  useLayoutEffect(() => {
-    console.log('currentRoute useLayoutEffect', currentRoute)
+  // useLayoutEffect(() => {
+  //   console.log('currentRoute useLayoutEffect', currentRoute)
 
-    setcurrentRoute(router.asPath)
-  }, [router.asPath])
+  //   setcurrentRoute(router.asPath)
+  // }, [router.asPath])
 
   useEffect(() => {
+    //window.Menu = require('../../../assets/menu.js');
     console.log('currentRoute useEffect', currentRoute)
 
     setcurrentRoute(router.asPath)
@@ -276,11 +276,11 @@ const Footer: FC<Props> = ({ className, pages }) => {
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
       <script src="//sandbox.unbxd.io/sleekhair_mybigcommerce_stage_autosuggest.js"></script>
 
-      {/* <!-- Related To Search (Need To Integrate Search and Category pages) --> */}
+      {/* <!-- Related To Search (Need To Integrate Search and Category pages.) --> */}
 
       {addSearchScript()}
 
-      {/* for unbxd category pages */}
+      {/* for unbxd category pages df*/}
 
       <script src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js"></script>
     </footer>

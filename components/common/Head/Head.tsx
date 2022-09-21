@@ -3,7 +3,6 @@ import NextHead from 'next/head'
 import { DefaultSeo } from 'next-seo'
 import config from '@config/seo.json'
 import { useRouter } from 'next/router'
-
 // import { someUnbsdCategoryScripts } from './unbxdScript'
 
 const Head = () => {
@@ -44,7 +43,7 @@ const Head = () => {
   }
 
   // useEffect(() => {
-  //   someUnbsdCategoryScripts()
+  //   // someUnbsdCategoryScripts()
   // }, [])
 
   return (

@@ -28,18 +28,18 @@ interface ProductViewProps {
   ratings: any
 }
 
-const {publicRuntimeConfig} = getConfig()
+const { publicRuntimeConfig } = getConfig()
 
 const ProductView: FC<ProductViewProps> = ({ product, relatedProducts, variants, currentVariant, skuChange, reviews, ratings }) => {
 
-  // console.log(reviews)
+ 
 
   const productSku = currentVariant.data ? currentVariant.data[0].sku : ''
   const currentSwatchId = currentVariant.data ? currentVariant.data[0].option_values[0].id : ''
   const currentSwatchLabel = currentVariant.data ? currentVariant.data[0].option_values[0].label : ''
-  const currentSwatchImg = publicRuntimeConfig.COLOR_SWATCH_URL + "/product_images/attribute_value_images/"+currentSwatchId+".preview.jpg"
+  const currentSwatchImg = currentVariant.data ? currentVariant.data[0].image_url : publicRuntimeConfig.COLOR_SWATCH_URL + "/stencil/96w/attribute_value_images/" + currentSwatchId + ".preview.jpg"
 
-  const {SOCIALANNEX_TEMPLATE_ID} = process.env
+  const { SOCIALANNEX_TEMPLATE_ID } = process.env
 
   const productImage = product.images[0] ? product.images[0].url : ''
 
@@ -51,7 +51,7 @@ const ProductView: FC<ProductViewProps> = ({ product, relatedProducts, variants,
     },
     desktop: {
       breakpoint: { max: 3000, min: 1024 },
-      items: 4      
+      items: 4
     },
     tablet: {
       breakpoint: { max: 1024, min: 767 },
@@ -63,7 +63,7 @@ const ProductView: FC<ProductViewProps> = ({ product, relatedProducts, variants,
     }
   };
 
-  function getPrice(product: any){
+  function getPrice(product: any) {
     const { price } = usePrice({
       amount: product.price.value,
       baseAmount: product.price.retailPrice,
@@ -75,49 +75,49 @@ const ProductView: FC<ProductViewProps> = ({ product, relatedProducts, variants,
   return (
     <>
       <Container className="max-w_none w_full container_page PDPView" clean>
-      <div className="productInfo mobile_view">
-        <h1 className="productView-title">{product.name}</h1>
-        <div className="flex flex-row items-left reviews-section">
-          <Text
+        <div className="productInfo mobile_view">
+          <h1 className="productView-title">{product.name}</h1>
+          <div className="flex flex-row items-left reviews-section">
+            <Text
               className="product-reviews-top top-review-custom w-full"
               html={reviews.topContent || reviews.topContent}
             />
+          </div>
+          <div className="product-sku">
+            SKU: {productSku}
+          </div>
         </div>
-        <div className="product-sku">
-          SKU: {productSku}
-        </div>
-      </div>
-        
-        {currentVariant && variants  ? (
 
-        <div className={cn(s.root, 'fit PDPcontainer')}>
-          <div className={cn(s.main, 'fit productIMG')}>
-            <div className={cn(s.sliderContainer,'bgColor')}>
-              <ProductSlider key={product.id} viewCount={5}>
-                {product.images.map((image, i) => (
-                  <div key={currentVariant.data[0].image_url} className={s.imageContainer}>
-                    <Image
-                      className={s.img}
-                      src={image.url!}
-                      alt={image.alt || 'Product Image'}
-                      width={292}
-                      height={609}
-                      priority={i === 0}
-                      quality="100"
-                    />
-                  </div>
-                ))}
-              </ProductSlider>
-              <div className="selected_swatch_details">
-                <div className="selected_swatch_label">{currentSwatchLabel}</div>
-                <img className="selected_swatch_thumb" src={currentSwatchImg} />
+        {currentVariant && variants ? (
+
+          <div className={cn(s.root, 'fit PDPcontainer')}>
+            <div className={cn(s.main, 'fit productIMG')}>
+              <div className={cn(s.sliderContainer, 'bgColor')}>
+                <ProductSlider key={product.id} viewCount={5}>
+                  {product.images.map((image, i) => (
+                    <div key={currentVariant.data[0].image_url} className={s.imageContainer}>
+                      <Image
+                        className={s.img}
+                        src={image.url!}
+                        alt={image.alt || 'Product Image'}
+                        width={570}
+                        height={760}
+                        priority={i === 0}
+                        quality="100"
+                      /> 
+                    </div>
+                  ))}
+                </ProductSlider>
+                <div className="selected_swatch_details">
+                  <div className="selected_swatch_label">{currentSwatchLabel}</div>
+                  <img className="selected_swatch_thumb" src={currentSwatchImg} />
+                </div>
               </div>
             </div>
+            <ProductSidebar product={product} className={cn(s.sidebar, 'productInfo fit')} variants={variants} currentVariant={currentVariant.data[0]} skuChange={skuChange} reviews={reviews} />
           </div>
-          <ProductSidebar product={product} className={cn(s.sidebar,'productInfo fit')} variants={variants} currentVariant={currentVariant.data[0]} skuChange={skuChange} reviews={reviews} />
-        </div>
 
-        ) : "" }
+        ) : ""}
 
         <div className="mt-2 TabsSection">
 
@@ -145,13 +145,13 @@ const ProductView: FC<ProductViewProps> = ({ product, relatedProducts, variants,
 
         <section className="py-12 px-6 mb-10 BoughtSection">
           <Text variant="sectionHeading">Bought also Bought</Text>
-            <Carousel 
-              responsive={responsive} 
-              arrows={true}
-              showDots={true}
-              infinite={true}
-            >
-              {relatedProducts.map((p) => (
+          <Carousel
+            responsive={responsive}
+            arrows={true}
+            showDots={true}
+            infinite={true}
+          >
+            {relatedProducts.map((p) => (
               <Link href={`/${p.slug ? p.slug.replace('.html', '') : p.slug}`}>
                 <div key={p.path} className="animated fadeIn ItemPro">
                   <img src={p.images[0]?.url!} />
@@ -160,75 +160,75 @@ const ProductView: FC<ProductViewProps> = ({ product, relatedProducts, variants,
                     <p>{getPrice(p)}</p>
                   </div>
                 </div>
-                </Link>
-              ))}
-            </Carousel>          
+              </Link>
+            ))}
+          </Carousel>
         </section>
-        {reviews  ? (
-        <section className="py-12 px-6 mb-10 ReviewsSection">
-          <div className="review_bottom">
-            <h2 className="Text_sectionHeading__2H2XC">Reviews</h2>
-            <div className="product_reviews">
-              <h3>All Comments ({reviews.total})</h3>
-              {reviews.results.map((preview: any, i: number) => {
+        {reviews ? (
+          <section className="py-12 px-6 mb-10 ReviewsSection">
+            <div className="review_bottom">
+              <h2 className="Text_sectionHeading__2H2XC">Reviews</h2>
+              <div className="product_reviews">
+                <h3>All Comments ({reviews.total})</h3>
+                {reviews.results.map((preview: any, i: number) => {
 
-                let date = new Date(preview.review.dateCreated);
-                let reviewDate = `${ date.getDate()} - ${date.getMonth()} - ${date.getFullYear()}`;
+                  let date = new Date(preview.review.dateCreated);
+                  let reviewDate = `${date.getDate()} - ${date.getMonth()} - ${date.getFullYear()}`;
 
-                return (
-                  <div key={i} className="review-item">
-                    <div className="review-details">
+                  return (
+                    <div key={i} className="review-item">
+                      <div className="review-details">
                         <div className="customer-name">
                           {preview.customer ? (
                             <>
-                            { preview.customer.profileImageUrl ? (
-                              <img src={preview.customer.profileImageUrl} />
-                            ) : (
-                              <img src="/user.jpg" />
-                            )}
+                              {preview.customer.profileImageUrl ? (
+                                <img src={preview.customer.profileImageUrl} />
+                              ) : (
+                                <img src="/user.jpg" />
+                              )}
 
-                            <p>
-                              {preview.customer.name ? ( 
-                                preview.customer.name
+                              <p>
+                                {preview.customer.name ? (
+                                  preview.customer.name
                                 ) : (
                                   preview.customer.firstName + ' ' + preview.customer.lastName
                                 )
-                              }
-                              <span className="review-date">{reviewDate}</span>
-                            </p>
+                                }
+                                <span className="review-date">{reviewDate}</span>
+                              </p>
                             </>
                           ) : (
                             <>
-                            <img src="/user.jpg" />
-                            <p>
-                              {preview.review.email}
-                              <span className="review-date">{reviewDate}</span>
-                            </p>
+                              <img src="/user.jpg" />
+                              <p>
+                                {preview.review.email}
+                                <span className="review-date">{reviewDate}</span>
+                              </p>
                             </>
                           )}
 
                         </div>
-                      <div className="review-ratings">
-                        {preview.review.rating > 0 ? (
-                        <img src={'/' + preview.review.rating + 'star.png'} />
-                        ) : ''}
+                        <div className="review-ratings">
+                          {preview.review.rating > 0 ? (
+                            <img src={'/' + preview.review.rating + 'star.png'} />
+                          ) : ''}
+                        </div>
+                      </div>
+
+                      <div className="review-body">
+                        <h4>{preview.review.title}</h4>
+                        <Text
+                          className="break-words w-full max-w-xl"
+                          html={preview.review ? preview.review.body : ''}
+                        />
                       </div>
                     </div>
-
-                    <div className="review-body">
-                      <h4>{preview.review.title}</h4>
-                      <Text
-                        className="break-words w-full max-w-xl"
-                        html={preview.review ? preview.review.body : ''}
-                      />
-                    </div>
-                  </div>
-                )
-              })}
+                  )
+                })}
+              </div>
             </div>
-          </div>
-        </section>
-        ) : '' }
+          </section>
+        ) : ''}
       </Container>
       <NextSeo
         title={product.name}
