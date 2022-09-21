@@ -183,7 +183,7 @@ export default function editProfile() {
             >
               {/* First Name */}
               <fieldset className="form-fieldset">
-                <div className={`form-row form-row--half pb-30 ${style.mb_30}`}>
+                <div className={`form-row pb-30 ${style.mb_30}`}>
                   <label className="form-label">First Name</label>
                   <input
                     type="text"
@@ -200,7 +200,7 @@ export default function editProfile() {
                 </div>
 
                 {/* Last Name */}
-                <div className={`form-row form-row--half pb-30 ${style.mb_30}`}>
+                <div className={`form-row pb-30 ${style.mb_30}`}>
                   <label className="form-label">Last Name</label>
 
                   <input
@@ -218,7 +218,7 @@ export default function editProfile() {
                 </div>
 
                 {/* company */}
-                <div className={`form-row form-row--half pb-30 ${style.mb_30}`}>
+                <div className={`form-row pb-30 ${style.mb_30}`}>
                   <label className="form-label">Company</label>
 
                   <input
@@ -236,7 +236,7 @@ export default function editProfile() {
                 </div>
 
                 {/* phone */}
-                <div className={`form-row form-row--half pb-30 ${style.mb_30}`}>
+                <div className={`form-row pb-30 ${style.mb_30}`}>
                   <label className="form-label">Phone Number</label>
 
                   <input
@@ -254,7 +254,7 @@ export default function editProfile() {
                 </div>
 
                 {/* email */}
-                <div className={`form-row form-row--half pb-30 ${style.mb_30}`}>
+                <div className={`form-row pb-30 ${style.mb_30}`}>
                   <label className="form-label">Email</label>
 
                   <input
@@ -272,7 +272,7 @@ export default function editProfile() {
                 </div>
 
                 {/* Change Password toggler  */}
-                <div className={`form-row form-row--half pb-30 ${style.mb_30}`}>
+                <div className={`form-row pb-30 ${style.mb_30}`}>
                   <label className="form-label">Change Password</label>
 
                   <label className={`${style.switch}`}>
@@ -289,7 +289,7 @@ export default function editProfile() {
                   <>
                     {/* New Password */}
                     <div
-                      className={`form-row form-row--half pb-30 ${style.mb_30}`}
+                      className={`form-row pb-30 ${style.mb_30}`}
                     >
                       <label className="form-label">New Password</label>
 
@@ -309,7 +309,7 @@ export default function editProfile() {
 
                     {/* Confirm New Password */}
                     <div
-                      className={`form-row form-row--half pb-30 ${style.mb_30}`}
+                      className={`form-row pb-30 ${style.mb_30}`}
                     >
                       <label className="form-label">Confirm New Password</label>
 
@@ -335,8 +335,8 @@ export default function editProfile() {
                       resMessage.type === 'danger'
                         ? 'bg-danger'
                         : resMessage.type === 'warn'
-                        ? 'bg-warn'
-                        : 'bg-success'
+                          ? 'bg-warn'
+                          : 'bg-success'
                     }
                   >
                     * {resMessage.msg}

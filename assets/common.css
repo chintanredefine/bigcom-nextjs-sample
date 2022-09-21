@@ -756,6 +756,11 @@ textarea {
   .ProductSlider_root__2cu05{
     height: 200px;
   }
+
+    .MainNewTag div.page {
+    padding-left: 4px !important;
+  }
+
 }
 
 /* Medium devices (landscape tablets, 768px and up) */
